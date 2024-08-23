@@ -12,6 +12,20 @@
         WindowStyle="None"
         WindowState="Maximized" AllowsTransparency="True">
     <Grid>
+        <InkCanvas x:Name="InkCanvas"
+                   MoveEnabled="False"
+                   ResizeEnabled="False"
+                   Background="{x:Null}"
+                   Cursor="Pen"
+                   EditingModeInverted="EraseByPoint">
+            <InkCanvas.DefaultDrawingAttributes>
+                <DrawingAttributes FitToCurve="True"/>
+            </InkCanvas.DefaultDrawingAttributes>
+        </InkCanvas>
+        <Canvas>
+            <Grid x:Name="Frame">
 
+            </Grid>
+        </Canvas>
     </Grid>
 </Window>
