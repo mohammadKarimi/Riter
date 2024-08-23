@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:Riter.Main"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <Color x:Key="BgTransparent">Transparent</Color>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
