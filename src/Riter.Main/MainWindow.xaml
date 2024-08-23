@@ -8,10 +8,10 @@
         KeyDown="ShortcutKeyDown"
         UseLayoutRounding="True"
         Title="Riter"
-        ResizeMode="NoResize"
-        WindowStyle="None"
-        WindowState="Maximized" AllowsTransparency="True">
-    <Grid>
+        WindowStartupLocation="CenterScreen"
+      
+        WindowState="Maximized" d:DesignHeight="370" d:DesignWidth="602">
+    <Grid x:Name="Layout">
         <InkCanvas x:Name="InkCanvas"
                    MoveEnabled="False"
                    ResizeEnabled="False"
@@ -22,9 +22,11 @@
                 <DrawingAttributes FitToCurve="True"/>
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
-        <Canvas>
-            <Grid x:Name="Frame">
-
+        <Canvas VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Grid x:Name="MainFrame" Width="400">
+                <Button >
+                    Hi
+                </Button>
             </Grid>
         </Canvas>
     </Grid>

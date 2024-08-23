@@ -5,7 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="BgTransparent">Transparent</Color>
+            <Color x:Key="BgTransparent">#000</Color>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
