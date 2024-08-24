@@ -1,15 +1,17 @@
-﻿<Window Background="{Binding Mode=OneWay, Source={StaticResource BgTransparent}}" x:Class="Riter.Main.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Riter.Main"
+        Background="{Binding Mode=OneWay, Source={StaticResource BgTransparent}}"
+        x:Class="Riter.Main.MainWindow"
         mc:Ignorable="d"
         KeyDown="ShortcutKeyDown"
+        AllowsTransparency="True"
         UseLayoutRounding="True"
+        WindowStyle="None"
         Title="Riter"
         WindowStartupLocation="CenterScreen"
-      
         WindowState="Maximized" d:DesignHeight="370" d:DesignWidth="602">
     <Grid x:Name="Layout">
         <InkCanvas x:Name="InkCanvas"
@@ -22,12 +24,19 @@
                 <DrawingAttributes FitToCurve="True"/>
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
-        <Canvas VerticalAlignment="Bottom" HorizontalAlignment="Center">
-            <Grid x:Name="MainFrame" Width="400">
-                <Button >
-                    Hi
-                </Button>
-            </Grid>
-        </Canvas>
+      
+            <Canvas x:Name="MainConvas" VerticalAlignment="Bottom" Height="36" Margin="64" Width="430">
+                <Canvas.Background>
+                    <SolidColorBrush Color="White"/>
+                </Canvas.Background>
+                <Canvas.Effect>
+                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.3"/>
+                </Canvas.Effect>
+                <Grid Width="200" Height="36">
+                    <Button Content="Home" HorizontalAlignment="Left"/>
+                    <Button Content="Profile" HorizontalAlignment="Right"/>
+                </Grid>
+            </Canvas>
+        
     </Grid>
 </Window>
