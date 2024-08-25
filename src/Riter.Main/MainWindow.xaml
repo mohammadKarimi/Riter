@@ -1,18 +1,36 @@
 ﻿<Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Background="{Binding Mode=OneWay, Source={StaticResource BgTransparent}}"
-        x:Class="Riter.Main.MainWindow"
-        mc:Ignorable="d"
-        KeyDown="ShortcutKeyDown"
-        AllowsTransparency="True"
-        UseLayoutRounding="True"
-        WindowStyle="None"
-        Title="Riter"
-        WindowStartupLocation="CenterScreen"
-        WindowState="Maximized" d:DesignHeight="370" d:DesignWidth="602">
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{Binding Mode=OneWay, Source={StaticResource TransparentColor}}"
+    x:Class="Riter.Main.MainWindow"
+    mc:Ignorable="d"
+    KeyDown="ShortcutKeyDown"
+    AllowsTransparency="True"
+    UseLayoutRounding="True"
+    WindowStyle="None"
+    Title="Riter"
+    WindowStartupLocation="CenterScreen"
+    WindowState="Maximized" d:DesignHeight="370" d:DesignWidth="602">
+
+    <Window.Resources>
+        <DropShadowEffect x:Key="CanvasDropShadowEffect" BlurRadius="20" ShadowDepth="0" Opacity="0.24"/>
+
+        <Style x:Key="Icon" TargetType="Button">
+            <Setter Property="Width" Value="24"/>
+            <Setter Property="Height" Value="24"/>
+        </Style>
+
+        <Style x:Key="CanvasBorder" TargetType="Border">
+            <Setter Property="ClipToBounds" Value="True"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
+            <Setter Property="Width" Value="430"/>
+            <Setter Property="Height" Value="48"/>
+        </Style>
+    </Window.Resources>
+
     <Grid x:Name="Layout">
         <InkCanvas x:Name="MainInkCanvas" Background="{x:Null}" MoveEnabled="False" ResizeEnabled="False" Cursor="Pen" Margin="0,0,0,-0.333" EditingModeInverted="EraseByPoint">
             <InkCanvas.DefaultDrawingAttributes>
@@ -20,30 +38,28 @@
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
 
-        <Canvas x:Name="MainConvas" VerticalAlignment="Bottom"  Height="48" Width="430" Margin="60">
+        <Canvas x:Name="MainCanvas" VerticalAlignment="Bottom" Height="48" Width="430" Margin="60">
             <Canvas.Background>
-                <SolidColorBrush Color="Transparent"/>
+                <StaticResource ResourceKey="TransparentBrush"/>
             </Canvas.Background>
             <Canvas.Effect>
-                <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.24"/>
+                <StaticResource ResourceKey="CanvasDropShadowEffect"/>
             </Canvas.Effect>
-            <Border ClipToBounds="True" CornerRadius="12" Background="#FFF" Width="430" Height="48" >
 
+            <Border Style="{StaticResource CanvasBorder}">
                 <WrapPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Grid>
-                        <Line X1="100" Y1="0" X2="100" Y2="48" Stroke="Gray" StrokeThickness="1" />
+                        <Line X1="100" Y1="0" X2="100" Y2="48" Stroke="{StaticResource GrayBrush}" StrokeThickness="1"/>
                     </Grid>
                     <Grid Margin="12">
-                        <Button Width="24" Height="24">
+                        <Button Style="{StaticResource Icon}">
                             Hi
                         </Button>
                     </Grid>
                     <Grid>
                     </Grid>
                 </WrapPanel>
-
             </Border>
         </Canvas>
-
     </Grid>
 </Window>

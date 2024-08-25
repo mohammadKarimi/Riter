@@ -5,7 +5,11 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="BgTransparent">Transparent</Color>
+            <Color x:Key="TransparentColor">Transparent</Color>
+            <Color x:Key="WhiteColor">White</Color>
+            <SolidColorBrush x:Key="GrayBrush" Color="Gray"/>
+            <SolidColorBrush x:Key="TransparentBrush" Color="Transparent"/>
+            <SolidColorBrush x:Key="WhiteBrush" Color="White"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
