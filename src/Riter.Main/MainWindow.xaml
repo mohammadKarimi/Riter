@@ -14,29 +14,36 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized" d:DesignHeight="370" d:DesignWidth="602">
     <Grid x:Name="Layout">
-        <InkCanvas x:Name="InkCanvas"
-                   MoveEnabled="False"
-                   ResizeEnabled="False"
-                   Background="{x:Null}"
-                   Cursor="Pen"
-                   EditingModeInverted="EraseByPoint">
+        <InkCanvas x:Name="MainInkCanvas" Background="{x:Null}" MoveEnabled="False" ResizeEnabled="False" Cursor="Pen" Margin="0,0,0,-0.333" EditingModeInverted="EraseByPoint">
             <InkCanvas.DefaultDrawingAttributes>
-                <DrawingAttributes FitToCurve="True"/>
+                <DrawingAttributes Color="#FFDFFF56" FitToCurve="True" Width="4" Height="4" IgnorePressure="False" IsHighlighter="False" StylusTip="Ellipse" StylusTipTransform="Identity" />
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
-      
-            <Canvas x:Name="MainConvas" VerticalAlignment="Bottom" Height="36" Margin="64" Width="430">
-                <Canvas.Background>
-                    <SolidColorBrush Color="White"/>
-                </Canvas.Background>
-                <Canvas.Effect>
-                    <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.3"/>
-                </Canvas.Effect>
-                <Grid Width="200" Height="36">
-                    <Button Content="Home" HorizontalAlignment="Left"/>
-                    <Button Content="Profile" HorizontalAlignment="Right"/>
-                </Grid>
-            </Canvas>
-        
+
+        <Canvas x:Name="MainConvas" VerticalAlignment="Bottom"  Height="48" Width="430" Margin="60">
+            <Canvas.Background>
+                <SolidColorBrush Color="Transparent"/>
+            </Canvas.Background>
+            <Canvas.Effect>
+                <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.24"/>
+            </Canvas.Effect>
+            <Border ClipToBounds="True" CornerRadius="12" Background="#FFF" Width="430" Height="48" >
+
+                <WrapPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Grid>
+                        <Line X1="100" Y1="0" X2="100" Y2="48" Stroke="Gray" StrokeThickness="1" />
+                    </Grid>
+                    <Grid Margin="12">
+                        <Button Width="24" Height="24">
+                            Hi
+                        </Button>
+                    </Grid>
+                    <Grid>
+                    </Grid>
+                </WrapPanel>
+
+            </Border>
+        </Canvas>
+
     </Grid>
 </Window>
