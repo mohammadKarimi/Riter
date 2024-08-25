@@ -3,13 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Background="{Binding Mode=OneWay, Source={StaticResource TransparentColor}}"
     x:Class="Riter.Main.MainWindow"
     mc:Ignorable="d"
     KeyDown="ShortcutKeyDown"
+    Background="{Binding Mode=OneWay, Source={StaticResource TransparentColor}}"
     AllowsTransparency="True"
-    UseLayoutRounding="True"
     WindowStyle="None"
+    UseLayoutRounding="True"
     Title="Riter"
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized" d:DesignHeight="370" d:DesignWidth="602">
@@ -32,34 +32,34 @@
     </Window.Resources>
 
     <Grid x:Name="Layout">
-        <InkCanvas x:Name="MainInkCanvas" Background="{x:Null}" MoveEnabled="False" ResizeEnabled="False" Cursor="Pen" Margin="0,0,0,-0.333" EditingModeInverted="EraseByPoint">
+        <InkCanvas x:Name="MainInkCanvas" Background="{x:Null}" MoveEnabled="False" ResizeEnabled="False" Cursor="Pen" Margin="0,0,0,-0.3" EditingModeInverted="EraseByPoint">
             <InkCanvas.DefaultDrawingAttributes>
                 <DrawingAttributes Color="#FFDFFF56" FitToCurve="True" Width="4" Height="4" IgnorePressure="False" IsHighlighter="False" StylusTip="Ellipse" StylusTipTransform="Identity" />
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
-
-        <Canvas x:Name="MainCanvas" VerticalAlignment="Bottom" Height="48" Width="430" Margin="60">
-            <Canvas.Background>
-                <StaticResource ResourceKey="TransparentBrush"/>
-            </Canvas.Background>
-            <Canvas.Effect>
-                <StaticResource ResourceKey="CanvasDropShadowEffect"/>
-            </Canvas.Effect>
-
-            <Border Style="{StaticResource CanvasBorder}">
-                <WrapPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Grid>
-                        <Line X1="100" Y1="0" X2="100" Y2="48" Stroke="{StaticResource GrayBrush}" StrokeThickness="1"/>
-                    </Grid>
-                    <Grid Margin="12">
-                        <Button Style="{StaticResource Icon}">
-                            Hi
-                        </Button>
-                    </Grid>
-                    <Grid>
-                    </Grid>
-                </WrapPanel>
-            </Border>
+        <Canvas>
+            <Grid Canvas.Top="130" Canvas.Left="130" MinWidth="0">
+                <Grid.Background>
+                    <StaticResource ResourceKey="TransparentBrush"/>
+                </Grid.Background>
+                <Grid.Effect>
+                    <StaticResource ResourceKey="CanvasDropShadowEffect"/>
+                </Grid.Effect>
+                <Border Style="{StaticResource CanvasBorder}">
+                    <WrapPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Grid>
+                            <Line X1="100" Y1="0" X2="100" Y2="48" Stroke="{StaticResource GrayBrush}" StrokeThickness="1"/>
+                        </Grid>
+                        <Grid Margin="12">
+                            <Button Style="{StaticResource Icon}">
+                                Hi
+                            </Button>
+                        </Grid>
+                        <Grid>
+                        </Grid>
+                    </WrapPanel>
+                </Border>
+            </Grid>
         </Canvas>
     </Grid>
 </Window>
