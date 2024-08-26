@@ -39,25 +39,87 @@
         </InkCanvas>
         <Canvas>
             <Grid Canvas.Top="130" Canvas.Left="130" MinWidth="0">
-                <Grid.Background>
-                    <StaticResource ResourceKey="TransparentBrush"/>
-                </Grid.Background>
-                <Grid.Effect>
-                    <StaticResource ResourceKey="CanvasDropShadowEffect"/>
-                </Grid.Effect>
-                <Border Style="{StaticResource CanvasBorder}">
-                    <WrapPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Grid>
-                            <Line X1="100" Y1="0" X2="100" Y2="48" Stroke="{StaticResource GrayBrush}" StrokeThickness="1"/>
-                        </Grid>
-                        <Grid Margin="12">
-                            <Button Style="{StaticResource Icon}">
-                                Hi
-                            </Button>
-                        </Grid>
-                        <Grid>
-                        </Grid>
-                    </WrapPanel>
+                <Border CornerRadius="20" Background="White" Padding="16,20"
+                MaxWidth="460" HorizontalAlignment="Center" VerticalAlignment="Center"
+                  BorderThickness="1">
+                    <Border.Effect>
+                        <DropShadowEffect Opacity="0.12" ShadowDepth="4" BlurRadius="4"/>
+                    </Border.Effect>
+                    <StackPanel >
+                        <StackPanel>
+                            <DockPanel Margin="0,0,0,8">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Border Background="#F5F5F5" CornerRadius="4" Padding="10,12" MinHeight="40">
+                                        <DockPanel>
+                                            <Image Source="https://cdn.builder.io/api/v1/image/assets/TEMP/c61625fb72687094885cae3bed9f91547ad6516ba44add11b2b5847fce7fcad5?placeholderIfAbsent=true"
+                                           Width="16" Height="16" Margin="0,0,4,0" VerticalAlignment="Center" />
+                                            <TextBlock Text="Label text details" FontFamily="Inter" FontSize="12" VerticalAlignment="Center" />
+                                        </DockPanel>
+                                    </Border>
+                                </StackPanel>
+                                <!-- Action Buttons -->
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Image Source="https://cdn.builder.io/api/v1/image/assets/TEMP/9458a7b00d71b3b8882d88da895006ba82e326a3d3847b4a3c5667cd8811f5b5?placeholderIfAbsent=true"
+                                   Width="24" Height="24" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                                    <Image Source="https://cdn.builder.io/api/v1/image/assets/TEMP/a1e183a9e3adeb48a73f27510181be362ccc24ba3cd8cf3117493dd861bca1a5?placeholderIfAbsent=true"
+                                   Width="87" Height="40" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                                    <Image Source="https://cdn.builder.io/api/v1/image/assets/TEMP/7850691adcaac05691b10cfbe78bc9dc7c3839f39a222a3a330d28ea805b89e9?placeholderIfAbsent=true"
+                                   Width="24" Height="24" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0" Width="394" >
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                <Border Margin="0,0,2,0" Width="36" Height="36" Background="#0399FF" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Pen}" />
+                                </Border>
+                                <Border Width="12" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_PenArrow}" />
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                <Border Margin="0,0,2,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Brush}" />
+                                </Border>
+                                <Border Width="12" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_BrushArrow}" />
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                <Border Margin="0,0,2,0" Width="36" Height="36"  Background="#eee" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_RoundedRectangle}" />
+                                </Border>
+                                <Border Width="12" Height="36" Background="#eee" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_SquareArrow}" />
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                <Border Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Text}" />
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                <Border Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Undo}" />
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                <Border Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Redo}" />
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                <Border Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Eraser}" />
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,24,0">
+                                <Border Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Delete}" />
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
                 </Border>
             </Grid>
         </Canvas>

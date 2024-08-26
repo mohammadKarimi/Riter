@@ -5,6 +5,9 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
             <Color x:Key="TransparentColor">Transparent</Color>
             <Color x:Key="WhiteColor">White</Color>
             <SolidColorBrush x:Key="GrayBrush" Color="Gray"/>

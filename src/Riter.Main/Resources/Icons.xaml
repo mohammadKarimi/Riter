@@ -1,0 +1,93 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Canvas x:Key="Icon_Brush" Width="25" Height="24">
+        <Rectangle Fill="#7956CE" Width="15" Height="6" Canvas.Left="5" Canvas.Top="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Path Fill="#292D32" Data="M13.2077,22.75H12.2077C10.6877,22.75 9.45767,21.52 9.45767,20V17.9C9.45767,17.45 9.21766,17.03 8.81766,16.81L5.8577,15.14C4.6777,14.48 3.94766,13.23 3.94766,11.87V8.31C3.94766,7.9 4.28766,7.56 4.69766,7.56H20.6977C21.1077,7.56 21.4477,7.9 21.4477,8.31V11.87C21.4477,13.22 20.7177,14.47 19.5377,15.14L16.5777,16.81C16.1877,17.03 15.9377,17.45 15.9377,17.9V20C15.9577,21.52 14.7277,22.75 13.2077,22.75ZM5.45767,9.07001V11.88C5.45767,12.69 5.89769,13.44 6.59769,13.84L9.55765,15.51C10.4176,16 10.9577,16.91 10.9577,17.9V20C10.9577,20.69 11.5177,21.25 12.2077,21.25H13.2077C13.8977,21.25 14.4577,20.69 14.4577,20V17.9C14.4577,16.91 14.9977,15.99 15.8577,15.51L18.8177,13.84C19.5277,13.44 19.9577,12.69 19.9577,11.88V9.07001H5.45767Z"/>
+        <Path Fill="#292D32" Data="M20.7074,9.07001H4.70743C4.29743,9.07001 3.95743,8.73001 3.95743,8.32001V4C3.95743,2.48 5.18743,1.25 6.70743,1.25H18.7074C20.2274,1.25 21.4574,2.48 21.4574,4V8.32001C21.4574,8.73001 21.1174,9.07001 20.7074,9.07001ZM5.45743,7.57001H19.9574V4C19.9574,3.31 19.3974,2.75 18.7074,2.75H6.70743C6.01743,2.75 5.45743,3.31 5.45743,4V7.57001Z"/>
+        <Path Fill="Black" Data="M20.7074,9.07001H4.70743C4.29743,9.07001 3.95743,8.73001 3.95743,8.32001V4C3.95743,2.48 5.18743,1.25 6.70743,1.25H18.7074C20.2274,1.25 21.4574,2.48 21.4574,4V8.32001C21.4574,8.73001 21.1174,9.07001 20.7074,9.07001ZM5.45743,7.57001H19.9574V4C19.9574,3.31 19.3974,2.75 18.7074,2.75H6.70743C6.01743,2.75 5.45743,3.31 5.45743,4V7.57001Z"/>
+    </Canvas>
+    <Canvas x:Key="Icon_PenArrow" Width="10" Height="6">
+        <Path Stroke="#666666" StrokeThickness="1.58333"
+              StrokeLineJoin="Round"
+              Data="M1.70743,1.69767L5.04076,4.30233L8.3741,1.69767"/>
+    </Canvas>
+    <Canvas x:Key="Icon_SquareArrow" Width="10" Height="6">
+        <Path Stroke="#666666" StrokeThickness="1.58333"
+            StrokeLineJoin="Round"
+            Data="M1.70743,1.69767L5.04076,4.30233L8.3741,1.69767"/>
+    </Canvas>
+    <Canvas x:Key="Icon_BrushArrow" Width="10" Height="6">
+        <Path Stroke="#666666" StrokeThickness="1.58333"
+            StrokeLineJoin="Round"
+            Data="M1.70743,1.69767L5.04076,4.30233L8.3741,1.69767"/>
+    </Canvas>
+    <Canvas x:Key="Icon_RoundedRectangle" Width="25" Height="24">
+        <Rectangle Width="23.0714" Height="22.5" RadiusX="4.25" RadiusY="4.25"
+                   Stroke="#292D32" StrokeThickness="1.5"
+                   Canvas.Left="1.16484" Canvas.Top="0.75"/>
+    </Canvas>
+    <Canvas Width="24" Height="24" x:Key="Icon_Pen">
+        <Path Stroke="White" StrokeThickness="1.5"
+          Data="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14ZM12 14V22M7 6H17C18.1046 6 19 5.10457 19 4C19 2.89543 18.1046 2 17 2H7C5.89543 2 5 2.89543 5 4C5 5.10457 5.89543 6 7 6ZM6.99197 6H17.008L18.7221 11.3282C19.2189 12.5829 19.0429 13.9811 18.2476 15.0968L12.9519 21.526C12.5014 22.158 11.4986 22.158 11.0481 21.526L5.75238 15.0968C4.95707 13.9811 4.78105 12.5829 5.27795 11.3282L6.99197 6Z"/>
+    </Canvas>
+    
+
+    <Canvas x:Key="Icon_Text" Width="25" Height="24">
+        <Path Fill="#292D32" Data="M22.0237 7.92C21.6137 7.92 21.2737 7.58 21.2737 7.17V5.35C21.2737 4.62 20.6837 4.03 19.9537 4.03H5.43369C4.70369 4.03 4.1137 4.62 4.1137 5.35V7.18C4.1137 7.59 3.7737 7.93 3.3637 7.93C2.9537 7.93 2.6137 7.59 2.6137 7.17V5.35C2.6137 3.79 3.88369 2.53 5.43369 2.53H19.9537C21.5137 2.53 22.7737 3.8 22.7737 5.35V7.18C22.7737 7.59 22.4437 7.92 22.0237 7.92Z"/>
+        <Path Fill="#292D32" Data="M12.6937 21.47C12.2837 21.47 11.9437 21.13 11.9437 20.72V4.11C11.9437 3.7 12.2837 3.36 12.6937 3.36C13.1037 3.36 13.4437 3.7 13.4437 4.11V20.72C13.4437 21.14 13.1037 21.47 12.6937 21.47Z"/>
+        <Path Fill="#292D32" Data="M16.6337 21.47H8.7537C8.3437 21.47 8.00369 21.13 8.00369 20.72C8.00369 20.31 8.3437 19.97 8.7537 19.97H16.6337C17.0437 19.97 17.3837 20.31 17.3837 20.72C17.3837 21.13 17.0437 21.47 16.6337 21.47Z"/>
+    </Canvas>
+
+    <Canvas Width="28" Height="26" x:Key="Icon_Undo">
+        <!-- Large circular path -->
+        <Path Stroke="#292D32" StrokeThickness="1.5" StrokeLineJoin="Round"
+          Data="M10.9832 5.50333C11.962 5.22167 13.042 5.0375 14.2345 5.0375C19.6232 5.0375 23.9882 9.24083 23.9882 14.43C23.9882 19.6192 19.6232 23.8225 14.2345 23.8225C8.8457 23.8225 4.4807 19.6192 4.4807 14.43C4.4807 12.5017 5.0882 10.7033 6.1232 9.20833" />
+
+        <!-- Diagonal line from top left -->
+        <Path Stroke="#292D32" StrokeThickness="1.5" StrokeLineJoin="Round"
+          Data="M9.5882 5.76333L12.8395 2.16667" />
+
+        <!-- Diagonal line from bottom left -->
+        <Path Stroke="#292D32" StrokeThickness="1.5" StrokeLineJoin="Round"
+          Data="M9.5882 5.76333L13.3795 8.42833" />
+    </Canvas>
+
+    <Canvas Width="28" Height="26" x:Key="Icon_Redo">
+        <!-- Large circular path -->
+        <Path Stroke="#292D32" StrokeThickness="1.5" StrokeLineJoin="Round"
+          Data="M17.5265 5.50333C16.5477 5.22167 15.4677 5.0375 14.2752 5.0375C8.88645 5.0375 4.52145 9.24083 4.52145 14.43C4.52145 19.63 8.88645 23.8333 14.2752 23.8333C19.664 23.8333 24.029 19.63 24.029 14.4408C24.029 12.5125 23.4215 10.7142 22.3865 9.21917" />
+
+        <!-- Diagonal line from top right -->
+        <Path Stroke="#292D32" StrokeThickness="1.5" StrokeLineJoin="Round"
+          Data="M18.9215 5.76333L15.6702 2.16667" />
+
+        <!-- Diagonal line from bottom right -->
+        <Path Stroke="#292D32" StrokeThickness="1.5" StrokeLineJoin="Round"
+          Data="M18.9215 5.76333L15.1302 8.42833" />
+    </Canvas>
+
+    <Canvas Width="25" Height="24" x:Key="Icon_Eraser">
+        <!-- Horizontal Line -->
+        <Path Stroke="#292D32" StrokeThickness="1.5"  StrokeLineJoin="Round"
+          Data="M9.81595 22H21.8159" />
+        <!-- Main shape -->
+        <Path Stroke="#292D32" StrokeThickness="1.5"  StrokeLineJoin="Round"
+          Data="M3.72592 17.58L7.23593 21.09C8.40593 22.26 10.3159 22.26 11.4759 21.09L21.906 10.66C23.076 9.49 23.076 7.58 21.906 6.42L18.396 2.91C17.226 1.74 15.316 1.74 14.156 2.91L3.72592 13.34C2.55592 14.5 2.55592 16.41 3.72592 17.58Z" />
+        <!-- Cross Line 1 -->
+        <Path Stroke="#292D32" StrokeThickness="1.5"  StrokeLineJoin="Round"
+          Data="M7.93594 9.13L15.6859 16.88" />
+        <!-- Cross Line 2 -->
+        <Path Stroke="#292D32" StrokeThickness="1.5"  StrokeLineJoin="Round"
+          Data="M4.33597 17.66L9.98593 12" />
+        <!-- Cross Line 3 -->
+        <Path Stroke="#292D32" StrokeThickness="1.5"  StrokeLineJoin="Round"
+          Data="M7.15598 20.49L12.8159 14.83" />
+    </Canvas>
+    <Canvas Width="23" Height="26" x:Key="Icon_Delete">
+        <!-- Main Path -->
+        <Path Stroke="#292D32" StrokeThickness="1.5" StrokeLineJoin="Round"
+          Data="M3.18999 8.4V19.9C3.18999 22.4405 5.27933 24.5 7.85666 24.5H14.8567C17.434 24.5 19.5233 22.4405 19.5233 19.9V8.4M13.69 11.85V18.75M9.02332 11.85L9.02333 18.75M16.0233 4.95L14.3827 2.52419C13.9499 1.88433 13.2214 1.5 12.4412 1.5H10.2721C9.49193 1.5 8.76339 1.88433 8.33064 2.52419L6.68999 4.95M16.0233 4.95H6.68999M16.0233 4.95H21.8567M6.68999 4.95H0.856659" />
+    </Canvas>
+
+
+</ResourceDictionary>
