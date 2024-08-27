@@ -37,7 +37,7 @@
                 <DrawingAttributes Color="#FFDFFF56" FitToCurve="True" Width="4" Height="4" IgnorePressure="False" IsHighlighter="False" StylusTip="Ellipse" StylusTipTransform="Identity" />
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
-        <Canvas>
+        <Canvas> 
             <Grid Canvas.Top="130" Canvas.Left="130" MinWidth="0">
                 <Border CornerRadius="20" Background="White" Padding="16,20"
                 MaxWidth="460" HorizontalAlignment="Center" VerticalAlignment="Center"
