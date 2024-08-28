@@ -37,40 +37,48 @@
                 <DrawingAttributes Color="#FFDFFF56" FitToCurve="True" Width="4" Height="4" IgnorePressure="False" IsHighlighter="False" StylusTip="Ellipse" StylusTipTransform="Identity" />
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
-        <Canvas> 
+        <Canvas>
             <Grid Canvas.Top="130" Canvas.Left="130" MinWidth="0">
-                <Border CornerRadius="20" Background="White" Padding="16,20"
+                <Border CornerRadius="20" Background="White" Padding="12,16"
                 MaxWidth="460" HorizontalAlignment="Center" VerticalAlignment="Center"
                   BorderThickness="1">
                     <Border.Effect>
                         <DropShadowEffect Opacity="0.12" ShadowDepth="4" BlurRadius="4"/>
                     </Border.Effect>
                     <StackPanel >
-                        <StackPanel>
-                            <DockPanel Margin="0,0,0,8">
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <Border Background="#F5F5F5" CornerRadius="4" Padding="10,12" MinHeight="40">
-                                        <DockPanel>
-                                            <Image Source="https://cdn.builder.io/api/v1/image/assets/TEMP/c61625fb72687094885cae3bed9f91547ad6516ba44add11b2b5847fce7fcad5?placeholderIfAbsent=true"
-                                           Width="16" Height="16" Margin="0,0,4,0" VerticalAlignment="Center" />
-                                            <TextBlock Text="Label text details" FontFamily="Inter" FontSize="12" VerticalAlignment="Center" />
-                                        </DockPanel>
-                                    </Border>
-                                </StackPanel>
-                                <!-- Action Buttons -->
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Border Margin="0,0,2,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Close}" />
-                                    </Border>
-                                    <Border Margin="0,0,2,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Close}" />
-                                    </Border>
-                                    <Border Margin="0,0,2,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Close}" />
-                                    </Border>
-                                </StackPanel>
-                            </DockPanel>
-                        </StackPanel>
+
+                        <DockPanel Margin="0,0,0,8">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Border Background="#F5F5F5" CornerRadius="4" Padding="10,12" MinHeight="40">
+                                    <DockPanel>
+                                        <Border Margin="0,0,0,0" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <ContentControl Content="{StaticResource Icon_Hand}" />
+                                        </Border>
+                                        <TextBlock Text="Label text details" FontFamily="Inter" FontSize="12" VerticalAlignment="Center" />
+                                    </DockPanel>
+                                </Border>
+                            </StackPanel>
+                            <!-- Action Buttons -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Border Margin="0,0,0,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Setting}" />
+                                </Border>
+                                <Border Margin="0,0,0,0" Width="72" Background="#F5F5F5" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                        <Border BorderBrush="#E5E5E5" BorderThickness="2" Background="#FFF" Margin="0,0,0,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <ContentControl Content="{StaticResource Icon_Lock}" />
+                                        </Border>
+                                        <Border Margin="0,0,0,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <ContentControl Content="{StaticResource Icon_UnLock}" />
+                                        </Border>
+                                    </StackPanel>
+                                </Border>
+                                <Border Margin="0,0,0,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Close}" />
+                                </Border>
+                            </StackPanel>
+                        </DockPanel>
+
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0"  >
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                 <Border Margin="0,0,2,0" Width="36" Height="36" Background="#0399FF" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
