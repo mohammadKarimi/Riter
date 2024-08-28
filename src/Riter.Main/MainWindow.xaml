@@ -59,12 +59,15 @@
                                 </StackPanel>
                                 <!-- Action Buttons -->
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                    <Image Source="https://cdn.builder.io/api/v1/image/assets/TEMP/9458a7b00d71b3b8882d88da895006ba82e326a3d3847b4a3c5667cd8811f5b5?placeholderIfAbsent=true"
-                                   Width="24" Height="24" Margin="16,0,0,0" VerticalAlignment="Center"/>
-                                    <Image Source="https://cdn.builder.io/api/v1/image/assets/TEMP/a1e183a9e3adeb48a73f27510181be362ccc24ba3cd8cf3117493dd861bca1a5?placeholderIfAbsent=true"
-                                   Width="87" Height="40" Margin="16,0,0,0" VerticalAlignment="Center"/>
-                                    <Image Source="https://cdn.builder.io/api/v1/image/assets/TEMP/7850691adcaac05691b10cfbe78bc9dc7c3839f39a222a3a330d28ea805b89e9?placeholderIfAbsent=true"
-                                   Width="24" Height="24" Margin="16,0,0,0" VerticalAlignment="Center"/>
+                                    <Border Margin="0,0,2,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <ContentControl Content="{StaticResource Icon_Close}" />
+                                    </Border>
+                                    <Border Margin="0,0,2,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <ContentControl Content="{StaticResource Icon_Close}" />
+                                    </Border>
+                                    <Border Margin="0,0,2,0" Width="36" Height="36" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <ContentControl Content="{StaticResource Icon_Close}" />
+                                    </Border>
                                 </StackPanel>
                             </DockPanel>
                         </StackPanel>
