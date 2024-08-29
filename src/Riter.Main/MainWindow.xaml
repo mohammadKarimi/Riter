@@ -39,7 +39,7 @@
         </InkCanvas>
         <Canvas>
             <Grid Canvas.Top="130" Canvas.Left="130" MinWidth="0">
-                <Border CornerRadius="16" Background="White" Padding="12,16"
+                <Border CornerRadius="16" Background="#FFF" Padding="12,16"
                 MaxWidth="460" HorizontalAlignment="Center" VerticalAlignment="Center"
                   BorderThickness="1">
                     <Border.Effect>
@@ -60,16 +60,7 @@
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Border Margin="0,0,4,0" Width="64" Background="#EEE" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                                        <Border BorderBrush="#DBDBDB" BorderThickness="2" Background="#FFF" Margin="0,0,0,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <ContentControl Content="{StaticResource Icon_Lock}" />
-                                        </Border>
-                                        <Border Margin="0,0,0,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <ContentControl Content="{StaticResource Icon_UnLock}" />
-                                        </Border>
-                                    </StackPanel>
-                                </Border>
+                               
 
                                 <Border Margin="0,0,4,0"   Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <ContentControl Content="{StaticResource Icon_Setting}" />
@@ -82,7 +73,7 @@
 
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,12,0,0"  >
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                <Border Margin="0,0,2,0" Width="32" Height="32" Background="#0399FF" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <ContentControl Content="{StaticResource Icon_Pen}" />
                                 </Border>
                                 <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -98,7 +89,7 @@
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                <Border Margin="0,0,2,0" Width="32" Height="32"  Background="#eee" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <ContentControl Content="{StaticResource Icon_RoundedRectangle}" />
                                 </Border>
                                 <Border Width="12" Height="32" Background="#eee" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -123,6 +114,11 @@
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                 <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <ContentControl Content="{StaticResource Icon_Eraser}" />
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{StaticResource Icon_Lock}" />
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
