@@ -19,7 +19,7 @@
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
         <Canvas>
-            <!--<Grid Canvas.Top="130" Canvas.Left="130" MinWidth="0">
+            <Grid Canvas.Top="130" Canvas.Left="130" MinWidth="0">
                 <Border CornerRadius="16" Background="#FFF" Padding="12,16"
                 MaxWidth="460" HorizontalAlignment="Center" VerticalAlignment="Center"
                   BorderThickness="1">
@@ -108,7 +108,7 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-            </Grid>-->
+            </Grid>
         </Canvas>
     </Grid>
 </Window>

@@ -7,12 +7,27 @@ namespace Riter.Main;
 
 public partial class MainWindow : Window
 {
+    bool _release = false;
     public MainWindow()
     {
         InitializeComponent();
-       
+        Release(false);
     }
 
+    private void Release(bool release)
+    {
+        if (release)
+        {
+            MainInkCanvas.EditingMode = InkCanvasEditingMode.None;
+            Background = Application.Current.Resources["Transparent"] as Brush;
+        }
+        else
+        {
+            Background = Application.Current.Resources["NoneTransparent"] as Brush;
+            MainInkCanvas.UseCustomCursor = false;
+            MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
+        }
+    }
     private void ShortcutKeyDown(object sender, KeyEventArgs e)
     {
 
@@ -20,10 +35,8 @@ public partial class MainWindow : Window
 
     private void BtnLock_Click(object sender, RoutedEventArgs e)
     {
-        Background = Application.Current.Resources["NoneTransparentColor"] as Brush; 
-        MainInkCanvas.UseCustomCursor = false;
-        MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
-       
+        _release = !_release;
+        Release(_release);
     }
 }
 
