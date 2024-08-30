@@ -8,11 +8,29 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Color x:Key="TransparentColor">Transparent</Color>
             <Color x:Key="WhiteColor">White</Color>
-            <SolidColorBrush x:Key="GrayBrush" Color="Gray"/>
-            <SolidColorBrush x:Key="TransparentBrush" Color="Transparent"/>
             <SolidColorBrush x:Key="WhiteBrush" Color="White"/>
+            <Color x:Key="NoneTransparentColor" >#01000000</Color>
+            <Color x:Key="TransparentColor">Transparent</Color>
+
+
+            <SolidColorBrush x:Key="NoneTransparent" Color="{StaticResource NoneTransparentColor}"/>
+
+            <Style x:Key="IconButtonStyle" TargetType="Button">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentControl Content="{TemplateBinding Content}" />
+                                </Border>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

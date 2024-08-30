@@ -3,42 +3,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Riter.Main"
     x:Class="Riter.Main.MainWindow"
-    mc:Ignorable="d"
-    KeyDown="ShortcutKeyDown"
-    Background="{Binding Mode=OneWay, Source={StaticResource TransparentColor}}"
-    AllowsTransparency="True"
-    WindowStyle="None"
-    UseLayoutRounding="True"
-    Title="Riter"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    mc:Ignorable="d" ResizeMode="NoResize" UseLayoutRounding="True" 
     WindowStartupLocation="CenterScreen"
-    WindowState="Maximized" d:DesignHeight="370" d:DesignWidth="602">
-
-    <Window.Resources>
-        <DropShadowEffect x:Key="CanvasDropShadowEffect" BlurRadius="20" ShadowDepth="0" Opacity="0.24"/>
-
-        <Style x:Key="Icon" TargetType="Button">
-            <Setter Property="Width" Value="24"/>
-            <Setter Property="Height" Value="24"/>
-        </Style>
-
-        <Style x:Key="CanvasBorder" TargetType="Border">
-            <Setter Property="ClipToBounds" Value="True"/>
-            <Setter Property="CornerRadius" Value="12"/>
-            <Setter Property="Background" Value="{StaticResource WhiteBrush}"/>
-            <Setter Property="Width" Value="430"/>
-            <Setter Property="Height" Value="48"/>
-        </Style>
-    </Window.Resources>
-
+    WindowState="Maximized"
+    Background="{StaticResource NoneTransparent}" 
+    AllowsTransparency="True" 
+    WindowStyle="None">
     <Grid x:Name="Layout">
-        <InkCanvas x:Name="MainInkCanvas" Background="{x:Null}" MoveEnabled="False" ResizeEnabled="False" Cursor="Pen" Margin="0,0,0,-0.3" EditingModeInverted="EraseByPoint">
+        <InkCanvas x:Name="MainInkCanvas" Background="{x:Null}" MoveEnabled="False" ResizeEnabled="False" Cursor="Pen" Margin="0,0,0,-0.333" EditingModeInverted="EraseByPoint">
             <InkCanvas.DefaultDrawingAttributes>
-                <DrawingAttributes Color="#FFDFFF56" FitToCurve="True" Width="4" Height="4" IgnorePressure="False" IsHighlighter="False" StylusTip="Ellipse" StylusTipTransform="Identity" />
+                <DrawingAttributes Color="#FFFF5656" FitToCurve="True" Height="5" IgnorePressure="False" IsHighlighter="False" StylusTip="Ellipse" StylusTipTransform="Identity" Width="5"/>
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
         <Canvas>
-            <Grid Canvas.Top="130" Canvas.Left="130" MinWidth="0">
+            <!--<Grid Canvas.Top="130" Canvas.Left="130" MinWidth="0">
                 <Border CornerRadius="16" Background="#FFF" Padding="12,16"
                 MaxWidth="460" HorizontalAlignment="Center" VerticalAlignment="Center"
                   BorderThickness="1">
@@ -52,7 +33,7 @@
                                 <Border Padding="0,0,4,0" Height="36" Background="#F5F5F5" CornerRadius="4">
                                     <DockPanel>
                                         <Border Margin="0,0,0,0" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <ContentControl Content="{StaticResource Icon_Hand}" />
+                                            <ContentControl Content="{StaticResource Icon_Move}" />
                                         </Border>
                                         <TextBlock Text="Label text details" FontFamily="Inter" FontSize="12" VerticalAlignment="Center" />
                                     </DockPanel>
@@ -60,7 +41,7 @@
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                               
+
 
                                 <Border Margin="0,0,4,0"   Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <ContentControl Content="{StaticResource Icon_Setting}" />
@@ -89,7 +70,7 @@
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Border Background="#eee" Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <ContentControl Content="{StaticResource Icon_RoundedRectangle}" />
                                 </Border>
                                 <Border Width="12" Height="32" Background="#eee" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -118,18 +99,16 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                 <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <ContentControl Content="{StaticResource Icon_Lock}" />
+                                    <ContentControl Content="{StaticResource Icon_Delete}" />
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
-                                <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <ContentControl Content="{StaticResource Icon_Delete}" />
-                                </Border>
+                                <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Lock}" Click="BtnLock_Click" />
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </Border>
-            </Grid>
+            </Grid>-->
         </Canvas>
     </Grid>
 </Window>
