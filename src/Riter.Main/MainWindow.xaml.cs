@@ -12,6 +12,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         Release(false);
+        Topmost = true;
     }
 
     private void Release(bool release)
