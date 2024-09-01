@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Riter.Main.Core;
 
 namespace Riter.Main;
 
@@ -8,12 +8,26 @@ namespace Riter.Main;
 /// </summary>
 public partial class App : Application
 {
-    public IServiceProvider ServiceProvider { get; private set; }
+    private IServiceProvider _serviceProvider { get; init; }
+
     public App()
     {
         var serviceCollection = new ServiceCollection();
         ConfigureServices(serviceCollection);
         _serviceProvider = serviceCollection.BuildServiceProvider();
+    }
+
+    private static void ConfigureServices(IServiceCollection services)
+    {
+        services.AddTransient<PalleteStateViewModel>();
+        services.AddTransient<MainWindow>();
+    }
+
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        var mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+        mainWindow.Show();
+        base.OnStartup(e);
     }
 }
 

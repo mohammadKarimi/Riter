@@ -6,13 +6,13 @@ using Riter.Main.Core;
 
 namespace Riter.Main;
 
-public partial class MainWindow : Window
+public partial class MainWindow(PallateStateViewModel pallateState) : Window
 {
     private PalleteState _palleteState = null;
     public MainWindow()
     {
         InitializeComponent();
-
+        DataContext = pallateState;
         Release(false);
         Topmost = true;
     }
