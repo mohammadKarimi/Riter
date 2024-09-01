@@ -2,15 +2,17 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using Riter.Main.Core;
 
 namespace Riter.Main;
 
 public partial class MainWindow : Window
 {
-    bool _release = false;
+    private PalleteState _palleteState = null;
     public MainWindow()
     {
         InitializeComponent();
+
         Release(false);
         Topmost = true;
     }
