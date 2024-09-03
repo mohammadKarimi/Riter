@@ -2,23 +2,21 @@
 
 namespace Riter.Main.Core;
 
-public class PalleteStateViewModel : INotifyPropertyChanged
+public partial class PalleteStateViewModel : INotifyPropertyChanged
 {
-    private PalleteState _state;
+    private readonly PalleteState _state;
     public event PropertyChangedEventHandler PropertyChanged;
-
-    public PalleteStateViewModel()
-    {
-        _state = new PalleteState();
-    }
 
     public bool IsReleased
     {
         get => _state.IsReleased;
         set
         {
-            _state.IsReleased = value;
-            OnPropertyChanged(nameof(IsReleased));
+            if (_state.IsReleased != value)
+            {
+                _state.IsReleased = value;
+                OnPropertyChanged(nameof(IsReleased));
+            }
         }
     }
 
@@ -26,7 +24,18 @@ public class PalleteStateViewModel : INotifyPropertyChanged
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
 
-public class PalleteState
+
+public partial class PalleteStateViewModel
 {
-    public bool IsReleased { get; set; }
+    public ICommand ReleasedButtonCommand;
+
+    public PalleteStateViewModel()
+    {
+        _state = new PalleteState();
+        ReleasedButtonCommand = new RelayCommand(ReleasedLock);
+    }
+
+    private void ReleasedLock()
+        => IsReleased = !IsReleased;
+
 }
