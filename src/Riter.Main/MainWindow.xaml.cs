@@ -6,14 +6,13 @@ using Riter.Main.Core;
 
 namespace Riter.Main;
 
-public partial class MainWindow(PallateStateViewModel pallateState) : Window
+public partial class MainWindow : Window
 {
-    private PalleteState _palleteState = null;
-    public MainWindow()
+    public MainWindow(PalleteStateViewModel pallateStateViewModel)
     {
         InitializeComponent();
-        DataContext = pallateState;
-        Release(false);
+       // DataContext = pallateStateViewModel;
+        //Release(false);
         Topmost = true;
     }
 
@@ -38,8 +37,8 @@ public partial class MainWindow(PallateStateViewModel pallateState) : Window
 
     private void BtnLock_Click(object sender, RoutedEventArgs e)
     {
-        _release = !_release;
-        Release(_release);
+        //_release = !_release;
+        Release(true);
     }
 }
 

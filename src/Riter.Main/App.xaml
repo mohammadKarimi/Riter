@@ -1,8 +1,6 @@
 ﻿<Application x:Class="Riter.Main.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Riter.Main"
-             StartupUri="MainWindow.xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -10,7 +8,6 @@
             </ResourceDictionary.MergedDictionaries>
             <Color x:Key="NoneTransparentColor" >#01000000</Color>
             <Color x:Key="TransparentColor">Transparent</Color>
-
 
             <SolidColorBrush x:Key="NoneTransparent" Color="{StaticResource NoneTransparentColor}"/>
             <SolidColorBrush x:Key="Transparent" Color="{StaticResource TransparentColor}"/>
@@ -29,7 +26,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

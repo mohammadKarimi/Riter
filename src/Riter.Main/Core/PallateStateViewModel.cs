@@ -1,6 +1,16 @@
-﻿namespace Riter.Main.Core;
+﻿using System.ComponentModel;
 
-public class PalleteStateViewModel
+namespace Riter.Main.Core;
+
+public class PalleteStateViewModel : INotifyPropertyChanged
+{
+    public PalleteState _state;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+}
+
+public class PalleteState
 {
     public int IsReleased { get; set; }
 }
