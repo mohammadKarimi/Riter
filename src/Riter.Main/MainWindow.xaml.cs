@@ -11,7 +11,7 @@ public partial class MainWindow : Window
     public MainWindow(PalleteStateViewModel pallateStateViewModel)
     {
         InitializeComponent();
-       // DataContext = pallateStateViewModel;
+        DataContext = pallateStateViewModel;
         //Release(false);
         Topmost = true;
     }
@@ -35,10 +35,9 @@ public partial class MainWindow : Window
 
     }
 
-    private void BtnLock_Click(object sender, RoutedEventArgs e)
+    private void BtnRelease_Click(object sender, RoutedEventArgs e)
     {
-        //_release = !_release;
-        Release(true);
+
     }
 
     /// <summary>

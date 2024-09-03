@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Riter.Main.Core"
     x:Class="Riter.Main.MainWindow"
     mc:Ignorable="d" ResizeMode="NoResize" UseLayoutRounding="True" 
     WindowStartupLocation="CenterScreen"
@@ -10,6 +11,9 @@
     Background="{StaticResource NoneTransparent}" 
     AllowsTransparency="True" 
     WindowStyle="None">
+    <Window.DataContext>
+        <local:PalleteStateViewModel />
+    </Window.DataContext>
     <Grid x:Name="Layout">
         <InkCanvas x:Name="MainInkCanvas" Background="{x:Null}" MoveEnabled="False" ResizeEnabled="False" Cursor="Pen" Margin="0,0,0,-0.333" EditingModeInverted="EraseByPoint">
             <InkCanvas.DefaultDrawingAttributes>
@@ -101,7 +105,7 @@
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,0">
-                                <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Lock}" Click="BtnLock_Click" />
+                                <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Lock}" Command="{Binding ReleasedButtonCommand}" />
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
