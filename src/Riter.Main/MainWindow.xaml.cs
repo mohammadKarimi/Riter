@@ -40,5 +40,13 @@ public partial class MainWindow : Window
         //_release = !_release;
         Release(true);
     }
+
+    /// <summary>
+    /// Save The draw if setting available then, Exit Application.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void BtnExit_Click(object sender, RoutedEventArgs e)
+        => Application.Current.Shutdown(0);
 }
 
