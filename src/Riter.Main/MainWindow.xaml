@@ -45,11 +45,28 @@
                                 <Border Margin="0,0,4,0"   Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <ContentControl Content="{StaticResource Icon_Setting}" ToolTip="Settings" />
                                 </Border>
-                                <Border Margin="0,0,4,0"   Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <ContentControl Content="{StaticResource Icon_Minimize}" ToolTip="Minimize" />
+                                <Border Margin="0,0,4,0"
+                                        Width="32"
+                                        Height="32"
+                                        CornerRadius="4"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                    <Button ToolTip="Minimize"
+                                            Style="{StaticResource IconButtonStyle}"
+                                            Content="{StaticResource Icon_Minimize}"
+                                            Click="MinimizeButton_Click"/>
                                 </Border>
-                                <Border   Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Button ToolTip="Close" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Close}" Click="BtnExit_Click" />
+                                <Border Width="32"
+                                        Height="32"
+                                        CornerRadius="4"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                    <Button ToolTip="Close"
+                                            Style="{StaticResource IconButtonStyle}"
+                                            Content="{StaticResource Icon_Close}"
+                                            Click="ExitButton_Click" />
                                 </Border>
                             </StackPanel>
                         </DockPanel>

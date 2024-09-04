@@ -17,11 +17,19 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
+    /// Minimize The Window and all drawings.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        => WindowState = WindowState.Minimized;
+
+    /// <summary>
     /// Save The draw if setting available then, Exit Application.
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void BtnExit_Click(object sender, RoutedEventArgs e)
+    private void ExitButton_Click(object sender, RoutedEventArgs e)
         => Application.Current.Shutdown(0);
 }
 
