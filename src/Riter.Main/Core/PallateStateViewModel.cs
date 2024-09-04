@@ -7,6 +7,17 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     private readonly PalleteState _state;
     public event PropertyChangedEventHandler PropertyChanged;
 
+ public ICommand ReleasedButtonCommand;
+
+    public PalleteStateViewModel()
+    {
+        _state = new PalleteState();
+        ReleasedButtonCommand = new RelayCommand(ReleasedLock);
+    }
+
+    private void ReleasedLock()
+        => IsReleased = !IsReleased;
+
     public bool IsReleased
     {
         get => _state.IsReleased;
@@ -25,16 +36,7 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
 }
 
 
-public partial class PalleteStateViewModel
-{
-    public ICommand ReleasedButtonCommand;
-
-    public PalleteStateViewModel()
-    {
-        _state = new PalleteState();
-        ReleasedButtonCommand = new RelayCommand(ReleasedLock);
-    }
-
-    private void ReleasedLock()
-        => IsReleased = !IsReleased;
-}
+//public partial class PalleteStateViewModel
+//{
+   
+//}
