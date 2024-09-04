@@ -34,20 +34,6 @@
                                     <Setter TargetName="ButtonBorder" Property="Background" Value="#EEEEEE"/>
                                     <Setter Property="Cursor" Value="Hand"/>
                                 </Trigger>
-                                <DataTrigger Binding="{Binding IsReleased}" Value="True">
-                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#EEEEEE"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding IsReleased}" Value="False">
-                                    <Setter TargetName="ButtonBorder" Property="Background" Value="Transparent"/>
-                                </DataTrigger>
-                                <MultiTrigger>
-                                    <MultiTrigger.Conditions>
-                                        <Condition Property="IsMouseOver" Value="True"/>
-                                    </MultiTrigger.Conditions>
-                                    <MultiTrigger.Setters>
-                                        <Setter TargetName="ButtonBorder" Property="Background" Value="#EEEEEE"/>
-                                    </MultiTrigger.Setters>
-                                </MultiTrigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
