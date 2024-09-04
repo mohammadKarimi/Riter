@@ -40,7 +40,6 @@
                                 <DataTrigger Binding="{Binding IsReleased}" Value="False">
                                     <Setter TargetName="ButtonBorder" Property="Background" Value="Transparent"/>
                                 </DataTrigger>
-
                                 <MultiTrigger>
                                     <MultiTrigger.Conditions>
                                         <Condition Property="IsMouseOver" Value="True"/>

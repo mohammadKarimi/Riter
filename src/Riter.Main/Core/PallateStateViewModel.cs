@@ -37,5 +37,4 @@ public partial class PalleteStateViewModel
 
     private void ReleasedLock()
         => IsReleased = !IsReleased;
-
 }
