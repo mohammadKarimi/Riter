@@ -47,7 +47,8 @@
 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                     <Border Margin="0,0,4,0"   Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Setting}" ToolTip="Settings" />
+                                        <Button Style="{StaticResource IconButtonStyle}"
+                                                Content="{StaticResource Icon_Setting}" ToolTip="Settings" />
                                     </Border>
                                     <Border Margin="0,0,4,0"
                                         Width="32"
@@ -75,14 +76,15 @@
                                 </StackPanel>
                             </DockPanel>
                         </Border>
-                        <Border Padding="12,12" Background="#FCFCFC" CornerRadius="8,8,16,16">
+                        <Border Padding="12,12" Background="#F9F9F9" CornerRadius="8,8,16,16">
                             <StackPanel
                                 Orientation="Horizontal"
                                 HorizontalAlignment="Center"
-                                Margin="0,0,0,0">   
+                                Margin="0,0,0,0">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Pen}" />
+                                        <Button Style="{StaticResource IconButtonStyle}"
+                                                Content="{StaticResource Icon_Pen}" />
                                     </Border>
                                     <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <ContentControl Content="{StaticResource Icon_PenArrow}" />
@@ -90,33 +92,44 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Brush}" />
+                                        <Button Style="{StaticResource IconButtonStyle}"
+                                                Content="{StaticResource Icon_Brush}" />
                                     </Border>
                                     <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <ContentControl Content="{StaticResource Icon_BrushArrow}" />
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                    <Border Background="#eee" Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_RoundedRectangle}" />
+                                    <Border
+                                        Margin="0,0,2,0"
+                                        Width="32" Height="32"
+                                        CornerRadius="4"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+
+                                        <Button Style="{StaticResource IconButtonStyle}"
+                                                Content="{StaticResource Icon_RoundedRectangle}" />
                                     </Border>
-                                    <Border Width="12" Height="32" Background="#eee" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <ContentControl Content="{StaticResource Icon_SquareArrow}" />
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                     <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Text}" />
+                                        <Button Style="{StaticResource IconButtonStyle}"
+                                                Content="{StaticResource Icon_Text}" />
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                     <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Undo}" />
+                                        <Button Style="{StaticResource IconButtonStyle}"
+                                                Content="{StaticResource Icon_Undo}" />
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                     <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Redo}" />
+                                        <Button Style="{StaticResource IconButtonStyle}"
+                                                Content="{StaticResource Icon_Redo}" />
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
@@ -125,19 +138,21 @@
                                             CornerRadius="4"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center">
-                                        
-                                        <ContentControl Content="{StaticResource Icon_Eraser}" />
+
+                                        <Button Style="{StaticResource IconButtonStyle}"
+                                                Content="{StaticResource Icon_Eraser}" />
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                     <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <ContentControl Content="{StaticResource Icon_Delete}" />
+                                        <Button Style="{StaticResource IconButtonStyle}"
+                                                Content="{StaticResource Icon_Delete}" />
                                     </Border>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                                             VerticalAlignment="Center"
                                             Margin="0,0,0,0">
-                                    
+
                                     <Button Style="{StaticResource IconButtonStyle}"
                                             Content="{StaticResource Icon_Lock}"
                                             Command="{Binding ReleasedButtonCommand}" />
