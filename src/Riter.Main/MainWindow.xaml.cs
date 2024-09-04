@@ -17,6 +17,16 @@ public partial class MainWindow : Window
     }
 
     /// <summary>
+    /// Clear History and Clear Canvas Ink.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TrashButton_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    /// <summary>
     /// Minimize The Window and all drawings.
     /// </summary>
     /// <param name="sender"></param>

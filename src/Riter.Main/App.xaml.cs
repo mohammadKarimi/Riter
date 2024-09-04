@@ -32,7 +32,7 @@ public partial class App : Application
 
     private static void ConfigureServices(ServiceCollection serviceCollection)
     {
-        serviceCollection.AddTransient<PalleteStateViewModel>();
+        serviceCollection.AddSingleton<PalleteStateViewModel>();
         serviceCollection.AddTransient(typeof(MainWindow));
     }
 }
