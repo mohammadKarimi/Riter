@@ -22,9 +22,7 @@ public partial class MainWindow : Window
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void TrashButton_Click(object sender, EventArgs e)
-    {
-
-    }
+        => MainInkCanvas.Strokes.Clear();
 
     /// <summary>
     /// Minimize The Window and all drawings.
