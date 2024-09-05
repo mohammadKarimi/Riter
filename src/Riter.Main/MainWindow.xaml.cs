@@ -4,9 +4,11 @@ namespace Riter.Main;
 
 public partial class MainWindow : Window
 {
+    private readonly PalleteStateViewModel _pallateStateViewModel;
     public MainWindow(PalleteStateViewModel pallateStateViewModel)
     {
         InitializeComponent();
+        _pallateStateViewModel = pallateStateViewModel;
         DataContext = pallateStateViewModel;
         Topmost = true;
     }
@@ -22,7 +24,10 @@ public partial class MainWindow : Window
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void TrashButton_Click(object sender, EventArgs e)
-        => MainInkCanvas.Strokes.Clear();
+    {
+        _pallateStateViewModel.ClearHistory();
+        MainInkCanvas.Strokes.Clear();
+    }
 
     /// <summary>
     /// Minimize The Window and all drawings.

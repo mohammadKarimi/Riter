@@ -4,7 +4,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Riter.Main.Core"
-    xmlns:views="clr-namespace:Riter.Main.Views"
     x:Class="Riter.Main.MainWindow"
     mc:Ignorable="d" ResizeMode="NoResize" UseLayoutRounding="True" 
     WindowStartupLocation="CenterScreen"
