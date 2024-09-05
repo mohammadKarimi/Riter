@@ -1,4 +1,5 @@
 ﻿using Riter.Main.Core;
+using Riter.Main.Core.Extensions;
 
 namespace Riter.Main;
 
@@ -8,9 +9,12 @@ public partial class MainWindow : Window
     public MainWindow(PalleteStateViewModel pallateStateViewModel)
     {
         InitializeComponent();
-        _pallateStateViewModel = pallateStateViewModel;
         DataContext = pallateStateViewModel;
-        Topmost = true;
+        _pallateStateViewModel = pallateStateViewModel;
+        this.SetEventListeners()
+            .SetTopMost(true)
+            .SetDefaultColor()
+            .SetBrushSize();
     }
 
     private void ShortcutKeyDown(object sender, KeyEventArgs e)
@@ -45,4 +49,3 @@ public partial class MainWindow : Window
     private void ExitButton_Click(object sender, RoutedEventArgs e)
         => Application.Current.Shutdown(0);
 }
-
