@@ -1,4 +1,6 @@
-﻿using Riter.Main.Core;
+﻿using System.Windows.Controls;
+using System.Windows.Ink;
+using Riter.Main.Core;
 using Riter.Main.Core.Extensions;
 
 namespace Riter.Main;
@@ -33,6 +35,13 @@ public partial class MainWindow : Window
         MainInkCanvas.Strokes.Clear();
     }
 
+    private void EraserButton_Click(object sender,EventArgs e)
+    {
+        var s = MainInkCanvas.EraserShape.Height;
+        MainInkCanvas.EraserShape = new EllipseStylusShape(s, s);
+        MainInkCanvas.EditingMode = InkCanvasEditingMode.EraseByStroke;
+    }
+
     /// <summary>
     /// Minimize The Window and all drawings.
     /// </summary>
@@ -48,4 +57,9 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void ExitButton_Click(object sender, RoutedEventArgs e)
         => Application.Current.Shutdown(0);
+
+    private void DrawButton_Click(object sender, RoutedEventArgs e)
+    {
+        MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
+    }
 }
