@@ -40,6 +40,25 @@
                 </Setter>
             </Style>
 
+
+            <!--<Style x:Key="IconButtonSelectedStyle" TargetType="Button">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Border x:Name="ButtonBorder"
+                                        Width="32" Height="32" CornerRadius="4"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Background="Blue">              
+                                    <ContentControl Content="{TemplateBinding Content}" />
+                                </Border>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

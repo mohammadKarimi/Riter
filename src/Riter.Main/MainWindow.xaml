@@ -82,7 +82,7 @@
                                         Margin="0,0,0,0">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button Click="DrawButton_Click" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Pen}" />
+                                        <Button x:Name="DrawButton" Click="DrawButton_Click" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Pen}" />
                                     </Border>
                                     <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <ContentControl Content="{StaticResource Icon_PenArrow}" />
