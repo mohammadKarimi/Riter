@@ -21,7 +21,12 @@
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
         <Canvas>
-            <Grid x:Name="MainPallete" Canvas.Top="130" Canvas.Left="130" MinWidth="0">
+            <Grid x:Name="MainPallete"
+                  MouseDown="Palette_MouseDown"
+                  MouseLeave="Palette_MouseLeave"
+                  MouseUp="Palette_MouseUp"
+                  MouseMove="Palette_MouseMove"
+                  Canvas.Top="130" Canvas.Left="130" MinWidth="0">
                 <Border
                     CornerRadius="16"
                     Background="#FFF"

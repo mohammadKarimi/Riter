@@ -9,6 +9,9 @@ namespace Riter.Main;
 public partial class MainWindow : Window
 {
     private readonly PalleteStateViewModel _pallateStateViewModel;
+    private Point _lastMousePosition;
+    private bool _isDraging;
+
     public MainWindow(PalleteStateViewModel pallateStateViewModel)
     {
         InitializeComponent();
@@ -35,7 +38,6 @@ public partial class MainWindow : Window
         _pallateStateViewModel.ClearHistory();
         MainInkCanvas.Strokes.Clear();
     }
-
     private void EraserButton_Click(object sender, EventArgs e)
     {
         var s = MainInkCanvas.EraserShape.Height;
@@ -64,21 +66,7 @@ public partial class MainWindow : Window
         MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
     }
 
-    private Point _lastMousePosition;
-    private bool _isDraging;
-
-    private void StartDrag()
-    {
-        _lastMousePosition = Mouse.GetPosition(this);
-        _isDraging = true;
-        MainPallete.Background = new SolidColorBrush(Colors.Transparent);
-    }
-    private void EndDrag()
-    {
-        _isDraging = false;
-        MainPallete.Background = null;
-    }
-    private void PaletteGrip_MouseDown(object sender, MouseButtonEventArgs e) => StartDrag();
+    private void Palette_MouseDown(object sender, MouseButtonEventArgs e) => StartDrag();
     private void Palette_MouseMove(object sender, MouseEventArgs e)
     {
         if (!_isDraging) return;
@@ -90,6 +78,19 @@ public partial class MainWindow : Window
 
         _lastMousePosition = currentMousePosition;
     }
-    private void Palette_MouseUp(object sender, MouseButtonEventArgs e) => EndDrag();
-    private void Palette_MouseLeave(object sender, MouseEventArgs e) => EndDrag();
+    private void Palette_MouseUp(object sender, MouseButtonEventArgs e)
+        => EndDrag();
+    private void Palette_MouseLeave(object sender, MouseEventArgs e)
+        => EndDrag();
+    private void StartDrag()
+    {
+        _lastMousePosition = Mouse.GetPosition(this);
+        _isDraging = true;
+        MainPallete.Background = new SolidColorBrush(Colors.Transparent);
+    }
+    private void EndDrag()
+    {
+        _isDraging = false;
+        MainPallete.Background = null;
+    }
 }
