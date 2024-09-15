@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
+using System.Windows.Media;
 using Riter.Main.Core;
 using Riter.Main.Core.Extensions;
 
@@ -35,7 +36,7 @@ public partial class MainWindow : Window
         MainInkCanvas.Strokes.Clear();
     }
 
-    private void EraserButton_Click(object sender,EventArgs e)
+    private void EraserButton_Click(object sender, EventArgs e)
     {
         var s = MainInkCanvas.EraserShape.Height;
         MainInkCanvas.EraserShape = new EllipseStylusShape(s, s);
@@ -62,4 +63,33 @@ public partial class MainWindow : Window
     {
         MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
     }
+
+    private Point _lastMousePosition;
+    private bool _isDraging;
+
+    private void StartDrag()
+    {
+        _lastMousePosition = Mouse.GetPosition(this);
+        _isDraging = true;
+        MainPallete.Background = new SolidColorBrush(Colors.Transparent);
+    }
+    private void EndDrag()
+    {
+        _isDraging = false;
+        MainPallete.Background = null;
+    }
+    private void PaletteGrip_MouseDown(object sender, MouseButtonEventArgs e) => StartDrag();
+    private void Palette_MouseMove(object sender, MouseEventArgs e)
+    {
+        if (!_isDraging) return;
+        var currentMousePosition = Mouse.GetPosition(this);
+        var offset = currentMousePosition - _lastMousePosition;
+
+        Canvas.SetTop(MainPallete, Canvas.GetTop(MainPallete) + offset.Y);
+        Canvas.SetLeft(MainPallete, Canvas.GetLeft(MainPallete) + offset.X);
+
+        _lastMousePosition = currentMousePosition;
+    }
+    private void Palette_MouseUp(object sender, MouseButtonEventArgs e) => EndDrag();
+    private void Palette_MouseLeave(object sender, MouseEventArgs e) => EndDrag();
 }
