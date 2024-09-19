@@ -13,12 +13,13 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
+![dotnet-version]
 <a name="readme-top"></a>
 
 
 ## 📐 Riter - Modern screen drawing
-![dotnet-version]
+
+![Preview](https://github.com/mohammadKarimi/Riter/blob/main/Preview.png) 
 <br/>
 The project is called "Riter," and it is a drawing application built using WPF (Windows Presentation Foundation). Here's a brief overview of the project:
 
