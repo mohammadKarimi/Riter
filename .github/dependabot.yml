@@ -1,0 +1,8 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget" # packages repository
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "weekly" # Period Of Scheduling
+      day: "wednesday" # When
+    open-pull-requests-limit: 8 # Limitaion of Pull-Request
