@@ -66,6 +66,7 @@ public partial class MainWindow : Window
         MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
     }
 
+    #region Move to another class.
     private void Palette_MouseDown(object sender, MouseButtonEventArgs e) => StartDrag();
     private void Palette_MouseMove(object sender, MouseEventArgs e)
     {
@@ -92,5 +93,6 @@ public partial class MainWindow : Window
     {
         _isDraging = false;
         MainPallete.Background = null;
-    }
+    } 
+    #endregion
 }
