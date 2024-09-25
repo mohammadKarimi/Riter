@@ -1,4 +1,4 @@
-﻿namespace Riter.Main.Core;
+﻿namespace Riter.Main.Core.none;
 public class RelayCommand(Action execute, Func<bool> canExecute = null) : ICommand
 {
     private readonly Action _execute = execute ?? throw new ArgumentNullException(nameof(execute));

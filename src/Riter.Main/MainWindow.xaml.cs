@@ -10,15 +10,14 @@ public partial class MainWindow : Window
 {
     private readonly PalleteStateViewModel _pallateStateViewModel;
     private Point _lastMousePosition;
-    private bool _isDraging;
-
+    private bool _isDragging;
     public MainWindow(PalleteStateViewModel pallateStateViewModel)
     {
         InitializeComponent();
         DataContext = pallateStateViewModel;
         _pallateStateViewModel = pallateStateViewModel;
         this.SetEventListeners()
-            .SetTopMost(true)
+            .SetTopMost()
             .SetDefaultColor()
             .SetBrushSize();
     }
@@ -66,11 +65,10 @@ public partial class MainWindow : Window
         MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
     }
 
-    #region Move to another class.
     private void Palette_MouseDown(object sender, MouseButtonEventArgs e) => StartDrag();
     private void Palette_MouseMove(object sender, MouseEventArgs e)
     {
-        if (!_isDraging) return;
+        if (!_isDragging) return;
         var currentMousePosition = Mouse.GetPosition(this);
         var offset = currentMousePosition - _lastMousePosition;
 
@@ -86,13 +84,12 @@ public partial class MainWindow : Window
     private void StartDrag()
     {
         _lastMousePosition = Mouse.GetPosition(this);
-        _isDraging = true;
+        _isDragging = true;
         MainPallete.Background = new SolidColorBrush(Colors.Transparent);
     }
     private void EndDrag()
     {
-        _isDraging = false;
+        _isDragging = false;
         MainPallete.Background = null;
-    } 
-    #endregion
+    }
 }

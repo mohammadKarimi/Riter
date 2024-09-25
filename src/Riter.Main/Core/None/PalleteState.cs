@@ -1,4 +1,4 @@
-﻿namespace Riter.Main.Core;
+﻿namespace Riter.Main.Core.none;
 
 /// <summary>
 /// This Object is aimed for holding the state of Drawing Stroke and Tools States.

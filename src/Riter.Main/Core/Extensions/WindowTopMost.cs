@@ -8,7 +8,7 @@ public static class WindowTopMost
     /// <param name="mainWindow">The MainWindow instance to modify.</param>
     /// <param name="enable">A boolean value indicating whether to enable or disable the Topmost property.</param>
     /// <returns>Returns the modified MainWindow instance.</returns>
-    public static MainWindow SetTopMost(this MainWindow mainWindow, bool enable)
+    public static MainWindow SetTopMost(this MainWindow mainWindow, bool enable = true)
     {
         mainWindow.Topmost = enable;
         return mainWindow;

@@ -33,6 +33,7 @@ public partial class App : Application
     private static void ConfigureServices(ServiceCollection serviceCollection)
     {
         serviceCollection.AddSingleton<PalleteStateViewModel>();
+        serviceCollection.AddSingleton<PalleteDraggable>();
         serviceCollection.AddTransient(typeof(MainWindow));
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Riter.Main.Core;
+﻿namespace Riter.Main.Core.none;
 
 public enum StrokesHistoryNodeType
 {
