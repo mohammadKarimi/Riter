@@ -17,7 +17,7 @@ public partial class MainWindow : Window
         DataContext = pallateStateViewModel;
         _pallateStateViewModel = pallateStateViewModel;
         this.SetEventListeners()
-            .SetTopMost()
+            .SetTopMost(true)
             .SetDefaultColor()
             .SetBrushSize();
     }
@@ -91,5 +91,11 @@ public partial class MainWindow : Window
     {
         _isDragging = false;
         MainPallete.Background = null;
+    }
+
+    private void ReleaseButton_Click(object sender, RoutedEventArgs e)
+    {
+        MainInkCanvas.UseCustomCursor = false;
+        MainInkCanvas.EditingMode = InkCanvasEditingMode.None;
     }
 }
