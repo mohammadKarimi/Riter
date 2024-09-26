@@ -129,22 +129,14 @@
                                             <ContentControl Content="{StaticResource Icon_SquareArrow}" />
                                         </Border>
                                     </StackPanel>
-                                    <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                        <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}"
-                   Content="{StaticResource Icon_Text}" />
-                                        </Border>
-                                    </StackPanel>-->
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}"
-                   Content="{StaticResource Icon_Undo}" />
+                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Undo}" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}"
-                   Content="{StaticResource Icon_Redo}" />
+                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Redo}" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
@@ -153,8 +145,17 @@
                                                 CornerRadius="4"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">
-
-                                            <Button Command="{Binding ErasingButtonCommand}" Style="{StaticResource IconButtonStyle}"  Content="{StaticResource Icon_Eraser}" />
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="ErasingButton">
+                                                            <Setter Property="Background" Value="#EEE"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <Button Command="{Binding ErasingButtonCommand}" CommandParameter="ErasingButton" Style="{StaticResource IconButtonStyle}"  Content="{StaticResource Icon_Eraser}" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">

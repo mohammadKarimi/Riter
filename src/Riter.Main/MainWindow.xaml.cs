@@ -57,11 +57,6 @@ public partial class MainWindow : Window
     private void ExitButton_Click(object sender, RoutedEventArgs e)
         => Application.Current.Shutdown(0);
 
-    private void DrawButton_Click(object sender, RoutedEventArgs e)
-    {
-        //  _ = this.EnableInk();
-    }
-
     private void Palette_MouseDown(object sender, MouseButtonEventArgs e) => StartDrag();
     private void Palette_MouseMove(object sender, MouseEventArgs e)
     {
