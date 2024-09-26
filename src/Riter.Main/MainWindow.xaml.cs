@@ -1,21 +1,19 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Media;
-using Riter.Main.Core;
 using Riter.Main.Core.Extensions;
+using Riter.Main.ViewModel;
 
 namespace Riter.Main;
 
 public partial class MainWindow : Window
 {
-    private readonly PalleteStateViewModel _pallateStateViewModel;
     private Point _lastMousePosition;
     private bool _isDragging;
     public MainWindow(PalleteStateViewModel pallateStateViewModel)
     {
         InitializeComponent();
         DataContext = pallateStateViewModel;
-        _pallateStateViewModel = pallateStateViewModel;
         this.SetEventListeners()
             .SetTopMost(true)
             .SetDefaultColor()
@@ -34,15 +32,14 @@ public partial class MainWindow : Window
     /// <param name="e"></param>
     private void TrashButton_Click(object sender, EventArgs e)
     {
-        _pallateStateViewModel.ClearHistory();
         MainInkCanvas.Strokes.Clear();
     }
-    private void EraserButton_Click(object sender, EventArgs e)
-    {
-        var s = MainInkCanvas.EraserShape.Height;
-        MainInkCanvas.EraserShape = new EllipseStylusShape(s, s);
-        MainInkCanvas.EditingMode = InkCanvasEditingMode.EraseByStroke;
-    }
+
+    //private void EraserButton_Click(object sender, EventArgs e)
+    //{
+        
+    //    MainInkCanvas.EditingMode = InkCanvasEditingMode.EraseByStroke;
+    //}
 
     /// <summary>
     /// Minimize The Window and all drawings.
@@ -62,7 +59,7 @@ public partial class MainWindow : Window
 
     private void DrawButton_Click(object sender, RoutedEventArgs e)
     {
-        MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
+        //  _ = this.EnableInk();
     }
 
     private void Palette_MouseDown(object sender, MouseButtonEventArgs e) => StartDrag();
@@ -77,8 +74,10 @@ public partial class MainWindow : Window
 
         _lastMousePosition = currentMousePosition;
     }
+
     private void Palette_MouseUp(object sender, MouseButtonEventArgs e)
         => EndDrag();
+
     private void Palette_MouseLeave(object sender, MouseEventArgs e)
         => EndDrag();
     private void StartDrag()
@@ -93,9 +92,4 @@ public partial class MainWindow : Window
         MainPallete.Background = null;
     }
 
-    private void ReleaseButton_Click(object sender, RoutedEventArgs e)
-    {
-        MainInkCanvas.UseCustomCursor = false;
-        MainInkCanvas.EditingMode = InkCanvasEditingMode.None;
-    }
 }

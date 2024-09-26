@@ -3,6 +3,7 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Main.Core;
+using Riter.Main.ViewModel;
 
 namespace Riter.Main;
 

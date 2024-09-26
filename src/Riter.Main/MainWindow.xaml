@@ -3,19 +3,36 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:Riter.Main.Core"
+    xmlns:local="clr-namespace:Riter.Main.ViewModel"
     x:Class="Riter.Main.MainWindow"
-    mc:Ignorable="d" ResizeMode="NoResize" UseLayoutRounding="True" 
+    mc:Ignorable="d" ResizeMode="NoResize"
+    UseLayoutRounding="True" 
     WindowStartupLocation="CenterScreen"
     WindowState="Maximized"
-    Background="{StaticResource NoneTransparent}" 
     AllowsTransparency="True" 
     WindowStyle="None">
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="{StaticResource NoneTransparent}"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsReleased}" Value="True">
+                    <Setter Property="Background" Value="{StaticResource Transparent}"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Style>
     <Window.DataContext>
         <local:PalleteStateViewModel />
     </Window.DataContext>
     <Grid x:Name="Layout">
-        <InkCanvas x:Name="MainInkCanvas" Background="{x:Null}" MoveEnabled="False" ResizeEnabled="False" Cursor="Pen" Margin="0,0,0,-0.333" EditingModeInverted="EraseByPoint">
+        <InkCanvas x:Name="MainInkCanvas"
+                   EditingMode="{Binding InkEditingMode}"
+                   Background="{x:Null}"
+                   MoveEnabled="False"
+                   ResizeEnabled="False"
+                   Cursor="Pen"
+                   Margin="0,0,0,-0.333"
+                   EditingModeInverted="EraseByPoint">
             <InkCanvas.DefaultDrawingAttributes>
                 <DrawingAttributes FitToCurve="True" IgnorePressure="False" IsHighlighter="False" StylusTip="Ellipse" StylusTipTransform="Identity"/>
             </InkCanvas.DefaultDrawingAttributes>
@@ -26,7 +43,6 @@
                          MouseLeave="Palette_MouseLeave"
                          MouseUp="Palette_MouseUp"
                          MouseMove="Palette_MouseMove" x:Name="MainPallete" Canvas.Top="130" Canvas.Left="130" MinWidth="0">
-
                 <Grid>
                     <Border
                     CornerRadius="16"
@@ -53,7 +69,17 @@
 
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                         <Border Margin="0,0,4,0"   Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Release}" Click="ReleaseButton_Click"/>
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="ReleasedButton">
+                                                            <Setter Property="Background" Value="#EEE"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Release}" Command="{Binding ReleasedButtonCommand}" CommandParameter="ReleasedButton"/>
                                         </Border>
                                     </StackPanel>
                                 </DockPanel>
@@ -63,8 +89,19 @@
                                         HorizontalAlignment="Center"
                                         Margin="0,0,0,0">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                        <Border Background="#97D5FF" Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button x:Name="DrawButton" Click="DrawButton_Click" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Pen}" />
+                                        <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="DrawingButton">
+                                                            <Setter Property="Background" Value="#EEE"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+
+                                            <Button x:Name="DrawButton" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingButtonCommand}" CommandParameter="DrawingButton"/>
                                         </Border>
                                         <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <ContentControl Content="{StaticResource Icon_PenArrow}" />
@@ -86,19 +123,18 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center">
 
-                                            <Button Style="{StaticResource IconButtonStyle}"
-                   Content="{StaticResource Icon_RoundedRectangle}" />
+                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_RoundedRectangle}" />
                                         </Border>
                                         <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <ContentControl Content="{StaticResource Icon_SquareArrow}" />
                                         </Border>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                    <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <Button Style="{StaticResource IconButtonStyle}"
                    Content="{StaticResource Icon_Text}" />
                                         </Border>
-                                    </StackPanel>
+                                    </StackPanel>-->
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <Button Style="{StaticResource IconButtonStyle}"
@@ -118,7 +154,7 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">
 
-                                            <Button Click="EraserButton_Click" Style="{StaticResource IconButtonStyle}"  Content="{StaticResource Icon_Eraser}" />
+                                            <Button Command="{Binding ErasingButtonCommand}" Style="{StaticResource IconButtonStyle}"  Content="{StaticResource Icon_Eraser}" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
