@@ -31,9 +31,9 @@ public partial class PalleteStateViewModel
     public ICommand DrawingButtonCommand { get; private set; }
     public ICommand ErasingButtonCommand { get; private set; }
 
-    public PalleteStateViewModel()
+    public PalleteStateViewModel(PalleteState palleteState)
     {
-        _state = new PalleteState();
+        _state = palleteState;
         _state.PropertyChanged += OnStateChanged;
 
         ReleasedButtonCommand = new RelayCommand<string>(ReleaseInk);

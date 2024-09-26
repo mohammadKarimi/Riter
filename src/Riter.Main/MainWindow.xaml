@@ -21,9 +21,7 @@
             </Style.Triggers>
         </Style>
     </Window.Style>
-    <Window.DataContext>
-        <local:PalleteStateViewModel />
-    </Window.DataContext>
+  
     <Grid x:Name="Layout">
         <InkCanvas x:Name="MainInkCanvas"
                    EditingMode="{Binding InkEditingMode}"
