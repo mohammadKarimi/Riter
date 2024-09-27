@@ -22,6 +22,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "screenshots", "screenshots"
 		screenshots\FirstPreview.png = screenshots\FirstPreview.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FFCE99A1-F762-4556-980F-A1886E3CE23F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riter.Tests", "tests\Riter.Tests\Riter.Tests.csproj", "{3DC3FAD1-FFB4-4C32-A112-75DAD37B8DC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +36,10 @@ Global
 		{9716ECCF-7900-4467-BF6E-1C999119B5E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9716ECCF-7900-4467-BF6E-1C999119B5E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9716ECCF-7900-4467-BF6E-1C999119B5E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DC3FAD1-FFB4-4C32-A112-75DAD37B8DC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DC3FAD1-FFB4-4C32-A112-75DAD37B8DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DC3FAD1-FFB4-4C32-A112-75DAD37B8DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DC3FAD1-FFB4-4C32-A112-75DAD37B8DC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +47,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9716ECCF-7900-4467-BF6E-1C999119B5E0} = {6D889842-D231-40F7-A206-F31363EE9187}
 		{0DA9C33A-8D87-4401-B858-0CB840DEB2FD} = {17154ABB-A541-4F16-91B6-2510B90F3AE7}
+		{3DC3FAD1-FFB4-4C32-A112-75DAD37B8DC5} = {FFCE99A1-F762-4556-980F-A1886E3CE23F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51746622-2251-413C-828A-820DC165208B}
