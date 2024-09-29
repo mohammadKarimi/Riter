@@ -22,8 +22,12 @@ public partial class App : Application
                 .AddJsonFile("appsettings.json", false, true);
 
         Configuration = builder.Build();
-
+        AppSettings appSettings = new();
+        Configuration.Bind(AppSettings.Section, appSettings);
+        
         var serviceCollection = new ServiceCollection();
+        serviceCollection.AddSingleton(appSettings);
+
         ConfigureServices(serviceCollection);
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         ServiceProvider = serviceCollection.BuildServiceProvider();
