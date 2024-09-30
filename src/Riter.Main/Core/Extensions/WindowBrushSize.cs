@@ -3,6 +3,10 @@ using System.Windows.Ink;
 using Riter.Main.Core.Enum;
 
 namespace Riter.Main.Core.Extensions;
+
+/// <summary>
+/// Sets the brush size for the InkCanvas based on the current editing mode.
+/// </summary>
 public static class WindowBrushSize
 {
     /// <summary>
@@ -11,6 +15,7 @@ public static class WindowBrushSize
     /// Otherwise, it sets the default drawing brush size for drawing on the InkCanvas.
     /// </summary>
     /// <param name="mainWindow">The MainWindow instance where the brush size will be applied.</param>
+    /// <param name="brushSize">size of brush.</param>
     /// <returns>Returns the modified MainWindow instance with the updated brush size.</returns>
     public static MainWindow SetBrushSize(this MainWindow mainWindow, BrushSize brushSize = BrushSize.S2X)
     {
@@ -26,6 +31,7 @@ public static class WindowBrushSize
             mainWindow.MainInkCanvas.DefaultDrawingAttributes.Height = brushSize_double;
             mainWindow.MainInkCanvas.DefaultDrawingAttributes.Width = brushSize_double;
         }
+
         return mainWindow;
     }
 }

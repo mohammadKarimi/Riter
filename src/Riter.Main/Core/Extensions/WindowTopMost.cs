@@ -1,5 +1,8 @@
 ﻿namespace Riter.Main.Core.Extensions;
 
+/// <summary>
+/// Sets the window's Topmost property to control whether the window is always on top of other windows.
+/// </summary>
 public static class WindowTopMost
 {
     /// <summary>
