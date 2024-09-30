@@ -2,9 +2,11 @@
 
 namespace Riter.Main.Core.Extensions;
 
+/// <summary>
+/// Attaches event listeners to the MainWindow's InkCanvas for stroke changes.
+/// </summary>
 public static class WindowEventListeners
 {
-
     /// <summary>
     /// Attaches event listeners to the MainWindow's InkCanvas for stroke changes.
     /// Specifically, it listens for changes to the strokes on the InkCanvas.
