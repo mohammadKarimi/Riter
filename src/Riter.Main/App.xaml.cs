@@ -8,23 +8,37 @@ using Riter.Main.ViewModel;
 namespace Riter.Main;
 
 /// <summary>
-/// Interaction logic for App.xaml
+/// Represents the application and its entry point.
+/// Configures services, settings, and handles startup events.
 /// </summary>
 public partial class App : Application
 {
+    /// <summary>
+    /// Gets the service provider for dependency injection, allowing services
+    /// to be resolved throughout the application.
+    /// </summary>
     public IServiceProvider ServiceProvider { get; private set; }
+
+    /// <summary>
+    /// Gets the application configuration settings, typically loaded from
+    /// appsettings or other configuration sources.
+    /// </summary>
     public IConfiguration Configuration { get; private set; }
 
+    /// <summary>
+    /// Handles application startup logic, such as configuring services
+    /// and loading necessary resources when the application starts.
+    /// </summary>
+    /// <param name="e">Event arguments for the startup event.</param>
     protected override void OnStartup(StartupEventArgs e)
     {
         var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", false, true);
+                        .SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json", false, true);
 
         Configuration = builder.Build();
-        AppSettings appSettings = new();
+        AppSettings appSettings = new ();
         Configuration.Bind(AppSettings.Section, appSettings);
-        
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddSingleton(appSettings);
 
@@ -42,4 +56,3 @@ public partial class App : Application
         serviceCollection.AddTransient(typeof(MainWindow));
     }
 }
-
