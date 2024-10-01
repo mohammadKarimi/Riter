@@ -24,17 +24,15 @@ public interface IStrokeHistoryService
     /// Adds a new stroke to the specified stroke history stack.
     /// This is typically used to store a stroke action after it has been performed.
     /// </summary>
-    /// <param name="collection">The stack representing the stroke history (undo or redo collection).</param>
     /// <param name="node">The stroke history node representing the stroke action to be stored.</param>
-    void Push(Stack<StrokesHistoryNode> collection, StrokesHistoryNode node);
+    void Push(StrokesHistoryNode node);
 
     /// <summary>
     /// Removes and returns the last stroke action from the specified stroke history stack.
     /// Typically used to undo or redo a stroke action.
     /// </summary>
-    /// <param name="collection">The stack representing the stroke history (undo or redo collection).</param>
     /// <returns>The stroke history node representing the last stroke action in the stack.</returns>
-    StrokesHistoryNode Pop(Stack<StrokesHistoryNode> collection);
+    StrokesHistoryNode Pop();
 
     /// <summary>
     /// Determines whether there are any actions available to undo.
