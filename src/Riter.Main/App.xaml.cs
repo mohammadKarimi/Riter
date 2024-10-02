@@ -37,7 +37,7 @@ public partial class App : Application
                         .AddJsonFile("appsettings.json", false, true);
 
         Configuration = builder.Build();
-        AppSettings appSettings = new ();
+        AppSettings appSettings = new();
         Configuration.Bind(AppSettings.Section, appSettings);
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddSingleton(appSettings);
@@ -51,6 +51,7 @@ public partial class App : Application
 
     private static void ConfigureServices(ServiceCollection serviceCollection)
     {
+        serviceCollection.AddSingleton<IStrokeHistoryService, PalleteStorkeHistoryState>();
         serviceCollection.AddSingleton<PalleteState>();
         serviceCollection.AddSingleton<PalleteStateViewModel>();
         serviceCollection.AddTransient(typeof(MainWindow));

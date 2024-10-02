@@ -20,7 +20,7 @@ internal class PalleteStorkeHistoryState : IStrokeHistoryService
 
     /// <inheritdoc/>
     public void Push(StrokesHistoryNode node) => _history.Push(node);
-    
+
     /// <inheritdoc/>
     public void Redo()
     {
