@@ -50,4 +50,9 @@ public interface IStrokeHistoryService
     /// Clear the collection of history and redo.
     /// </summary>
     void Clear();
+
+    /// <summary>
+    /// Remove all redo collections.
+    /// </summary>
+    void ClearRedoHistory();
 }

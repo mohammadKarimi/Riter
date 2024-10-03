@@ -1,6 +1,8 @@
 ﻿using System.Windows.Ink;
+using Riter.Main.Core;
 using Riter.Main.Core.Extensions;
 using Riter.Main.Core.Interfaces;
+using Riter.Main.Services;
 using Riter.Main.ViewModel;
 
 namespace Riter.Main;
@@ -10,6 +12,8 @@ namespace Riter.Main;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private bool _ignoreStrokesChange;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="MainWindow"/> class.
     /// Sets up the UI, binds the <see cref="PalleteStateViewModel"/> to the DataContext,
@@ -22,16 +26,18 @@ public partial class MainWindow : Window
     /// <param name="strokeHistoryService">
     /// Manage the history of drawing history.
     /// </param>
-    public MainWindow(PalleteStateViewModel pallateStateViewModel, IStrokeHistoryService strokeHistoryService)
+    public MainWindow(PalleteStateViewModel pallateStateViewModel)
     {
         InitializeComponent();
         DataContext = pallateStateViewModel;
+        _strokeHistoryService = new StrokeHistoryService(MainInkCanvas);
+
         this.SetEventListeners()
             .EnableDragging(MainPallete)
             .SetTopMost(true)
             .SetDefaultColor()
             .SetBrushSize();
-        _strokeHistoryService = strokeHistoryService;
+        MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
     }
 
     private IStrokeHistoryService _strokeHistoryService { get; }
@@ -42,9 +48,23 @@ public partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">Contains the stroke collection that has changed.</param>
-    private static void StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
+    private void StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
     {
+        if (_ignoreStrokesChange)
+        {
+            return;
+        }
 
+        if (e.Added.Count != 0)
+        {
+            _strokeHistoryService.Push(StrokesHistoryNode.CreateAddedType(e.Added));
+        }
+
+        if (e.Removed.Count != 0)
+        {
+            _strokeHistoryService.Push(StrokesHistoryNode.CreateRemovedType(e.Removed));
+        }
+        _strokeHistoryService.ClearRedoHistory();
     }
 
     private void ShortcutKeyDown(object sender, KeyEventArgs e)
@@ -79,4 +99,18 @@ public partial class MainWindow : Window
     /// <param name="e">The event data associated with the button click.</param>
     private void ExitButton_Click(object sender, RoutedEventArgs e)
         => Application.Current.Shutdown(0);
+
+    private void UndoButton_Click(object sender, RoutedEventArgs e)
+    {
+        _ignoreStrokesChange = true;
+        _strokeHistoryService.Undo();
+        _ignoreStrokesChange = false;
+    }
+
+    private void RedoButton_Click(object sender, RoutedEventArgs e)
+    {
+        _ignoreStrokesChange = true;
+        _strokeHistoryService.Redo();
+        _ignoreStrokesChange = false;
+    }
 }

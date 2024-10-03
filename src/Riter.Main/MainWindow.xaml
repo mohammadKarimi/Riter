@@ -126,12 +126,12 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Undo}" />
+                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Undo}" Click="UndoButton_Click" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Redo}" />
+                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Redo}" Click="RedoButton_Click" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
