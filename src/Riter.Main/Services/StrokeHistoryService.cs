@@ -1,10 +1,11 @@
 ﻿using Riter.Main.Core;
 using Riter.Main.Core.Enum;
+using Riter.Main.Core.Interfaces;
 
-namespace Riter.Main.ViewModel;
+namespace Riter.Main.Services;
 
 /// <inheritdoc/>
-internal class PalleteStorkeHistoryState : IStrokeHistoryService
+internal class StrokeHistoryService : IStrokeHistoryService
 {
     private readonly Stack<StrokesHistoryNode> _history = [];
     private readonly Stack<StrokesHistoryNode> _redoHistory = [];

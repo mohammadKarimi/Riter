@@ -27,6 +27,6 @@ public static class WindowEventListeners
     /// <param name="e">Contains the stroke collection that has changed.</param>
     private static void StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
     {
-
+        
     }
 }

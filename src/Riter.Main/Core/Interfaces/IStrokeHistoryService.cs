@@ -1,6 +1,6 @@
 ﻿using Riter.Main.ViewModel;
 
-namespace Riter.Main.Core;
+namespace Riter.Main.Core.Interfaces;
 
 /// <summary>
 /// Provides a mechanism to manage the history of strokes (drawings) on an InkCanvas.
@@ -45,4 +45,9 @@ public interface IStrokeHistoryService
     /// </summary>
     /// <returns>True if there are actions that can be redone; otherwise, false.</returns>
     bool CanRedo();
+
+    /// <summary>
+    /// Clear the collection of history and redo.
+    /// </summary>
+    void Clear();
 }

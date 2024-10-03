@@ -10,7 +10,6 @@ namespace Riter.Main.ViewModel;
 public partial class PalleteStateViewModel : INotifyPropertyChanged
 {
     private readonly PalleteState _state;
-    private readonly PalleteStorkeHistoryState _historyState;
 
     /// <summary>
     /// This event is for subscribing the UI on it to get any state changes.
