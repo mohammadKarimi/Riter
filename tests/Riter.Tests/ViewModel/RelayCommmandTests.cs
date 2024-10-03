@@ -1,4 +1,6 @@
-﻿namespace Riter.Tests.ViewModel;
+﻿using Riter.Main.Core;
+
+namespace Riter.Tests.ViewModel;
 
 public class RelayCommandTests
 {
