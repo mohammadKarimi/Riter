@@ -1,4 +1,4 @@
-﻿using Riter.Main.ViewModel;
+﻿using System.Windows.Controls;
 
 namespace Riter.Main.Core.Interfaces;
 
@@ -8,6 +8,13 @@ namespace Riter.Main.Core.Interfaces;
 /// </summary>
 public interface IStrokeHistoryService
 {
+
+    /// <summary>
+    /// Config the main element for adding redo and undo functionality.
+    /// </summary>
+    /// <param name="canvas">Ink Canvas for Redo/Undo.</param>
+    void SetMainElementToRedoAndUndo(InkCanvas canvas);
+
     /// <summary>
     /// Reverts the last stroke action (undo) if possible.
     /// Removes the last stroke from the history and applies the change.
