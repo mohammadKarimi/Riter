@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
+using Riter.Main.Core;
 
 namespace Riter.Main.ViewModel;
 
