@@ -1,4 +1,6 @@
 ﻿using System.Windows.Media;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace Riter.Main.Core.Extensions;
 
@@ -7,8 +9,6 @@ namespace Riter.Main.Core.Extensions;
 /// </summary>
 public static class WindowInkColor
 {
-    private const string DefaultHexColor = "#FFFF5656";
-
     /// <summary>
     /// In this function we read the default color from setting object and set it to MainInkCanvas.
     /// If there is no config in setting object, we set DefaultHexColor.
@@ -17,7 +17,8 @@ public static class WindowInkColor
     /// <returns>Returns the modified MainWindow instance with the default colored attached.</returns>
     public static MainWindow SetDefaultColor(this MainWindow mainWindow)
     {
-        var customColor = (Color)ColorConverter.ConvertFromString(DefaultHexColor);
+        var settings = App.ServiceProvider.GetService<AppSettings>();
+        var customColor = (Color)ColorConverter.ConvertFromString(settings.InkDefaultColor);
         mainWindow.MainInkCanvas.DefaultDrawingAttributes.Color = customColor;
         return mainWindow;
     }

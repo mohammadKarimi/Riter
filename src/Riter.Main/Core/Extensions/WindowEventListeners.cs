@@ -15,18 +15,9 @@ public static class WindowEventListeners
     /// <returns>Returns the modified MainWindow instance with the event listeners attached.</returns>
     public static MainWindow SetEventListeners(this MainWindow mainWindow)
     {
-        mainWindow.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
+        //mainWindow.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
         return mainWindow;
     }
 
-    /// <summary>
-    /// Handles the StrokesChanged event when the user draws on the InkCanvas.
-    /// This method will be used to track and store stroke changes in a stack for history purposes.
-    /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="e">Contains the stroke collection that has changed.</param>
-    private static void StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
-    {
-
-    }
+ 
 }

@@ -1,4 +1,4 @@
-﻿namespace Riter.Main.ViewModel;
+﻿namespace Riter.Main.Core;
 
 /// <summary>
 /// A generic implementation of the <see cref="ICommand"/> interface, 

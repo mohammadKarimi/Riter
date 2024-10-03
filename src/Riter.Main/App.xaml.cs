@@ -3,6 +3,8 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Main.Core;
+using Riter.Main.Core.Interfaces;
+using Riter.Main.Services;
 using Riter.Main.ViewModel;
 
 namespace Riter.Main;
@@ -17,13 +19,13 @@ public partial class App : Application
     /// Gets the service provider for dependency injection, allowing services
     /// to be resolved throughout the application.
     /// </summary>
-    public IServiceProvider ServiceProvider { get; private set; }
+    public static IServiceProvider ServiceProvider { get; private set; }
 
     /// <summary>
     /// Gets the application configuration settings, typically loaded from
     /// appsettings or other configuration sources.
     /// </summary>
-    public IConfiguration Configuration { get; private set; }
+    public static IConfiguration Configuration { get; private set; }
 
     /// <summary>
     /// Handles application startup logic, such as configuring services
@@ -37,7 +39,7 @@ public partial class App : Application
                         .AddJsonFile("appsettings.json", false, true);
 
         Configuration = builder.Build();
-        AppSettings appSettings = new ();
+        AppSettings appSettings = new();
         Configuration.Bind(AppSettings.Section, appSettings);
         var serviceCollection = new ServiceCollection();
         serviceCollection.AddSingleton(appSettings);
@@ -51,6 +53,7 @@ public partial class App : Application
 
     private static void ConfigureServices(ServiceCollection serviceCollection)
     {
+        serviceCollection.AddSingleton<IStrokeHistoryService, StrokeHistoryService>();
         serviceCollection.AddSingleton<PalleteState>();
         serviceCollection.AddSingleton<PalleteStateViewModel>();
         serviceCollection.AddTransient(typeof(MainWindow));
