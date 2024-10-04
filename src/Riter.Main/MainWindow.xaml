@@ -21,7 +21,7 @@
             </Style.Triggers>
         </Style>
     </Window.Style>
-  
+
     <Grid x:Name="Layout">
         <InkCanvas x:Name="MainInkCanvas"
                    EditingMode="{Binding InkEditingMode}"
@@ -37,15 +37,18 @@
         </InkCanvas>
         <Canvas>
             <StackPanel Orientation="Horizontal"
-                         HorizontalAlignment="Center"  x:Name="MainPallete" Canvas.Top="130" Canvas.Left="130" MinWidth="0">
+                        HorizontalAlignment="Center"
+                        x:Name="MainPallete"
+                        Canvas.Top="130"
+                        Canvas.Left="130"
+                        MinWidth="0">
                 <Grid>
-                    <Border
-                    CornerRadius="16"
-                    Background="#FFF"
-                    MaxWidth="460"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    BorderThickness="1">
+                    <Border CornerRadius="16"
+                            Background="#FFF"
+                            MaxWidth="460"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            BorderThickness="1">
                         <Border.Effect>
                             <DropShadowEffect Opacity="0.12" ShadowDepth="4" BlurRadius="4"/>
                         </Border.Effect>
@@ -63,7 +66,7 @@
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                        <Border Margin="0,0,4,0"   Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <Border.Style>
                                                 <Style TargetType="Border">
                                                     <Setter Property="Background" Value="Transparent"/>
@@ -79,24 +82,24 @@
                                     </StackPanel>
                                 </DockPanel>
                             </Border>
-                            <Border Padding="12,12" Background="#F9F9F9" CornerRadius="8,8,16,16">
+                            <Border Padding="12,12" Background="#EEEE" CornerRadius="8,8,16,16">
                                 <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Center"
                                         Margin="0,0,0,0">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Border.Style>
-                                                <Style TargetType="Border">
-                                                    <Setter Property="Background" Value="Transparent"/>
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="DrawingButton">
-                                                            <Setter Property="Background" Value="#EEE"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Border.Style>
-
-                                            <Button x:Name="DrawButton" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingButtonCommand}" CommandParameter="DrawingButton"/>
+                                            <Button x:Name="DrawButton" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingButtonCommand}" CommandParameter="DrawingButton">
+                                                <Button.Style>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
+                                                        <Setter Property="Tag" Value="UnSelected"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ButtonSelectedName}" Value="DrawingButton">
+                                                                <Setter Property="Tag" Value="Selected"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
                                         </Border>
                                         <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <ContentControl Content="{StaticResource Icon_PenArrow}" />
@@ -105,7 +108,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Brush}" />
+                                            <Button Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Brush}" />
                                         </Border>
                                         <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <ContentControl Content="{StaticResource Icon_BrushArrow}" />
@@ -118,7 +121,7 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center">
 
-                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_RoundedRectangle}" />
+                                            <Button Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_RoundedRectangle}" />
                                         </Border>
                                         <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <ContentControl Content="{StaticResource Icon_SquareArrow}" />
@@ -126,12 +129,12 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Undo}" Click="UndoButton_Click" />
+                                            <Button Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Undo}" Click="UndoButton_Click" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Redo}" Click="RedoButton_Click" />
+                                            <Button Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Redo}" Click="RedoButton_Click" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
@@ -140,22 +143,24 @@
                                                 CornerRadius="4"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">
-                                            <Border.Style>
-                                                <Style TargetType="Border">
-                                                    <Setter Property="Background" Value="Transparent"/>
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="ErasingButton">
-                                                            <Setter Property="Background" Value="#EEE"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Border.Style>
-                                            <Button Command="{Binding ErasingButtonCommand}" CommandParameter="ErasingButton" Style="{StaticResource IconButtonStyle}"  Content="{StaticResource Icon_Eraser}" />
+
+                                            <Button Command="{Binding ErasingButtonCommand}" CommandParameter="ErasingButton"  Content="{StaticResource Icon_Eraser}" >
+                                                <Button.Style>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
+                                                        <Setter Property="Tag" Value="UnSelected"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ButtonSelectedName}" Value="ErasingButton">
+                                                                <Setter Property="Tag" Value="Selected"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Click="TrashButton_Click" Style="{StaticResource IconButtonStyle}"  Content="{StaticResource Icon_Delete}" />
+                                            <Button Click="TrashButton_Click" Style="{StaticResource ToolboxButtonStyle}"  Content="{StaticResource Icon_Delete}" />
                                         </Border>
                                     </StackPanel>
                                 </StackPanel>
@@ -163,15 +168,17 @@
                         </StackPanel>
                     </Border>
                 </Grid>
+                <!--#region Exit Minimize And Setting -->
                 <Grid Margin="4,0,0,0" >
                     <Border MinWidth="48"
                              CornerRadius="16"
                              Background="#FFF"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
-                             BorderThickness="1" Height="118" Padding="0,12">
+                             BorderThickness="1"
+                             Height="124"
+                             Padding="0,12">
 
-                        <!--#region NewRegion -->
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <Border  CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Button ToolTip="Close" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Close}" Click="ExitButton_Click" />
@@ -190,9 +197,10 @@
                                 <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Setting}" ToolTip="Settings" />
                             </Border>
                         </StackPanel>
-                        <!--#endregion-->
+
                     </Border>
                 </Grid>
+                <!--#endregion-->
             </StackPanel>
         </Canvas>
     </Grid>
