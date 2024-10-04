@@ -1,8 +1,5 @@
-﻿using System.Windows.Ink;
-using Riter.Main.Core;
-using Riter.Main.Core.Extensions;
+﻿using Riter.Main.Core.Extensions;
 using Riter.Main.Core.Interfaces;
-using Riter.Main.Services;
 using Riter.Main.ViewModel;
 
 namespace Riter.Main;
@@ -57,23 +54,6 @@ public partial class MainWindow : Window
         _strokeHistoryService.Clear();
         MainInkCanvas.Strokes.Clear();
     }
-
-    /// <summary>
-    /// Minimize The Window and all drawings.
-    /// </summary>
-    /// <param name="sender">The source of the event, typically the Exit button.</param>
-    /// <param name="e">The event data associated with the button click.</param>
-    private void MinimizeButton_Click(object sender, RoutedEventArgs e)
-        => WindowState = WindowState.Minimized;
-
-    /// <summary>
-    /// Handles the click event for the Exit button.
-    /// If the drawing settings are saved, the application will exit.
-    /// </summary>
-    /// <param name="sender">The source of the event, typically the Exit button.</param>
-    /// <param name="e">The event data associated with the button click.</param>
-    private void ExitButton_Click(object sender, RoutedEventArgs e)
-        => Application.Current.Shutdown(0);
 
     private void UndoButton_Click(object sender, RoutedEventArgs e) => _strokeHistoryService.Undo();
 
