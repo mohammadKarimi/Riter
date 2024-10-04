@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace Riter.Main.Core.Extensions;
+namespace Riter.Core.Extensions;
 
 /// <summary>
 /// This Extension is aimed for adding dragable feature into MainWindow.

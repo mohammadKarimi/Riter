@@ -1,6 +1,6 @@
 ﻿using System.Windows.Ink;
 
-namespace Riter.Main.Core.Extensions;
+namespace Riter.Core.Extensions;
 
 /// <summary>
 /// Attaches event listeners to the MainWindow's InkCanvas for stroke changes.

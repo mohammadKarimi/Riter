@@ -1,8 +1,8 @@
-﻿using Riter.Main.Core.Extensions;
-using Riter.Main.Core.Interfaces;
-using Riter.Main.ViewModel;
+﻿using Riter.Core.Extensions;
+using Riter.Core.Interfaces;
+using Riter.ViewModel;
 
-namespace Riter.Main;
+namespace Riter;
 
 /// <summary>
 /// Initializes a new instance of the <see cref="MainWindow"/> class.
@@ -36,8 +36,6 @@ public partial class MainWindow : Window
     }
 
     private IStrokeHistoryService _strokeHistoryService { get; }
-
-
 
     private void ShortcutKeyDown(object sender, KeyEventArgs e)
     {

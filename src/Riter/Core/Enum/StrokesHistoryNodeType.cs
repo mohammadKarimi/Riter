@@ -1,4 +1,4 @@
-﻿namespace Riter.Main.Core.Enum;
+﻿namespace Riter.Core.Enum;
 
 /// <summary>
 /// Type of Node when added into History.

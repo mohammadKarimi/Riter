@@ -2,12 +2,12 @@
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Riter.Main.Core;
-using Riter.Main.Core.Interfaces;
-using Riter.Main.Services;
-using Riter.Main.ViewModel;
+using Riter.Core;
+using Riter.Core.Interfaces;
+using Riter.Services;
+using Riter.ViewModel;
 
-namespace Riter.Main;
+namespace Riter;
 
 /// <summary>
 /// Represents the application and its entry point.

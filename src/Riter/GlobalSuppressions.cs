@@ -11,4 +11,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("StyleCop.CSharp.SpacingRules", "SA1010:Opening square brackets should be spaced correctly", Justification = "Pending")]
 [assembly: SuppressMessage("StyleCop.CSharp.SpacingRules", "SA1000:Keywords should be spaced correctly", Justification = "Pending")]
 [assembly: SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:Element should begin with upper-case letter", Justification = "Pending")]
-[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Pending", Scope = "member", Target = "~P:Riter.Main.MainWindow._strokeHistoryService")]
+[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Pending", Scope = "member", Target = "~P:Riter.MainWindow._strokeHistoryService")]

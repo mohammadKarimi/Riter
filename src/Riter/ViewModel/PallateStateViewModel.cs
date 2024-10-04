@@ -3,9 +3,9 @@ using System.Diagnostics;
 using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Riter.Main.Core;
+using Riter.Core;
 
-namespace Riter.Main.ViewModel;
+namespace Riter.ViewModel;
 
 /// <summary>
 /// ViewModel for contacting with PalleteState object and UI.

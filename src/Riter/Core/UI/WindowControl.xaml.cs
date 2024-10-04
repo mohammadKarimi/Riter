@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Riter.Main.Core.UI;
+namespace Riter.Core.UI;
 
 /// <summary>
 /// Interaction logic for ApplicationSideboxControl.xaml.

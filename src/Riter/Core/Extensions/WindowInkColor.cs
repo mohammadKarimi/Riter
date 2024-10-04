@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Riter.Main.Core.Extensions;
+namespace Riter.Core.Extensions;
 
 /// <summary>
 /// In this function we read the default color from setting object and set it to MainInkCanvas.

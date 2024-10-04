@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Riter.Main\Riter.Main.csproj" />
+    <ProjectReference Include="..\..\src\Riter\Riter.csproj" />
   </ItemGroup>
 
 </Project>

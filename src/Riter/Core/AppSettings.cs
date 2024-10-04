@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Riter.Main.Core.Enum;
+using Riter.Core.Enum;
 
-namespace Riter.Main.Core;
+namespace Riter.Core;
 
 /// <summary>
 /// AppSettings Object for reading the appsettings.json.

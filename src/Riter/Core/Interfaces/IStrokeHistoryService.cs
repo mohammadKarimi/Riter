@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Riter.Main.Core.Interfaces;
+namespace Riter.Core.Interfaces;
 
 /// <summary>
 /// Provides a mechanism to manage the history of strokes (drawings) on an InkCanvas.

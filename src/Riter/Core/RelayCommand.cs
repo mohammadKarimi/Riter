@@ -1,4 +1,4 @@
-﻿namespace Riter.Main.Core;
+﻿namespace Riter.Core;
 
 /// <summary>
 /// A generic implementation of the <see cref="ICommand"/> interface, 
