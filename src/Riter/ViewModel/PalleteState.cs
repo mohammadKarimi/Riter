@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
-using Riter.Main.Core;
+using Riter.Core;
 
-namespace Riter.Main.ViewModel;
+namespace Riter.ViewModel;
 
 /// <summary>
 /// Represents the state of the palette, including whether ink is released,

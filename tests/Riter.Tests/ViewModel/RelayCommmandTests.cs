@@ -1,4 +1,4 @@
-﻿using Riter.Main.Core;
+﻿using Riter.Core;
 
 namespace Riter.Tests.ViewModel;
 

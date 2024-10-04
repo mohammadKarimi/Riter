@@ -1,11 +1,11 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Xml.Linq;
-using Riter.Main.Core;
-using Riter.Main.Core.Enum;
-using Riter.Main.Core.Interfaces;
+using Riter.Core;
+using Riter.Core.Enum;
+using Riter.Core.Interfaces;
 
-namespace Riter.Main.Services;
+namespace Riter.Services;
 
 /// <inheritdoc/>
 internal class StrokeHistoryService : IStrokeHistoryService

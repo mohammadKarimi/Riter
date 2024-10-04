@@ -1,4 +1,4 @@
-﻿namespace Riter.Main.Core.Enum;
+﻿namespace Riter.Core.Enum;
 
 /// <summary>
 /// This Enum shows the size of brush when you are drawin in canvas.

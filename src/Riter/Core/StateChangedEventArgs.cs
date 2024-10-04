@@ -1,4 +1,4 @@
-﻿namespace Riter.Main.Core;
+﻿namespace Riter.Core;
 
 /// <summary>
 /// Provides data for the state change event, typically used when a property value changes.

@@ -1,8 +1,8 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
-using Riter.Main.Core.Enum;
+using Riter.Core.Enum;
 
-namespace Riter.Main.Core.Extensions;
+namespace Riter.Core.Extensions;
 
 /// <summary>
 /// Sets the brush size for the InkCanvas based on the current editing mode.

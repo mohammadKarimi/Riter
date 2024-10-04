@@ -1,4 +1,4 @@
 global using Xunit;
 global using System.Windows.Controls;
 global using FluentAssertions;
-global using Riter.Main.ViewModel;
+global using Riter.ViewModel;
