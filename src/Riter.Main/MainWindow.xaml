@@ -66,7 +66,10 @@
                                     </StackPanel>
 
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                        <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Border Margin="0,0,4,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_SourceCode}" Command="{Binding SourceCodeButtonCommand}" CommandParameter="SourceCodeButton"/>
+                                        </Border>
+                                        <!--<Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <Border.Style>
                                                 <Style TargetType="Border">
                                                     <Setter Property="Background" Value="Transparent"/>
@@ -78,11 +81,26 @@
                                                 </Style>
                                             </Border.Style>
                                             <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Release}" Command="{Binding ReleasedButtonCommand}" CommandParameter="ReleasedButton"/>
+                                        </Border>-->
+                                        <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Button x:Name="ReleasedButton" Content="{StaticResource Icon_Release}" Command="{Binding ReleasedButtonCommand}" CommandParameter="ReleasedButton">
+                                                <Button.Style>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+                                                        <Setter Property="Tag" Value="UnSelected"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ButtonSelectedName}" Value="ReleasedButton">
+                                                                <Setter Property="Tag" Value="Selected"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
                                         </Border>
                                     </StackPanel>
                                 </DockPanel>
                             </Border>
-                            <Border Padding="12,12" Background="#EEEE" CornerRadius="8,8,16,16">
+                            <Border BorderBrush="#DBDBDB" BorderThickness="0.5" Padding="12,12" Background="#F7F7F7" CornerRadius="8,8,16,16">
+                                 
                                 <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Center"
                                         Margin="0,0,0,0">
@@ -169,17 +187,16 @@
                     </Border>
                 </Grid>
                 <!--#region Exit Minimize And Setting -->
-                <Grid Margin="4,0,0,0" >
+                <Grid Margin="4,0,0,0"   >
                     <Border MinWidth="48"
                              CornerRadius="16"
                              Background="#FFF"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"
                              BorderThickness="1"
-                             Height="124"
-                             Padding="0,12">
+                            Height="118" >
 
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
                             <Border  CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Button ToolTip="Close" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Close}" Click="ExitButton_Click" />
                             </Border>
