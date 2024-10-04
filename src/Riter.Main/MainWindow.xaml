@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:Riter.Main.ViewModel"
     x:Class="Riter.Main.MainWindow"
     mc:Ignorable="d" ResizeMode="NoResize"
     UseLayoutRounding="True" 
@@ -32,7 +31,11 @@
                    Margin="0,0,0,-0.333"
                    EditingModeInverted="EraseByPoint">
             <InkCanvas.DefaultDrawingAttributes>
-                <DrawingAttributes FitToCurve="True" IgnorePressure="False" IsHighlighter="False" StylusTip="Ellipse" StylusTipTransform="Identity"/>
+                <DrawingAttributes FitToCurve="True"
+                                   IgnorePressure="False"
+                                   IsHighlighter="False"
+                                   StylusTip="Ellipse"
+                                   StylusTipTransform="Identity"/>
             </InkCanvas.DefaultDrawingAttributes>
         </InkCanvas>
         <Canvas>
@@ -50,21 +53,14 @@
                             VerticalAlignment="Center"
                             BorderThickness="1">
                         <Border.Effect>
-                            <DropShadowEffect Opacity="0.12" ShadowDepth="4" BlurRadius="4"/>
+                            <DropShadowEffect Opacity="0.1" ShadowDepth="1" BlurRadius="16" />
                         </Border.Effect>
                         <StackPanel>
                             <Border Padding="12,12">
                                 <DockPanel Margin="0,0,0,0">
                                     <StackPanel  Orientation="Horizontal" VerticalAlignment="Center">
-                                        <!--<Border Padding="0,0,0,0" Height="36" CornerRadius="4">
-                                            <DockPanel>
-                                                <Border Margin="0,0,0,0" Width="32" Height="32" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <ContentControl Content="{StaticResource Logo}" />
-                                                </Border>
-                                            </DockPanel>
-                                        </Border>-->
                                         <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button x:Name="ReleasedButton" Content="{StaticResource Icon_Release}" Command="{Binding ReleasedButtonCommand}" CommandParameter="ReleasedButton">
+                                            <Button ToolTip="Release [R]" x:Name="ReleasedButton" Content="{StaticResource Icon_Release}" Command="{Binding ReleasedButtonCommand}" CommandParameter="ReleasedButton">
                                                 <Button.Style>
                                                     <Style TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
                                                         <Setter Property="Tag" Value="UnSelected"/>
@@ -77,19 +73,17 @@
                                                 </Button.Style>
                                             </Button>
                                         </Border>
-
                                     </StackPanel>
-
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                         <Border Margin="0,0,4,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_SourceCode}" Command="{Binding SourceCodeButtonCommand}" CommandParameter="SourceCodeButton"/>
+                                            <Button ToolTip="Source Code On Github" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_SourceCode}" Command="{Binding SourceCodeButtonCommand}" CommandParameter="SourceCodeButton"/>
                                         </Border>
-                                        
-                                       </StackPanel>
+                                    </StackPanel>
                                 </DockPanel>
                             </Border>
-                            <Border BorderBrush="#DBDBDB" BorderThickness="0.5" Padding="12,12" Background="#F7F7F7" CornerRadius="8,8,16,16">
-                                 
+                            <!--#region ToolBox -->
+                            <Border BorderBrush="#DBDBDB" BorderThickness="0.3" Padding="12,12" Background="#F7F7F7" CornerRadius="16">
+
                                 <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Center"
                                         Margin="0,0,0,0">
@@ -172,6 +166,7 @@
                                     </StackPanel>
                                 </StackPanel>
                             </Border>
+                            <!--#endregion-->
                         </StackPanel>
                     </Border>
                 </Grid>
@@ -184,7 +179,9 @@
                              VerticalAlignment="Center"
                              BorderThickness="1"
                             Height="118" >
-
+                        <Border.Effect>
+                            <DropShadowEffect Opacity="0.1" ShadowDepth="1" BlurRadius="16"/>
+                        </Border.Effect>
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
                             <Border  CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <Button ToolTip="Close" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Close}" Click="ExitButton_Click" />
