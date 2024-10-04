@@ -82,9 +82,14 @@
     </Canvas>
 
     <Canvas Width="24" Height="24" x:Key="Icon_Eraser">
-        <Path Data="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" Stroke="#A9ACB2" StrokeThickness="1.5" />
+        <!--<Path Data="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" Stroke="#A9ACB2" StrokeThickness="1.5" />
         <Path Data="M6.9875 15.0798L8.92749 17.0198C9.56749 17.6598 10.6275 17.6598 11.2675 17.0198L17.0175 11.2698C17.6575 10.6298 17.6575 9.56975 17.0175 8.92975L15.0775 6.98977C14.4375 6.34977 13.3775 6.34977 12.7375 6.98977L6.9875 12.7398C6.3375 13.3798 6.3375 14.4298 6.9875 15.0798Z" Stroke="#28303F" Opacity="0.88" StrokeThickness="1.5"/>
-        <Path Data="M9.30469 10.4199L13.5747 14.6899" Stroke="#28303F" Opacity="0.88" StrokeThickness="1.5"/>
+        <Path Data="M9.30469 10.4199L13.5747 14.6899" Stroke="#28303F" Opacity="0.88" StrokeThickness="1.5"/>-->
+        <Path Data="M9 22H21" Stroke="#28303F" StrokeThickness="1.5"/>
+        <Path Data="M2.90997 17.5797L6.41998 21.0897C7.58998 22.2597 9.49997 22.2597 10.66 21.0897L21.09 10.6597C22.26 9.48973 22.26 7.57972 21.09 6.41972L17.58 2.90973C16.41 1.73973 14.5 1.73973 13.34 2.90973L2.90997 13.3397C1.73997 14.4997 1.73997 16.4097 2.90997 17.5797Z" Stroke="#A5A8AE" StrokeThickness="1.5"/>
+        <Path Data="M7.12 9.12988L14.87 16.8799" Stroke="#A5A8AE" StrokeThickness="1.5"/>
+        <Path Data="M3.52002 17.66L9.16998 12" Stroke="#292D32" StrokeThickness="1.5"  />
+        <Path Data="M6.34003 20.4901L12 14.8301" Stroke="#292D32" StrokeThickness="1.5"/>
 
     </Canvas>
     <Canvas Width="24" Height="24" x:Key="Icon_Delete">
