@@ -1,5 +1,8 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Controls;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Riter.Main.Core;
 
 namespace Riter.Main.ViewModel;
@@ -66,6 +69,16 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <param name="buttonName">The name of the button pressed to start erasing.</param>
     private void Erasing(string buttonName)
         => _state.StartErasing(buttonName);
+
+    /// <summary>
+    /// Open Github Project in Broswer.
+    /// </summary>
+    /// <param name="buttonName">The name of the button pressed to start erasing.</param>
+    private void OpenGithubProject(string buttonName) => _ = Process.Start(new ProcessStartInfo
+    {
+        FileName = App.ServiceProvider.GetService<AppSettings>().GitHubProjectUrl,
+        UseShellExecute = true,
+    });
 }
 
 /// <summary>
@@ -85,6 +98,7 @@ public partial class PalleteStateViewModel
         ReleasedButtonCommand = new RelayCommand<string>(ReleaseInk);
         DrawingButtonCommand = new RelayCommand<string>(DrawingInk);
         ErasingButtonCommand = new RelayCommand<string>(Erasing);
+        SourceCodeButtonCommand = new RelayCommand<string>(OpenGithubProject);
     }
 
     /// <summary>
@@ -101,4 +115,9 @@ public partial class PalleteStateViewModel
     /// Gets the command that is executed when the erasing button is pressed.
     /// </summary>
     public ICommand ErasingButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Open Github Project in Broswer.
+    /// </summary>
+    public ICommand SourceCodeButtonCommand { get; private set; }
 }
