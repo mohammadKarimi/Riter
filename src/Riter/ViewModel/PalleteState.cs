@@ -58,7 +58,7 @@ public class PalleteState : INotifyPropertyChanged
     public void Release(string buttonName)
     {
         ButtonSelectedName = buttonName;
-        IsReleased = !IsReleased;
+        IsReleased = true;
     }
 
     /// <summary>

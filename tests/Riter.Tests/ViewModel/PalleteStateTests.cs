@@ -15,7 +15,7 @@ public class PalleteStateTests
     }
 
     [Fact]
-    public void Release_ShouldUpdateStateToReleased()
+    public void Should_UpdateStateToReleased_When_ReleasedButtonClicked()
     {
         _state.Release("ReleasedButton");
 
@@ -25,7 +25,7 @@ public class PalleteStateTests
     }
 
     [Fact]
-    public void StartDrawing_ShouldUpdateStateToDrawing()
+    public void Should_UpdateStateToDrawing_When_StartDrawing()
     {
         _state.StartDrawing("DrawingButton");
         _state.IsReleased.Should().BeFalse();
@@ -34,7 +34,7 @@ public class PalleteStateTests
     }
 
     [Fact]
-    public void StartErasing_ShouldUpdateStateToErasing()
+    public void Should_UpdateStateToErasing_When_StartErasing()
     {
         _state.StartErasing("ErasingButton");
 
@@ -44,7 +44,7 @@ public class PalleteStateTests
     }
 
     [Fact]
-    public void SetProperty_ShouldSetPropertyAndRaisePropertyChangedEvent()
+    public void Should_SetPropertyAndRaisePropertyChangedEvent_When_SetPropertyCalled()
     {
         var propertyName = string.Empty;
         _testState.PropertyChanged += (sender, e) => propertyName = e.PropertyName;
@@ -55,7 +55,7 @@ public class PalleteStateTests
     }
 
     [Fact]
-    public void SetProperty_ShouldNotRaisePropertyChangedEvent_IfValueIsTheSame()
+    public void Should_NotRaisePropertyChangedEvent_IfValueIsTheSame_When_SetPropertyCalled()
     {
         _testState.TestProperty = "InitialValue";
         var eventRaised = false;
@@ -65,7 +65,7 @@ public class PalleteStateTests
     }
 
     [Fact]
-    public void SetProperty_ShouldInvokeOnChangedAction_IfValueChanges()
+    public void Should_InvokeOnChangedAction_When_ValueChanges()
     {
         _testState.TestProperty = "ChangedValue";
         _testState.OnChangedCalled.Should().BeTrue();
