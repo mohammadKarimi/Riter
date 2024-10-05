@@ -73,6 +73,8 @@
                                                 </Button.Style>
                                             </Button>
                                         </Border>
+
+
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                         <Border Margin="0,0,4,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -164,6 +166,20 @@
                                             <Button Click="TrashButton_Click" Style="{StaticResource ToolboxButtonStyle}"  Content="{StaticResource Icon_Delete}" />
                                         </Border>
                                     </StackPanel>
+                                    <Border Margin="4,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Button ToolTip="Release [R]" x:Name="HideAllButton" Content="{StaticResource Icon_EyeOpen}" Command="{Binding HideAllButtonCommand}" CommandParameter="HideAllButton">
+                                            <Button.Style>
+                                                <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
+                                                    <Setter Property="Tag" Value="UnSelected"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="HideAllButton">
+                                                            <Setter Property="Tag" Value="Selected"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </Border>
                                 </StackPanel>
                             </Border>
                             <!--#endregion-->

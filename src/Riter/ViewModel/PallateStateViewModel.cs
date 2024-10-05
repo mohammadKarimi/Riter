@@ -73,12 +73,18 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Open Github Project in Broswer.
     /// </summary>
-    /// <param name="buttonName">The name of the button pressed to start erasing.</param>
+    /// <param name="buttonName">The name of the button pressed.</param>
     private void OpenGithubProject(string buttonName) => _ = Process.Start(new ProcessStartInfo
     {
         FileName = App.ServiceProvider.GetService<AppSettings>().GitHubProjectUrl,
         UseShellExecute = true,
     });
+
+    /// <summary>
+    /// Hide All Strokes in Main Ink.
+    /// </summary>
+    /// <param name="buttonName">The name of the button pressed.</param>
+    private void HideAll(string buttonName) => _state.HideAll(buttonName);
 }
 
 /// <summary>
@@ -99,6 +105,7 @@ public partial class PalleteStateViewModel
         DrawingButtonCommand = new RelayCommand<string>(DrawingInk);
         ErasingButtonCommand = new RelayCommand<string>(Erasing);
         SourceCodeButtonCommand = new RelayCommand<string>(OpenGithubProject);
+        HideAllButtonCommand = new RelayCommand<string>(HideAll);
     }
 
     /// <summary>
@@ -117,7 +124,12 @@ public partial class PalleteStateViewModel
     public ICommand ErasingButtonCommand { get; private set; }
 
     /// <summary>
-    /// Open Github Project in Broswer.
+    /// Gets open Github Project in Broswer.
     /// </summary>
     public ICommand SourceCodeButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Gets HideAll Strokes in MainInk.
+    /// </summary>
+    public ICommand HideAllButtonCommand { get; private set; }
 }

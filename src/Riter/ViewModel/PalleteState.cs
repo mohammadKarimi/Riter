@@ -92,6 +92,15 @@ public class PalleteState : INotifyPropertyChanged
     }
 
     /// <summary>
+    /// Hide All Strokes in Main Ink.
+    /// </summary>
+    /// <param name="buttonName">v.</param>
+    public void HideAll(string buttonName)
+    {
+        ButtonSelectedName = buttonName;
+    }
+
+    /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
     /// </summary>
     /// <param name="propertyName">The name of the property that changed.</param>
