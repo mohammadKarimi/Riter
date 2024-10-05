@@ -106,7 +106,7 @@
                                         Margin="0,0,0,0">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button x:Name="DrawButton" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingButtonCommand}" CommandParameter="DrawingButton">
+                                            <Button x:Name="DrawButton" ToolTip="Ink [Ctrl+1]" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingButtonCommand}" CommandParameter="DrawingButton">
                                                 <Button.Style>
                                                     <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                         <Setter Property="Tag" Value="UnSelected"/>
@@ -126,7 +126,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Brush}" />
+                                            <Button ToolTip="Change Color [Ctrl+2]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Brush}" />
                                         </Border>
                                         <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <ContentControl Content="{StaticResource Icon_BrushArrow}" />
@@ -139,7 +139,7 @@
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center">
 
-                                            <Button Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_RoundedRectangle}" />
+                                            <Button ToolTip="Shape [Ctrl+3]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_RoundedRectangle}" />
                                         </Border>
                                         <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <ContentControl Content="{StaticResource Icon_SquareArrow}" />
@@ -147,12 +147,12 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Undo}" Click="UndoButton_Click" />
+                                            <Button ToolTip="Undo [Ctrl+Q]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Undo}" Click="UndoButton_Click" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Redo}" Click="RedoButton_Click" />
+                                            <Button ToolTip="Redo [Ctrl+W]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Redo}" Click="RedoButton_Click" />
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
@@ -162,7 +162,7 @@
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">
 
-                                            <Button Command="{Binding ErasingButtonCommand}" CommandParameter="ErasingButton"  Content="{StaticResource Icon_Eraser}" >
+                                            <Button ToolTip="Erase [E]" Command="{Binding ErasingButtonCommand}" CommandParameter="ErasingButton"  Content="{StaticResource Icon_Eraser}" >
                                                 <Button.Style>
                                                     <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                         <Setter Property="Tag" Value="UnSelected"/>
@@ -178,11 +178,11 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
                                         <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Click="TrashButton_Click" Style="{StaticResource ToolboxButtonStyle}"  Content="{StaticResource Icon_Delete}" />
+                                            <Button ToolTip="Delete All [D]" Click="TrashButton_Click" Style="{StaticResource ToolboxButtonStyle}"  Content="{StaticResource Icon_Delete}" />
                                         </Border>
                                     </StackPanel>
                                     <Border Margin="4,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button ToolTip="Hide All" x:Name="HideAllButton"  Command="{Binding HideAllButtonCommand}" CommandParameter="HideAllButton">
+                                        <Button ToolTip="Hide All [H]" x:Name="HideAllButton"  Command="{Binding HideAllButtonCommand}" CommandParameter="HideAllButton">
                                             <Button.Style>
                                                 <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                     <Setter Property="Tag" Value="UnSelected"/>
