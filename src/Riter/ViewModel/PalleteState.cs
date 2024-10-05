@@ -77,17 +77,17 @@ public class PalleteState : INotifyPropertyChanged
     /// <param name="buttonName">The name of the button pressed to start drawing ink.</param>
     public void StartDrawing(string buttonName)
     {
-        if (IsReleased is false)
+        if (IsReleased is false && ButtonSelectedName == buttonName)
         {
             ButtonSelectedName = AppSettings.ButtonSelectedName;
+            IsReleased = true;
         }
         else
         {
             ButtonSelectedName = buttonName;
             InkEditingMode = InkCanvasEditingMode.Ink;
+            IsReleased = false;
         }
-
-        IsReleased = !IsReleased;
     }
 
     /// <summary>
