@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
+using Microsoft.Extensions.DependencyInjection;
 using Riter.Core;
 
 namespace Riter.ViewModel;
@@ -56,8 +57,8 @@ public class PalleteState : INotifyPropertyChanged
     /// <param name="buttonName">The name of the button pressed to release ink.</param>
     public void Release(string buttonName)
     {
-        IsReleased = true;
         ButtonSelectedName = buttonName;
+        IsReleased = !IsReleased;
     }
 
     /// <summary>
@@ -66,9 +67,17 @@ public class PalleteState : INotifyPropertyChanged
     /// <param name="buttonName">The name of the button pressed to start drawing ink.</param>
     public void StartDrawing(string buttonName)
     {
-        IsReleased = false;
-        InkEditingMode = InkCanvasEditingMode.Ink;
-        ButtonSelectedName = buttonName;
+        if (IsReleased is false)
+        {
+            ButtonSelectedName = AppSettings.ButtonSelectedName;
+        }
+        else
+        {
+            ButtonSelectedName = buttonName;
+            InkEditingMode = InkCanvasEditingMode.Ink;
+        }
+
+        IsReleased = !IsReleased;
     }
 
     /// <summary>
