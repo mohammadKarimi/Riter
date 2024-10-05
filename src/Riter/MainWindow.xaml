@@ -22,7 +22,7 @@
     </Window.Style>
 
     <Grid x:Name="Layout">
-        <InkCanvas x:Name="MainInkCanvas"
+        <!--<InkCanvas x:Name="MainInkCanvas"
                    EditingMode="{Binding InkEditingMode}"
                    Background="{x:Null}"
                    MoveEnabled="False"
@@ -52,7 +52,8 @@
                                    StylusTip="Ellipse"
                                    StylusTipTransform="Identity"/>
             </InkCanvas.DefaultDrawingAttributes>
-        </InkCanvas>
+        </InkCanvas>-->
+        <local:MainInkCanvasControl DataContext="{Binding}" x:Name="MainInkCanvasControl" />
         <Canvas>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
@@ -88,7 +89,15 @@
                                                 </Button.Style>
                                             </Button>
                                         </Border>
+                                        <Border Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Button ToolTip="Release [R]" x:Name="BoardButton" Content="{StaticResource Icon_TransparentBoard}" Command="{Binding BoardButtonCommand}" CommandParameter="BoardButton">
+                                                <Button.Style>
+                                                    <Style TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
 
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+                                        </Border>
 
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -99,76 +108,98 @@
                                 </DockPanel>
                             </Border>
                             <!--#region ToolBox -->
-                            <Border BorderBrush="#DBDBDB" BorderThickness="0.3" Padding="12,12" Background="#F7F7F7" CornerRadius="16">
-
-                                <StackPanel Orientation="Horizontal"
+                            <Border BorderBrush="#DBDBDB" BorderThickness="0.3" Padding="12,16,12,8" Background="#F7F7F7" CornerRadius="16">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Center"
                                         Margin="0,0,0,0">
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                        <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button x:Name="DrawButton" ToolTip="Ink [Ctrl+1]" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingButtonCommand}" CommandParameter="DrawingButton">
-                                                <Button.Style>
-                                                    <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
-                                                        <Setter Property="Tag" Value="UnSelected"/>
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding ButtonSelectedName}" Value="DrawingButton">
-                                                                <Setter Property="Tag" Value="Selected"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Button.Style>
-                                            </Button>
-                                        </Border>
-                                        <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <ContentControl Content="{StaticResource Icon_PenArrow}" />
-                                        </Border>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                            <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Button x:Name="DrawButton" ToolTip="Ink [Ctrl+1]" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingButtonCommand}" CommandParameter="DrawingButton">
+                                                    <Button.Style>
+                                                        <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
+                                                            <Setter Property="Tag" Value="UnSelected"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ButtonSelectedName}" Value="DrawingButton">
+                                                                    <Setter Property="Tag" Value="Selected"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Button.Style>
+                                                </Button>
+                                            </Border>
+                                            <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <ContentControl Content="{StaticResource Icon_PenArrow}" />
+                                            </Border>
 
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                        <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button ToolTip="Change Color [Ctrl+2]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Brush}" />
-                                        </Border>
-                                        <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <ContentControl Content="{StaticResource Icon_BrushArrow}" />
-                                        </Border>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                        <Border Margin="0,0,2,0"
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                            <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Button ToolTip="Change Color [Ctrl+2]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Brush}" />
+                                            </Border>
+                                            <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <ContentControl Content="{StaticResource Icon_BrushArrow}" />
+                                            </Border>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                            <Border Margin="0,0,2,0"
                                             Width="32" Height="32"
                                             CornerRadius="4"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center">
 
-                                            <Button ToolTip="Shape [Ctrl+3]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_RoundedRectangle}" />
-                                        </Border>
-                                        <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <ContentControl Content="{StaticResource Icon_SquareArrow}" />
-                                        </Border>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                        <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button ToolTip="Undo [Ctrl+Q]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Undo}" Click="UndoButton_Click" />
-                                        </Border>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                        <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button ToolTip="Redo [Ctrl+W]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Redo}" Click="RedoButton_Click" />
-                                        </Border>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                        <Border Width="32"
+                                                <Button ToolTip="Shape [Ctrl+3]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_RoundedRectangle}" />
+                                            </Border>
+                                            <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <ContentControl Content="{StaticResource Icon_SquareArrow}" />
+                                            </Border>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                            <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Button ToolTip="Undo [Ctrl+Q]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Undo}" Click="UndoButton_Click" />
+                                            </Border>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                            <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Button ToolTip="Redo [Ctrl+W]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Redo}" Click="RedoButton_Click" />
+                                            </Border>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                            <Border Width="32"
                                                 Height="32"
                                                 CornerRadius="4"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">
 
-                                            <Button ToolTip="Erase [E]" Command="{Binding ErasingButtonCommand}" CommandParameter="ErasingButton"  Content="{StaticResource Icon_Eraser}" >
+                                                <Button ToolTip="Erase [E]" Command="{Binding ErasingButtonCommand}" CommandParameter="ErasingButton"  Content="{StaticResource Icon_Eraser}" >
+                                                    <Button.Style>
+                                                        <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
+                                                            <Setter Property="Tag" Value="UnSelected"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ButtonSelectedName}" Value="ErasingButton">
+                                                                    <Setter Property="Tag" Value="Selected"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Button.Style>
+                                                </Button>
+                                            </Border>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
+                                            <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <Button ToolTip="Delete All [D]" Click="TrashButton_Click" Style="{StaticResource ToolboxButtonStyle}"  Content="{StaticResource Icon_Delete}" />
+                                            </Border>
+                                        </StackPanel>
+                                        <Border Margin="4,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Button ToolTip="Hide All [H]" x:Name="HideAllButton"  Command="{Binding HideAllButtonCommand}" CommandParameter="HideAllButton">
                                                 <Button.Style>
                                                     <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                         <Setter Property="Tag" Value="UnSelected"/>
+                                                        <Setter Property="Content" Value="{StaticResource Icon_EyeOpen}" />
                                                         <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding ButtonSelectedName}" Value="ErasingButton">
+                                                            <DataTrigger Binding="{Binding IsHideAll}" Value="True">
                                                                 <Setter Property="Tag" Value="Selected"/>
+                                                                <Setter Property="Content" Value="{StaticResource Icon_EyeClose}"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>
@@ -176,27 +207,16 @@
                                             </Button>
                                         </Border>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-                                        <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button ToolTip="Delete All [D]" Click="TrashButton_Click" Style="{StaticResource ToolboxButtonStyle}"  Content="{StaticResource Icon_Delete}" />
+                                    <StackPanel Orientation="Horizontal" Margin="0,4,0,2">
+                                        <Border  Width="32" Height="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <ContentControl Content="{StaticResource Icon_PenThinkness}" HorizontalAlignment="Center">
+                                            </ContentControl>
+                                        </Border>
+                                        <Border Margin="22,0,0,0"  Width="32" Height="3" CornerRadius="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <ContentControl Content="{StaticResource Icon_PenColor}">
+                                            </ContentControl>
                                         </Border>
                                     </StackPanel>
-                                    <Border Margin="4,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button ToolTip="Hide All [H]" x:Name="HideAllButton"  Command="{Binding HideAllButtonCommand}" CommandParameter="HideAllButton">
-                                            <Button.Style>
-                                                <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
-                                                    <Setter Property="Tag" Value="UnSelected"/>
-                                                    <Setter Property="Content" Value="{StaticResource Icon_EyeOpen}" />
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding IsHideAll}" Value="True">
-                                                            <Setter Property="Tag" Value="Selected"/>
-                                                            <Setter Property="Content" Value="{StaticResource Icon_EyeClose}"/>
-                                                        </DataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </Button.Style>
-                                        </Button>
-                                    </Border>
                                 </StackPanel>
                             </Border>
                             <!--#endregion-->

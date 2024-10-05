@@ -37,14 +37,7 @@
 
                                 <Trigger Property="Tag" Value="Selected">
                                     <Setter TargetName="ButtonBorder" Property="Background" Value="#EEE"/>
-                                    <!--<Setter TargetName="ButtonBorder" Property="Effect">
-                                        <Setter.Value>
-                                            <DropShadowEffect Color="Black" 
-                                                              BlurRadius="3" 
-                                                              ShadowDepth="1" 
-                                                              Opacity="0.2" />
-                                        </Setter.Value>
-                                    </Setter>-->
+                                    
                                 </Trigger>
 
                             </ControlTemplate.Triggers>
