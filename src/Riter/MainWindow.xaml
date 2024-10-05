@@ -30,6 +30,21 @@
                    Cursor="Pen"
                    Margin="0,0,0,-0.333"
                    EditingModeInverted="EraseByPoint">
+
+            <InkCanvas.Style>
+                <Style TargetType="InkCanvas">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsHideAll}" Value="True">
+                            <Setter Property="Opacity" Value="0" />
+                            <Setter Property="EditingModeInverted" Value="None" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsHideAll}" Value="False">
+                            <Setter Property="Opacity" Value="1" />
+                            <Setter Property="EditingModeInverted" Value="Ink" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </InkCanvas.Style>
             <InkCanvas.DefaultDrawingAttributes>
                 <DrawingAttributes FitToCurve="True"
                                    IgnorePressure="False"
@@ -73,6 +88,8 @@
                                                 </Button.Style>
                                             </Button>
                                         </Border>
+
+
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                                         <Border Margin="0,0,4,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -164,6 +181,22 @@
                                             <Button Click="TrashButton_Click" Style="{StaticResource ToolboxButtonStyle}"  Content="{StaticResource Icon_Delete}" />
                                         </Border>
                                     </StackPanel>
+                                    <Border Margin="4,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <Button ToolTip="Hide All" x:Name="HideAllButton"  Command="{Binding HideAllButtonCommand}" CommandParameter="HideAllButton">
+                                            <Button.Style>
+                                                <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
+                                                    <Setter Property="Tag" Value="UnSelected"/>
+                                                    <Setter Property="Content" Value="{StaticResource Icon_EyeOpen}" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsHideAll}" Value="True">
+                                                            <Setter Property="Tag" Value="Selected"/>
+                                                            <Setter Property="Content" Value="{StaticResource Icon_EyeClose}"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </Border>
                                 </StackPanel>
                             </Border>
                             <!--#endregion-->

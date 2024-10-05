@@ -12,7 +12,7 @@ public class PalleteStateViewModelTests
     }
 
     [Fact]
-    public void ReleasedButtonCommand_ShouldSetStateToReleased()
+    public void Should_SetStateToReleased_When_ReleasedButtonClicked()
     {
         _viewModel.ReleasedButtonCommand.Execute("ReleasedButton");
         _state.IsReleased.Should().BeTrue();
@@ -21,7 +21,7 @@ public class PalleteStateViewModelTests
     }
 
     [Fact]
-    public void DrawingButtonCommand_ShouldSetStateToDrawing()
+    public void Should_SetStateToDrawing_When_DrawingButtonCommandClicked()
     {
         _viewModel.DrawingButtonCommand.Execute("DrawingButton");
         _state.IsReleased.Should().BeFalse();
@@ -30,7 +30,21 @@ public class PalleteStateViewModelTests
     }
 
     [Fact]
-    public void ErasingButtonCommand_ShouldSetStateToErasing()
+    public void ShouldToggled_When_DrawingButtonCommandDoubleClicked()
+    {
+        _viewModel.DrawingButtonCommand.Execute("DrawingButton");
+        _state.IsReleased.Should().BeFalse();
+        _state.InkEditingMode.Should().Be(InkCanvasEditingMode.Ink);
+        _state.ButtonSelectedName.Should().Be("DrawingButton");
+
+        _viewModel.DrawingButtonCommand.Execute("DrawingButton");
+        _state.IsReleased.Should().BeTrue();
+        _state.InkEditingMode.Should().Be(InkCanvasEditingMode.None);
+        _state.ButtonSelectedName.Should().Be("ReleasedButton");
+    }
+
+    [Fact]
+    public void Should_SetStateToErasing_When_ErasingButtonCommand()
     {
         _viewModel.ErasingButtonCommand.Execute("ErasingButton");
         _state.IsReleased.Should().BeFalse();

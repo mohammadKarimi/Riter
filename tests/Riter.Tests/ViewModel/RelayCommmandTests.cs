@@ -5,7 +5,7 @@ namespace Riter.Tests.ViewModel;
 public class RelayCommandTests
 {
     [Fact]
-    public void RelayCommand_ShouldExecute_Action()
+    public void Should_ExecuteAction_When_RelayCommandCalled()
     {
         var executed = false;
         var command = new RelayCommand<string>(param => executed = true);
@@ -14,7 +14,7 @@ public class RelayCommandTests
     }
 
     [Fact]
-    public void RelayCommand_ShouldNotExecute_WhenCanExecuteReturnsFalse()
+    public void Should_NotExecute_When_CanExecuteReturnsFalse()
     {
         var executed = false;
         var command = new RelayCommand<string>(param => executed = true, param => false);
