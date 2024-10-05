@@ -15,6 +15,7 @@ public class PalleteState : INotifyPropertyChanged
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
     private string _buttonSelectedName = AppSettings.ButtonSelectedName;
+    private bool _isHideAll = false;
 
     /// <summary>
     /// This event is for subscribing the PalleteViewModel for it to send these changes to UI.
@@ -49,6 +50,15 @@ public class PalleteState : INotifyPropertyChanged
     {
         get => _buttonSelectedName;
         private set => SetProperty(ref _buttonSelectedName, value, nameof(ButtonSelectedName));
+    }
+
+    /// <summary>
+    /// Gets a value indicating whether gets the value of Is Hide all Stroke.
+    /// </summary>
+    public bool IsHideAll
+    {
+        get => _isHideAll;
+        private set => SetProperty(ref _isHideAll, value, nameof(IsHideAll));
     }
 
     /// <summary>
@@ -94,11 +104,7 @@ public class PalleteState : INotifyPropertyChanged
     /// <summary>
     /// Hide All Strokes in Main Ink.
     /// </summary>
-    /// <param name="buttonName">v.</param>
-    public void HideAll(string buttonName)
-    {
-        ButtonSelectedName = buttonName;
-    }
+    public void HideAll() => IsHideAll = !IsHideAll;
 
     /// <summary>
     /// Raises the PropertyChanged event when a property value changes.

@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Riter.Core;
 
 namespace Riter.ViewModel;
@@ -33,6 +32,11 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// Gets the name of the button that is currently selected.
     /// </summary>
     public string ButtonSelectedName => _state.ButtonSelectedName;
+
+    /// <summary>
+    /// Gets a value indicating whether gets the value of IsHideAll props to show or hide the strokes.
+    /// </summary>
+    public bool IsHideAll => _state.IsHideAll;
 
     /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
@@ -84,7 +88,7 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// Hide All Strokes in Main Ink.
     /// </summary>
     /// <param name="buttonName">The name of the button pressed.</param>
-    private void HideAll(string buttonName) => _state.HideAll(buttonName);
+    private void HideAll(string buttonName) => _state.HideAll();
 }
 
 /// <summary>
