@@ -19,10 +19,10 @@ public static class WindowDragableExtensions
     /// <returns>MainWindow to follow Fluent chain.</returns>
     public static MainWindow EnableDragging(this MainWindow mainWindow, UIElement element)
     {
-        mainWindow.MouseDown += (sender, e) => StartDrag(mainWindow, element);
-        mainWindow.MouseMove += (sender, e) => PerformDrag(mainWindow, element, e);
-        mainWindow.MouseUp += (sender, e) => EndDrag(element);
-        mainWindow.MouseLeave += (sender, e) => EndDrag(element);
+        mainWindow.WindowControl.MoveButton.MouseDown += (sender, e) => StartDrag(mainWindow, element);
+        mainWindow.MainPallete.MouseMove += (sender, e) => PerformDrag(mainWindow, element, e);
+        mainWindow.MainPallete.MouseUp += (sender, e) => EndDrag(element);
+        mainWindow.MainPallete.MouseLeave += (sender, e) => EndDrag(element);
         return mainWindow;
     }
 
