@@ -16,6 +16,7 @@ public class PalleteState : INotifyPropertyChanged
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
     private string _buttonSelectedName = AppSettings.ButtonSelectedName;
     private bool _isHideAll = false;
+    private bool _isSettingPanelOpened = false;
 
     /// <summary>
     /// This event is for subscribing the PalleteViewModel for it to send these changes to UI.
@@ -31,6 +32,18 @@ public class PalleteState : INotifyPropertyChanged
         private set => SetProperty(ref _isReleased, value, nameof(IsReleased), () =>
         {
             InkEditingMode = _isReleased ? InkCanvasEditingMode.None : InkCanvasEditingMode.Ink;
+        });
+    }
+
+    /// <summary>
+    /// Gets a value indicating whether the ink has been released.
+    /// </summary>
+    public bool IsSettingPanelOpened
+    {
+        get => _isSettingPanelOpened;
+        private set => SetProperty(ref _isSettingPanelOpened, value, nameof(IsSettingPanelOpened), () =>
+        {
+            InkEditingMode = _isSettingPanelOpened ? InkCanvasEditingMode.None : InkCanvasEditingMode.Ink;
         });
     }
 
@@ -105,6 +118,16 @@ public class PalleteState : INotifyPropertyChanged
     /// Hide All Strokes in Main Ink.
     /// </summary>
     public void HideAll() => IsHideAll = !IsHideAll;
+
+    /// <summary>
+    /// Open Setting Panel.
+    /// </summary>
+    /// <param name="buttonName">The name of the button pressed to open setrings panel.</param>
+    public void OpenSetting(string buttonName)
+    {
+        IsSettingPanelOpened = true;
+        ButtonSelectedName = buttonName;
+    }
 
     /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
