@@ -24,7 +24,7 @@
         <local:MainInkCanvasControl DataContext="{Binding}" x:Name="MainInkCanvasControl" />
         <Canvas>
             <StackPanel  x:Name="MainPallete" Canvas.Top="130" Canvas.Left="130" Orientation="Vertical" VerticalAlignment="Center">
-                <local:ContextMenu Visibility="Visible"/>
+                <local:ContextMenu Visibility="Hidden"/>
                 <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         MinWidth="0">
