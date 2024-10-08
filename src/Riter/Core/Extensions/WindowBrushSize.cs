@@ -20,16 +20,16 @@ public static class WindowBrushSize
     public static MainWindow SetBrushSize(this MainWindow mainWindow, BrushSize brushSize = BrushSize.S2X)
     {
         var brushSize_double = (double)brushSize;
-        if (mainWindow.MainInkCanvas.EditingMode is InkCanvasEditingMode.EraseByPoint)
+        if (mainWindow.MainInkCanvasControl.MainInkCanvas.EditingMode is InkCanvasEditingMode.EraseByPoint)
         {
-            mainWindow.MainInkCanvas.EditingMode = InkCanvasEditingMode.GestureOnly;
-            mainWindow.MainInkCanvas.EraserShape = new EllipseStylusShape(brushSize_double, brushSize_double);
-            mainWindow.MainInkCanvas.EditingMode = InkCanvasEditingMode.EraseByPoint;
+            mainWindow.MainInkCanvasControl.MainInkCanvas.EditingMode = InkCanvasEditingMode.GestureOnly;
+            mainWindow.MainInkCanvasControl.MainInkCanvas.EraserShape = new EllipseStylusShape(brushSize_double, brushSize_double);
+            mainWindow.MainInkCanvasControl.MainInkCanvas.EditingMode = InkCanvasEditingMode.EraseByPoint;
         }
         else
         {
-            mainWindow.MainInkCanvas.DefaultDrawingAttributes.Height = brushSize_double;
-            mainWindow.MainInkCanvas.DefaultDrawingAttributes.Width = brushSize_double;
+            mainWindow.MainInkCanvasControl.MainInkCanvas.DefaultDrawingAttributes.Height = brushSize_double;
+            mainWindow.MainInkCanvasControl.MainInkCanvas.DefaultDrawingAttributes.Width = brushSize_double;
         }
 
         return mainWindow;

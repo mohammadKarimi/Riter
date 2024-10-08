@@ -1,0 +1,36 @@
+﻿<!-- MainInkCanvasControl.xaml -->
+<UserControl x:Class="Riter.Core.UI.MainInkCanvasControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <InkCanvas x:Name="MainInkCanvas"
+                   EditingMode="{Binding InkEditingMode}"
+                   Background="{x:Null}"
+                   MoveEnabled="False"
+                   ResizeEnabled="False"
+                   Cursor="Pen"
+                   Margin="0,0,0,-0.333">
+            <InkCanvas.Style>
+                <Style TargetType="InkCanvas">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsHideAll}" Value="True">
+                            <Setter Property="Opacity" Value="0" />
+                            <Setter Property="EditingMode" Value="None" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsHideAll}" Value="False">
+                            <Setter Property="Opacity" Value="1" />
+                            <Setter Property="EditingMode" Value="Ink" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </InkCanvas.Style>
+            <InkCanvas.DefaultDrawingAttributes>
+                <DrawingAttributes FitToCurve="True"
+                                   IgnorePressure="False"
+                                   IsHighlighter="False"
+                                   StylusTip="Ellipse"
+                                   StylusTipTransform="Identity"/>
+            </InkCanvas.DefaultDrawingAttributes>
+        </InkCanvas>
+    </Grid>
+</UserControl>

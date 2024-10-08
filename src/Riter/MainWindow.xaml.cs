@@ -26,7 +26,7 @@ public partial class MainWindow : Window
         InitializeComponent();
         DataContext = pallateStateViewModel;
         _strokeHistoryService = strokeHistoryService;
-        _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvas);
+        _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
 
         this.SetEventListeners()
             .EnableDragging(MainPallete)
@@ -50,7 +50,7 @@ public partial class MainWindow : Window
     private void TrashButton_Click(object sender, EventArgs e)
     {
         _strokeHistoryService.Clear();
-        MainInkCanvas.Strokes.Clear();
+        MainInkCanvasControl.MainInkCanvas.Strokes.Clear();
     }
 
     private void UndoButton_Click(object sender, RoutedEventArgs e) => _strokeHistoryService.Undo();

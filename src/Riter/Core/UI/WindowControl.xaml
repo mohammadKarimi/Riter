@@ -2,19 +2,32 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid Margin="4,0,0,0">
-        <Border MinWidth="48" CornerRadius="16" Background="#FFF" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1" Height="118">
+        <Border CornerRadius="12" Background="#FFF" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1" Height="58">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.1" ShadowDepth="1" BlurRadius="16"/>
             </Border.Effect>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <Border CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button ToolTip="Close" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Close}" Click="ExitButton_Click" />
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Border  Width="32" Height="32" x:Name="MoveButton" Margin="8,0,0,0" Cursor="SizeAll" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#EEE"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+
+                    <ContentControl  Content="{StaticResource Icon_Move}" ToolTip="Settings" />
                 </Border>
-                <Border CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                
+                <Border Margin="8,0,8,0" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button ToolTip="Minimize" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Minimize}" Click="MinimizeButton_Click"/>
                 </Border>
-                <Border CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Setting}" ToolTip="Settings" />
+                <Border Margin="0,0,8,0" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button ToolTip="Close" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Close}" Click="ExitButton_Click" />
                 </Border>
             </StackPanel>
         </Border>

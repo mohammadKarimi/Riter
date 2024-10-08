@@ -19,7 +19,7 @@ public static class WindowInkColor
     {
         var settings = App.ServiceProvider.GetService<AppSettings>();
         var customColor = (Color)ColorConverter.ConvertFromString(settings.InkDefaultColor);
-        mainWindow.MainInkCanvas.DefaultDrawingAttributes.Color = customColor;
+        mainWindow.MainInkCanvasControl.MainInkCanvas.DefaultDrawingAttributes.Color = customColor;
         return mainWindow;
     }
 }

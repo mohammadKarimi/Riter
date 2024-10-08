@@ -39,6 +39,11 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     public bool IsHideAll => _state.IsHideAll;
 
     /// <summary>
+    /// Gets a value indicating whether gets the value of IsHideAll props to show or hide the strokes.
+    /// </summary>
+    public bool IsSettingPanelOpened => _state.IsSettingPanelOpened;
+
+    /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
     /// </summary>
     /// <param name="propertyName">The name of the property that changed.</param>
@@ -89,6 +94,8 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// </summary>
     /// <param name="buttonName">The name of the button pressed.</param>
     private void HideAll(string buttonName) => _state.HideAll();
+
+    private void OpenSetting(string buttonName) => _state.OpenSetting(buttonName);
 }
 
 /// <summary>
@@ -110,6 +117,7 @@ public partial class PalleteStateViewModel
         ErasingButtonCommand = new RelayCommand<string>(Erasing);
         SourceCodeButtonCommand = new RelayCommand<string>(OpenGithubProject);
         HideAllButtonCommand = new RelayCommand<string>(HideAll);
+        SettingButtonCommand = new RelayCommand<string>(OpenSetting);
     }
 
     /// <summary>
@@ -136,4 +144,9 @@ public partial class PalleteStateViewModel
     /// Gets HideAll Strokes in MainInk.
     /// </summary>
     public ICommand HideAllButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Gets SettingButton.
+    /// </summary>
+    public ICommand SettingButtonCommand { get; private set; }
 }

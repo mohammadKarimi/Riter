@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Riter.Core.UI.ContextMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Width="590" Height="300">
+    <Grid Margin="0,0,0,4">
+        <Border CornerRadius="12" Background="#FFF" BorderBrush="#E5E5E5" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
+            </Border.Effect>
+            <StackPanel>
+                <Grid Height="40" Margin="10,10,10,0">
+                    <Border CornerRadius="6" Background="#EEE" Padding="0" BorderThickness="0">
+                        <Grid>
+                            <TextBox VerticalAlignment="Center"
+                                 Padding="30,0,10,0"
+                                 Height="30"
+                                 Background="Transparent" BorderThickness="0" HorizontalAlignment="Stretch"/>
+                            <ContentControl Content="{StaticResource Icon_Search}" Opacity="0.6" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="8,0,0,0" />
+                        </Grid>
+                    </Border>
+                </Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="10,10,10,0">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,5">
+                            <CheckBox VerticalAlignment="Center" IsChecked="True" />
+                            <TextBlock Text="Show rulers" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
