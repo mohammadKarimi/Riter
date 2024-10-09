@@ -41,7 +41,7 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Gets a value indicating whether gets the value of IsHideAll props to show or hide the strokes.
     /// </summary>
-    public bool IsSettingPanelOpened => _state.IsSettingPanelOpened;
+    public Visibility SettingPanelVisibility => _state.IsSettingPanelOpened ? Visibility.Visible : Visibility.Hidden;
 
     /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
@@ -95,7 +95,10 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <param name="buttonName">The name of the button pressed.</param>
     private void HideAll(string buttonName) => _state.HideAll();
 
-    private void OpenSetting(string buttonName) => _state.OpenSetting(buttonName);
+    /// <summary>
+    /// Call Open Setting method of State.
+    /// </summary>
+    private void OpenSetting(string buttonName) => _state.OpenSetting();
 }
 
 /// <summary>
