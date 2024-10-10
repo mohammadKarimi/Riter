@@ -1,3 +1,4 @@
+﻿using System.Windows.Interop;
 ﻿using System.Windows.Ink;
 using Riter.Core;
 using Riter.Core.Extensions;
@@ -11,6 +12,8 @@ namespace Riter;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly Dictionary<int, (uint modifiers, uint key, Action callback)> _hotkies;
+    private GlobalHotkeyManager _globalHotkeyManager;
     private readonly IStrokeHistoryService _strokeHistoryService;
 
     /// <summary>
@@ -31,6 +34,10 @@ public partial class MainWindow : Window
         DataContext = pallateStateViewModel;
         _strokeHistoryService = strokeHistoryService;
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
+        _hotkies = new Dictionary<int, (uint modifiers, uint key, Action callback)>
+        {
+               { 9000, (GlobalHotkeyManager.CTRL | GlobalHotkeyManager.SHIFT, 0x41, OnHotkey1Pressed) }, // CTRL + SHIFT + A
+        };
         MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
 
         this.SetEventListeners()
@@ -45,6 +52,20 @@ public partial class MainWindow : Window
 
     }
 
+    protected override void OnSourceInitialized(EventArgs e)
+    {
+        base.OnSourceInitialized(e);
+        _globalHotkeyManager = new GlobalHotkeyManager(this);
+        foreach (var hotkey in _hotkies)
+        {
+            _globalHotkeyManager.RegisterHotkey(hotkey.Key, hotkey.Value.modifiers, hotkey.Value.key, hotkey.Value.callback);
+        }
+    }
+
+    private void OnHotkey1Pressed()
+    {
+        MessageBox.Show("Hotkey CTRL + SHIFT + A pressed!");
+    }
 
     /// <summary>
     /// Handles the StrokesChanged event when the user draws on the InkCanvas.
@@ -68,7 +89,11 @@ public partial class MainWindow : Window
         {
             _strokeHistoryService.Push(StrokesHistoryNode.CreateRemovedType(e.Removed));
         }
+}
 
-        _strokeHistoryService.ClearRedoHistory();
+    protected override void OnClosed(EventArgs e)
+    {
+        _globalHotkeyManager.Dispose(); // Clean up hotkey registrations
+        base.OnClosed(e);
     }
 }
