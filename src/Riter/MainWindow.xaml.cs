@@ -12,7 +12,7 @@ namespace Riter;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private readonly Dictionary<int, (uint modifiers, uint key, Action callback)> _hotkies;
+    private readonly Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> _hotkies;
     private readonly IStrokeHistoryService _strokeHistoryService;
     private GlobalHotkeyManager _globalHotkeyManager;
 
@@ -36,10 +36,11 @@ public partial class MainWindow : Window
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
         MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
 
-        _hotkies = new Dictionary<int, (uint modifiers, uint key, Action callback)>
-        {
-               { 9000, (GlobalHotkeyManager.CTRL | GlobalHotkeyManager.SHIFT, 0x41, OnHotkey1Pressed) },
-        };
+        _hotkies = new Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)>
+         {
+                { HotKey.CTRL_R, (GlobalHotkeyManager.CTRL, 0x52, pallateStateViewModel.HandleHotkey) }, // CTRL + R
+                { HotKey.CTRL_H, (GlobalHotkeyManager.CTRL, 0x48, pallateStateViewModel.HandleHotkey) }, // CTRL + H
+         };
 
         this.SetEventListeners()
             .EnableDragging(MainPallete)
@@ -64,11 +65,6 @@ public partial class MainWindow : Window
     {
         _globalHotkeyManager.Dispose();
         base.OnClosed(e);
-    }
-
-    private void OnHotkey1Pressed()
-    {
-        MessageBox.Show("Hotkey CTRL + SHIFT + A pressed!");
     }
 
     /// <summary>

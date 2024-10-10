@@ -21,7 +21,7 @@ public partial class GlobalHotkeyManager : IDisposable
 
     private readonly IntPtr _windowHandle;
     private readonly HwndSource _source;
-    private readonly Dictionary<int, Action> _hotkeyActions = [];
+    private readonly Dictionary<HotKey, Action<HotKey>> _hotkeyActions = [];
 
     private bool _isHookAdded;
 
@@ -44,7 +44,7 @@ public partial class GlobalHotkeyManager : IDisposable
     /// <param name="callback">The method to invoke when the hotkey is pressed.</param>
     /// <returns><c>true</c> if the hotkey is successfully registered; otherwise, <c>false</c>.</returns>
 
-    public bool RegisterHotkey(int id, uint modifiers, uint key, Action callback)
+    public bool RegisterHotkey(HotKey id, uint modifiers, uint key, Action<HotKey> callback)
     {
         if (!_isHookAdded)
         {
@@ -52,7 +52,7 @@ public partial class GlobalHotkeyManager : IDisposable
             _isHookAdded = true;
         }
 
-        var registered = RegisterHotKey(_windowHandle, id, modifiers, key);
+        var registered = RegisterHotKey(_windowHandle, (int)id, modifiers, key);
         if (registered)
         {
             _hotkeyActions[id] = callback;
@@ -65,11 +65,11 @@ public partial class GlobalHotkeyManager : IDisposable
     /// Unregisters a hotkey by its unique identifier.
     /// </summary>
     /// <param name="id">The unique identifier of the hotkey to unregister.</param>
-    public void UnregisterHotkey(int id)
+    public void UnregisterHotkey(HotKey id)
     {
         if (_hotkeyActions.ContainsKey(id))
         {
-            UnregisterHotKey(_windowHandle, id);
+            UnregisterHotKey(_windowHandle, (int)id);
             _hotkeyActions.Remove(id);
         }
     }
@@ -82,7 +82,7 @@ public partial class GlobalHotkeyManager : IDisposable
     {
         foreach (var id in _hotkeyActions.Keys)
         {
-            UnregisterHotKey(_windowHandle, id);
+            UnregisterHotKey(_windowHandle, (int)id);
         }
 
         _source.RemoveHook(HwndHook);
@@ -105,11 +105,11 @@ public partial class GlobalHotkeyManager : IDisposable
 
         if (msg == wM_HOTKEY)
         {
-            var id = wParam.ToInt32();
+            var id = (HotKey)wParam.ToInt32();
 
             if (_hotkeyActions.TryGetValue(id, out var value))
             {
-                value?.Invoke();
+                value?.Invoke(id);
                 handled = true;
             }
         }
