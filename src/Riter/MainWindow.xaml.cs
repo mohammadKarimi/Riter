@@ -48,11 +48,7 @@ public partial class MainWindow : Window
             .SetBrushSize();
     }
 
-    private void ShortcutKeyDown(object sender, KeyEventArgs e)
-    {
-
-    }
-
+    /// <inheritdoc/>
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
@@ -61,6 +57,13 @@ public partial class MainWindow : Window
         {
             _globalHotkeyManager.RegisterHotkey(hotkey.Key, hotkey.Value.modifiers, hotkey.Value.key, hotkey.Value.callback);
         }
+    }
+
+    /// <inheritdoc/>
+    protected override void OnClosed(EventArgs e)
+    {
+        _globalHotkeyManager.Dispose();
+        base.OnClosed(e);
     }
 
     private void OnHotkey1Pressed()
@@ -90,11 +93,5 @@ public partial class MainWindow : Window
         {
             _strokeHistoryService.Push(StrokesHistoryNode.CreateRemovedType(e.Removed));
         }
-    }
-
-    protected override void OnClosed(EventArgs e)
-    {
-        _globalHotkeyManager.Dispose(); // Clean up hotkey registrations
-        base.OnClosed(e);
     }
 }

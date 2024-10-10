@@ -52,7 +52,7 @@ public partial class GlobalHotkeyManager : IDisposable
             _isHookAdded = true;
         }
 
-        bool registered = RegisterHotKey(_windowHandle, id, modifiers, key);
+        var registered = RegisterHotKey(_windowHandle, id, modifiers, key);
         if (registered)
         {
             _hotkeyActions[id] = callback;
