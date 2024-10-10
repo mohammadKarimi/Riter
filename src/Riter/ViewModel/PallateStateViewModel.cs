@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core;
+using Riter.Core.Interfaces;
+using Riter.Core.UI;
 
 namespace Riter.ViewModel;
 
@@ -12,6 +14,7 @@ namespace Riter.ViewModel;
 public partial class PalleteStateViewModel : INotifyPropertyChanged
 {
     private readonly PalleteState _state;
+    private readonly IStrokeHistoryService _strokeHistoryService;
 
     /// <summary>
     /// This event is for subscribing the UI on it to get any state changes.
@@ -41,7 +44,7 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Gets a value indicating whether gets the value of IsHideAll props to show or hide the strokes.
     /// </summary>
-    public Visibility SettingPanelVisibility => _state.IsSettingPanelOpened ? Visibility.Visible : Visibility.Hidden;
+    public Visibility SettingPanelVisibility => _state.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
     /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
@@ -59,46 +62,36 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
         => OnPropertyChanged(e.PropertyName);
 
     /// <summary>
-    /// Releases the ink based on the button pressed.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed to release ink.</param>
-    private void ReleaseInk(string buttonName)
-        => _state.Release(buttonName);
-
-    /// <summary>
-    /// Starts drawing ink based on the button pressed.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed to start drawing ink.</param>
-    private void DrawingInk(string buttonName)
-        => _state.StartDrawing(buttonName);
-
-    /// <summary>
-    /// Starts erasing based on the button pressed.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed to start erasing.</param>
-    private void Erasing(string buttonName)
-        => _state.StartErasing(buttonName);
-
-    /// <summary>
     /// Open Github Project in Broswer.
     /// </summary>
     /// <param name="buttonName">The name of the button pressed.</param>
-    private void OpenGithubProject(string buttonName) => _ = Process.Start(new ProcessStartInfo
+    private void OpenGithubProject() => _ = Process.Start(new ProcessStartInfo
     {
         FileName = App.ServiceProvider.GetService<AppSettings>().GitHubProjectUrl,
         UseShellExecute = true,
     });
 
     /// <summary>
-    /// Hide All Strokes in Main Ink.
+    /// Reverts the last stroke action (undo) if possible.
+    /// Removes the last stroke from the history and applies the change.
     /// </summary>
-    /// <param name="buttonName">The name of the button pressed.</param>
-    private void HideAll(string buttonName) => _state.HideAll();
+    private void Undo() => _strokeHistoryService.Undo();
 
     /// <summary>
-    /// Call Open Setting method of State.
+    /// Reapplies the last undone stroke action (redo) if possible.
+    /// Re-adds the previously undone stroke to the canvas.
     /// </summary>
-    private void OpenSetting(string buttonName) => _state.OpenSetting();
+    private void Redo() => _strokeHistoryService.Redo();
+
+    /// <summary>
+    /// Clear History and Clear Canvas Ink.
+    /// </summary>
+    private void Trash()
+    {
+       
+            _strokeHistoryService.Clear();
+            
+    }
 }
 
 /// <summary>
@@ -110,17 +103,22 @@ public partial class PalleteStateViewModel
     /// Initializes a new instance of the <see cref="PalleteStateViewModel"/> class.
     /// </summary>
     /// <param name="palleteState">The PalleteState model used to manage ink states.</param>
-    public PalleteStateViewModel(PalleteState palleteState)
+    /// <param name="strokeHistoryService">stroke History service for undo and redo.</param>
+    public PalleteStateViewModel(PalleteState palleteState, IStrokeHistoryService strokeHistoryService)
     {
         _state = palleteState;
         _state.PropertyChanged += OnStateChanged;
+        _strokeHistoryService = strokeHistoryService;
 
-        ReleasedButtonCommand = new RelayCommand<string>(ReleaseInk);
-        DrawingButtonCommand = new RelayCommand<string>(DrawingInk);
-        ErasingButtonCommand = new RelayCommand<string>(Erasing);
-        SourceCodeButtonCommand = new RelayCommand<string>(OpenGithubProject);
-        HideAllButtonCommand = new RelayCommand<string>(HideAll);
-        SettingButtonCommand = new RelayCommand<string>(OpenSetting);
+        ReleasedButtonCommand = new RelayCommand(_state.Release);
+        DrawingButtonCommand = new RelayCommand(_state.StartDrawing);
+        ErasingButtonCommand = new RelayCommand(_state.StartErasing);
+        SourceCodeButtonCommand = new RelayCommand(OpenGithubProject);
+        UndoButtonCommand = new RelayCommand(Undo);
+        RedoButtonCommand = new RelayCommand(Redo);
+        HideAllButtonCommand = new RelayCommand(_state.HideAll);
+        SettingButtonCommand = new RelayCommand(_state.ToggleSettingsPanel);
+        TrashButtonCommand = new RelayCommand(Trash);
     }
 
     /// <summary>
@@ -152,4 +150,16 @@ public partial class PalleteStateViewModel
     /// Gets SettingButton.
     /// </summary>
     public ICommand SettingButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Gets Undo.
+    /// </summary>
+    public ICommand UndoButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Gets Redo.
+    /// </summary>
+    public ICommand RedoButtonCommand { get; private set; }
+
+    public ICommand TrashButtonCommand { get; private set; }
 }

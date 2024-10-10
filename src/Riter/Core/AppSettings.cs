@@ -14,11 +14,6 @@ public class AppSettings
     public const string Section = nameof(AppSettings);
 
     /// <summary>
-    /// Default ButtonSelectedName.
-    /// </summary>
-    public const string ButtonSelectedName = "ReleasedButton";
-
-    /// <summary>
     /// Gets or sets brush size of Ink.
     /// </summary>
     public BrushSize BrushSize { get; set; }

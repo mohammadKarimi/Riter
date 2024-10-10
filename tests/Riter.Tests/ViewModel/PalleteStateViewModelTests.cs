@@ -1,14 +1,21 @@
-﻿namespace Riter.Tests.ViewModel;
+﻿using Riter.Core;
+using Riter.Core.Interfaces;
+using Riter.Services;
+
+namespace Riter.Tests.ViewModel;
 
 public class PalleteStateViewModelTests
 {
     private readonly PalleteStateViewModel _viewModel;
     private readonly PalleteState _state;
+    private readonly IStrokeHistoryService _strokeHistoryService;
+
 
     public PalleteStateViewModelTests()
     {
         _state = new PalleteState();
-        _viewModel = new PalleteStateViewModel(_state);
+        _strokeHistoryService = new StrokeHistoryService();
+        _viewModel = new PalleteStateViewModel(_state, _strokeHistoryService);
     }
 
     [Fact]

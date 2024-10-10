@@ -17,7 +17,7 @@ public class PalleteStateTests
     [Fact]
     public void Should_UpdateStateToReleased_When_ReleasedButtonClicked()
     {
-        _state.Release("ReleasedButton");
+        _state.Release();
 
         _state.IsReleased.Should().BeTrue();
         _state.InkEditingMode.Should().Be(InkCanvasEditingMode.None);
@@ -27,7 +27,7 @@ public class PalleteStateTests
     [Fact]
     public void Should_UpdateStateToDrawing_When_StartDrawing()
     {
-        _state.StartDrawing("DrawingButton");
+        _state.StartDrawing();
         _state.IsReleased.Should().BeFalse();
         _state.InkEditingMode.Should().Be(InkCanvasEditingMode.Ink);
         _state.ButtonSelectedName.Should().Be("DrawingButton");
@@ -36,7 +36,7 @@ public class PalleteStateTests
     [Fact]
     public void Should_UpdateStateToErasing_When_StartErasing()
     {
-        _state.StartErasing("ErasingButton");
+        _state.StartErasing();
 
         _state.IsReleased.Should().BeFalse();
         _state.InkEditingMode.Should().Be(InkCanvasEditingMode.EraseByStroke);

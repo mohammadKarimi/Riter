@@ -8,6 +8,10 @@ namespace Riter.Core.Interfaces;
 /// </summary>
 public interface IStrokeHistoryService
 {
+    /// <summary>
+    /// Gets a value indicating whether ignore stroke changed on drawind line.
+    /// </summary>
+    bool IgnoreStrokesChange { get; }
 
     /// <summary>
     /// Config the main element for adding redo and undo functionality.
