@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Width="590" Height="300" >
     <Grid Margin="0,0,0,4">
-        <Border CornerRadius="12" Background="#FFF" BorderBrush="#E5E5E5" BorderThickness="1">
+        <Border CornerRadius="12" Visibility="{Binding SettingPanelVisibility}" Background="#FFF" BorderBrush="#E5E5E5" BorderThickness="1">
+            
             <Border.Effect>
                 <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
             </Border.Effect>
@@ -28,6 +29,7 @@
                     </StackPanel>
                 </ScrollViewer>
             </StackPanel>
+            
         </Border>
     </Grid>
 </UserControl>

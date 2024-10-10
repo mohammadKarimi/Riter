@@ -13,9 +13,10 @@ public class PalleteState : INotifyPropertyChanged
 {
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
-    private string _buttonSelectedName = ButtonNames.ButtonSelectedName;
+    private string _buttonSelectedName = ButtonNames.DefaultButtonSelectedName;
+    private string _previousButtonSelectedName = string.Empty;
     private bool _isHideAll = false;
-    private bool _isSettingPanelOpened = true;
+    private bool _isSettingPanelOpened = false;
 
     /// <summary>
     /// This event is for subscribing the PalleteViewModel for it to send these changes to UI.
@@ -64,10 +65,10 @@ public class PalleteState : INotifyPropertyChanged
     /// <summary>
     /// Gets a value indicating whether value for showing setting pannel.
     /// </summary>
-    public bool IsSettingPanelOpened
+    public bool SettingPanelVisibility
     {
         get => _isSettingPanelOpened;
-        private set => SetProperty(ref _isSettingPanelOpened, value, nameof(IsSettingPanelOpened));
+        private set => SetProperty(ref _isSettingPanelOpened, value, nameof(SettingPanelVisibility));
     }
 
     /// <summary>
@@ -88,8 +89,7 @@ public class PalleteState : INotifyPropertyChanged
     {
         if (IsReleased is false && ButtonSelectedName == ButtonNames.DrawingButton)
         {
-            ButtonSelectedName = ButtonNames.ButtonSelectedName;
-            IsReleased = true;
+            ResetToDefault();
         }
         else
         {
@@ -118,10 +118,18 @@ public class PalleteState : INotifyPropertyChanged
     /// <summary>
     /// Open Setting Panel.
     /// </summary>
-    public void OpenSetting()
+    public void ToggleSettingsPanel()
     {
-        IsSettingPanelOpened = !IsSettingPanelOpened;
-        ButtonSelectedName = "SettingButton";
+        if (SettingPanelVisibility && ButtonSelectedName == ButtonNames.SettingButton)
+        {
+            ResetPreviousButton();
+        }
+        else
+        {
+            StoreCurrentButton();
+            ButtonSelectedName = ButtonNames.SettingButton;
+            SettingPanelVisibility = true;
+        }
     }
 
     /// <summary>
@@ -155,5 +163,26 @@ public class PalleteState : INotifyPropertyChanged
         }
 
         return false;
+    }
+
+    private void ResetToDefault()
+    {
+        ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
+        IsReleased = true;
+    }
+
+    private void StoreCurrentButton()
+    {
+        if (string.IsNullOrEmpty(_previousButtonSelectedName))
+        {
+            _previousButtonSelectedName = ButtonSelectedName;
+        }
+    }
+
+    private void ResetPreviousButton()
+    {
+        ButtonSelectedName = _previousButtonSelectedName;
+        _previousButtonSelectedName = string.Empty;
+        SettingPanelVisibility = false;
     }
 }

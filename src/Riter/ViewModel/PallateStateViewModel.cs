@@ -41,7 +41,7 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Gets a value indicating whether gets the value of IsHideAll props to show or hide the strokes.
     /// </summary>
-    public Visibility SettingPanelVisibility => _state.IsSettingPanelOpened ? Visibility.Visible : Visibility.Hidden;
+    public Visibility SettingPanelVisibility => _state.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
     /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
@@ -88,7 +88,7 @@ public partial class PalleteStateViewModel
         ErasingButtonCommand = new RelayCommand(_state.StartErasing);
         SourceCodeButtonCommand = new RelayCommand(OpenGithubProject);
         HideAllButtonCommand = new RelayCommand(_state.HideAll);
-        SettingButtonCommand = new RelayCommand(_state.OpenSetting);
+        SettingButtonCommand = new RelayCommand(_state.ToggleSettingsPanel);
     }
 
     /// <summary>
