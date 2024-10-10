@@ -1,4 +1,6 @@
-﻿using Riter.Core.Extensions;
+﻿using System.Windows.Interop;
+using Riter.Core;
+using Riter.Core.Extensions;
 using Riter.Core.Interfaces;
 using Riter.ViewModel;
 
@@ -9,6 +11,9 @@ namespace Riter;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly Dictionary<int, (uint modifiers, uint key, Action callback)> _hotkies;
+    private GlobalHotkeyManager _globalHotkeyManager;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="MainWindow"/> class.
     /// Sets up the UI, binds the <see cref="PalleteStateViewModel"/> to the DataContext,
@@ -27,6 +32,10 @@ public partial class MainWindow : Window
         DataContext = pallateStateViewModel;
         _strokeHistoryService = strokeHistoryService;
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
+        _hotkies = new Dictionary<int, (uint modifiers, uint key, Action callback)>
+        {
+               { 9000, (GlobalHotkeyManager.CTRL | GlobalHotkeyManager.SHIFT, 0x41, OnHotkey1Pressed) }, // CTRL + SHIFT + A
+        };
 
         this.SetEventListeners()
             .EnableDragging(MainPallete)
@@ -40,6 +49,21 @@ public partial class MainWindow : Window
     private void ShortcutKeyDown(object sender, KeyEventArgs e)
     {
 
+    }
+
+    protected override void OnSourceInitialized(EventArgs e)
+    {
+        base.OnSourceInitialized(e);
+        _globalHotkeyManager = new GlobalHotkeyManager(this);
+        foreach (var hotkey in _hotkies)
+        {
+            _globalHotkeyManager.RegisterHotkey(hotkey.Key, hotkey.Value.modifiers, hotkey.Value.key, hotkey.Value.callback);
+        }
+    }
+
+    private void OnHotkey1Pressed()
+    {
+        MessageBox.Show("Hotkey CTRL + SHIFT + A pressed!");
     }
 
     /// <summary>
@@ -56,4 +80,11 @@ public partial class MainWindow : Window
     private void UndoButton_Click(object sender, RoutedEventArgs e) => _strokeHistoryService.Undo();
 
     private void RedoButton_Click(object sender, RoutedEventArgs e) => _strokeHistoryService.Redo();
+
+
+    protected override void OnClosed(EventArgs e)
+    {
+        _globalHotkeyManager.Dispose(); // Clean up hotkey registrations
+        base.OnClosed(e);
+    }
 }
