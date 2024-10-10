@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
-using Microsoft.Extensions.DependencyInjection;
-using Riter.Core;
+using Riter.Core.Consts;
 
 namespace Riter.ViewModel;
 
@@ -14,7 +13,7 @@ public class PalleteState : INotifyPropertyChanged
 {
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
-    private string _buttonSelectedName = AppSettings.ButtonSelectedName;
+    private string _buttonSelectedName = ButtonNames.ButtonSelectedName;
     private bool _isHideAll = false;
     private bool _isSettingPanelOpened = true;
 
@@ -75,9 +74,9 @@ public class PalleteState : INotifyPropertyChanged
     /// Releases the ink based on the button pressed.
     /// </summary>
     /// <param name="buttonName">The name of the button pressed to release ink.</param>
-    public void Release(string buttonName)
+    public void Release()
     {
-        ButtonSelectedName = buttonName;
+        ButtonSelectedName = ButtonNames.ReleaseButton;
         IsReleased = true;
     }
 
@@ -85,16 +84,16 @@ public class PalleteState : INotifyPropertyChanged
     /// Starts drawing ink based on the button pressed.
     /// </summary>
     /// <param name="buttonName">The name of the button pressed to start drawing ink.</param>
-    public void StartDrawing(string buttonName)
+    public void StartDrawing()
     {
-        if (IsReleased is false && ButtonSelectedName == buttonName)
+        if (IsReleased is false && ButtonSelectedName == ButtonNames.DrawingButton)
         {
-            ButtonSelectedName = AppSettings.ButtonSelectedName;
+            ButtonSelectedName = ButtonNames.ButtonSelectedName;
             IsReleased = true;
         }
         else
         {
-            ButtonSelectedName = buttonName;
+            ButtonSelectedName = ButtonNames.DrawingButton;
             InkEditingMode = InkCanvasEditingMode.Ink;
             IsReleased = false;
         }
@@ -104,11 +103,11 @@ public class PalleteState : INotifyPropertyChanged
     /// Starts erasing based on the button pressed.
     /// </summary>
     /// <param name="buttonName">The name of the button pressed to start erasing.</param>
-    public void StartErasing(string buttonName)
+    public void StartErasing()
     {
         IsReleased = false;
         InkEditingMode = InkCanvasEditingMode.EraseByStroke;
-        ButtonSelectedName = buttonName;
+        ButtonSelectedName = ButtonNames.ErasingButton;
     }
 
     /// <summary>

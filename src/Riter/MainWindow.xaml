@@ -25,7 +25,7 @@
         <Canvas>
             <StackPanel  x:Name="MainPallete" Canvas.Top="130" Canvas.Left="130" Orientation="Vertical" VerticalAlignment="Center">
                 <local:ContextMenu Visibility="{Binding SettingPanelVisibility}" x:Name="SettingPanel">
-                    
+
                 </local:ContextMenu>
                 <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
@@ -61,7 +61,7 @@
                                             </Border>
                                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
                                                 <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                    <Button x:Name="DrawButton" ToolTip="Ink [Ctrl+1]" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingButtonCommand}" CommandParameter="DrawingButton">
+                                                    <Button x:Name="DrawButton" ToolTip="Ink [Ctrl+1]" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingButtonCommand}" >
                                                         <Button.Style>
                                                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                                 <Setter Property="Tag" Value="UnSelected"/>
@@ -111,7 +111,7 @@
                                                 CornerRadius="4"
                                                 HorizontalAlignment="Center"
                                                 VerticalAlignment="Center">
-                                                <Button ToolTip="Erase [E]" Command="{Binding ErasingButtonCommand}" CommandParameter="ErasingButton"  Content="{StaticResource Icon_Eraser}" >
+                                                <Button ToolTip="Erase [E]" Command="{Binding ErasingButtonCommand}"  Content="{StaticResource Icon_Eraser}" >
                                                     <Button.Style>
                                                         <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                             <Setter Property="Tag" Value="UnSelected"/>

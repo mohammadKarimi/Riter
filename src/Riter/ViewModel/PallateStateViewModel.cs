@@ -59,46 +59,14 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
         => OnPropertyChanged(e.PropertyName);
 
     /// <summary>
-    /// Releases the ink based on the button pressed.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed to release ink.</param>
-    private void ReleaseInk(string buttonName)
-        => _state.Release(buttonName);
-
-    /// <summary>
-    /// Starts drawing ink based on the button pressed.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed to start drawing ink.</param>
-    private void DrawingInk(string buttonName)
-        => _state.StartDrawing(buttonName);
-
-    /// <summary>
-    /// Starts erasing based on the button pressed.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed to start erasing.</param>
-    private void Erasing(string buttonName)
-        => _state.StartErasing(buttonName);
-
-    /// <summary>
     /// Open Github Project in Broswer.
     /// </summary>
     /// <param name="buttonName">The name of the button pressed.</param>
-    private void OpenGithubProject(string buttonName) => _ = Process.Start(new ProcessStartInfo
+    private void OpenGithubProject() => _ = Process.Start(new ProcessStartInfo
     {
         FileName = App.ServiceProvider.GetService<AppSettings>().GitHubProjectUrl,
         UseShellExecute = true,
     });
-
-    /// <summary>
-    /// Hide All Strokes in Main Ink.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed.</param>
-    private void HideAll(string buttonName) => _state.HideAll();
-
-    /// <summary>
-    /// Call Open Setting method of State.
-    /// </summary>
-    private void OpenSetting(string buttonName) => _state.OpenSetting();
 }
 
 /// <summary>
@@ -115,12 +83,12 @@ public partial class PalleteStateViewModel
         _state = palleteState;
         _state.PropertyChanged += OnStateChanged;
 
-        ReleasedButtonCommand = new RelayCommand<string>(ReleaseInk);
-        DrawingButtonCommand = new RelayCommand<string>(DrawingInk);
-        ErasingButtonCommand = new RelayCommand<string>(Erasing);
-        SourceCodeButtonCommand = new RelayCommand<string>(OpenGithubProject);
-        HideAllButtonCommand = new RelayCommand<string>(HideAll);
-        SettingButtonCommand = new RelayCommand<string>(OpenSetting);
+        ReleasedButtonCommand = new RelayCommand(_state.Release);
+        DrawingButtonCommand = new RelayCommand(_state.StartDrawing);
+        ErasingButtonCommand = new RelayCommand(_state.StartErasing);
+        SourceCodeButtonCommand = new RelayCommand(OpenGithubProject);
+        HideAllButtonCommand = new RelayCommand(_state.HideAll);
+        SettingButtonCommand = new RelayCommand(_state.OpenSetting);
     }
 
     /// <summary>
