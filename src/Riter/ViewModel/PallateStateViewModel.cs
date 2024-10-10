@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core;
+using Riter.Core.Interfaces;
+using Riter.Core.UI;
 
 namespace Riter.ViewModel;
 
@@ -12,6 +14,7 @@ namespace Riter.ViewModel;
 public partial class PalleteStateViewModel : INotifyPropertyChanged
 {
     private readonly PalleteState _state;
+    private readonly IStrokeHistoryService _strokeHistoryService;
 
     /// <summary>
     /// This event is for subscribing the UI on it to get any state changes.
@@ -67,6 +70,28 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
         FileName = App.ServiceProvider.GetService<AppSettings>().GitHubProjectUrl,
         UseShellExecute = true,
     });
+
+    /// <summary>
+    /// Reverts the last stroke action (undo) if possible.
+    /// Removes the last stroke from the history and applies the change.
+    /// </summary>
+    private void Undo() => _strokeHistoryService.Undo();
+
+    /// <summary>
+    /// Reapplies the last undone stroke action (redo) if possible.
+    /// Re-adds the previously undone stroke to the canvas.
+    /// </summary>
+    private void Redo() => _strokeHistoryService.Redo();
+
+    /// <summary>
+    /// Clear History and Clear Canvas Ink.
+    /// </summary>
+    private void Trash()
+    {
+       
+            _strokeHistoryService.Clear();
+            
+    }
 }
 
 /// <summary>
@@ -78,17 +103,22 @@ public partial class PalleteStateViewModel
     /// Initializes a new instance of the <see cref="PalleteStateViewModel"/> class.
     /// </summary>
     /// <param name="palleteState">The PalleteState model used to manage ink states.</param>
-    public PalleteStateViewModel(PalleteState palleteState)
+    /// <param name="strokeHistoryService">stroke History service for undo and redo.</param>
+    public PalleteStateViewModel(PalleteState palleteState, IStrokeHistoryService strokeHistoryService)
     {
         _state = palleteState;
         _state.PropertyChanged += OnStateChanged;
+        _strokeHistoryService = strokeHistoryService;
 
         ReleasedButtonCommand = new RelayCommand(_state.Release);
         DrawingButtonCommand = new RelayCommand(_state.StartDrawing);
         ErasingButtonCommand = new RelayCommand(_state.StartErasing);
         SourceCodeButtonCommand = new RelayCommand(OpenGithubProject);
+        UndoButtonCommand = new RelayCommand(Undo);
+        RedoButtonCommand = new RelayCommand(Redo);
         HideAllButtonCommand = new RelayCommand(_state.HideAll);
         SettingButtonCommand = new RelayCommand(_state.ToggleSettingsPanel);
+        TrashButtonCommand = new RelayCommand(Trash);
     }
 
     /// <summary>
@@ -120,4 +150,16 @@ public partial class PalleteStateViewModel
     /// Gets SettingButton.
     /// </summary>
     public ICommand SettingButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Gets Undo.
+    /// </summary>
+    public ICommand UndoButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Gets Redo.
+    /// </summary>
+    public ICommand RedoButtonCommand { get; private set; }
+
+    public ICommand TrashButtonCommand { get; private set; }
 }
