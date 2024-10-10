@@ -1,5 +1,5 @@
 ﻿using System.Windows.Interop;
-﻿using System.Windows.Ink;
+using System.Windows.Ink;
 using Riter.Core;
 using Riter.Core.Extensions;
 using Riter.Core.Interfaces;
@@ -13,8 +13,8 @@ namespace Riter;
 public partial class MainWindow : Window
 {
     private readonly Dictionary<int, (uint modifiers, uint key, Action callback)> _hotkies;
-    private GlobalHotkeyManager _globalHotkeyManager;
     private readonly IStrokeHistoryService _strokeHistoryService;
+    private GlobalHotkeyManager _globalHotkeyManager;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MainWindow"/> class.
@@ -34,11 +34,12 @@ public partial class MainWindow : Window
         DataContext = pallateStateViewModel;
         _strokeHistoryService = strokeHistoryService;
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
+        MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
+
         _hotkies = new Dictionary<int, (uint modifiers, uint key, Action callback)>
         {
-               { 9000, (GlobalHotkeyManager.CTRL | GlobalHotkeyManager.SHIFT, 0x41, OnHotkey1Pressed) }, // CTRL + SHIFT + A
+               { 9000, (GlobalHotkeyManager.CTRL | GlobalHotkeyManager.SHIFT, 0x41, OnHotkey1Pressed) },
         };
-        MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
 
         this.SetEventListeners()
             .EnableDragging(MainPallete)
@@ -89,7 +90,7 @@ public partial class MainWindow : Window
         {
             _strokeHistoryService.Push(StrokesHistoryNode.CreateRemovedType(e.Removed));
         }
-}
+    }
 
     protected override void OnClosed(EventArgs e)
     {

@@ -9,6 +9,12 @@ namespace Riter.Core;
 /// </summary>
 public partial class GlobalHotkeyManager : IDisposable
 {
+    [DllImport("user32.dll")]
+    private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+    [DllImport("user32.dll")]
+    private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
     public const uint CTRL = 0x0002;
     public const uint SHIFT = 0x0004;
     public const uint ALT = 0x0001;
@@ -18,12 +24,6 @@ public partial class GlobalHotkeyManager : IDisposable
     private readonly Dictionary<int, Action> _hotkeyActions = [];
 
     private bool _isHookAdded;
-
-    [DllImport("user32.dll")]
-    private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
-
-    [DllImport("user32.dll")]
-    private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
     /// <summary>
     /// Initializes a new instance of the <see cref="GlobalHotkeyManager"/> class for the specified WPF window.
@@ -70,36 +70,8 @@ public partial class GlobalHotkeyManager : IDisposable
         if (_hotkeyActions.ContainsKey(id))
         {
             UnregisterHotKey(_windowHandle, id);
-            _hotkeyActions.Remove(id); 
+            _hotkeyActions.Remove(id);
         }
-    }
-
-    /// <summary>
-    /// Processes window messages for registered hotkeys.
-    /// Invokes the associated callback action when a hotkey is pressed.
-    /// </summary>
-    /// <param name="hwnd">The handle to the window receiving the message.</param>
-    /// <param name="msg">The message identifier.</param>
-    /// <param name="wParam"> wParam Additional message information.</param>
-    /// <param name="lParam"> lParam Additional message information.</param>
-    /// <param name="handled">Indicates whether the message has been handled.</param>
-    /// <returns>The return value is zero if the message is handled.</returns>
-    private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-    {
-        const int WM_HOTKEY = 0x0312;
-
-        if (msg == WM_HOTKEY)
-        {
-            int id = wParam.ToInt32();
-
-            if (_hotkeyActions.ContainsKey(id))
-            {
-                _hotkeyActions[id]?.Invoke();  
-                handled = true;
-            }
-        }
-
-        return IntPtr.Zero;
     }
 
     /// <summary>
@@ -115,5 +87,33 @@ public partial class GlobalHotkeyManager : IDisposable
 
         _source.RemoveHook(HwndHook);
         _hotkeyActions.Clear();
+    }
+
+    /// <summary>
+    /// Processes window messages for registered hotkeys.
+    /// Invokes the associated callback action when a hotkey is pressed.
+    /// </summary>
+    /// <param name="hwnd">The handle to the window receiving the message.</param>
+    /// <param name="msg">The message identifier.</param>
+    /// <param name="wParam"> wParam Additional message information.</param>
+    /// <param name="lParam"> lParam Additional message information.</param>
+    /// <param name="handled">Indicates whether the message has been handled.</param>
+    /// <returns>The return value is zero if the message is handled.</returns>
+    private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+    {
+        const int wM_HOTKEY = 0x0312;
+
+        if (msg == wM_HOTKEY)
+        {
+            var id = wParam.ToInt32();
+
+            if (_hotkeyActions.TryGetValue(id, out var value))
+            {
+                value?.Invoke();
+                handled = true;
+            }
+        }
+
+        return IntPtr.Zero;
     }
 }
