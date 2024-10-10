@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
-using Microsoft.Extensions.DependencyInjection;
-using Riter.Core;
+using Riter.Core.Consts;
 
 namespace Riter.ViewModel;
 
@@ -14,9 +13,10 @@ public class PalleteState : INotifyPropertyChanged
 {
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
-    private string _buttonSelectedName = AppSettings.ButtonSelectedName;
+    private string _buttonSelectedName = ButtonNames.DefaultButtonSelectedName;
+    private string _previousButtonSelectedName = string.Empty;
     private bool _isHideAll = false;
-    private bool _isSettingPanelOpened = true;
+    private bool _isSettingPanelOpened = false;
 
     /// <summary>
     /// This event is for subscribing the PalleteViewModel for it to send these changes to UI.
@@ -65,19 +65,19 @@ public class PalleteState : INotifyPropertyChanged
     /// <summary>
     /// Gets a value indicating whether value for showing setting pannel.
     /// </summary>
-    public bool IsSettingPanelOpened
+    public bool SettingPanelVisibility
     {
         get => _isSettingPanelOpened;
-        private set => SetProperty(ref _isSettingPanelOpened, value, nameof(IsSettingPanelOpened));
+        private set => SetProperty(ref _isSettingPanelOpened, value, nameof(SettingPanelVisibility));
     }
 
     /// <summary>
     /// Releases the ink based on the button pressed.
     /// </summary>
     /// <param name="buttonName">The name of the button pressed to release ink.</param>
-    public void Release(string buttonName)
+    public void Release()
     {
-        ButtonSelectedName = buttonName;
+        ButtonSelectedName = ButtonNames.ReleaseButton;
         IsReleased = true;
     }
 
@@ -85,16 +85,15 @@ public class PalleteState : INotifyPropertyChanged
     /// Starts drawing ink based on the button pressed.
     /// </summary>
     /// <param name="buttonName">The name of the button pressed to start drawing ink.</param>
-    public void StartDrawing(string buttonName)
+    public void StartDrawing()
     {
-        if (IsReleased is false && ButtonSelectedName == buttonName)
+        if (IsReleased is false && ButtonSelectedName == ButtonNames.DrawingButton)
         {
-            ButtonSelectedName = AppSettings.ButtonSelectedName;
-            IsReleased = true;
+            ResetToDefault();
         }
         else
         {
-            ButtonSelectedName = buttonName;
+            ButtonSelectedName = ButtonNames.DrawingButton;
             InkEditingMode = InkCanvasEditingMode.Ink;
             IsReleased = false;
         }
@@ -104,11 +103,11 @@ public class PalleteState : INotifyPropertyChanged
     /// Starts erasing based on the button pressed.
     /// </summary>
     /// <param name="buttonName">The name of the button pressed to start erasing.</param>
-    public void StartErasing(string buttonName)
+    public void StartErasing()
     {
         IsReleased = false;
         InkEditingMode = InkCanvasEditingMode.EraseByStroke;
-        ButtonSelectedName = buttonName;
+        ButtonSelectedName = ButtonNames.ErasingButton;
     }
 
     /// <summary>
@@ -119,10 +118,18 @@ public class PalleteState : INotifyPropertyChanged
     /// <summary>
     /// Open Setting Panel.
     /// </summary>
-    public void OpenSetting()
+    public void ToggleSettingsPanel()
     {
-        IsSettingPanelOpened = !IsSettingPanelOpened;
-        ButtonSelectedName = "SettingButton";
+        if (SettingPanelVisibility && ButtonSelectedName == ButtonNames.SettingButton)
+        {
+            ResetPreviousButton();
+        }
+        else
+        {
+            StoreCurrentButton();
+            ButtonSelectedName = ButtonNames.SettingButton;
+            SettingPanelVisibility = true;
+        }
     }
 
     /// <summary>
@@ -156,5 +163,26 @@ public class PalleteState : INotifyPropertyChanged
         }
 
         return false;
+    }
+
+    private void ResetToDefault()
+    {
+        ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
+        IsReleased = true;
+    }
+
+    private void StoreCurrentButton()
+    {
+        if (string.IsNullOrEmpty(_previousButtonSelectedName))
+        {
+            _previousButtonSelectedName = ButtonSelectedName;
+        }
+    }
+
+    private void ResetPreviousButton()
+    {
+        ButtonSelectedName = _previousButtonSelectedName;
+        _previousButtonSelectedName = string.Empty;
+        SettingPanelVisibility = false;
     }
 }

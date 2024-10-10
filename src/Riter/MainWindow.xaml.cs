@@ -1,4 +1,6 @@
-﻿using Riter.Core.Extensions;
+﻿using System.Windows.Ink;
+using Riter.Core;
+using Riter.Core.Extensions;
 using Riter.Core.Interfaces;
 using Riter.ViewModel;
 
@@ -9,6 +11,8 @@ namespace Riter;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private readonly IStrokeHistoryService _strokeHistoryService;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="MainWindow"/> class.
     /// Sets up the UI, binds the <see cref="PalleteStateViewModel"/> to the DataContext,
@@ -27,6 +31,7 @@ public partial class MainWindow : Window
         DataContext = pallateStateViewModel;
         _strokeHistoryService = strokeHistoryService;
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
+        MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
 
         this.SetEventListeners()
             .EnableDragging(MainPallete)
@@ -35,25 +40,35 @@ public partial class MainWindow : Window
             .SetBrushSize();
     }
 
-    private IStrokeHistoryService _strokeHistoryService { get; }
-
     private void ShortcutKeyDown(object sender, KeyEventArgs e)
     {
 
     }
 
+
     /// <summary>
-    /// Clear History and Clear Canvas Ink.
+    /// Handles the StrokesChanged event when the user draws on the InkCanvas.
+    /// This method will be used to track and store stroke changes in a stack for history purposes.
     /// </summary>
-    /// <param name="sender">The source of the event, typically the Exit button.</param>
-    /// <param name="e">The event data associated with the button click.</param>
-    private void TrashButton_Click(object sender, EventArgs e)
+    /// <param name="sender">The source of the event.</param>
+    /// <param name="e">Contains the stroke collection that has changed.</param>
+    private void StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
     {
-        _strokeHistoryService.Clear();
-        MainInkCanvasControl.MainInkCanvas.Strokes.Clear();
+        if (_strokeHistoryService.IgnoreStrokesChange)
+        {
+            return;
+        }
+
+        if (e.Added.Count != 0)
+        {
+            _strokeHistoryService.Push(StrokesHistoryNode.CreateAddedType(e.Added));
+        }
+
+        if (e.Removed.Count != 0)
+        {
+            _strokeHistoryService.Push(StrokesHistoryNode.CreateRemovedType(e.Removed));
+        }
+
+        _strokeHistoryService.ClearRedoHistory();
     }
-
-    private void UndoButton_Click(object sender, RoutedEventArgs e) => _strokeHistoryService.Undo();
-
-    private void RedoButton_Click(object sender, RoutedEventArgs e) => _strokeHistoryService.Redo();
 }
