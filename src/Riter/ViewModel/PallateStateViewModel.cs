@@ -1,13 +1,7 @@
 ﻿using System.ComponentModel;
-
-using System.Diagnostics;
-using System.Globalization;
-
 using System.Windows.Controls;
 using Riter.Core;
 using Riter.Core.Interfaces;
-using Riter.Core.UI;
-using Riter.Services;
 
 namespace Riter.ViewModel;
 
