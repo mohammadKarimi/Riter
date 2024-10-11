@@ -19,6 +19,8 @@
 
 ## 📐 Riter - Modern screen drawing
 
+![image](https://github.com/user-attachments/assets/c17409e8-49c3-4d9a-8269-3a381a8a55df)
+
 <br/>
 The project is called "Riter," and it is a drawing application built using WPF (Windows Presentation Foundation). Here's a brief overview of the project:
 
