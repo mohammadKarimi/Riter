@@ -14,6 +14,11 @@ public class AppSettings
     public const string Section = nameof(AppSettings);
 
     /// <summary>
+    /// Gets or sets address of Project on Github.
+    /// </summary>
+    public const string GitHubProjectUrl = "https://github.com/mohammadKarimi/Riter";
+
+    /// <summary>
     /// Gets or sets brush size of Ink.
     /// </summary>
     public BrushSize BrushSize { get; set; }
@@ -27,9 +32,4 @@ public class AppSettings
     /// Gets or sets a value indicating whether topMost for application.
     /// </summary>
     public bool TopMost { get; set; }
-
-    /// <summary>
-    /// Gets or sets address of Project on Github.
-    /// </summary>
-    public string GitHubProjectUrl { get; set; }
 }
