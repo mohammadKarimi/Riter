@@ -41,8 +41,7 @@ public partial class MainWindow : Window
                { 9000, (GlobalHotkeyManager.CTRL | GlobalHotkeyManager.SHIFT, 0x41, OnHotkey1Pressed) },
         };
 
-        this.SetEventListeners()
-            .EnableDragging(MainPallete)
+        this.EnableDragging(MainPallete)
             .SetTopMost(true)
             .SetDefaultColor()
             .SetBrushSize();

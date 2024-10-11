@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Riter.Core.UI;
 
@@ -35,4 +36,22 @@ public partial class SettingPanel : UserControl
          FileName = AppSettings.MyTelegram,
          UseShellExecute = true,
      });
+
+    /// <summary>
+    /// Enable Blackboard.
+    /// </summary>
+    private void EnableBlackboard_Click(object sender, MouseButtonEventArgs e)
+     => ((MainWindow)Window.GetWindow(this)).MainInkCanvasControl.MainInkCanvas.Background = Application.Current.Resources["BlackBoard"] as Brush;
+
+    /// <summary>
+    /// Enable Whiteboard.
+    /// </summary>
+    private void EnableWhiteboard_Click(object sender, MouseButtonEventArgs e)
+    => ((MainWindow)Window.GetWindow(this)).MainInkCanvasControl.MainInkCanvas.Background = Application.Current.Resources["WhiteBoard"] as Brush;
+
+    /// <summary>
+    /// Enable Transparent.
+    /// </summary>
+    private void EnableTransparent_Click(object sender, MouseButtonEventArgs e)
+    => ((MainWindow)Window.GetWindow(this)).MainInkCanvasControl.MainInkCanvas.Background = Application.Current.Resources["Transparent"] as Brush;
 }

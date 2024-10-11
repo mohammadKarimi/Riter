@@ -8,11 +8,11 @@ namespace Riter.Core.UI;
 /// </summary>
 public partial class ToolBox : UserControl
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ToolBox"/> class.
+    /// </summary>
     public ToolBox()
     {
         InitializeComponent();
     }
-
-   
-
 }
