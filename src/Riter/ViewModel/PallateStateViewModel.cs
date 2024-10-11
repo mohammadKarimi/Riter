@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel;
+
 using System.Diagnostics;
 using System.Globalization;
+
 using System.Windows.Controls;
-using Microsoft.Extensions.DependencyInjection;
 using Riter.Core;
 using Riter.Core.Interfaces;
 using Riter.Core.UI;
@@ -84,16 +85,6 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
         => OnPropertyChanged(e.PropertyName);
 
     /// <summary>
-    /// Open Github Project in Broswer.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed.</param>
-    private void OpenGithubProject() => _ = Process.Start(new ProcessStartInfo
-    {
-        FileName = App.ServiceProvider.GetService<AppSettings>().GitHubProjectUrl,
-        UseShellExecute = true,
-    });
-
-    /// <summary>
     /// Reverts the last stroke action (undo) if possible.
     /// Removes the last stroke from the history and applies the change.
     /// </summary>
@@ -130,7 +121,6 @@ public partial class PalleteStateViewModel
         ReleasedButtonCommand = new RelayCommand(_state.Release);
         DrawingButtonCommand = new RelayCommand(_state.StartDrawing);
         ErasingButtonCommand = new RelayCommand(_state.StartErasing);
-        SourceCodeButtonCommand = new RelayCommand(OpenGithubProject);
         UndoButtonCommand = new RelayCommand(Undo);
         RedoButtonCommand = new RelayCommand(Redo);
         HideAllButtonCommand = new RelayCommand(_state.HideAll);
@@ -154,11 +144,6 @@ public partial class PalleteStateViewModel
     public ICommand ErasingButtonCommand { get; private set; }
 
     /// <summary>
-    /// Gets open Github Project in Broswer.
-    /// </summary>
-    public ICommand SourceCodeButtonCommand { get; private set; }
-
-    /// <summary>
     /// Gets HideAll Strokes in MainInk.
     /// </summary>
     public ICommand HideAllButtonCommand { get; private set; }
@@ -178,5 +163,8 @@ public partial class PalleteStateViewModel
     /// </summary>
     public ICommand RedoButtonCommand { get; private set; }
 
+    /// <summary>
+    /// Gets click on Trash button to clear strokes.
+    /// </summary>
     public ICommand TrashButtonCommand { get; private set; }
 }

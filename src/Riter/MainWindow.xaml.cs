@@ -42,8 +42,7 @@ public partial class MainWindow : Window
                 { HotKey.CTRL_H, (GlobalHotkeyManager.CTRL, 0x48, pallateStateViewModel.HandleHotkey) }, // CTRL + H
          };
 
-        this.SetEventListeners()
-            .EnableDragging(MainPallete)
+        this.EnableDragging(MainPallete)
             .SetTopMost(true)
             .SetDefaultColor()
             .SetBrushSize();
