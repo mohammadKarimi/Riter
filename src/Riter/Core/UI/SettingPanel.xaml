@@ -50,6 +50,60 @@
                 <TabItem Header="All">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Vertical">
+                            <Label Content="Other Tools" Opacity="0.5"/>
+                            <Grid Height="40" Margin="0,4,0,0">
+                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#F1F1F1" />
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
+                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
+                                            <Label Content="Enable Whiteboard" Padding="8,6,22,2" FontSize="12" />
+                                        </StackPanel>
+                                        <Label Grid.Column="1" Content="[ Ctrl + Shift + W ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <Grid Height="40" Margin="0,4,0,0">
+                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#F1F1F1" />
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
+                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_BlackBoard}" VerticalAlignment="Center" />
+                                            <Label Content="Enable Blackboard" Padding="8,6,22,2" FontSize="12" />
+                                        </StackPanel>
+                                        <Label Grid.Column="1" Content="[ Ctrl + Shift + B ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <Label Content="Contact Us" Opacity="0.5"/>
                             <Grid Height="40" Margin="0,4,0,0">
                                 <Border Padding="6,6" CornerRadius="6" BorderThickness="0" MouseLeftButtonDown="SourceCode_Click"> 
                                     <Border.Style>
@@ -76,7 +130,32 @@
                                     </Grid>
                                 </Border>
                             </Grid>
-                            <Label Content="Other Tools" Opacity="0.5"/>
+                            <Grid Height="40" Margin="0,4,0,0">
+                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0" MouseLeftButtonDown="Telegram_Click" >
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#F1F1F1" />
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
+                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_Telegram}" VerticalAlignment="Center" />
+                                            <Label Content="Contact Me" Padding="8,6,22,2" FontSize="12" />
+                                        </StackPanel>
+                                        <Label Grid.Column="1" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>

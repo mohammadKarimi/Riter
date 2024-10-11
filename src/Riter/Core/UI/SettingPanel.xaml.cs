@@ -25,4 +25,14 @@ public partial class SettingPanel : UserControl
          FileName = AppSettings.GitHubProjectUrl,
          UseShellExecute = true,
      });
+
+    /// <summary>
+    /// Gets open Tegram in Broswer.
+    /// </summary>
+    private void Telegram_Click(object sender, MouseButtonEventArgs e)
+     => _ = Process.Start(new ProcessStartInfo
+     {
+         FileName = AppSettings.MyTelegram,
+         UseShellExecute = true,
+     });
 }
