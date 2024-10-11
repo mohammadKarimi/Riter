@@ -43,7 +43,6 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// </summary>
     public Visibility SettingPanelVisibility => _state.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
-
     /// <summary>
     /// Decides which method to call based on the hotkey pressed.
     /// </summary>

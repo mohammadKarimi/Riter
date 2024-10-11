@@ -1,5 +1,4 @@
-﻿using System.Windows.Interop;
-using System.Windows.Ink;
+﻿using System.Windows.Ink;
 using Riter.Core;
 using Riter.Core.Extensions;
 using Riter.Core.Interfaces;
