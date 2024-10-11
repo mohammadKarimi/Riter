@@ -1,7 +1,13 @@
 ﻿using System.ComponentModel;
+
+using System.Diagnostics;
+using System.Globalization;
+
 using System.Windows.Controls;
 using Riter.Core;
 using Riter.Core.Interfaces;
+using Riter.Core.UI;
+using Riter.Services;
 
 namespace Riter.ViewModel;
 
@@ -42,6 +48,26 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// Gets a value indicating whether gets the value of IsHideAll props to show or hide the strokes.
     /// </summary>
     public Visibility SettingPanelVisibility => _state.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
+
+
+    /// <summary>
+    /// Decides which method to call based on the hotkey pressed.
+    /// </summary>
+    /// <param name="hotKey">The hotkey that was pressed.</param>
+    public void HandleHotkey(HotKey hotKey)
+    {
+        switch (hotKey)
+        {
+            case HotKey.CTRL_R:
+                _state.Release();
+                break;
+            case HotKey.CTRL_H:
+                _state.HideAll();
+                break;
+            default:
+                break;
+        }
+    }
 
     /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
