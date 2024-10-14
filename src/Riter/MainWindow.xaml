@@ -6,7 +6,7 @@
     x:Class="Riter.MainWindow"
     mc:Ignorable="d" ResizeMode="NoResize"
     UseLayoutRounding="True" 
-    WindowStartupLocation="CenterScreen"
+    WindowStartupLocation="CenterOwner"
     WindowState="Maximized"
     AllowsTransparency="True" 
     WindowStyle="None">
@@ -23,7 +23,7 @@
     <Grid x:Name="Layout">
         <local:MainInkCanvasControl DataContext="{Binding}" x:Name="MainInkCanvasControl" />
         <Canvas>
-            <StackPanel x:Name="MainPallete" Canvas.Top="130" Canvas.Left="130" Orientation="Vertical" VerticalAlignment="Center">
+            <StackPanel x:Name="MainPallete" Orientation="Vertical" VerticalAlignment="Center">
                 <local:SettingPanel DataContext="{Binding}" x:Name="SettingPanel" />
                 <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
