@@ -1,4 +1,5 @@
-﻿using System.Windows.Ink;
+﻿using System.Windows.Controls;
+using System.Windows.Ink;
 using Riter.Core;
 using Riter.Core.Extensions;
 using Riter.Core.Interfaces;
@@ -45,6 +46,8 @@ public partial class MainWindow : Window
             .SetTopMost(true)
             .SetDefaultColor()
             .SetBrushSize();
+
+        Loaded += MainWindow_Loaded;
     }
 
     /// <inheritdoc/>
@@ -87,5 +90,20 @@ public partial class MainWindow : Window
         {
             _strokeHistoryService.Push(StrokesHistoryNode.CreateRemovedType(e.Removed));
         }
+    }
+
+    /// <summary>
+    /// Load the window in bottom center of screen.
+    /// </summary>
+    /// <param name="e">Contains the data of routed event.</param>
+    private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+    {
+        var canvasWidth = Layout.ActualWidth;
+        var canvasHeight = Layout.ActualHeight;
+        var palleteWidth = MainPallete.ActualWidth;
+        var palleteHeight = MainPallete.ActualHeight;
+
+        Canvas.SetLeft(MainPallete, (canvasWidth - palleteWidth) / 2);
+        Canvas.SetTop(MainPallete, canvasHeight - palleteHeight - 75);
     }
 }
