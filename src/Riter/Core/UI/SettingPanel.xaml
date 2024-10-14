@@ -186,7 +186,16 @@
                     </ScrollViewer>
                 </TabItem>
 
-                <!-- Second Tab with custom header -->
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_PenSetting}" VerticalAlignment="Center" />
+                            <TextBlock Text="Stroke Options" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <TextBlock Text="Content of Tab 1" Margin="10"/>
+                </TabItem>
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
