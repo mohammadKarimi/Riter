@@ -4,16 +4,126 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="150"
-             Width="150" Height="150">
-    <Grid Margin="0,0,0,4">
-        <Border Padding="8,8" CornerRadius="12" Visibility="Visible" Background="Black" BorderBrush="#E5E5E5" BorderThickness="1">
-            <Border.Effect>
-                <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
-            </Border.Effect>
+             d:DesignHeight="260" d:DesignWidth="550">
+    <Grid Margin="0,12,0,4" Background="blue">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" Background="Yellow">
+                <Label Content="Select Your Scale" Opacity="0.5"/>
+                <Grid Margin="0,8,0,0" Background="Green">
+                    <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#F1F1F1" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Grid Background="red">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="1x" Padding="8,2,72,2" FontSize="12" />
+                            </StackPanel>
 
-            
-        </Border>
+                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
+
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Margin="0,8,0,0" Background="Green">
+                    <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#F1F1F1" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Grid Background="red">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="2x" Padding="8,2,72,2" FontSize="12" />
+                            </StackPanel>
+                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </Grid>
+                <Grid Margin="0,8,0,0" Background="Green">
+                    <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#F1F1F1" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Grid Background="red">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="3x" Padding="8,2,72,2" FontSize="12" />
+                            </StackPanel>
+
+                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
+
+                        </Grid>
+                    </Border>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="12,0,0,0">
+                <Label Content="Select Your Color" Opacity="0.5"/>
+                <Grid Margin="0,8,0,0" Background="Green">
+                    <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#F1F1F1" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Grid Background="red">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="1x" Padding="8,2,72,2" FontSize="12" />
+                            </StackPanel>
+
+                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
+
+                        </Grid>
+                    </Border>
+                </Grid>
+            </StackPanel>
+        </Grid>
     </Grid>
 
 </UserControl>
