@@ -5,15 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="260" d:DesignWidth="550">
-    <Grid Margin="0,12,0,4" Background="blue">
+    <Grid Margin="0,12,0,4" Background="White">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" Background="Yellow">
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="175" >
                 <Label Content="Select Your Scale" Opacity="0.5"/>
-                <Grid Margin="0,8,0,0" Background="Green">
+                <Grid Margin="0,8,0,0" >
                     <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
                         <Border.Style>
                             <Style TargetType="Border">
@@ -26,21 +26,21 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
-                        <Grid Background="red">
+                        <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Label Content="1x" Padding="8,2,72,2" FontSize="12" />
+                                <Label Content="1x" FontSize="12" />
                             </StackPanel>
 
-                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
+                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" HorizontalAlignment="Right" />
 
                         </Grid>
                     </Border>
                 </Grid>
-                <Grid Margin="0,8,0,0" Background="Green">
+                <Grid Margin="0,8,0,0">
                     <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
                         <Border.Style>
                             <Style TargetType="Border">
@@ -53,19 +53,19 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
-                        <Grid Background="red">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Label Content="2x" Padding="8,2,72,2" FontSize="12" />
+                                <Label Content="2x"  FontSize="12" />
                             </StackPanel>
-                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
+                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" HorizontalAlignment="Right" />
                         </Grid>
                     </Border>
                 </Grid>
-                <Grid Margin="0,8,0,0" Background="Green">
+                <Grid Margin="0,8,0,0">
                     <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
                         <Border.Style>
                             <Style TargetType="Border">
@@ -78,50 +78,67 @@
                                 </Style.Triggers>
                             </Style>
                         </Border.Style>
-                        <Grid Background="red">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Label Content="3x" Padding="8,2,72,2" FontSize="12" />
+                                <Label Content="3x" FontSize="12" />
                             </StackPanel>
 
-                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
+                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" HorizontalAlignment="Right" />
 
                         </Grid>
                     </Border>
                 </Grid>
             </StackPanel>
-            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="12,0,0,0">
-                <Label Content="Select Your Color" Opacity="0.5"/>
-                <Grid Margin="0,8,0,0" Background="Green">
-                    <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
-                        <Border.Style>
-                            <Style TargetType="Border">
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#F1F1F1" />
-                                        <Setter Property="Cursor" Value="Hand" />
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
-                        <Grid Background="red">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Label Content="1x" Padding="8,2,72,2" FontSize="12" />
-                            </StackPanel>
-
-                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
-
-                        </Grid>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="12,0,0,0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                    <Label Content="Select Your Color" Opacity="0.5"/>
+                    <Border Background="Green" Margin="0,8,0,0" Padding="6,6" CornerRadius="6" BorderThickness="0" Height="60" Width="60">
                     </Border>
-                </Grid>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,24,0,0">
+
+                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
+                        <Border Background="Green" Margin="0,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
+                        <Border Background="Green" Margin="0,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                        <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
