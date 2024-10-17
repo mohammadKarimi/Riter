@@ -11,7 +11,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="175" >
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="180" >
                 <Label Content="Select Your Scale" Opacity="0.5"/>
                 <Grid Margin="0,8,0,0" >
                     <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
@@ -35,7 +35,7 @@
                                 <Label Content="1x" FontSize="12" />
                             </StackPanel>
 
-                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" HorizontalAlignment="Right" />
+                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen1x}" HorizontalAlignment="Right" />
 
                         </Grid>
                     </Border>
@@ -61,7 +61,7 @@
                             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Label Content="2x"  FontSize="12" />
                             </StackPanel>
-                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" HorizontalAlignment="Right" />
+                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen2x}" HorizontalAlignment="Right" />
                         </Grid>
                     </Border>
                 </Grid>
@@ -87,7 +87,7 @@
                                 <Label Content="3x" FontSize="12" />
                             </StackPanel>
 
-                            <ContentControl Grid.Column="1" Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" HorizontalAlignment="Right" />
+                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen3x}" HorizontalAlignment="Right" />
 
                         </Grid>
                     </Border>
@@ -115,8 +115,6 @@
                             </Border>
                             <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
-                            </Border>
                         </StackPanel>
                         <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
                             <Border Background="Green" Margin="0,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
@@ -124,8 +122,6 @@
                             <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
 
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
-                            </Border>
                             <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
                             <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
