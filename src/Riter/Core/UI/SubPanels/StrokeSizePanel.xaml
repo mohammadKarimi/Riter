@@ -96,40 +96,41 @@
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="12,0,0,0">
                 <Label Content="Select Your Color" Opacity="0.5"/>
                 <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
-                    <Border HorizontalAlignment="Left" Background="Green" Margin="8,6,0,0" CornerRadius="6" BorderThickness="0" Height="60" Width="60">
+                    <Border HorizontalAlignment="Left" Background="#FFFF5656" Margin="8,6,0,0" CornerRadius="6" BorderThickness="0" Height="60" Width="60">
                     </Border>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="8,0,0,0">
 
                         <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-                            <Border Background="Green" Margin="0,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border BorderBrush="#EEEE" BorderThickness="1" Background="White" Margin="0,8,0,0" Padding="6,6" CornerRadius="12" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="#7853DE" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="#3BE1A9" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="#DFCF38" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="#D670C3" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="Yellow" BorderBrush="#DFCF38" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="1" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="#21124B" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
                         </StackPanel>
                         <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-                            <Border Background="Green" Margin="0,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="Black" Margin="0,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="#01C7FC" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            </Border>
+                            <Border Background="#FFB31B" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
 
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="#FF8C82" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="#FF552F" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
+                            <Border Background="#909090" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
-                            <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
-                            </Border>
+
                             <Border Background="Green" Margin="6,8,0,0" Padding="6,6" CornerRadius="12" BorderThickness="0" Height="24" Width="24">
                             </Border>
                         </StackPanel>
