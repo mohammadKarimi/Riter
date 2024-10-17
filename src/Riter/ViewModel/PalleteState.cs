@@ -17,6 +17,7 @@ public class PalleteState : INotifyPropertyChanged
     private string _previousButtonSelectedName = string.Empty;
     private bool _isHideAll = false;
     private bool _isSettingPanelOpened = false;
+    private string _inkColor;
 
     /// <summary>
     /// This event is for subscribing the PalleteViewModel for it to send these changes to UI.
@@ -33,6 +34,15 @@ public class PalleteState : INotifyPropertyChanged
         {
             InkEditingMode = _isReleased ? InkCanvasEditingMode.None : InkCanvasEditingMode.Ink;
         });
+    }
+
+    /// <summary>
+    /// Gets a value of InkColor.
+    /// </summary>
+    public string InkColor
+    {
+        get => _inkColor;
+        private set => SetProperty(ref _inkColor, value, nameof(InkColor));
     }
 
     /// <summary>
@@ -74,11 +84,19 @@ public class PalleteState : INotifyPropertyChanged
     /// <summary>
     /// Releases the ink based on the button pressed.
     /// </summary>
-    /// <param name="buttonName">The name of the button pressed to release ink.</param>
     public void Release()
     {
         ButtonSelectedName = ButtonNames.ReleaseButton;
         IsReleased = true;
+    }
+
+    /// <summary>
+    /// set InkColor from settings.
+    /// </summary>
+    /// <param name="color">The color user selected.</param>
+    public void SetInkColor(string color)
+    {
+       InkColor = color;
     }
 
     /// <summary>

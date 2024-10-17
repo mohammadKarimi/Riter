@@ -194,7 +194,8 @@
                             <TextBlock Text="Stroke Options" Margin="5,0,0,0"/>
                         </StackPanel>
                     </TabItem.Header>
-                    <local:StrokeSizePanel/>
+                    <local:StrokeSizePanel DataContext="{Binding}"/>
+                    
                 </TabItem>
                 <TabItem>
                     <TabItem.Header>

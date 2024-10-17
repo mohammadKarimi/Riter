@@ -119,6 +119,7 @@ public partial class PalleteStateViewModel
         HideAllButtonCommand = new RelayCommand(_state.HideAll);
         SettingButtonCommand = new RelayCommand(_state.ToggleSettingsPanel);
         TrashButtonCommand = new RelayCommand(Trash);
+        SetInkColorButtonCommand = new RelayCommand<string>(_state.SetInkColor);
     }
 
     /// <summary>
@@ -160,4 +161,9 @@ public partial class PalleteStateViewModel
     /// Gets click on Trash button to clear strokes.
     /// </summary>
     public ICommand TrashButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Gets click on color pallete buttons in setting pannel.
+    /// </summary>
+    public ICommand SetInkColorButtonCommand { get; private set; }
 }
