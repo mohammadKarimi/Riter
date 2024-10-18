@@ -96,7 +96,7 @@
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="12,0,0,0">
                 <Label Content="Select Your Color" Opacity="0.5"/>
                 <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
-                    <Border Tag="Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{Binding InkColor}" Margin="8,6,0,0" CornerRadius="6" Height="75" Width="75">
+                    <Border Tag="Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{Binding ColorSelected}" Margin="8,6,0,0" CornerRadius="6" Height="75" Width="75">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Style.Triggers>
@@ -164,7 +164,7 @@
                                 <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding SetInkColorButtonCommand}" CommandParameter="#FF8C82"/>
                             </Border>
 
-                            <Border Background="#FF552F" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Border Background="BlanchedAlmond" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
                                 <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding SetInkColorButtonCommand}" CommandParameter="#FF552F"/>
                             </Border>
 

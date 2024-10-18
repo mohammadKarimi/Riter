@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Ink;
+using System.Windows.Media;
 using Riter.Core;
 using Riter.Core.Interfaces;
 
@@ -26,7 +28,17 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Gets a value Of Ink Color which User selected.
     /// </summary>
-    public string InkColor => _state.InkColor;
+    public string ColorSelected => _state.InkColor;
+
+    /// <summary>
+    /// Gets a value Of Ink Color which User selected.
+    /// </summary>
+    public DrawingAttributes InkDrawingAttributes => new DrawingAttributes()
+    {
+        Color = (Color)ColorConverter.ConvertFromString(_state.InkColor),
+        Height = 5,
+        Width = 5
+    };
 
     /// <summary>
     /// Gets the current ink editing mode for the InkCanvas.

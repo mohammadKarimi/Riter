@@ -18,8 +18,8 @@ public static class WindowInkColor
     public static MainWindow SetDefaultColor(this MainWindow mainWindow)
     {
         var settings = App.ServiceProvider.GetService<AppSettings>();
-        var customColor = (Color)ColorConverter.ConvertFromString(settings.InkDefaultColor);
-        mainWindow.MainInkCanvasControl.MainInkCanvas.DefaultDrawingAttributes.Color = customColor;
+       // var customColor = (Color)ColorConverter.ConvertFromString(settings.InkDefaultColor);
+       // mainWindow.MainInkCanvasControl.MainInkCanvas.DefaultDrawingAttributes.Color = customColor;
         return mainWindow;
     }
 }

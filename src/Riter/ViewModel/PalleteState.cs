@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
+using Microsoft.Extensions.DependencyInjection;
+using Riter.Core;
 using Riter.Core.Consts;
 
 namespace Riter.ViewModel;
@@ -18,6 +20,17 @@ public class PalleteState : INotifyPropertyChanged
     private bool _isHideAll = false;
     private bool _isSettingPanelOpened = false;
     private string _inkColor;
+    private string _colorSelected;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="PalleteState"/> class.
+    /// </summary>
+    public PalleteState()
+    {
+        var settings = App.ServiceProvider.GetService<AppSettings>();
+        SetInkColor(settings.InkDefaultColor);
+    }
+
 
     /// <summary>
     /// This event is for subscribing the PalleteViewModel for it to send these changes to UI.
@@ -42,7 +55,16 @@ public class PalleteState : INotifyPropertyChanged
     public string InkColor
     {
         get => _inkColor;
-        private set => SetProperty(ref _inkColor, value, nameof(InkColor));
+        private set => SetProperty(ref _inkColor, value, "InkDrawingAttributes");
+    }
+
+    /// <summary>
+    /// Gets a value of InkColor.
+    /// </summary>
+    public string ColorSelected
+    {
+        get => _colorSelected;
+        private set => SetProperty(ref _colorSelected, value, nameof(ColorSelected));
     }
 
     /// <summary>
@@ -97,6 +119,7 @@ public class PalleteState : INotifyPropertyChanged
     public void SetInkColor(string color)
     {
         InkColor = color;
+        ColorSelected = color;
     }
 
     /// <summary>
