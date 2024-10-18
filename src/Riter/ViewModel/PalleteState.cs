@@ -96,7 +96,7 @@ public class PalleteState : INotifyPropertyChanged
     /// <param name="color">The color user selected.</param>
     public void SetInkColor(string color)
     {
-       InkColor = color;
+        InkColor = color;
     }
 
     /// <summary>

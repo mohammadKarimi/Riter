@@ -96,7 +96,7 @@
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="12,0,0,0">
                 <Label Content="Select Your Color" Opacity="0.5"/>
                 <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
-                    <Border Tag="Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFFF5656" Margin="8,6,0,0" CornerRadius="6" Height="75" Width="75">
+                    <Border Tag="Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{Binding InkColor}" Margin="8,6,0,0" CornerRadius="6" Height="75" Width="75">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Style.Triggers>
@@ -489,7 +489,7 @@ Opacity="0.5"/>
                             </Border>
                         </StackPanel>
                         <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-                            <Border Background="#FF8C82" Tag="Selected"  Margin="0,8,0,0" Padding="6,6" CornerRadius="16" Height="32" Width="32">
+                            <Border   Background="#FF8C82" Tag="Selected"  Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32">
                                 <Border.Style>
                                     <Style TargetType="Border">
                                         <Style.Triggers>
@@ -508,9 +508,7 @@ Opacity="0.5"/>
                                                 </Setter>
                                             </Trigger>
                                             <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Background" Value="#FFFACD"/>
                                                 <Setter Property="Cursor" Value="Hand"/>
-                                                <Setter Property="BorderBrush" Value="#EEE"/>
                                                 <Setter Property="BorderThickness" Value="1.3"/>
                                                 <Setter Property="Effect">
                                                     <Setter.Value>
@@ -525,11 +523,35 @@ Opacity="0.5"/>
                                     </Style>
                                 </Border.Style>
                                 <Button Command="{Binding SetInkColorButtonCommand}" 
-                                        CommandParameter="#FF8C82" Width="32"
-                                        Height="32"
-                                        Background="{x:Null}" 
-                                        BorderThickness="0"
-                                        Focusable="False"/>     
+            CommandParameter="#FF8C82"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+            Width="32"
+            Height="32"
+            Background="Transparent"
+            BorderThickness="0"
+            Focusable="False">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="BorderBrush" Value="Transparent"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                            <Setter Property="Focusable" Value="False"/>
+                                            <!-- Make sure hover does not affect the button's appearance -->
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                    <Setter Property="BorderBrush" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
                             </Border>
                             <Border Background="#FF552F" Tag="Selected"  Margin="8,8,0,0" Padding="6,6" CornerRadius="16" Height="32" Width="32">
                                 <Border.Style>

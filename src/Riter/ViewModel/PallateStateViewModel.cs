@@ -24,6 +24,11 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     public bool IsReleased => _state.IsReleased;
 
     /// <summary>
+    /// Gets a value Of Ink Color which User selected.
+    /// </summary>
+    public string InkColor => _state.InkColor;
+
+    /// <summary>
     /// Gets the current ink editing mode for the InkCanvas.
     /// </summary>
     public InkCanvasEditingMode InkEditingMode => _state.InkEditingMode;
