@@ -15,7 +15,7 @@ public class PalleteState : INotifyPropertyChanged
 {
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
-    private string _buttonSelectedName = ButtonNames.DefaultButtonSelectedName;
+    private string _buttonSelectedName;
     private string _previousButtonSelectedName = string.Empty;
     private bool _isHideAll = false;
     private bool _isSettingPanelOpened = false;
@@ -29,6 +29,7 @@ public class PalleteState : INotifyPropertyChanged
     {
         var settings = App.ServiceProvider.GetService<AppSettings>();
         SetInkColor(settings.InkDefaultColor);
+        ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
     }
 
 
@@ -120,6 +121,7 @@ public class PalleteState : INotifyPropertyChanged
     {
         InkColor = color;
         ColorSelected = color;
+        ResetPreviousButton();
     }
 
     /// <summary>
@@ -137,6 +139,7 @@ public class PalleteState : INotifyPropertyChanged
             ButtonSelectedName = ButtonNames.DrawingButton;
             InkEditingMode = InkCanvasEditingMode.Ink;
             IsReleased = false;
+            SettingPanelVisibility = false;
         }
     }
 
@@ -210,6 +213,7 @@ public class PalleteState : INotifyPropertyChanged
     {
         ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
         IsReleased = true;
+        SettingPanelVisibility = false;
     }
 
     private void StoreCurrentButton()
