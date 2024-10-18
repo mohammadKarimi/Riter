@@ -96,17 +96,16 @@
                             </StackPanel>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#FFF"/>
                                     <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
                                     <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#317BF4" />
-                                    <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="1.1" />
+                                    <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="1.2" />
                                 </Trigger>
 
                                 <Trigger Property="Tag" Value="Selected">
                                     <Setter TargetName="ButtonBorder" Property="Background" Value="#FFF"/>
                                     <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
                                     <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#317BF4" />
-                                    <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="1.1" />
+                                    <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="1.2" />
 
                                     <Setter TargetName="ButtonBorder" Property="Effect">
                                         <Setter.Value>
@@ -122,6 +121,79 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+            <Style x:Key="ButtonColorStyle" TargetType="Button">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Border x:Name="ButtonBorder"
+                 Width="32" Height="32" CornerRadius="4"
+                 HorizontalAlignment="Center" VerticalAlignment="Center"
+                 Background="{TemplateBinding Background}">
+                                    <ContentControl Content="{TemplateBinding Content}" />
+                                </Border>
+                            </StackPanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
+                                </Trigger>
+
+                                <Trigger Property="Tag" Value="Selected">
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#FFF"/>
+                                    <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
+                                    <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#317BF4" />
+                                    <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="1.2" />
+
+                                    <Setter TargetName="ButtonBorder" Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#317BF4" 
+                                             BlurRadius="10" 
+                                             ShadowDepth="1" 
+                                             Opacity="0.3" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ColorPallateStyle" TargetType="Border">
+                <Style.Triggers>
+                    <Trigger Property="Tag" Value="Selected">
+                        <Setter Property="Background" Value="#FFF"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="BorderBrush" Value="#21124B"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="#317BF4"
+                                          BlurRadius="10"
+                                          ShadowDepth="1"
+                                          Opacity="0.3"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#FFFACD"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="BorderBrush" Value="#EEE"/>
+                        <Setter Property="BorderThickness" Value="1.3"/>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="#EEE"
+                                          BlurRadius="8"
+                                          ShadowDepth="1"
+                                          Opacity="0.5"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </Style.Triggers>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

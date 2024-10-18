@@ -30,6 +30,7 @@
                         MinWidth="0">
                     <local:ToolBox x:Name="ToolBox" DataContext="{Binding}"/>
                     <local:WindowControl x:Name="WindowControl"/>
+                    
                 </StackPanel>
             </StackPanel>
 
