@@ -9,7 +9,7 @@
                    MoveEnabled="False"
                    ResizeEnabled="False"
                    Cursor="Pen"
-                   Margin="0,0,0,-0.333">
+                   DefaultDrawingAttributes="{Binding InkDrawingAttributes}">
             <InkCanvas.Style>
                 <Style TargetType="InkCanvas">
                     <Style.Triggers>
@@ -24,13 +24,14 @@
                     </Style.Triggers>
                 </Style>
             </InkCanvas.Style>
-            <InkCanvas.DefaultDrawingAttributes>
+            <!--<InkCanvas.DefaultDrawingAttributes>
                 <DrawingAttributes FitToCurve="True"
                                    IgnorePressure="False"
                                    IsHighlighter="False"
                                    StylusTip="Ellipse"
+                                   Color="{Binding InkColor}"
                                    StylusTipTransform="Identity"/>
-            </InkCanvas.DefaultDrawingAttributes>
+            </InkCanvas.DefaultDrawingAttributes>-->
         </InkCanvas>
     </Grid>
 </UserControl>

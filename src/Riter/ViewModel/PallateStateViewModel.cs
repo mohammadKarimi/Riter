@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Ink;
+using System.Windows.Media;
 using Riter.Core;
 using Riter.Core.Interfaces;
 
@@ -22,6 +24,21 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// Gets a value indicating whether the ink has been released.
     /// </summary>
     public bool IsReleased => _state.IsReleased;
+
+    /// <summary>
+    /// Gets a value Of Ink Color which User selected.
+    /// </summary>
+    public string ColorSelected => _state.InkColor;
+
+    /// <summary>
+    /// Gets a value Of Ink Color which User selected.
+    /// </summary>
+    public DrawingAttributes InkDrawingAttributes => new DrawingAttributes()
+    {
+        Color = (Color)ColorConverter.ConvertFromString(_state.InkColor),
+        Height = 5,
+        Width = 5
+    };
 
     /// <summary>
     /// Gets the current ink editing mode for the InkCanvas.
@@ -119,6 +136,7 @@ public partial class PalleteStateViewModel
         HideAllButtonCommand = new RelayCommand(_state.HideAll);
         SettingButtonCommand = new RelayCommand(_state.ToggleSettingsPanel);
         TrashButtonCommand = new RelayCommand(Trash);
+        SetInkColorButtonCommand = new RelayCommand<string>(_state.SetInkColor);
     }
 
     /// <summary>
@@ -160,4 +178,9 @@ public partial class PalleteStateViewModel
     /// Gets click on Trash button to clear strokes.
     /// </summary>
     public ICommand TrashButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Gets click on color pallete buttons in setting pannel.
+    /// </summary>
+    public ICommand SetInkColorButtonCommand { get; private set; }
 }
