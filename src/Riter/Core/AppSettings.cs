@@ -14,6 +14,11 @@ public class AppSettings
     public const string Section = nameof(AppSettings);
 
     /// <summary>
+    ///  Gets or sets ink Defaulr Color for Drawing.
+    /// </summary>
+    public const string InkDefaultColor = "#FFFF5656";
+
+    /// <summary>
     /// Gets address of Project on Github.
     /// </summary>
     public const string GitHubProjectUrl = "https://github.com/mohammadKarimi/Riter";
@@ -27,11 +32,6 @@ public class AppSettings
     /// Gets or sets brush size of Ink.
     /// </summary>
     public BrushSize BrushSize { get; set; }
-
-    /// <summary>
-    ///  Gets or sets ink Defaulr Color for Drawing.
-    /// </summary>
-    public string InkDefaultColor { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether topMost for application.

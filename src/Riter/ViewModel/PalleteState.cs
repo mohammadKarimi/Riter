@@ -27,11 +27,9 @@ public class PalleteState : INotifyPropertyChanged
     /// </summary>
     public PalleteState()
     {
-        var settings = App.ServiceProvider.GetService<AppSettings>();
-        SetInkColor(settings.InkDefaultColor);
+        SetInkColor(AppSettings.InkDefaultColor);
         ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
     }
-
 
     /// <summary>
     /// This event is for subscribing the PalleteViewModel for it to send these changes to UI.
