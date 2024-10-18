@@ -165,7 +165,7 @@
                             </Border>
 
                             <Border Background="BlanchedAlmond" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding SetInkColorButtonCommand}" CommandParameter="#FF552F"/>
+                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding SetInkColorButtonCommand}" CommandParameter="BlanchedAlmond"/>
                             </Border>
 
                             <Border Background="#909090" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
