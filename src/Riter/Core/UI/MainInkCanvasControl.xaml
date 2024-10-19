@@ -1,7 +1,9 @@
 ﻿<!-- MainInkCanvasControl.xaml -->
 <UserControl x:Class="Riter.Core.UI.MainInkCanvasControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             KeyDown="Window_KeyDown"
+             KeyUp="Window_KeyUp">
     <Grid>
         <InkCanvas x:Name="MainInkCanvas"
                    EditingMode="{Binding InkEditingMode}"
