@@ -2,6 +2,7 @@
 using System.Windows.Ink;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core.Interfaces;
+using Riter.ViewModel;
 
 namespace Riter.Core.UI;
 
@@ -11,6 +12,7 @@ namespace Riter.Core.UI;
 public partial class MainInkCanvasControl : UserControl
 {
     private readonly IStrokeHistoryService _strokeHistoryService;
+    private readonly PalleteState _palleteState;
     private readonly bool _lineMode = false;
     private bool _isMoving = false;
     private Point _startPoint;
@@ -26,11 +28,12 @@ public partial class MainInkCanvasControl : UserControl
         MainInkCanvas.MouseLeftButtonUp += EndLine;
         MainInkCanvas.MouseMove += MakeLine;
         _strokeHistoryService = App.ServiceProvider.GetService<IStrokeHistoryService>();
+        _palleteState = App.ServiceProvider.GetService<PalleteState>();
     }
 
     private void Window_KeyDown(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
+        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _palleteState.InkEditingMode == InkCanvasEditingMode.Ink)
         {
             LineMode();
         }
@@ -38,7 +41,7 @@ public partial class MainInkCanvasControl : UserControl
 
     private void Window_KeyUp(object sender, KeyEventArgs e)
     {
-        if (e.Key == Key.LeftShift || e.Key == Key.RightShift)
+        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _palleteState.InkEditingMode == InkCanvasEditingMode.None)
         {
             StrokeMode();
         }
@@ -46,13 +49,13 @@ public partial class MainInkCanvasControl : UserControl
 
     private void LineMode()
     {
-        MainInkCanvas.EditingMode = InkCanvasEditingMode.None;
+        _palleteState.SetInkCanvasEditingMode(InkCanvasEditingMode.None);
         MainInkCanvas.UseCustomCursor = true;
     }
 
     private void StrokeMode()
     {
-        MainInkCanvas.EditingMode = InkCanvasEditingMode.Ink;
+        _palleteState.SetInkCanvasEditingMode(InkCanvasEditingMode.Ink);
         MainInkCanvas.UseCustomCursor = false;
     }
 
