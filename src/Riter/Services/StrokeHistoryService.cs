@@ -13,9 +13,13 @@ public class StrokeHistoryService : IStrokeHistoryService
     private bool _ignoreStrokesChange;
 
     /// <summary>
-    /// Gets a value indicating whether return ignore strokeChnage backing field.
+    /// Gets or sets a value indicating whether return ignore strokeChnage backing field.
     /// </summary>
-    public bool IgnoreStrokesChange => _ignoreStrokesChange;
+    public bool IgnoreStrokesChange
+    {
+        get => _ignoreStrokesChange;
+        set => _ignoreStrokesChange = value;
+    }
 
     private InkCanvas InkCanvas { get; set; }
 

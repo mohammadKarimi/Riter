@@ -81,6 +81,7 @@ public partial class MainWindow : Window
 
         if (e.Added.Count != 0)
         {
+            Console.WriteLine(e.ToString());
             _strokeHistoryService.Push(StrokesHistoryNode.CreateAddedType(e.Added));
         }
 
