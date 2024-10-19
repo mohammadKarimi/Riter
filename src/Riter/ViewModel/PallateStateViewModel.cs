@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Media;
 using Riter.Core;
+using Riter.Core.Enum;
 using Riter.Core.Interfaces;
 
 namespace Riter.ViewModel;
@@ -33,12 +34,17 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Gets a value Of Ink Color which User selected.
     /// </summary>
-    public DrawingAttributes InkDrawingAttributes => new DrawingAttributes()
+    public DrawingAttributes InkDrawingAttributes => new()
     {
         Color = (Color)ColorConverter.ConvertFromString(_state.InkColor),
-        Height = 5,
-        Width = 5
+        Height = _state.SizeOfBrush,
+        Width = _state.SizeOfBrush,
     };
+
+    /// <summary>
+    /// Gets a value Of Ink Color which User selected.
+    /// </summary>
+    public double SizeOfBrush => _state.SizeOfBrush;
 
     /// <summary>
     /// Gets the current ink editing mode for the InkCanvas.
@@ -137,6 +143,7 @@ public partial class PalleteStateViewModel
         SettingButtonCommand = new RelayCommand(_state.ToggleSettingsPanel);
         TrashButtonCommand = new RelayCommand(Trash);
         SetInkColorButtonCommand = new RelayCommand<string>(_state.SetInkColor);
+        SetSizeOfBrushCommand = new RelayCommand<string>(_state.SetSizeOfBrush);
     }
 
     /// <summary>
@@ -183,4 +190,9 @@ public partial class PalleteStateViewModel
     /// Gets click on color pallete buttons in setting pannel.
     /// </summary>
     public ICommand SetInkColorButtonCommand { get; private set; }
+
+    /// <summary>
+    /// Gets click on brush size buttons in setting pannel.
+    /// </summary>
+    public ICommand SetSizeOfBrushCommand { get; private set; }
 }

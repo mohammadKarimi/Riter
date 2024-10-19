@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core;
 using Riter.Core.Consts;
+using Riter.Core.Enum;
 
 namespace Riter.ViewModel;
 
@@ -15,22 +16,23 @@ public class PalleteState : INotifyPropertyChanged
 {
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
-    private string _buttonSelectedName = ButtonNames.DefaultButtonSelectedName;
+    private string _buttonSelectedName;
     private string _previousButtonSelectedName = string.Empty;
     private bool _isHideAll = false;
     private bool _isSettingPanelOpened = false;
     private string _inkColor;
     private string _colorSelected;
+    private double _sizeOfBrush;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PalleteState"/> class.
     /// </summary>
     public PalleteState()
     {
-        var settings = App.ServiceProvider.GetService<AppSettings>();
-        SetInkColor(settings.InkDefaultColor);
+        SetInkColor(AppSettings.InkDefaultColor);
+        ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
+        SizeOfBrush = AppSettings.BrushSize;
     }
-
 
     /// <summary>
     /// This event is for subscribing the PalleteViewModel for it to send these changes to UI.
@@ -56,6 +58,18 @@ public class PalleteState : INotifyPropertyChanged
     {
         get => _inkColor;
         private set => SetProperty(ref _inkColor, value, "InkDrawingAttributes");
+    }
+
+    /// <summary>
+    /// Gets a value of Size.
+    /// </summary>
+    public double SizeOfBrush
+    {
+        get => _sizeOfBrush;
+        private set => SetProperty(ref _sizeOfBrush, value, nameof(SizeOfBrush), () =>
+        {
+            OnPropertyChanged("InkDrawingAttributes");
+        });
     }
 
     /// <summary>
@@ -120,6 +134,7 @@ public class PalleteState : INotifyPropertyChanged
     {
         InkColor = color;
         ColorSelected = color;
+        ResetPreviousButton();
     }
 
     /// <summary>
@@ -137,6 +152,7 @@ public class PalleteState : INotifyPropertyChanged
             ButtonSelectedName = ButtonNames.DrawingButton;
             InkEditingMode = InkCanvasEditingMode.Ink;
             IsReleased = false;
+            SettingPanelVisibility = false;
         }
     }
 
@@ -171,6 +187,16 @@ public class PalleteState : INotifyPropertyChanged
             ButtonSelectedName = ButtonNames.SettingButton;
             SettingPanelVisibility = true;
         }
+    }
+
+    /// <summary>
+    /// Set Size of brush from settins.
+    /// </summary>
+    /// <param name="size">type of brush size enum.</param>
+    public void SetSizeOfBrush(string size)
+    {
+        SizeOfBrush = double.Parse(size);
+        ResetPreviousButton();
     }
 
     /// <summary>
@@ -210,6 +236,7 @@ public class PalleteState : INotifyPropertyChanged
     {
         ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
         IsReleased = true;
+        SettingPanelVisibility = false;
     }
 
     private void StoreCurrentButton()

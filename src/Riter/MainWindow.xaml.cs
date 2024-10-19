@@ -43,9 +43,7 @@ public partial class MainWindow : Window
          };
 
         this.EnableDragging(MainPallete)
-            .SetTopMost(true)
-            .SetDefaultColor()
-            .SetBrushSize();
+            .SetTopMost(true);
 
         Loaded += MainWindow_Loaded;
     }

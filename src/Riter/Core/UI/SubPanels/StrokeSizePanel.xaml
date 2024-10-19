@@ -13,34 +13,164 @@
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="180" >
                 <Label Content="Select Your Scale" Opacity="0.5"/>
-                <Grid Margin="0,8,0,0" >
-                    <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
-                        <Border.Style>
-                            <Style TargetType="Border">
+
+                <Grid Margin="0,8,0,0">
+                    <Button Padding="6,6" Command="{Binding SetSizeOfBrushCommand}" CommandParameter="5" >
+                        <Button.Style>
+                            <Style TargetType="Button">
                                 <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding SizeOfBrush}" Value="5">
+                                                                <Setter Property="Cursor" Value="Hand"/>
+                                                                <Setter Property="BorderBrush" Value="#317BF4" />
+                                                                <Setter Property="BorderThickness" Value="1.2" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                                
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Background" Value="#F1F1F1" />
                                         <Setter Property="Cursor" Value="Hand" />
                                     </Trigger>
+                                   
                                 </Style.Triggers>
                             </Style>
-                        </Border.Style>
-                        <Grid >
+                        </Button.Style>
+
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
+
                             <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Label Content="1x" FontSize="12" />
                             </StackPanel>
 
                             <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen1x}" HorizontalAlignment="Right" />
-
                         </Grid>
-                    </Border>
+                    </Button>
                 </Grid>
                 <Grid Margin="0,8,0,0">
+                    <Button Padding="6,6" Command="{Binding SetSizeOfBrushCommand}" CommandParameter="8" >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding SizeOfBrush}" Value="8">
+                                                                <Setter Property="Cursor" Value="Hand"/>
+                                                                <Setter Property="BorderBrush" Value="#317BF4" />
+                                                                <Setter Property="BorderThickness" Value="1.2" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#F1F1F1" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                    </Trigger>
+
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="2x" FontSize="12" />
+                            </StackPanel>
+
+                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen2x}" HorizontalAlignment="Right" />
+                        </Grid>
+                    </Button>
+                </Grid>
+                <Grid Margin="0,8,0,0">
+                    <Button Padding="6,6" Command="{Binding SetSizeOfBrushCommand}" CommandParameter="13" >
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding SizeOfBrush}" Value="13">
+                                                                <Setter Property="Cursor" Value="Hand"/>
+                                                                <Setter Property="BorderBrush" Value="#317BF4" />
+                                                                <Setter Property="BorderThickness" Value="1.2" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#F1F1F1" />
+                                        <Setter Property="Cursor" Value="Hand" />
+                                    </Trigger>
+
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                                <Label Content="3x" FontSize="12" />
+                            </StackPanel>
+
+                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen3x}" HorizontalAlignment="Right" />
+                        </Grid>
+                    </Button>
+                </Grid>
+                <!--<Grid Margin="0,8,0,0">
                     <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
                         <Border.Style>
                             <Style TargetType="Border">
@@ -91,7 +221,7 @@
 
                         </Grid>
                     </Border>
-                </Grid>
+                </Grid>-->
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="12,0,0,0">
                 <Label Content="Select Your Color" Opacity="0.5"/>
