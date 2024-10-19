@@ -167,6 +167,8 @@ public class PalleteState : INotifyPropertyChanged
         ButtonSelectedName = ButtonNames.ErasingButton;
     }
 
+    public void SetInkCanvasEditingMode(InkCanvasEditingMode inkCanvasEditing) => InkEditingMode = inkCanvasEditing;
+
     /// <summary>
     /// Hide All Strokes in Main Ink.
     /// </summary>
