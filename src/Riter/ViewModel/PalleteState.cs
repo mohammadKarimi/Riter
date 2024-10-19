@@ -193,7 +193,11 @@ public class PalleteState : INotifyPropertyChanged
     /// Set Size of brush from settins.
     /// </summary>
     /// <param name="size">type of brush size enum.</param>
-    public void SetSizeOfBrush(string size) => SizeOfBrush = double.Parse(size);
+    public void SetSizeOfBrush(string size)
+    {
+        SizeOfBrush = double.Parse(size);
+        ResetPreviousButton();
+    }
 
     /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
