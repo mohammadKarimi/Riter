@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core;
 using Riter.Core.Consts;
+using Riter.Core.Enum;
 
 namespace Riter.ViewModel;
 
@@ -21,6 +22,7 @@ public class PalleteState : INotifyPropertyChanged
     private bool _isSettingPanelOpened = false;
     private string _inkColor;
     private string _colorSelected;
+    private double _sizeOfBrush;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PalleteState"/> class.
@@ -29,6 +31,7 @@ public class PalleteState : INotifyPropertyChanged
     {
         SetInkColor(AppSettings.InkDefaultColor);
         ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
+        SizeOfBrush = AppSettings.BrushSize;
     }
 
     /// <summary>
@@ -55,6 +58,18 @@ public class PalleteState : INotifyPropertyChanged
     {
         get => _inkColor;
         private set => SetProperty(ref _inkColor, value, "InkDrawingAttributes");
+    }
+
+    /// <summary>
+    /// Gets a value of Size.
+    /// </summary>
+    public double SizeOfBrush
+    {
+        get => _sizeOfBrush;
+        private set => SetProperty(ref _sizeOfBrush, value, nameof(SizeOfBrush), () =>
+        {
+            OnPropertyChanged("InkDrawingAttributes");
+        });
     }
 
     /// <summary>
@@ -173,6 +188,12 @@ public class PalleteState : INotifyPropertyChanged
             SettingPanelVisibility = true;
         }
     }
+
+    /// <summary>
+    /// Set Size of brush from settins.
+    /// </summary>
+    /// <param name="size">type of brush size enum.</param>
+    public void SetSizeOfBrush(string size) => SizeOfBrush = double.Parse(size);
 
     /// <summary>
     /// Raises the PropertyChanged event when a property value changes.
