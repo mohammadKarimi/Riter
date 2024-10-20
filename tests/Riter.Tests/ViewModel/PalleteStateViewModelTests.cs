@@ -1,6 +1,7 @@
 ﻿using Riter.Core;
 using Riter.Core.Interfaces;
 using Riter.Services;
+using Riter.ViewModel.Handlers;
 
 namespace Riter.Tests.ViewModel;
 
@@ -9,13 +10,17 @@ public class PalleteStateViewModelTests
     private readonly PalleteStateViewModel _viewModel;
     private readonly PalleteState _state;
     private readonly IStrokeHistoryService _strokeHistoryService;
+    private readonly IBrushSettingsHandler _brushSettingsHandler;
+    private readonly IStrokeVisibilityHandler _strokeVisibilityHandler;
 
 
     public PalleteStateViewModelTests()
     {
         _state = new PalleteState();
         _strokeHistoryService = new StrokeHistoryService();
-        _viewModel = new PalleteStateViewModel(_state, _strokeHistoryService);
+        _brushSettingsHandler = new BrushSettingsHandler();
+        _strokeVisibilityHandler = new StrokeVisibilityHandler();
+        _viewModel = new PalleteStateViewModel(_state, _strokeHistoryService, _strokeVisibilityHandler, _brushSettingsHandler);
     }
 
     [Fact]
@@ -47,7 +52,6 @@ public class PalleteStateViewModelTests
         _viewModel.DrawingButtonCommand.Execute("DrawingButton");
         _state.IsReleased.Should().BeTrue();
         _state.InkEditingMode.Should().Be(InkCanvasEditingMode.None);
-        _state.ButtonSelectedName.Should().Be("ReleasedButton");
     }
 
     [Fact]

@@ -6,6 +6,7 @@ using Riter.Core;
 using Riter.Core.Interfaces;
 using Riter.Services;
 using Riter.ViewModel;
+using Riter.ViewModel.Handlers;
 
 namespace Riter;
 
@@ -53,6 +54,8 @@ public partial class App : Application
 
     private static void ConfigureServices(ServiceCollection serviceCollection)
     {
+        serviceCollection.AddSingleton<IBrushSettingsHandler, BrushSettingsHandler>();
+        serviceCollection.AddSingleton<IStrokeVisibilityHandler, StrokeVisibilityHandler>();
         serviceCollection.AddSingleton<IStrokeHistoryService, StrokeHistoryService>();
         serviceCollection.AddSingleton<PalleteState>();
         serviceCollection.AddSingleton<PalleteStateViewModel>();

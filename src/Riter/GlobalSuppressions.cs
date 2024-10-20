@@ -12,3 +12,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("StyleCop.CSharp.SpacingRules", "SA1000:Keywords should be spaced correctly", Justification = "Pending")]
 [assembly: SuppressMessage("StyleCop.CSharp.NamingRules", "SA1300:Element should begin with upper-case letter", Justification = "Pending")]
 [assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Pending", Scope = "member", Target = "~P:Riter.MainWindow._strokeHistoryService")]
+[assembly: SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:Elements should be documented", Justification = "Pending")]

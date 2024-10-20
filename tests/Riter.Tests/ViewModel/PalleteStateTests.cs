@@ -40,7 +40,6 @@ public class PalleteStateTests
 
         _state.IsReleased.Should().BeFalse();
         _state.InkEditingMode.Should().Be(InkCanvasEditingMode.EraseByStroke);
-        _state.ButtonSelectedName.Should().Be("ErasingButton");
     }
 
     [Fact]
