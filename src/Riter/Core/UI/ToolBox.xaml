@@ -63,7 +63,18 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
                                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button ToolTip="Change Color [Ctrl+2]" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Brush}" />
+                                        <Button ToolTip="Highlighter [Ctrl+2]" Content="{StaticResource Icon_Highlighetr}" Command="{Binding DrawingHighlighterCommand}">
+                                            <Button.Style>
+                                                <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
+                                                    <Setter Property="Tag" Value="UnSelected"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="HighlighterButton">
+                                                            <Setter Property="Tag" Value="Selected"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
                                     </Border>
                                     <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <ContentControl Content="{StaticResource Icon_BrushArrow}" />

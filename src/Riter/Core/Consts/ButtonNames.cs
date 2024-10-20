@@ -15,4 +15,6 @@ public class ButtonNames
     public const string ErasingButton = "ErasingButton";
 
     public const string SettingButton = "SettingButton";
+
+    public const string HighlighterButton = "HighlighterButton";
 }

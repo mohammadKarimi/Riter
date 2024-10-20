@@ -37,8 +37,11 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     public DrawingAttributes InkDrawingAttributes => new()
     {
         Color = (Color)ColorConverter.ConvertFromString(_state.InkColor),
-        Height = _state.SizeOfBrush,
-        Width = _state.SizeOfBrush,
+        Height = _state.IsHighlighter ? _state.SizeOfBrush * 2 : _state.SizeOfBrush,
+        Width = _state.IsHighlighter ? _state.SizeOfBrush * 2 : _state.SizeOfBrush,
+        IsHighlighter = _state.IsHighlighter,
+        IgnorePressure = true,
+        StylusTip = _state.IsHighlighter ? StylusTip.Rectangle : StylusTip.Ellipse,
     };
 
     /// <summary>
@@ -144,6 +147,7 @@ public partial class PalleteStateViewModel
         TrashButtonCommand = new RelayCommand(Trash);
         SetInkColorButtonCommand = new RelayCommand<string>(_state.SetInkColor);
         SetSizeOfBrushCommand = new RelayCommand<string>(_state.SetSizeOfBrush);
+        DrawingHighlighterCommand = new RelayCommand(_state.EnableHighlighter);
     }
 
     /// <summary>
@@ -195,4 +199,6 @@ public partial class PalleteStateViewModel
     /// Gets click on brush size buttons in setting pannel.
     /// </summary>
     public ICommand SetSizeOfBrushCommand { get; private set; }
+
+    public ICommand DrawingHighlighterCommand { get; private set; }
 }
