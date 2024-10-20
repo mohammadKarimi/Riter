@@ -13,7 +13,7 @@ namespace Riter.ViewModel;
 /// </summary>
 public partial class PalleteStateViewModel : INotifyPropertyChanged
 {
-    private readonly PalleteState _state;
+    private readonly IButtonSelectionHandler _buttonSelectionHandler;
     private readonly IStrokeVisibilityHandler _strokeVisibilityHandler;
     private readonly IStrokeHistoryService _strokeHistoryService;
     private readonly IBrushSettingsHandler _brushSettingsHandler;
@@ -26,7 +26,7 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Gets a value indicating whether the ink has been released.
     /// </summary>
-    public bool IsReleased => _state.IsReleased;
+    public bool IsReleased => _buttonSelectionHandler.IsReleased;
 
     /// <summary>
     /// Gets a value Of Ink Color which User selected.
@@ -36,7 +36,7 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Gets a value Of Ink Color which User selected.
     /// </summary>
-    public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(_brushSettingsHandler.InkColor, _brushSettingsHandler.SizeOfBrush, _state.IsHighlighter);
+    public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(_brushSettingsHandler.InkColor, _brushSettingsHandler.SizeOfBrush, _buttonSelectionHandler.IsHighlighter);
 
     /// <summary>
     /// Gets a value Of Ink Color which User selected.
@@ -46,12 +46,12 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Gets the current ink editing mode for the InkCanvas.
     /// </summary>
-    public InkCanvasEditingMode InkEditingMode => _state.InkEditingMode;
+    public InkCanvasEditingMode InkEditingMode => _buttonSelectionHandler.InkEditingMode;
 
     /// <summary>
     /// Gets the name of the button that is currently selected.
     /// </summary>
-    public string ButtonSelectedName => _state.ButtonSelectedName;
+    public string ButtonSelectedName => _buttonSelectionHandler.ButtonSelectedName;
 
     /// <summary>
     /// Gets a value indicating whether gets the value of IsHideAll props to show or hide the strokes.
@@ -61,7 +61,7 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
     /// <summary>
     /// Gets a value indicating whether gets the value of IsHideAll props to show or hide the strokes.
     /// </summary>
-    public Visibility SettingPanelVisibility => _state.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
+    public Visibility SettingPanelVisibility => _buttonSelectionHandler.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
     /// <summary>
     /// Decides which method to call based on the hotkey pressed.
@@ -72,7 +72,7 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
         switch (hotKey)
         {
             case HotKey.CTRL_R:
-                _state.Release();
+                _buttonSelectionHandler.Release();
                 break;
             case HotKey.CTRL_H:
                 _strokeVisibilityHandler.HideAll();
@@ -103,34 +103,32 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
 /// </summary>
 public partial class PalleteStateViewModel
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="PalleteStateViewModel"/> class.
-    /// </summary>
-    /// <param name="palleteState">The PalleteState model used to manage ink states.</param>
-    /// <param name="strokeHistoryService">stroke History service for undo and redo.</param>
-    public PalleteStateViewModel(PalleteState palleteState, IStrokeHistoryService strokeHistoryService, IStrokeVisibilityHandler strokeVisibilityHandler, IBrushSettingsHandler brushSettingsHandler)
+    public PalleteStateViewModel(IButtonSelectionHandler buttonSelectionHandler,
+                                 IStrokeHistoryService strokeHistoryService,
+                                 IStrokeVisibilityHandler strokeVisibilityHandler,
+                                 IBrushSettingsHandler brushSettingsHandler)
     {
-        _state = palleteState;
+        _buttonSelectionHandler = buttonSelectionHandler;
         _strokeVisibilityHandler = strokeVisibilityHandler;
         _brushSettingsHandler = brushSettingsHandler;
 
-        _state.PropertyChanged += OnStateChanged;
+        _buttonSelectionHandler.PropertyChanged += OnStateChanged;
         _strokeVisibilityHandler.PropertyChanged += OnStateChanged;
         _brushSettingsHandler.PropertyChanged += OnStateChanged;
 
         _strokeHistoryService = strokeHistoryService;
         HideAllButtonCommand = new RelayCommand(_strokeVisibilityHandler.HideAll);
 
-        ReleasedButtonCommand = new RelayCommand(_state.Release);
-        DrawingButtonCommand = new RelayCommand(_state.StartDrawing);
-        ErasingButtonCommand = new RelayCommand(_state.StartErasing);
+        ReleasedButtonCommand = new RelayCommand(_buttonSelectionHandler.Release);
+        DrawingButtonCommand = new RelayCommand(_buttonSelectionHandler.StartDrawing);
+        ErasingButtonCommand = new RelayCommand(_buttonSelectionHandler.StartErasing);
         UndoButtonCommand = new RelayCommand(() => _strokeHistoryService.Undo());
         RedoButtonCommand = new RelayCommand(() => _strokeHistoryService.Redo());
-        SettingButtonCommand = new RelayCommand(_state.ToggleSettingsPanel);
+        SettingButtonCommand = new RelayCommand(_buttonSelectionHandler.ToggleSettingsPanel);
         TrashButtonCommand = new RelayCommand(() => _strokeHistoryService.Clear());
         SetInkColorButtonCommand = new RelayCommand<string>(_brushSettingsHandler.SetInkColor);
         SetSizeOfBrushCommand = new RelayCommand<string>(_brushSettingsHandler.SetSizeOfBrush);
-        DrawingHighlighterCommand = new RelayCommand(_state.EnableHighlighter);
+        DrawingHighlighterCommand = new RelayCommand(_buttonSelectionHandler.EnableHighlighter);
     }
 
     /// <summary>

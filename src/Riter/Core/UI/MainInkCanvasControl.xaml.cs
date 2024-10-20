@@ -12,7 +12,7 @@ namespace Riter.Core.UI;
 public partial class MainInkCanvasControl : UserControl
 {
     private readonly IStrokeHistoryService _strokeHistoryService;
-    private readonly PalleteState _palleteState;
+    private readonly IButtonSelectionHandler _buttonSelectionHandler;
     private readonly bool _lineMode = false;
     private bool _isMoving = false;
     private Point _startPoint;
@@ -28,12 +28,12 @@ public partial class MainInkCanvasControl : UserControl
         MainInkCanvas.MouseLeftButtonUp += EndLine;
         MainInkCanvas.MouseMove += MakeLine;
         _strokeHistoryService = App.ServiceProvider.GetService<IStrokeHistoryService>();
-        _palleteState = App.ServiceProvider.GetService<PalleteState>();
+        _buttonSelectionHandler = App.ServiceProvider.GetService<IButtonSelectionHandler>();
     }
 
     private void Window_KeyDown(object sender, KeyEventArgs e)
     {
-        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _palleteState.InkEditingMode == InkCanvasEditingMode.Ink)
+        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _buttonSelectionHandler.InkEditingMode == InkCanvasEditingMode.Ink)
         {
             LineMode();
         }
@@ -41,7 +41,7 @@ public partial class MainInkCanvasControl : UserControl
 
     private void Window_KeyUp(object sender, KeyEventArgs e)
     {
-        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _palleteState.InkEditingMode == InkCanvasEditingMode.None)
+        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _buttonSelectionHandler.InkEditingMode == InkCanvasEditingMode.None)
         {
             StrokeMode();
         }
@@ -49,13 +49,13 @@ public partial class MainInkCanvasControl : UserControl
 
     private void LineMode()
     {
-        _palleteState.SetInkCanvasEditingMode(InkCanvasEditingMode.None);
+        _buttonSelectionHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.None);
         MainInkCanvas.UseCustomCursor = true;
     }
 
     private void StrokeMode()
     {
-        _palleteState.SetInkCanvasEditingMode(InkCanvasEditingMode.Ink);
+        _buttonSelectionHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.Ink);
         MainInkCanvas.UseCustomCursor = false;
     }
 

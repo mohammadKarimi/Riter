@@ -1,24 +1,19 @@
-﻿using System.ComponentModel;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using Riter.Core.Consts;
-using Riter.ViewModel.Handlers;
 
-namespace Riter.ViewModel;
+namespace Riter.ViewModel.Handlers;
 
 /// <summary>
 /// Represents the state of the palette, including whether ink is released,
 /// the ink editing mode, and the selected button name.
 /// Handles changes in these states and notifies subscribers of changes.
 /// </summary>
-public class PalleteState : BaseHandler, INotifyPropertyChanged
+public class ButtonSelectionHandler : BaseHandler, IButtonSelectionHandler , IInkEditingModeHandler
 {
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
     private bool _isHighlighter;
 
-    /// <summary>
-    /// Gets a value indicating whether the ink has been released.
-    /// </summary>
     public bool IsReleased
     {
         get => _isReleased;
@@ -28,37 +23,24 @@ public class PalleteState : BaseHandler, INotifyPropertyChanged
         });
     }
 
-    /// <summary>
-    /// Gets a value indicating whether gets a value of Enabling Highlighter Pen.
-    /// </summary>
     public bool IsHighlighter
     {
         get => _isHighlighter;
         private set => SetProperty(ref _isHighlighter, value, "InkDrawingAttributes");
     }
 
-    /// <summary>
-    /// Gets the current ink editing mode for the InkCanvas.
-    /// </summary>
     public InkCanvasEditingMode InkEditingMode
     {
         get => _inkEditingMode;
         private set => SetProperty(ref _inkEditingMode, value, nameof(InkEditingMode));
     }
 
-    /// <summary>
-    /// Releases the ink based on the button pressed.
-    /// </summary>
     public void Release()
     {
         ButtonSelectedName = ButtonNames.ReleaseButton;
         IsReleased = true;
     }
 
-    /// <summary>
-    /// Starts drawing ink based on the button pressed.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed to start drawing ink.</param>
     public void StartDrawing()
     {
         IsHighlighter = false;
@@ -75,10 +57,6 @@ public class PalleteState : BaseHandler, INotifyPropertyChanged
         }
     }
 
-    /// <summary>
-    /// Starts erasing based on the button pressed.
-    /// </summary>
-    /// <param name="buttonName">The name of the button pressed to start erasing.</param>
     public void StartErasing()
     {
         IsReleased = false;
@@ -86,10 +64,6 @@ public class PalleteState : BaseHandler, INotifyPropertyChanged
         ButtonSelectedName = ButtonNames.ErasingButton;
     }
 
-    /// <summary>
-    /// Set Type of Ink editing Mode for Line and shape mode.
-    /// </summary>
-    /// <param name="inkCanvasEditing">type of edition.</param>
     public void SetInkCanvasEditingMode(InkCanvasEditingMode inkCanvasEditing) => InkEditingMode = inkCanvasEditing;
 
     /// <summary>

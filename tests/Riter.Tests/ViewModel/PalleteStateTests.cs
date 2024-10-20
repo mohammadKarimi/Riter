@@ -1,76 +1,75 @@
-﻿using System.Windows.Controls;
-using FluentAssertions;
+﻿using Riter.ViewModel.Handlers;
 
 namespace Riter.Tests.ViewModel;
 
 public class PalleteStateTests
 {
-    private readonly PalleteState _state;
-    private readonly TestState _testState;
+    private readonly ButtonSelectionHandler _handler;
+    private readonly TestHanlder _testHandler;
 
     public PalleteStateTests()
     {
-        _state = new PalleteState();
-        _testState = new TestState();
+        _handler = new ButtonSelectionHandler();
+        _testHandler = new TestHanlder();
     }
 
     [Fact]
     public void Should_UpdateStateToReleased_When_ReleasedButtonClicked()
     {
-        _state.Release();
+        _handler.Release();
 
-        _state.IsReleased.Should().BeTrue();
-        _state.InkEditingMode.Should().Be(InkCanvasEditingMode.None);
-        _state.ButtonSelectedName.Should().Be("ReleasedButton");
+        _handler.IsReleased.Should().BeTrue();
+        _handler.InkEditingMode.Should().Be(InkCanvasEditingMode.None);
+        _handler.ButtonSelectedName.Should().Be("ReleasedButton");
     }
 
     [Fact]
     public void Should_UpdateStateToDrawing_When_StartDrawing()
     {
-        _state.StartDrawing();
-        _state.IsReleased.Should().BeFalse();
-        _state.InkEditingMode.Should().Be(InkCanvasEditingMode.Ink);
-        _state.ButtonSelectedName.Should().Be("DrawingButton");
+        _handler.StartDrawing();
+        _handler.IsReleased.Should().BeFalse();
+        _handler.InkEditingMode.Should().Be(InkCanvasEditingMode.Ink);
+        _handler.ButtonSelectedName.Should().Be("DrawingButton");
     }
 
     [Fact]
     public void Should_UpdateStateToErasing_When_StartErasing()
     {
-        _state.StartErasing();
+        _handler.StartErasing();
 
-        _state.IsReleased.Should().BeFalse();
-        _state.InkEditingMode.Should().Be(InkCanvasEditingMode.EraseByStroke);
+        _handler.IsReleased.Should().BeFalse();
+        _handler.InkEditingMode.Should().Be(InkCanvasEditingMode.EraseByStroke);
     }
 
     [Fact]
     public void Should_SetPropertyAndRaisePropertyChangedEvent_When_SetPropertyCalled()
     {
         var propertyName = string.Empty;
-        _testState.PropertyChanged += (sender, e) => propertyName = e.PropertyName;
-        _testState.TestProperty = "NewValue";
-        _testState.TestProperty.Should().Be("NewValue");
-        propertyName.Should().Be(nameof(_testState.TestProperty));
-        _testState.OnChangedCalled.Should().BeTrue();
+        _testHandler.PropertyChanged += (sender, e) => propertyName = e.PropertyName;
+        _testHandler.TestProperty = "NewValue";
+        _testHandler.TestProperty.Should().Be("NewValue");
+        propertyName.Should().Be(nameof(_testHandler.TestProperty));
+        _testHandler.OnChangedCalled.Should().BeTrue();
     }
 
     [Fact]
     public void Should_NotRaisePropertyChangedEvent_IfValueIsTheSame_When_SetPropertyCalled()
     {
-        _testState.TestProperty = "InitialValue";
+        _testHandler.TestProperty = "InitialValue";
         var eventRaised = false;
-        _testState.PropertyChanged += (sender, e) => eventRaised = true;
-        _testState.TestProperty = "InitialValue";
+        _testHandler.PropertyChanged += (sender, e) => eventRaised = true;
+        _testHandler.TestProperty = "InitialValue";
         eventRaised.Should().BeFalse();
     }
 
     [Fact]
     public void Should_InvokeOnChangedAction_When_ValueChanges()
     {
-        _testState.TestProperty = "ChangedValue";
-        _testState.OnChangedCalled.Should().BeTrue();
+        _testHandler.TestProperty = "ChangedValue";
+        _testHandler.OnChangedCalled.Should().BeTrue();
     }
 
-    private class TestState : PalleteState
+    private class TestHanlder : ButtonSelectionHandler
     {
         public bool OnChangedCalled { get; private set; }
 
