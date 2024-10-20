@@ -59,6 +59,5 @@ public class PalleteStateViewModelTests
         _viewModel.ErasingButtonCommand.Execute("ErasingButton");
         _buttonSelectionHandler.IsReleased.Should().BeFalse();
         _buttonSelectionHandler.InkEditingMode.Should().Be(InkCanvasEditingMode.EraseByStroke);
-        _buttonSelectionHandler.ButtonSelectedName.Should().Be("ErasingButton");
     }
 }

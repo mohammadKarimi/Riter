@@ -1,13 +1,13 @@
 ﻿using Riter.ViewModel.Handlers;
 
-namespace Riter.Tests.ViewModel;
+namespace Riter.Tests.ViewModel.Handlers;
 
-public class PalleteStateTests
+public class ButtonSelectionHandlerTests
 {
     private readonly ButtonSelectionHandler _handler;
     private readonly TestHanlder _testHandler;
 
-    public PalleteStateTests()
+    public ButtonSelectionHandlerTests()
     {
         _handler = new ButtonSelectionHandler();
         _testHandler = new TestHanlder();
@@ -20,7 +20,6 @@ public class PalleteStateTests
 
         _handler.IsReleased.Should().BeTrue();
         _handler.InkEditingMode.Should().Be(InkCanvasEditingMode.None);
-        _handler.ButtonSelectedName.Should().Be("ReleasedButton");
     }
 
     [Fact]

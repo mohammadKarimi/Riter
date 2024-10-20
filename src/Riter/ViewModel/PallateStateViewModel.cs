@@ -103,10 +103,11 @@ public partial class PalleteStateViewModel : INotifyPropertyChanged
 /// </summary>
 public partial class PalleteStateViewModel
 {
-    public PalleteStateViewModel(IButtonSelectionHandler buttonSelectionHandler,
-                                 IStrokeHistoryService strokeHistoryService,
-                                 IStrokeVisibilityHandler strokeVisibilityHandler,
-                                 IBrushSettingsHandler brushSettingsHandler)
+    public PalleteStateViewModel(
+        IButtonSelectionHandler buttonSelectionHandler,
+        IStrokeHistoryService strokeHistoryService,
+        IStrokeVisibilityHandler strokeVisibilityHandler,
+        IBrushSettingsHandler brushSettingsHandler)
     {
         _buttonSelectionHandler = buttonSelectionHandler;
         _strokeVisibilityHandler = strokeVisibilityHandler;
