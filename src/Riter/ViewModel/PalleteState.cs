@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Controls;
+using System.Windows.Ink;
+using System.Windows.Media;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core;
 using Riter.Core.Consts;
@@ -23,6 +25,7 @@ public class PalleteState : INotifyPropertyChanged
     private string _inkColor;
     private string _colorSelected;
     private double _sizeOfBrush;
+    private bool _isHighlighter;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PalleteState"/> class.
@@ -49,6 +52,15 @@ public class PalleteState : INotifyPropertyChanged
         {
             InkEditingMode = _isReleased ? InkCanvasEditingMode.None : InkCanvasEditingMode.Ink;
         });
+    }
+
+    /// <summary>
+    /// Gets a value indicating whether gets a value of Enabling Highlighter Pen.
+    /// </summary>
+    public bool IsHighlighter
+    {
+        get => _isHighlighter;
+        private set => SetProperty(ref _isHighlighter, value, "InkDrawingAttributes");
     }
 
     /// <summary>
@@ -143,6 +155,7 @@ public class PalleteState : INotifyPropertyChanged
     /// <param name="buttonName">The name of the button pressed to start drawing ink.</param>
     public void StartDrawing()
     {
+        IsHighlighter = false;
         if (IsReleased is false && ButtonSelectedName == ButtonNames.DrawingButton)
         {
             ResetToDefault();
@@ -167,6 +180,10 @@ public class PalleteState : INotifyPropertyChanged
         ButtonSelectedName = ButtonNames.ErasingButton;
     }
 
+    /// <summary>
+    /// Set Type of Ink editing Mode for Line and shape mode.
+    /// </summary>
+    /// <param name="inkCanvasEditing">type of edition.</param>
     public void SetInkCanvasEditingMode(InkCanvasEditingMode inkCanvasEditing) => InkEditingMode = inkCanvasEditing;
 
     /// <summary>
@@ -199,6 +216,19 @@ public class PalleteState : INotifyPropertyChanged
     {
         SizeOfBrush = double.Parse(size);
         ResetPreviousButton();
+    }
+
+    /// <summary>
+    /// Enable Highlighter pen.
+    /// </summary>
+    public void EnableHighlighter()
+    {
+        IsHighlighter = true;
+        ButtonSelectedName = ButtonNames.HighlighterButton;
+        InkEditingMode = InkCanvasEditingMode.Ink;
+        IsReleased = false;
+        SettingPanelVisibility = false;
+        OnPropertyChanged("InkDrawingAttributes");
     }
 
     /// <summary>
