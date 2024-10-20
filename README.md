@@ -21,8 +21,8 @@
 
 ![image](https://github.com/user-attachments/assets/c17409e8-49c3-4d9a-8269-3a381a8a55df)
 ![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview.png)
-![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview-Panel.png)
-![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview-Whiteboard.png)
+![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Panel.png)
+![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Whiteboard.png)
 
 <br/>
 The project is called "Riter," and it is a drawing application built using WPF (Windows Presentation Foundation). Here's a brief overview of the project:
