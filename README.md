@@ -26,18 +26,66 @@ The project is called "Riter," and it is a drawing application built using WPF (
 
 Purpose: Riter is a screen drawing application that allows users to draw directly on their computer screens.
 
-Key Features:
+# Riter
+Riter is a modern screen drawing application built using WPF (Windows Presentation Foundation). It allows users to draw directly on their computer screens, making it an ideal tool for visual communication, presentations, and tutorials.
 
-Drawing functionality
-Brush size selection
-Color management
-Stroke history management
-Technology: The application is developed using WPF, which is a UI framework for creating Windows desktop applications.
+GitHub contributors GitHub forks GitHub stars GitHub issues GitHub license
 
-Functionality: Users can draw on their screens, likely with various tools and options to customize their drawing experience.
+# Features
+- Drawing Functionality
+Ink Canvas: Users can draw freely on the screen using an InkCanvas control.
+Multiple Drawing Modes: Switch between drawing and erasing modes.
+Brush Size Selection: Adjust the size of the brush for different stroke thicknesses.
 
-This project appears to be a utility tool for users who need to annotate, highlight, or draw on their screens for various purposes, such as presentations, tutorials, or quick visual communication.
 
+- Color Management
+Color Palette: Choose from a variety of colors for drawing.
+Custom Color Selection: Set custom ink colors for more personalized drawings.
+
+
+- Stroke History Management
+Undo/Redo: Easily undo or redo drawing actions.
+Clear All: Option to clear all strokes from the canvas.
+
+
+- View Options
+Hide All: Temporarily hide all drawings on the screen.
+Transparency: Enable transparent background for drawing over other applications.
+Whiteboard/Blackboard: Switch between whiteboard and blackboard modes for different visual styles.
+
+
+- Toolbox Interface
+Floating Toolbox: A user-friendly toolbox with quick access to drawing tools and options.
+Tool Selection: Buttons for selecting different drawing tools and actions.
+
+
+- Settings Panel
+Customizable Options: Access additional settings and tools through a tabbed interface.
+Application Behavior: Configure settings like "Always on Top" for the application window.
+
+
+- Global Hotkeys
+Keyboard Shortcuts: Use global hotkeys for quick actions, even when the app is not in focus.
+
+
+- User Interface
+Modern Design: Clean and intuitive interface with styled buttons and controls.
+Visual Feedback: Hover and selection effects for better user interaction.
+
+- Performance
+Efficient Stroke Handling: Optimized stroke history management for smooth performance.
+
+- Customization
+Configurable Settings: Adjust default colors, brush sizes, and other preferences.
+
+ ## Usage
+
+## Requirements
+ Windows OS
+.Net 8 x86/x64
+
+## License
+MIT
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
