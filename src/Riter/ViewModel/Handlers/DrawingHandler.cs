@@ -3,12 +3,8 @@ using Riter.Core.Consts;
 
 namespace Riter.ViewModel.Handlers;
 
-/// <summary>
-/// Represents the state of the palette, including whether ink is released,
-/// the ink editing mode, and the selected button name.
-/// Handles changes in these states and notifies subscribers of changes.
-/// </summary>
-public class ButtonSelectionHandler : BaseHandler, IButtonSelectionHandler , IInkEditingModeHandler
+
+public class DrawingHandler : BaseHandler, IDrawingHandler
 {
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
@@ -66,9 +62,6 @@ public class ButtonSelectionHandler : BaseHandler, IButtonSelectionHandler , IIn
 
     public void SetInkCanvasEditingMode(InkCanvasEditingMode inkCanvasEditing) => InkEditingMode = inkCanvasEditing;
 
-    /// <summary>
-    /// Open Setting Panel.
-    /// </summary>
     public void ToggleSettingsPanel()
     {
         if (SettingPanelVisibility && ButtonSelectedName == ButtonNames.SettingButton)
@@ -83,9 +76,6 @@ public class ButtonSelectionHandler : BaseHandler, IButtonSelectionHandler , IIn
         }
     }
 
-    /// <summary>
-    /// Enable Highlighter pen.
-    /// </summary>
     public void EnableHighlighter()
     {
         IsHighlighter = true;

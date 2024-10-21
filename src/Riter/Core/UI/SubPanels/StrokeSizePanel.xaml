@@ -36,7 +36,7 @@
                                                     </Style>
                                                 </Border.Style>
                                                 <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                                                
+
                                             </Border>
                                         </ControlTemplate>
                                     </Setter.Value>
@@ -46,7 +46,7 @@
                                         <Setter Property="Background" Value="#F1F1F1" />
                                         <Setter Property="Cursor" Value="Hand" />
                                     </Trigger>
-                                   
+
                                 </Style.Triggers>
                             </Style>
                         </Button.Style>
