@@ -8,7 +8,7 @@ namespace Riter.ViewModel.Handlers;
 /// the ink editing mode, and the selected button name.
 /// Handles changes in these states and notifies subscribers of changes.
 /// </summary>
-public class ButtonSelectionHandler : BaseHandler, IButtonSelectionHandler , IInkEditingModeHandler
+public class DrawingHandler : BaseHandler, IDrawingHandler
 {
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;

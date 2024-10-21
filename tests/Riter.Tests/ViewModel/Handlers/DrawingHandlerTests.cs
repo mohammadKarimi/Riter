@@ -2,14 +2,14 @@
 
 namespace Riter.Tests.ViewModel.Handlers;
 
-public class ButtonSelectionHandlerTests
+public class DrawingHandlerTests
 {
-    private readonly ButtonSelectionHandler _handler;
+    private readonly DrawingHandler _handler;
     private readonly TestHanlder _testHandler;
 
-    public ButtonSelectionHandlerTests()
+    public DrawingHandlerTests()
     {
-        _handler = new ButtonSelectionHandler();
+        _handler = new DrawingHandler();
         _testHandler = new TestHanlder();
     }
 
@@ -68,7 +68,7 @@ public class ButtonSelectionHandlerTests
         _testHandler.OnChangedCalled.Should().BeTrue();
     }
 
-    private class TestHanlder : ButtonSelectionHandler
+    private class TestHanlder : DrawingHandler
     {
         public bool OnChangedCalled { get; private set; }
 

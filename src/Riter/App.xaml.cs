@@ -57,7 +57,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<IBrushSettingsHandler, BrushSettingsHandler>();
         serviceCollection.AddSingleton<IStrokeVisibilityHandler, StrokeVisibilityHandler>();
         serviceCollection.AddSingleton<IStrokeHistoryService, StrokeHistoryService>();
-        serviceCollection.AddSingleton<IButtonSelectionHandler,ButtonSelectionHandler>();
+        serviceCollection.AddSingleton<IDrawingHandler, DrawingHandler>();
         serviceCollection.AddSingleton<PalleteStateViewModel>();
         serviceCollection.AddTransient(typeof(MainWindow));
     }
