@@ -4,6 +4,11 @@ using Riter.ViewModel.Handlers.Interfaces;
 
 namespace Riter.ViewModel;
 
+/// <summary>
+/// Represents the state of the palette, including whether ink is released,
+/// the ink editing mode, and the selected button name.
+/// Handles changes in these states and notifies subscribers of changes.
+/// </summary>
 public interface IDrawingHandler : IInkEditingModeHandler, IHighlighterHandler, ISettingPanelHandler, INotifyPropertyChanged
 {
     /// <summary>
