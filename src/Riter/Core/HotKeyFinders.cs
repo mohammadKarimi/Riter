@@ -1,11 +1,7 @@
-﻿namespace Riter.Core;
-
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using Riter.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.IO;
+
+namespace Riter.Core;
 
 public class HotkeyFinders
 {
@@ -16,6 +12,35 @@ public class HotkeyFinders
     {
         _hotkeys = LoadHotkeys(viewModel, options.Value.HotkeysConfig);
     }
+
+    /// <summary>
+    /// Registers hotkeys in the GlobalHotkeyManager.
+    /// </summary>
+    /// <param name="window">The main window that will listen for the hotkeys.</param>
+    public void RegisterHotkeys(Window window)
+    {
+        _globalHotkeyManager = new GlobalHotkeyManager(window);
+
+        foreach (var hotkey in _hotkeys)
+        {
+            _globalHotkeyManager.RegisterHotkey(hotkey.Key, hotkey.Value.modifiers, hotkey.Value.key, hotkey.Value.callback);
+        }
+    }
+
+    /// <summary>
+    /// Dispose the GlobalHotkeyManager when closing the application.
+    /// </summary>
+    public void Dispose() => _globalHotkeyManager?.Dispose();
+
+    private static uint GetModifierKey(string modifier) => modifier switch
+    {
+        "CTRL" => GlobalHotkeyManager.CTRL,
+        "SHIFT" => GlobalHotkeyManager.SHIFT,
+        "ALT" => GlobalHotkeyManager.ALT,
+        _ => 0
+    };
+
+    private static uint GetKeyValue(string key) => key.ToUpper()[0];
 
     /// <summary>
     /// Loads hotkeys from the appsettings.json file.
@@ -37,41 +62,4 @@ public class HotkeyFinders
 
         return hotkeyDictionary;
     }
-
-
-
-    /// <summary>
-    /// Registers hotkeys in the GlobalHotkeyManager.
-    /// </summary>
-    /// <param name="window">The main window that will listen for the hotkeys.</param>
-    public void RegisterHotkeys(Window window)
-    {
-        _globalHotkeyManager = new GlobalHotkeyManager(window);
-
-        foreach (var hotkey in _hotkeys)
-        {
-            _globalHotkeyManager.RegisterHotkey(hotkey.Key, hotkey.Value.modifiers, hotkey.Value.key, hotkey.Value.callback);
-        }
-    }
-
-    /// <summary>
-    /// Dispose the GlobalHotkeyManager when closing the application.
-    /// </summary>
-    public void Dispose()
-    {
-        _globalHotkeyManager?.Dispose();
-    }
-
-    // Convert Modifiers string to uint key (e.g., "CTRL" to 0x0002)
-    private static uint GetModifierKey(string modifier) => modifier switch
-    {
-        "CTRL" => GlobalHotkeyManager.CTRL,
-        "SHIFT" => GlobalHotkeyManager.SHIFT,
-        "ALT" => GlobalHotkeyManager.ALT,
-        _ => 0
-    };
-
-    // Convert key string (e.g., "R") to uint key value
-    private static uint GetKeyValue(string key) => key.ToUpper()[0];
-
 }
