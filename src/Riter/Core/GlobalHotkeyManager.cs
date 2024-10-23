@@ -9,12 +9,6 @@ namespace Riter.Core;
 /// </summary>
 public partial class GlobalHotkeyManager : IDisposable
 {
-    [DllImport("user32.dll")]
-    private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
-
-    [DllImport("user32.dll")]
-    private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-
     public const uint CTRL = 0x0002;
     public const uint SHIFT = 0x0004;
     public const uint ALT = 0x0001;
@@ -43,7 +37,6 @@ public partial class GlobalHotkeyManager : IDisposable
     /// <param name="key">The virtual key code for the hotkey.</param>
     /// <param name="callback">The method to invoke when the hotkey is pressed.</param>
     /// <returns><c>true</c> if the hotkey is successfully registered; otherwise, <c>false</c>.</returns>
-
     public bool RegisterHotkey(HotKey id, uint modifiers, uint key, Action<HotKey> callback)
     {
         if (!_isHookAdded)
@@ -88,6 +81,14 @@ public partial class GlobalHotkeyManager : IDisposable
         _source.RemoveHook(HwndHook);
         _hotkeyActions.Clear();
     }
+
+    [LibraryImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+    [LibraryImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool UnregisterHotKey(IntPtr hWnd, int id);
 
     /// <summary>
     /// Processes window messages for registered hotkeys.
