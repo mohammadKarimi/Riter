@@ -37,4 +37,6 @@ public class AppSettings
     /// Gets or sets a value indicating whether topMost for application.
     /// </summary>
     public bool TopMost { get; set; }
+
+    public HotkeysConfig HotkeysConfig { get; set; }
 }

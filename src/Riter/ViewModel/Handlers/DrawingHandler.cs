@@ -3,7 +3,6 @@ using Riter.Core.Consts;
 
 namespace Riter.ViewModel.Handlers;
 
-
 public class DrawingHandler : BaseHandler, IDrawingHandler
 {
     private bool _isReleased = true;

@@ -1,19 +1,20 @@
 ﻿namespace Riter.Core;
 
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Riter.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
 
-public class HotkeyManager
+public class HotkeyFinders
 {
     private readonly Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> _hotkeys;
     private GlobalHotkeyManager _globalHotkeyManager;
 
-    public HotkeyManager(PalleteStateViewModel viewModel)
+    public HotkeyFinders(PalleteStateViewModel viewModel, IOptions<AppSettings> options)
     {
-        _hotkeys = LoadHotkeys(viewModel);
+        _hotkeys = LoadHotkeys(viewModel, options.Value.HotkeysConfig);
     }
 
     /// <summary>
@@ -21,15 +22,13 @@ public class HotkeyManager
     /// </summary>
     /// <param name="viewModel">The view model that handles hotkey actions.</param>
     /// <returns>A dictionary of HotKey, Modifier, and Action for each hotkey.</returns>
-    private Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> LoadHotkeys(PalleteStateViewModel viewModel)
+    private Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> LoadHotkeys(PalleteStateViewModel viewModel, HotkeysConfig hotkeysConfig)
     {
-        var hotkeysConfig = LoadHotkeysFromConfig();
-
         var hotkeyDictionary = new Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)>();
 
         foreach (var hotkey in hotkeysConfig.Hotkeys)
         {
-            var hotKey = Enum.Parse<HotKey>(hotkey.Key);
+            var hotKey = System.Enum.Parse<HotKey>(hotkey.Key);
             var modifiers = GetModifierKey(hotkey.Value.Modifiers);
             var key = GetKeyValue(hotkey.Value.Key);
 
@@ -39,7 +38,7 @@ public class HotkeyManager
         return hotkeyDictionary;
     }
 
-  
+
 
     /// <summary>
     /// Registers hotkeys in the GlobalHotkeyManager.
@@ -75,19 +74,4 @@ public class HotkeyManager
     // Convert key string (e.g., "R") to uint key value
     private static uint GetKeyValue(string key) => key.ToUpper()[0];
 
-    ///// <summary>
-    ///// Loads hotkey configuration from appsettings.json.
-    ///// </summary>
-    //private HotkeysConfig LoadHotkeysFromConfig()
-    //{
-    //    var builder = new ConfigurationBuilder()
-    //        .SetBasePath(Directory.GetCurrentDirectory())
-    //        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-    //    IConfigurationRoot configuration = builder.Build();
-
-    //    var hotkeysConfig = new HotkeysConfig();
-    //    configuration.GetSection("Hotkeys").Bind(hotkeysConfig);
-    //    return hotkeysConfig;
-    //}
 }
