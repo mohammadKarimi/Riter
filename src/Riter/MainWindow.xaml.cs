@@ -105,4 +105,18 @@ public partial class MainWindow : Window
         Canvas.SetLeft(MainPallete, (canvasWidth - palleteWidth) / 2);
         Canvas.SetTop(MainPallete, canvasHeight - palleteHeight - 75);
     }
+
+    ///// <summary>
+    ///// Registers hotkeys in the GlobalHotkeyManager.
+    ///// </summary>
+    ///// <param name="window">The main window that will listen for the hotkeys.</param>
+    //public void RegisterHotkeys(Window window)
+    //{
+    //    _globalHotkeyManager = new GlobalHotkeyManager(window);
+
+    //    foreach (var hotkey in _hotkeys)
+    //    {
+    //        _globalHotkeyManager.RegisterHotkey(hotkey.Key, hotkey.Value.modifiers, hotkey.Value.key, hotkey.Value.callback);
+    //    }
+    //}
 }
