@@ -2,39 +2,34 @@
 
 namespace Riter.Core;
 
-public class HotkeyLoader(IOptions<AppSettings> options)
+public class HotKeyLoader(AppSettings options)
 {
-    public Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> LoadsAndAttach(BaseViewModel viewModel)
-    => LoadHotkeys(viewModel, options.Value.HotkeysConfig);
+    public const uint CTRL = 0x0002;
+    public const uint SHIFT = 0x0004;
+    public const uint ALT = 0x0001;
+
+    public Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> Loads(BaseViewModel viewModel)
+    {
+        Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> hotkeys = [];
+        foreach (var hotkey in options.HotKeysConfig)
+        {
+            var hotKey = System.Enum.Parse<HotKey>(hotkey.Key);
+            var modifier = GetModifierKey(hotkey.Value.Modifiers);
+            var key = GetKeyValue(hotkey.Value.Key);
+
+            hotkeys[hotKey] = (modifier, key, viewModel.HandleHotkey);
+        }
+
+        return hotkeys;
+    }
 
     private static uint GetModifierKey(string modifier) => modifier switch
     {
-        "CTRL" => GlobalHotkeyManager.CTRL,
-        "SHIFT" => GlobalHotkeyManager.SHIFT,
-        "ALT" => GlobalHotkeyManager.ALT,
+        "CTRL" => CTRL,
+        "SHIFT" => SHIFT,
+        "ALT" => ALT,
         _ => 0
     };
 
     private static uint GetKeyValue(string key) => key.ToUpper()[0];
-
-    /// <summary>
-    /// Loads hotkeys from the appsettings.json file.
-    /// </summary>
-    /// <param name="viewModel">The view model that handles hotkey actions.</param>
-    /// <returns>A dictionary of HotKey, Modifier, and Action for each hotkey.</returns>
-    private Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> LoadHotkeys(BaseViewModel viewModel, HotkeysConfig hotkeysConfig)
-    {
-        var hotkeyDictionary = new Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)>();
-
-        foreach (var hotkey in hotkeysConfig.Hotkeys)
-        {
-            var hotKey = System.Enum.Parse<HotKey>(hotkey.Key);
-            var modifiers = GetModifierKey(hotkey.Value.Modifiers);
-            var key = GetKeyValue(hotkey.Value.Key);
-
-            hotkeyDictionary[hotKey] = (modifiers, key, viewModel.HandleHotkey);
-        }
-
-        return hotkeyDictionary;
-    }
 }
