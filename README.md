@@ -34,15 +34,22 @@ Riter is a modern screen drawing application built using WPF (Windows Presentati
 
 GitHub contributors GitHub forks GitHub stars GitHub issues GitHub license
 
-# HotKeys
+# Defaults HotKeys
 
 D -> Drawing
+<br/>
 E -> Erasing
+<br/>
 CTRL + H -> HideAll
+<br/>
 CTRL + T -> Trash
+<br/>
 Z -> Undo
+<br/>
 X -> Redo
+<br/>
 H -> Highlighter
+<br/>
 R -> Release
 
 # Features
