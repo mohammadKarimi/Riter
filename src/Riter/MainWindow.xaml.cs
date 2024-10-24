@@ -12,35 +12,23 @@ namespace Riter;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private readonly Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> _hotkies;
     private readonly IStrokeHistoryService _strokeHistoryService;
-    private GlobalHotkeyManager _globalHotkeyManager;
+    private readonly HotKeyLoader _hotKeyLoader;
+    private readonly PalleteStateViewModel _pallateStateViewModel;
+    private GlobalHotKeyManager _globalHotkeyManager;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="MainWindow"/> class.
-    /// Sets up the UI, binds the <see cref="PalleteStateViewModel"/> to the DataContext,
-    /// and applies various UI configurations such as setting event listeners,
-    /// making the window top-most, setting the default color, and brush size.
-    /// </summary>
-    /// <param name="pallateStateViewModel">
-    /// The view model that manages the palette state, which is used to bind data to the UI.
-    /// </param>
-    /// <param name="strokeHistoryService">
-    /// Manage the history of drawing history.
-    /// </param>
-    public MainWindow(PalleteStateViewModel pallateStateViewModel, IStrokeHistoryService strokeHistoryService)
+    public MainWindow(
+        PalleteStateViewModel pallateStateViewModel,
+        HotKeyLoader hotKeyLoader,
+        IStrokeHistoryService strokeHistoryService)
     {
         InitializeComponent();
         DataContext = pallateStateViewModel;
+        _pallateStateViewModel = pallateStateViewModel;
         _strokeHistoryService = strokeHistoryService;
+        _hotKeyLoader = hotKeyLoader;
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
         MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
-
-        _hotkies = new Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)>
-         {
-                { HotKey.CTRL_R, (GlobalHotkeyManager.CTRL, 0x52, pallateStateViewModel.HandleHotkey) }, // CTRL + R
-                { HotKey.CTRL_H, (GlobalHotkeyManager.CTRL, 0x48, pallateStateViewModel.HandleHotkey) }, // CTRL + H
-         };
 
         this.EnableDragging(MainPallete)
             .SetTopMost(true);
@@ -52,10 +40,16 @@ public partial class MainWindow : Window
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
-        _globalHotkeyManager = new GlobalHotkeyManager(this);
-        foreach (var hotkey in _hotkies)
+        _globalHotkeyManager = new GlobalHotKeyManager(this);
+        var hotkies = _hotKeyLoader.Loads(_pallateStateViewModel);
+
+        foreach (var hotkey in hotkies)
         {
-            _globalHotkeyManager.RegisterHotkey(hotkey.Key, hotkey.Value.modifiers, hotkey.Value.key, hotkey.Value.callback);
+            _globalHotkeyManager.RegisterHotkey(
+                hotkey.Key,
+                hotkey.Value.modifiers,
+                hotkey.Value.key,
+                hotkey.Value.callback);
         }
     }
 
@@ -106,17 +100,4 @@ public partial class MainWindow : Window
         Canvas.SetTop(MainPallete, canvasHeight - palleteHeight - 75);
     }
 
-    ///// <summary>
-    ///// Registers hotkeys in the GlobalHotkeyManager.
-    ///// </summary>
-    ///// <param name="window">The main window that will listen for the hotkeys.</param>
-    //public void RegisterHotkeys(Window window)
-    //{
-    //    _globalHotkeyManager = new GlobalHotkeyManager(window);
-
-    //    foreach (var hotkey in _hotkeys)
-    //    {
-    //        _globalHotkeyManager.RegisterHotkey(hotkey.Key, hotkey.Value.modifiers, hotkey.Value.key, hotkey.Value.callback);
-    //    }
-    //}
 }

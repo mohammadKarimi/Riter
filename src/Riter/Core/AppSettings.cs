@@ -38,5 +38,5 @@ public class AppSettings
     /// </summary>
     public bool TopMost { get; set; }
 
-    public HotkeysConfig HotkeysConfig { get; set; }
+    public IEnumerable<HotKeysConfig> HotKeysConfig { get; set; }
 }

@@ -39,11 +39,11 @@ public partial class PalleteStateViewModel : BaseViewModel, INotifyPropertyChang
     {
         switch (hotKey)
         {
-            case HotKey.CTRL_R:
-                _drawingHandler.Release();
+            case HotKey.Drawing:
+                _drawingHandler.StartDrawing();
                 break;
-            case HotKey.CTRL_H:
-                _strokeVisibilityHandler.HideAll();
+            case HotKey.Erasing:
+                _drawingHandler.StartErasing();
                 break;
             default:
                 break;
