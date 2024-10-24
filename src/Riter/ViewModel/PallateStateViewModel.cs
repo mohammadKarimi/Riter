@@ -45,6 +45,24 @@ public partial class PalleteStateViewModel : BaseViewModel, INotifyPropertyChang
             case HotKey.Erasing:
                 _drawingHandler.StartErasing();
                 break;
+            case HotKey.Trash:
+                _strokeHistoryService.Clear();
+                break;
+            case HotKey.Highlightr:
+                _drawingHandler.EnableHighlighter();
+                break;
+            case HotKey.Release:
+                _drawingHandler.Release();
+                break;
+            case HotKey.HideAll:
+                _strokeVisibilityHandler.HideAll();
+                break;
+            case HotKey.Undo:
+                _strokeHistoryService.Undo();
+                break;
+            case HotKey.Redo:
+                _strokeHistoryService.Redo();
+                break;
             default:
                 break;
         }
