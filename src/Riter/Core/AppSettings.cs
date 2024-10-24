@@ -33,8 +33,5 @@ public class AppSettings
     /// </summary>
     public const string MyTelegram = "https://t.me/mhakarimi";
 
-    /// <summary>
-    /// Gets or sets a value indicating whether topMost for application.
-    /// </summary>
-    public bool TopMost { get; set; }
+    public IEnumerable<HotKeysConfig> HotKeysConfig { get; set; }
 }

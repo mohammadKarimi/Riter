@@ -7,18 +7,8 @@ namespace Riter.Core;
 /// Provides a mechanism for registering and managing multiple global hotkeys in a WPF application.
 /// Allows triggering specific actions using keyboard shortcuts, even when the application is not in focus.
 /// </summary>
-public partial class GlobalHotkeyManager : IDisposable
+public partial class GlobalHotKeyManager : IDisposable
 {
-    [DllImport("user32.dll")]
-    private static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
-
-    [DllImport("user32.dll")]
-    private static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-
-    public const uint CTRL = 0x0002;
-    public const uint SHIFT = 0x0004;
-    public const uint ALT = 0x0001;
-
     private readonly IntPtr _windowHandle;
     private readonly HwndSource _source;
     private readonly Dictionary<HotKey, Action<HotKey>> _hotkeyActions = [];
@@ -29,20 +19,11 @@ public partial class GlobalHotkeyManager : IDisposable
     /// Initializes a new instance of the <see cref="GlobalHotkeyManager"/> class for the specified WPF window.
     /// </summary>
     /// <param name="window">The WPF window that the global hotkeys will be tied to.</param>
-    public GlobalHotkeyManager(Window window)
+    public GlobalHotKeyManager(Window window)
     {
         _windowHandle = new WindowInteropHelper(window).Handle;
         _source = HwndSource.FromHwnd(_windowHandle);
     }
-
-    /// <summary>
-    /// Registers a global hotkey for the specified key combination.
-    /// </summary>
-    /// <param name="id">A unique identifier for the hotkey.</param>
-    /// <param name="modifiers">Key modifiers such as <c>Ctrl</c>, <c>Alt</c>, or <c>Shift</c>.</param>
-    /// <param name="key">The virtual key code for the hotkey.</param>
-    /// <param name="callback">The method to invoke when the hotkey is pressed.</param>
-    /// <returns><c>true</c> if the hotkey is successfully registered; otherwise, <c>false</c>.</returns>
 
     public bool RegisterHotkey(HotKey id, uint modifiers, uint key, Action<HotKey> callback)
     {
@@ -88,6 +69,14 @@ public partial class GlobalHotkeyManager : IDisposable
         _source.RemoveHook(HwndHook);
         _hotkeyActions.Clear();
     }
+
+    [LibraryImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+    [LibraryImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static partial bool UnregisterHotKey(IntPtr hWnd, int id);
 
     /// <summary>
     /// Processes window messages for registered hotkeys.

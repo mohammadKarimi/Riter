@@ -54,6 +54,7 @@ public partial class App : Application
 
     private static void ConfigureServices(ServiceCollection serviceCollection)
     {
+        serviceCollection.AddSingleton<HotKeyLoader>();
         serviceCollection.AddSingleton<IBrushSettingsHandler, BrushSettingsHandler>();
         serviceCollection.AddSingleton<IStrokeVisibilityHandler, StrokeVisibilityHandler>();
         serviceCollection.AddSingleton<IStrokeHistoryService, StrokeHistoryService>();
