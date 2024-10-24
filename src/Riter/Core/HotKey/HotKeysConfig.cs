@@ -5,8 +5,6 @@ public class Value
     public string Modifiers { get; init; }
 
     public string Key { get; init; }
-
-    public string Description { get; init; }
 }
 
 public class HotKeysConfig
