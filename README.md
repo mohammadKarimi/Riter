@@ -51,6 +51,8 @@ X -> Redo
 H -> Highlighter
 <br/>
 R -> Release
+<br/>
+Shift(On Drawing Mode) -> Draw a line
 
 # Features
 - Drawing Functionality
