@@ -6,9 +6,12 @@
         <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-        <AssemblyVersion>0.0.8</AssemblyVersion>
+        <AssemblyVersion>0.0.10</AssemblyVersion>
+        <PackageReleaseNotes>
+            v0.0.9
+            - Add Defaults HotKeys in a File and add them to actions.
+        </PackageReleaseNotes>
     </PropertyGroup>
-
     <PropertyGroup>
         <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -24,13 +27,13 @@
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
         <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
         <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
-     <None Update="appsettings.json">
+        <None Update="appsettings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
     </ItemGroup>
