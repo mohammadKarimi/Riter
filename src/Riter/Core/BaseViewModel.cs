@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Riter.ViewModel;
+namespace Riter.Core;
 public abstract class BaseViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
