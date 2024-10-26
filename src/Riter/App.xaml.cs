@@ -2,11 +2,9 @@
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Riter.Core;
 using Riter.Core.Interfaces;
 using Riter.Services;
 using Riter.ViewModel;
-using Riter.ViewModel.Handlers;
 
 namespace Riter;
 
@@ -55,10 +53,10 @@ public partial class App : Application
     private static void ConfigureServices(ServiceCollection serviceCollection)
     {
         serviceCollection.AddSingleton<HotKeyLoader>();
-        serviceCollection.AddSingleton<IBrushSettingsHandler, BrushSettingsHandler>();
-        serviceCollection.AddSingleton<IStrokeVisibilityHandler, StrokeVisibilityHandler>();
+        serviceCollection.AddSingleton<IBrushSettingsStateHandler, BrushSettingsStateHandler>();
+        serviceCollection.AddSingleton<IStrokeVisibilityStateHandler, StrokeVisibilityStateHandler>();
         serviceCollection.AddSingleton<IStrokeHistoryService, StrokeHistoryService>();
-        serviceCollection.AddSingleton<IDrawingHandler, DrawingHandler>();
+        serviceCollection.AddSingleton<IDrawingStateHandler, DrawingStateHandler>();
 
         serviceCollection.AddSingleton<BrushSettingsViewModel>();
         serviceCollection.AddSingleton<DrawingViewModel>();

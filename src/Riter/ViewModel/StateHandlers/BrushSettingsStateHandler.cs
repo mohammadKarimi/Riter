@@ -1,16 +1,15 @@
 ﻿using Riter.Core;
 using Riter.Core.Enum;
-using Riter.ViewModel.Handlers;
 
-namespace Riter.ViewModel;
+namespace Riter.ViewModel.StateHandlers;
 
-public class BrushSettingsHandler : BaseHandler, IBrushSettingsHandler
+public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHandler
 {
     private string _inkColor;
     private string _colorSelected;
     private double _sizeOfBrush;
 
-    public BrushSettingsHandler()
+    public BrushSettingsStateHandler()
     {
         SetInkColor(AppSettings.InkDefaultColor);
         SizeOfBrush = AppSettings.BrushSize;

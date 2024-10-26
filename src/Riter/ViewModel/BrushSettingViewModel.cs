@@ -1,14 +1,14 @@
 ﻿using Riter.Core;
 using Riter.Core.Enum;
-using Riter.ViewModel.Handlers;
+using Riter.ViewModel.StateHandlers;
 
 namespace Riter.ViewModel;
 
 public sealed class BrushSettingsViewModel : BaseViewModel
 {
-    private readonly IBrushSettingsHandler _brushSettingsHandler;
+    private readonly IBrushSettingsStateHandler _brushSettingsHandler;
 
-    public BrushSettingsViewModel(IBrushSettingsHandler brushSettingsHandler)
+    public BrushSettingsViewModel(IBrushSettingsStateHandler brushSettingsHandler)
     {
         _brushSettingsHandler = brushSettingsHandler;
         _brushSettingsHandler.PropertyChanged += OnStateChanged;
@@ -23,5 +23,7 @@ public sealed class BrushSettingsViewModel : BaseViewModel
     public ICommand SetInkColorCommand => new RelayCommand<string>(_brushSettingsHandler.SetInkColor);
 
     public ICommand SetSizeOfBrushCommand => new RelayCommand<string>(_brushSettingsHandler.SetSizeOfBrush);
+
     public ICommand SetSizeOfBrushWithHotKeyCommand => new RelayCommand<BrushSize>(_brushSettingsHandler.SetSizeOfBrushWithHotKey);
+
 }

@@ -1,12 +1,11 @@
 ﻿using System.Windows.Controls;
-using Riter.Core;
 
 namespace Riter.ViewModel;
 public sealed class DrawingViewModel : BaseViewModel
 {
-    private readonly IDrawingHandler _drawingHandler;
+    private readonly IDrawingStateHandler _drawingHandler;
 
-    public DrawingViewModel(IDrawingHandler drawingHandler)
+    public DrawingViewModel(IDrawingStateHandler drawingHandler)
     {
         _drawingHandler = drawingHandler;
         _drawingHandler.PropertyChanged += OnStateChanged;

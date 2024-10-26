@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace Riter.ViewModel.Handlers;
+namespace Riter.ViewModel.StateHandlers;
 
-public interface IStrokeVisibilityHandler : INotifyPropertyChanged
+public interface IStrokeVisibilityStateHandler : INotifyPropertyChanged
 {
     /// <summary>
     /// Gets a value indicating whether gets the value of Is Hide all Stroke.

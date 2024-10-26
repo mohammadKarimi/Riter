@@ -1,9 +1,9 @@
 ﻿using System.Windows.Controls;
 using Riter.Core.Consts;
 
-namespace Riter.ViewModel.Handlers;
+namespace Riter.ViewModel.StateHandlers;
 
-public class DrawingHandler : BaseHandler, IDrawingHandler
+public class DrawingStateHandler : BaseStateHandler, IDrawingStateHandler
 {
     private bool _isReleased = true;
     private InkCanvasEditingMode _inkEditingMode = InkCanvasEditingMode.None;
@@ -39,17 +39,17 @@ public class DrawingHandler : BaseHandler, IDrawingHandler
     public void StartDrawing()
     {
         IsHighlighter = false;
-        if (IsReleased is false && ButtonSelectedName == ButtonNames.DrawingButton)
-        {
-            ResetToDefault();
-        }
-        else
-        {
-            ButtonSelectedName = ButtonNames.DrawingButton;
-            InkEditingMode = InkCanvasEditingMode.Ink;
-            IsReleased = false;
-            SettingPanelVisibility = false;
-        }
+        //if (IsReleased is false && ButtonSelectedName == ButtonNames.DrawingButton)
+        //{
+        //    ResetToDefault();
+        //}
+        //else
+        //{
+        ButtonSelectedName = ButtonNames.DrawingButton;
+        InkEditingMode = InkCanvasEditingMode.Ink;
+        IsReleased = false;
+        SettingPanelVisibility = false;
+        // }
     }
 
     public void StartErasing()

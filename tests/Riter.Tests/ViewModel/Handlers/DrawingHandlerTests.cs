@@ -1,15 +1,15 @@
-﻿using Riter.ViewModel.Handlers;
+﻿using Riter.ViewModel.StateHandlers;
 
 namespace Riter.Tests.ViewModel.Handlers;
 
 public class DrawingHandlerTests
 {
-    private readonly DrawingHandler _handler;
+    private readonly DrawingStateHandler _handler;
     private readonly TestHanlder _testHandler;
 
     public DrawingHandlerTests()
     {
-        _handler = new DrawingHandler();
+        _handler = new DrawingStateHandler();
         _testHandler = new TestHanlder();
     }
 
@@ -68,7 +68,7 @@ public class DrawingHandlerTests
         _testHandler.OnChangedCalled.Should().BeTrue();
     }
 
-    private class TestHanlder : DrawingHandler
+    private class TestHanlder : DrawingStateHandler
     {
         public bool OnChangedCalled { get; private set; }
 

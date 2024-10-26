@@ -1,13 +1,9 @@
-﻿using System.ComponentModel;
-using Riter.Core;
-using Riter.ViewModel.Handlers;
-
-namespace Riter.ViewModel;
+﻿namespace Riter.ViewModel;
 public sealed class StrokeVisibilityViewModel : BaseViewModel
 {
-    private readonly IStrokeVisibilityHandler _strokeVisibilityHandler;
+    private readonly IStrokeVisibilityStateHandler _strokeVisibilityHandler;
 
-    public StrokeVisibilityViewModel(IStrokeVisibilityHandler strokeVisibilityHandler)
+    public StrokeVisibilityViewModel(IStrokeVisibilityStateHandler strokeVisibilityHandler)
     {
         _strokeVisibilityHandler = strokeVisibilityHandler;
         _strokeVisibilityHandler.PropertyChanged += OnStateChanged;

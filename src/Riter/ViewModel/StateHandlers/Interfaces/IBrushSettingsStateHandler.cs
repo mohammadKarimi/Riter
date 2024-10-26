@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using Riter.Core.Enum;
 
-namespace Riter.ViewModel.Handlers;
+namespace Riter.ViewModel.StateHandlers;
 
-public interface IBrushSettingsHandler : INotifyPropertyChanged
+public interface IBrushSettingsStateHandler : INotifyPropertyChanged
 {
     /// <summary>
     /// Gets a value of InkColor.

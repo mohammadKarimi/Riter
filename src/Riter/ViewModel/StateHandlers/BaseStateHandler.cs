@@ -1,20 +1,20 @@
 ﻿using System.ComponentModel;
 using Riter.Core.Consts;
 
-namespace Riter.ViewModel.Handlers;
+namespace Riter.ViewModel.StateHandlers;
 
-public abstract class BaseHandler : INotifyPropertyChanged
+public abstract class BaseStateHandler : INotifyPropertyChanged
 {
     private static string _buttonSelectedName;
     private static string _previousButtonSelectedName = string.Empty;
     private static bool _isSettingPanelOpened;
 
-    static BaseHandler()
+    static BaseStateHandler()
     {
         _buttonSelectedName = ButtonNames.DefaultButtonSelectedName;
     }
 
-    public BaseHandler()
+    public BaseStateHandler()
     {
         _isSettingPanelOpened = false;
     }
@@ -49,19 +49,6 @@ public abstract class BaseHandler : INotifyPropertyChanged
     protected void OnPropertyChanged(string propertyName)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-    /// <summary>
-    /// Updates the value of a field and raises the PropertyChanged event if the value has changed.
-    /// This method ensures that the UI is notified of changes in the state, and can optionally
-    /// invoke a custom action when the value changes.
-    /// </summary>
-    /// <typeparam name="T">The type of the property being set.</typeparam>
-    /// <param name="field">The field that stores the current value of the property.</param>
-    /// <param name="newValue">The new value to be assigned to the field.</param>
-    /// <param name="propertyName">The name of the property being updated.</param>
-    /// <param name="onChangedAction">An optional action to invoke when the property changes.</param>
-    /// <returns>
-    /// Returns true if the value of the field was changed; otherwise, false.
-    /// </returns>
     protected bool SetProperty<T>(ref T field, T newValue, string propertyName, Action onChangedAction = null)
     {
         if (!Equals(field, newValue))

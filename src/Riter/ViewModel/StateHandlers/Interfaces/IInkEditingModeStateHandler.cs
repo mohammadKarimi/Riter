@@ -2,9 +2,9 @@
 using System.Windows.Ink;
 using Riter.Core.Consts;
 
-namespace Riter.ViewModel;
+namespace Riter.ViewModel.StateHandlers;
 
-public interface IInkEditingModeHandler
+public interface IInkEditingModeStateHandler
 {
     /// <summary>
     /// Gets the current ink editing mode for the InkCanvas.
