@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Riter.ViewModel;
 
 namespace Riter.Core;
 
@@ -8,7 +8,7 @@ public class HotKeyLoader(AppSettings options)
     public const uint SHIFT = 0x0004;
     public const uint ALT = 0x0001;
 
-    public Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> Loads(BaseViewModel viewModel)
+    public Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> Loads(PalleteStateOrchestratorViewModel viewModel)
     {
         Dictionary<HotKey, (uint modifiers, uint key, Action<HotKey> callback)> hotkeys = [];
         foreach (var hotkey in options.HotKeysConfig)

@@ -7,6 +7,9 @@ public enum HotKey
     Trash = 9003,
     Undo = 9004,
     Redo = 9005,
-    Highlightr = 9006,
-    Release = 9007
+    Highlighter = 9006,
+    Release = 9007,
+    SizeOfBrush1X = 9008,
+    SizeOfBrush2X = 9009,
+    SizeOfBrush3X = 9010,
 }
