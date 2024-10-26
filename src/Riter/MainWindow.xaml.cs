@@ -14,17 +14,17 @@ public partial class MainWindow : Window
 {
     private readonly IStrokeHistoryService _strokeHistoryService;
     private readonly HotKeyLoader _hotKeyLoader;
-    private readonly PalleteStateViewModel _pallateStateViewModel;
+    private readonly PalleteStateOrchestratorViewModel _orchestratorViewModel;
     private GlobalHotKeyManager _globalHotkeyManager;
 
     public MainWindow(
-        PalleteStateViewModel pallateStateViewModel,
+        PalleteStateOrchestratorViewModel orchestratorViewModel,
         HotKeyLoader hotKeyLoader,
         IStrokeHistoryService strokeHistoryService)
     {
         InitializeComponent();
-        DataContext = pallateStateViewModel;
-        _pallateStateViewModel = pallateStateViewModel;
+        DataContext = orchestratorViewModel;
+        _orchestratorViewModel = orchestratorViewModel;
         _strokeHistoryService = strokeHistoryService;
         _hotKeyLoader = hotKeyLoader;
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
@@ -41,7 +41,7 @@ public partial class MainWindow : Window
     {
         base.OnSourceInitialized(e);
         _globalHotkeyManager = new GlobalHotKeyManager(this);
-        var hotkies = _hotKeyLoader.Loads(_pallateStateViewModel);
+        var hotkies = _hotKeyLoader.Loads(_orchestratorViewModel);
 
         foreach (var hotkey in hotkies)
         {
