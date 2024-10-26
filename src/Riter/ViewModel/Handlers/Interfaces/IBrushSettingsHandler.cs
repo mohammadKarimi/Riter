@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Riter.Core.Enum;
 
 namespace Riter.ViewModel.Handlers;
 
@@ -30,4 +31,6 @@ public interface IBrushSettingsHandler : INotifyPropertyChanged
     /// </summary>
     /// <param name="size">type of brush size enum.</param>
     void SetSizeOfBrush(string size);
+
+    void SetSizeOfBrushWithHotKey(BrushSize size);
 }

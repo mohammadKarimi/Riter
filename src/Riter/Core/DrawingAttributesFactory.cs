@@ -1,7 +1,7 @@
 ﻿using System.Windows.Ink;
 using System.Windows.Media;
 
-namespace Riter.ViewModel;
+namespace Riter.Core;
 
 /// <summary>
 /// Factory for creating Drawing Attribute instance.

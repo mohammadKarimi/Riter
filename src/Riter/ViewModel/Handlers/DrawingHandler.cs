@@ -21,7 +21,7 @@ public class DrawingHandler : BaseHandler, IDrawingHandler
     public bool IsHighlighter
     {
         get => _isHighlighter;
-        private set => SetProperty(ref _isHighlighter, value, "InkDrawingAttributes");
+        private set => SetProperty(ref _isHighlighter, value, nameof(IsHighlighter));
     }
 
     public InkCanvasEditingMode InkEditingMode
@@ -82,7 +82,6 @@ public class DrawingHandler : BaseHandler, IDrawingHandler
         InkEditingMode = InkCanvasEditingMode.Ink;
         IsReleased = false;
         SettingPanelVisibility = false;
-        OnPropertyChanged("InkDrawingAttributes");
     }
 
     private void ResetToDefault()

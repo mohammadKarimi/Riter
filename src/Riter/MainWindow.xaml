@@ -14,7 +14,7 @@
         <Style TargetType="Window">
             <Setter Property="Background" Value="{StaticResource NoneTransparent}"/>
             <Style.Triggers>
-                <DataTrigger Binding="{Binding IsReleased}" Value="True">
+                <DataTrigger Binding="{Binding DrawingViewModel.IsReleased}" Value="True">
                     <Setter Property="Background" Value="{StaticResource Transparent}"/>
                 </DataTrigger>
             </Style.Triggers>

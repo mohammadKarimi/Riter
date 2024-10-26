@@ -1,10 +1,14 @@
-﻿namespace Riter.Core;
+﻿using System.ComponentModel;
+using Riter.ViewModel;
 
-public abstract class BaseViewModel
+namespace Riter.Core;
+public abstract class BaseViewModel : INotifyPropertyChanged
 {
-    /// <summary>
-    /// Decides which method to call based on the hotkey pressed.
-    /// </summary>
-    /// <param name="hotKey">The hotkey that was pressed.</param>
-    public abstract void HandleHotkey(HotKey hotKey);
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void OnPropertyChanged(string propertyName)
+     => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+    protected void OnStateChanged(object sender, PropertyChangedEventArgs e)
+     => OnPropertyChanged(e.PropertyName);
 }

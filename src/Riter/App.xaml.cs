@@ -59,7 +59,12 @@ public partial class App : Application
         serviceCollection.AddSingleton<IStrokeVisibilityHandler, StrokeVisibilityHandler>();
         serviceCollection.AddSingleton<IStrokeHistoryService, StrokeHistoryService>();
         serviceCollection.AddSingleton<IDrawingHandler, DrawingHandler>();
-        serviceCollection.AddSingleton<PalleteStateViewModel>();
+
+        serviceCollection.AddSingleton<BrushSettingsViewModel>();
+        serviceCollection.AddSingleton<DrawingViewModel>();
+        serviceCollection.AddSingleton<StrokeHistoryViewModel>();
+        serviceCollection.AddSingleton<StrokeVisibilityViewModel>();
+        serviceCollection.AddSingleton<PalleteStateOrchestratorViewModel>();
         serviceCollection.AddTransient(typeof(MainWindow));
     }
 }

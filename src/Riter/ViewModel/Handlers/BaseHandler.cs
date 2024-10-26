@@ -9,9 +9,13 @@ public abstract class BaseHandler : INotifyPropertyChanged
     private static string _previousButtonSelectedName = string.Empty;
     private static bool _isSettingPanelOpened;
 
+    static BaseHandler()
+    {
+        _buttonSelectedName = ButtonNames.DefaultButtonSelectedName;
+    }
+
     public BaseHandler()
     {
-        ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
         _isSettingPanelOpened = false;
     }
 
@@ -73,7 +77,11 @@ public abstract class BaseHandler : INotifyPropertyChanged
 
     protected void ResetPreviousButton()
     {
-        ButtonSelectedName = _previousButtonSelectedName;
+        if (!string.IsNullOrEmpty(_previousButtonSelectedName))
+        {
+            ButtonSelectedName = _previousButtonSelectedName;
+        }
+
         _previousButtonSelectedName = string.Empty;
         SettingPanelVisibility = false;
     }
