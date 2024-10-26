@@ -9,7 +9,7 @@
    mc:Ignorable="d" 
              Width="545" Height="340" DataContext="{Binding}" >
     <Grid Margin="0,0,0,4">
-        <Border Padding="8,8" CornerRadius="12" Visibility="{Binding DrawingViewModel.SettingPanelVisibility}" Background="#FFF" BorderBrush="#E5E5E5" BorderThickness="1">
+        <Border Padding="8,8" CornerRadius="12" Visibility="{Binding SettingPanelVisibility}" Background="#FFF" BorderBrush="#E5E5E5" BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
             </Border.Effect>

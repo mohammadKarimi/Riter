@@ -16,7 +16,7 @@ public sealed class DrawingViewModel : BaseViewModel
 
     public bool IsHighlighter => _drawingHandler.IsHighlighter;
 
-    public Visibility SettingPanelVisibility => _drawingHandler.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
+    public bool SettingPanelVisibility => _drawingHandler.SettingPanelVisibility;
 
     public string ButtonSelectedName => _drawingHandler.ButtonSelectedName;
 

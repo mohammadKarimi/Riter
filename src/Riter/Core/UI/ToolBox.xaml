@@ -27,7 +27,7 @@
                                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                 <Setter Property="Tag" Value="UnSelected"/>
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DrawingViewModel.ButtonSelectedName}" Value="ReleasedButton">
+                                                    <DataTrigger Binding="{Binding ButtonSelectedName}" Value="ReleasedButton">
                                                         <Setter Property="Tag" Value="Selected"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -42,7 +42,7 @@
                                                 <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                     <Setter Property="Tag" Value="UnSelected"/>
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding DrawingViewModel.ButtonSelectedName}" Value="DrawingButton">
+                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="DrawingButton">
                                                             <Setter Property="Tag" Value="Selected"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -56,7 +56,7 @@
                                                 <Style TargetType="Button" BasedOn="{StaticResource ArrowButtonStyle}">
                                                     <Setter Property="Tag" Value="UnSelected"/>
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding DrawingViewModel.ButtonSelectedName}" Value="SettingButton">
+                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="SettingButton">
                                                             <Setter Property="Tag" Value="Selected"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -73,7 +73,7 @@
                                                 <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                     <Setter Property="Tag" Value="UnSelected"/>
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding DrawingViewModel.ButtonSelectedName}" Value="HighlighterButton">
+                                                        <DataTrigger Binding="{Binding ButtonSelectedName}" Value="HighlighterButton">
                                                             <Setter Property="Tag" Value="Selected"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -111,7 +111,7 @@
                                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                 <Setter Property="Tag" Value="UnSelected"/>
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DrawingViewModel.ButtonSelectedName}" Value="ErasingButton">
+                                                    <DataTrigger Binding="{Binding ButtonSelectedName}" Value="ErasingButton">
                                                         <Setter Property="Tag" Value="Selected"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -144,7 +144,7 @@
                                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                 <Setter Property="Tag" Value="UnSelected"/>
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding DrawingViewModel.ButtonSelectedName}" Value="SettingButton">
+                                                    <DataTrigger Binding="{Binding ButtonSelectedName}" Value="SettingButton">
                                                         <Setter Property="Tag" Value="Selected"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>

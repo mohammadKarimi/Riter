@@ -82,7 +82,6 @@ public class DrawingHandler : BaseHandler, IDrawingHandler
         InkEditingMode = InkCanvasEditingMode.Ink;
         IsReleased = false;
         SettingPanelVisibility = false;
-       // OnPropertyChanged("InkDrawingAttributes");
     }
 
     private void ResetToDefault()

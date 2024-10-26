@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Riter.ViewModel;
 
 namespace Riter.Core;
 public abstract class BaseViewModel : INotifyPropertyChanged
