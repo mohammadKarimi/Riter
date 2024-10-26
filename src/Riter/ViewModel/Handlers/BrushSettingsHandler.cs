@@ -48,4 +48,6 @@ public class BrushSettingsHandler : BaseHandler, IBrushSettingsHandler
         SizeOfBrush = double.Parse(size);
         ResetPreviousButton();
     }
+
+    public void SetSizeOfBrushWithHotKey(double size) => SizeOfBrush = size;
 }

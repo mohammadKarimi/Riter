@@ -30,4 +30,6 @@ public interface IBrushSettingsHandler : INotifyPropertyChanged
     /// </summary>
     /// <param name="size">type of brush size enum.</param>
     void SetSizeOfBrush(string size);
+
+    void SetSizeOfBrushWithHotKey(double size);
 }
