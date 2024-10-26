@@ -39,17 +39,10 @@ public class DrawingStateHandler : BaseStateHandler, IDrawingStateHandler
     public void StartDrawing()
     {
         IsHighlighter = false;
-        //if (IsReleased is false && ButtonSelectedName == ButtonNames.DrawingButton)
-        //{
-        //    ResetToDefault();
-        //}
-        //else
-        //{
         ButtonSelectedName = ButtonNames.DrawingButton;
         InkEditingMode = InkCanvasEditingMode.Ink;
         IsReleased = false;
         SettingPanelVisibility = false;
-        // }
     }
 
     public void StartErasing()
@@ -81,13 +74,6 @@ public class DrawingStateHandler : BaseStateHandler, IDrawingStateHandler
         ButtonSelectedName = ButtonNames.HighlighterButton;
         InkEditingMode = InkCanvasEditingMode.Ink;
         IsReleased = false;
-        SettingPanelVisibility = false;
-    }
-
-    private void ResetToDefault()
-    {
-        ButtonSelectedName = ButtonNames.DefaultButtonSelectedName;
-        IsReleased = true;
         SettingPanelVisibility = false;
     }
 }
