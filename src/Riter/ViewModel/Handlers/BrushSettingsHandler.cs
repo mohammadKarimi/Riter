@@ -1,4 +1,5 @@
 ﻿using Riter.Core;
+using Riter.Core.Enum;
 using Riter.ViewModel.Handlers;
 
 namespace Riter.ViewModel;
@@ -24,16 +25,13 @@ public class BrushSettingsHandler : BaseHandler, IBrushSettingsHandler
     public string InkColor
     {
         get => _inkColor;
-        private set => SetProperty(ref _inkColor, value, "InkDrawingAttributes");
+        private set => SetProperty(ref _inkColor, value, nameof(InkColor));
     }
 
     public double SizeOfBrush
     {
         get => _sizeOfBrush;
-        private set => SetProperty(ref _sizeOfBrush, value, nameof(SizeOfBrush), () =>
-        {
-            OnPropertyChanged("InkDrawingAttributes");
-        });
+        private set => SetProperty(ref _sizeOfBrush, value, nameof(SizeOfBrush));
     }
 
     public void SetInkColor(string color)
@@ -49,5 +47,5 @@ public class BrushSettingsHandler : BaseHandler, IBrushSettingsHandler
         ResetPreviousButton();
     }
 
-    public void SetSizeOfBrushWithHotKey(double size) => SizeOfBrush = size;
+    public void SetSizeOfBrushWithHotKey(BrushSize size) => SizeOfBrush = (double)size;
 }

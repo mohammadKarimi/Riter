@@ -1,24 +1,29 @@
-﻿using System.ComponentModel;
-using System.Windows.Ink;
-using Riter.Core;
+﻿using System.Windows.Ink;
 using Riter.Core.Enum;
-using Riter.ViewModel.Handlers;
 
 namespace Riter.ViewModel;
 
-public class PalleteStateOrchestratorViewModel(
-  DrawingViewModel drawingViewModel,
-  StrokeVisibilityViewModel strokeVisibilityViewModel,
-  StrokeHistoryViewModel strokeHistoryViewModel,
-  BrushSettingsViewModel brushSettingsViewModel) : BaseViewModel
+public class PalleteStateOrchestratorViewModel : BaseViewModel
 {
-    public DrawingViewModel DrawingViewModel { get; init; } = drawingViewModel;
 
-    public StrokeVisibilityViewModel StrokeVisibilityViewModel { get; init; } = strokeVisibilityViewModel;
+    public PalleteStateOrchestratorViewModel(DrawingViewModel drawingViewModel, StrokeVisibilityViewModel strokeVisibilityViewModel, StrokeHistoryViewModel strokeHistoryViewModel, BrushSettingsViewModel brushSettingsViewModel)
+    {
+        DrawingViewModel = drawingViewModel;
+        StrokeVisibilityViewModel = strokeVisibilityViewModel;
+        StrokeHistoryViewModel = strokeHistoryViewModel;
+        BrushSettingsViewModel = brushSettingsViewModel;
 
-    public StrokeHistoryViewModel StrokeHistoryViewModel { get; init; } = strokeHistoryViewModel;
+        BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
+        DrawingViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
+    }
 
-    public BrushSettingsViewModel BrushSettingsViewModel { get; init; } = brushSettingsViewModel;
+    public DrawingViewModel DrawingViewModel { get; init; }
+
+    public StrokeVisibilityViewModel StrokeVisibilityViewModel { get; init; }
+
+    public StrokeHistoryViewModel StrokeHistoryViewModel { get; init; }
+
+    public BrushSettingsViewModel BrushSettingsViewModel { get; init; }
 
     public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(BrushSettingsViewModel.InkColor, BrushSettingsViewModel.SizeOfBrush, DrawingViewModel.IsHighlighter);
 
@@ -51,16 +56,25 @@ public class PalleteStateOrchestratorViewModel(
                 StrokeHistoryViewModel.RedoCommand.Execute(null);
                 break;
             case HotKey.SizeOfBrush1X:
-                BrushSettingsViewModel.SetSizeOfBrushCommand.Execute(BrushSize.X1);
+                BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X1);
                 break;
             case HotKey.SizeOfBrush2X:
-                BrushSettingsViewModel.SetSizeOfBrushCommand.Execute(BrushSize.X2);
+                BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X2);
                 break;
             case HotKey.SizeOfBrush3X:
-                BrushSettingsViewModel.SetSizeOfBrushCommand.Execute(BrushSize.X3);
+                BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X3);
                 break;
             default:
                 break;
+        }
+    }
+
+    private void OnBrushOrHighlightChanged(string propertyName)
+    {
+        if (propertyName == nameof(BrushSettingsViewModel.SizeOfBrush) ||
+            propertyName == nameof(DrawingViewModel.IsHighlighter) || propertyName == nameof(BrushSettingsViewModel.InkColor))
+        {
+            OnPropertyChanged(nameof(InkDrawingAttributes));
         }
     }
 }
