@@ -2,7 +2,6 @@
 using System.Windows.Ink;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core.Interfaces;
-using Riter.ViewModel;
 
 namespace Riter.Core.UI;
 
@@ -12,7 +11,7 @@ namespace Riter.Core.UI;
 public partial class MainInkCanvasControl : UserControl
 {
     private readonly IStrokeHistoryService _strokeHistoryService;
-    private readonly IDrawingStateHandler _drawingHandler;
+    private readonly IInkEditingModeStateHandler _inkEditingModeStateHandler;
     private readonly bool _lineMode = false;
     private bool _isMoving = false;
     private Point _startPoint;
@@ -28,12 +27,12 @@ public partial class MainInkCanvasControl : UserControl
         MainInkCanvas.MouseLeftButtonUp += EndLine;
         MainInkCanvas.MouseMove += MakeLine;
         _strokeHistoryService = App.ServiceProvider.GetService<IStrokeHistoryService>();
-        _drawingHandler = App.ServiceProvider.GetService<IDrawingStateHandler>();
+        _inkEditingModeStateHandler = App.ServiceProvider.GetService<IInkEditingModeStateHandler>();
     }
 
     private void Window_KeyDown(object sender, KeyEventArgs e)
     {
-        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _drawingHandler.InkEditingMode == InkCanvasEditingMode.Ink)
+        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _inkEditingModeStateHandler.InkEditingMode == InkCanvasEditingMode.Ink)
         {
             LineMode();
         }
@@ -41,7 +40,7 @@ public partial class MainInkCanvasControl : UserControl
 
     private void Window_KeyUp(object sender, KeyEventArgs e)
     {
-        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _drawingHandler.InkEditingMode == InkCanvasEditingMode.None)
+        if ((e.Key == Key.LeftShift || e.Key == Key.RightShift) && _inkEditingModeStateHandler.InkEditingMode == InkCanvasEditingMode.None)
         {
             StrokeMode();
         }
@@ -49,13 +48,13 @@ public partial class MainInkCanvasControl : UserControl
 
     private void LineMode()
     {
-        _drawingHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.None);
+        _inkEditingModeStateHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.None);
         MainInkCanvas.UseCustomCursor = true;
     }
 
     private void StrokeMode()
     {
-        _drawingHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.Ink);
+        _inkEditingModeStateHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.Ink);
         MainInkCanvas.UseCustomCursor = false;
     }
 

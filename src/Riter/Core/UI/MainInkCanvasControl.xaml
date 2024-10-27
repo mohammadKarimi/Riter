@@ -11,7 +11,7 @@
              KeyUp="Window_KeyUp">
     <Grid>
         <InkCanvas x:Name="MainInkCanvas"
-                   EditingMode="{Binding DrawingViewModel.InkEditingMode}"
+                   EditingMode="{Binding InkEditingModeViewModel.InkEditingMode}"
                    Background="{x:Null}"
                    MoveEnabled="False"
                    ResizeEnabled="False"
