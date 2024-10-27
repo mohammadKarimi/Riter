@@ -19,8 +19,6 @@ public sealed class DrawingViewModel : BaseViewModel
 
     public string ButtonSelectedName => _drawingHandler.ButtonSelectedName;
 
-    public InkCanvasEditingMode InkEditingMode => _drawingHandler.InkEditingMode;
-
     public ICommand StartDrawingCommand => new RelayCommand(_drawingHandler.StartDrawing);
 
     public ICommand StartErasingCommand => new RelayCommand(_drawingHandler.StartErasing);

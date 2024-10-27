@@ -5,12 +5,18 @@ namespace Riter.ViewModel;
 
 public class PalleteStateOrchestratorViewModel : BaseViewModel
 {
-    public PalleteStateOrchestratorViewModel(DrawingViewModel drawingViewModel, StrokeVisibilityViewModel strokeVisibilityViewModel, StrokeHistoryViewModel strokeHistoryViewModel, BrushSettingsViewModel brushSettingsViewModel)
+    public PalleteStateOrchestratorViewModel(
+        DrawingViewModel drawingViewModel,
+        StrokeVisibilityViewModel strokeVisibilityViewModel,
+        StrokeHistoryViewModel strokeHistoryViewModel,
+        BrushSettingsViewModel brushSettingsViewModel,
+        InkEditingModeViewModel inkEditingModeViewModel)
     {
         DrawingViewModel = drawingViewModel;
         StrokeVisibilityViewModel = strokeVisibilityViewModel;
         StrokeHistoryViewModel = strokeHistoryViewModel;
         BrushSettingsViewModel = brushSettingsViewModel;
+        InkEditingModeViewModel = inkEditingModeViewModel;
 
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         DrawingViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
@@ -19,6 +25,8 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
     public DrawingViewModel DrawingViewModel { get; init; }
 
     public StrokeVisibilityViewModel StrokeVisibilityViewModel { get; init; }
+
+    public InkEditingModeViewModel InkEditingModeViewModel { get; init; }
 
     public StrokeHistoryViewModel StrokeHistoryViewModel { get; init; }
 

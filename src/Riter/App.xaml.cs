@@ -53,6 +53,7 @@ public partial class App : Application
     private static void ConfigureServices(ServiceCollection serviceCollection)
     {
         serviceCollection.AddSingleton<HotKeyLoader>();
+        serviceCollection.AddSingleton<IInkEditingModeStateHandler, InkEditingModeStateHandler>();
         serviceCollection.AddSingleton<IBrushSettingsStateHandler, BrushSettingsStateHandler>();
         serviceCollection.AddSingleton<IStrokeVisibilityStateHandler, StrokeVisibilityStateHandler>();
         serviceCollection.AddSingleton<IStrokeHistoryService, StrokeHistoryService>();
@@ -62,6 +63,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<DrawingViewModel>();
         serviceCollection.AddSingleton<StrokeHistoryViewModel>();
         serviceCollection.AddSingleton<StrokeVisibilityViewModel>();
+        serviceCollection.AddSingleton<InkEditingModeViewModel>();
         serviceCollection.AddSingleton<PalleteStateOrchestratorViewModel>();
         serviceCollection.AddTransient(typeof(MainWindow));
     }
