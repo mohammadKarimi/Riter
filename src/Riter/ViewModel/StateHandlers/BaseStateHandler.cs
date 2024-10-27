@@ -12,10 +12,6 @@ public abstract class BaseStateHandler : INotifyPropertyChanged
     static BaseStateHandler()
     {
         _buttonSelectedName = ButtonNames.DefaultButtonSelectedName;
-    }
-
-    public BaseStateHandler()
-    {
         _isSettingPanelOpened = false;
     }
 
