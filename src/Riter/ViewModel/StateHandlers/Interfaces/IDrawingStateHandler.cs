@@ -7,7 +7,7 @@ namespace Riter.ViewModel.StateHandlers;
 /// the ink editing mode, and the selected button name.
 /// Handles changes in these states and notifies subscribers of changes.
 /// </summary>
-public interface IDrawingStateHandler : IInkEditingModeStateHandler, IHighlighterStateHandler, ISettingPanelStateHandler, INotifyPropertyChanged
+public interface IDrawingStateHandler : IHighlighterStateHandler, ISettingPanelStateHandler, INotifyPropertyChanged
 {
     /// <summary>
     /// Gets a value indicating whether the ink has been released.
