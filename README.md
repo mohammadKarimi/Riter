@@ -53,6 +53,12 @@ H -> Highlighter
 R -> Release
 <br/>
 Shift(On Drawing Mode) -> Draw a line
+<br/>
+Ctrl+1 -> 1x Brush size
+<br/>
+Ctrl+2 -> 2x Brush size
+<br/>
+Ctrl+3 -> 3x Brush size
 
 # Features
 - Drawing Functionality
