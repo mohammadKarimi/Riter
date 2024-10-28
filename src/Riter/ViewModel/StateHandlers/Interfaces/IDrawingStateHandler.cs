@@ -7,7 +7,7 @@ namespace Riter.ViewModel.StateHandlers;
 /// the ink editing mode, and the selected button name.
 /// Handles changes in these states and notifies subscribers of changes.
 /// </summary>
-public interface IDrawingStateHandler : IHighlighterStateHandler, ISettingPanelStateHandler, INotifyPropertyChanged
+public interface IDrawingStateHandler : ISettingPanelStateHandler, INotifyPropertyChanged
 {
     /// <summary>
     /// Gets a value indicating whether the ink has been released.
@@ -30,4 +30,6 @@ public interface IDrawingStateHandler : IHighlighterStateHandler, ISettingPanelS
     /// Starts erasing based on the button pressed.
     /// </summary>
     void StartErasing();
+
+    void EnableHighlighterInk();
 }
