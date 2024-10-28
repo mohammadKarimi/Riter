@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Riter.Core.Interfaces;
 using Riter.Services;
 using Riter.ViewModel;
+using Riter.ViewModel.Handlers;
 
 namespace Riter;
 
@@ -58,7 +59,9 @@ public partial class App : Application
         serviceCollection.AddSingleton<IStrokeVisibilityStateHandler, StrokeVisibilityStateHandler>();
         serviceCollection.AddSingleton<IStrokeHistoryService, StrokeHistoryService>();
         serviceCollection.AddSingleton<IDrawingStateHandler, DrawingStateHandler>();
+        serviceCollection.AddSingleton<IHighlighterStateHandler,HighlighterStateHandler>();
 
+        serviceCollection.AddSingleton<HighlighterViewModel>();
         serviceCollection.AddSingleton<BrushSettingsViewModel>();
         serviceCollection.AddSingleton<DrawingViewModel>();
         serviceCollection.AddSingleton<StrokeHistoryViewModel>();

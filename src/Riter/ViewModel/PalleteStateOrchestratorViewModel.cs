@@ -10,15 +10,18 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
         StrokeVisibilityViewModel strokeVisibilityViewModel,
         StrokeHistoryViewModel strokeHistoryViewModel,
         BrushSettingsViewModel brushSettingsViewModel,
-        InkEditingModeViewModel inkEditingModeViewModel)
+        InkEditingModeViewModel inkEditingModeViewModel,
+        HighlighterViewModel highlighterViewModel)
     {
         DrawingViewModel = drawingViewModel;
         StrokeVisibilityViewModel = strokeVisibilityViewModel;
         StrokeHistoryViewModel = strokeHistoryViewModel;
         BrushSettingsViewModel = brushSettingsViewModel;
         InkEditingModeViewModel = inkEditingModeViewModel;
+        HighlighterViewModel = highlighterViewModel;
 
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
+        HighlighterViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         DrawingViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
     }
 
@@ -32,7 +35,9 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
 
     public BrushSettingsViewModel BrushSettingsViewModel { get; init; }
 
-    public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(BrushSettingsViewModel.InkColor, BrushSettingsViewModel.SizeOfBrush, DrawingViewModel.IsHighlighter);
+    public HighlighterViewModel HighlighterViewModel { get; init; }
+
+    public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(BrushSettingsViewModel.InkColor, BrushSettingsViewModel.SizeOfBrush, HighlighterViewModel.IsHighlighter);
 
     public Visibility SettingPanelVisibility => DrawingViewModel.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
@@ -83,7 +88,7 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
     private void OnBrushOrHighlightChanged(string propertyName)
     {
         if (propertyName == nameof(BrushSettingsViewModel.SizeOfBrush) ||
-            propertyName == nameof(DrawingViewModel.IsHighlighter) || propertyName == nameof(BrushSettingsViewModel.InkColor))
+            propertyName == nameof(HighlighterViewModel.IsHighlighter) || propertyName == nameof(BrushSettingsViewModel.InkColor))
         {
             OnPropertyChanged(nameof(InkDrawingAttributes));
         }

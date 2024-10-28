@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-
-namespace Riter.ViewModel;
+﻿namespace Riter.ViewModel;
 public sealed class DrawingViewModel : BaseViewModel
 {
     private readonly IDrawingStateHandler _drawingHandler;
@@ -13,8 +11,6 @@ public sealed class DrawingViewModel : BaseViewModel
 
     public bool IsReleased => _drawingHandler.IsReleased;
 
-    public bool IsHighlighter => _drawingHandler.IsHighlighter;
-
     public bool SettingPanelVisibility => _drawingHandler.SettingPanelVisibility;
 
     public string ButtonSelectedName => _drawingHandler.ButtonSelectedName;
@@ -25,7 +21,7 @@ public sealed class DrawingViewModel : BaseViewModel
 
     public ICommand ReleaseCommand => new RelayCommand(_drawingHandler.Release);
 
-    public ICommand ToggleHighlighterCommand => new RelayCommand(_drawingHandler.EnableHighlighter);
-
     public ICommand ToggleSettingsPanelCommand => new RelayCommand(_drawingHandler.ToggleSettingsPanel);
+
+    public ICommand ToggleHighlighterCommand => new RelayCommand(_drawingHandler.EnableHighlighterInk);
 }
