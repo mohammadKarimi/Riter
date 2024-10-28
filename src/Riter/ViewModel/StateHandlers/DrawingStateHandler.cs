@@ -2,10 +2,16 @@
 
 namespace Riter.ViewModel.StateHandlers;
 
-public class DrawingStateHandler(IInkEditingModeStateHandler inkEditingModeStateHandler, IHighlighterStateHandler highlighterStateHandler) : BaseStateHandler, IDrawingStateHandler
+public class DrawingStateHandler(
+    IInkEditingModeStateHandler inkEditingModeStateHandler,
+    IHighlighterStateHandler highlighterStateHandler,
+    IButtonSelectedStateHandler buttonSelectedStateHandler,
+    ISettingPanelStateHandler settingPanelStateHandler) : BaseStateHandler, IDrawingStateHandler
 {
     private readonly IInkEditingModeStateHandler _inkEditingModeStateHandler = inkEditingModeStateHandler;
     private readonly IHighlighterStateHandler _highlighterStateHandler = highlighterStateHandler;
+    private readonly IButtonSelectedStateHandler _buttonSelectedStateHandler = buttonSelectedStateHandler;
+    private readonly ISettingPanelStateHandler _settingPanelStateHandler = settingPanelStateHandler;
     private bool _isReleased = true;
 
     public bool IsReleased
@@ -26,32 +32,32 @@ public class DrawingStateHandler(IInkEditingModeStateHandler inkEditingModeState
 
     public void Release()
     {
-        ButtonSelectedName = ButtonNames.ReleaseButton;
+        _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ReleaseButton);
         IsReleased = true;
     }
 
     public void StartDrawing()
     {
         _highlighterStateHandler.DisableHighlighter();
-        ButtonSelectedName = ButtonNames.DrawingButton;
+        _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.DrawingButton);
         _inkEditingModeStateHandler.Ink();
         IsReleased = false;
-        SettingPanelVisibility = false;
+        _settingPanelStateHandler.SetSettingPanelInvisibile();
     }
 
     public void StartErasing()
     {
         IsReleased = false;
         _inkEditingModeStateHandler.EraseByStroke();
-        ButtonSelectedName = ButtonNames.ErasingButton;
+        _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ErasingButton);
     }
 
     public void StartHighlighterDrawing()
     {
         _highlighterStateHandler.EnableHighlighter();
-        ButtonSelectedName = ButtonNames.HighlighterButton;
+        _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.HighlighterButton);
         _inkEditingModeStateHandler.Ink();
         IsReleased = false;
-        SettingPanelVisibility = false;
+        _settingPanelStateHandler.SetSettingPanelInvisibile();
     }
 }

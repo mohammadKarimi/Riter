@@ -61,7 +61,9 @@ public partial class App : Application
         serviceCollection.AddSingleton<IDrawingStateHandler, DrawingStateHandler>();
         serviceCollection.AddSingleton<IHighlighterStateHandler, HighlighterStateHandler>();
         serviceCollection.AddSingleton<ISettingPanelStateHandler, SettingsPanelStateHandler>();
+        serviceCollection.AddSingleton<IButtonSelectedStateHandler, ButtonSelectedStateHandler>();
 
+        serviceCollection.AddSingleton<ButtonSelectedViewModel>();
         serviceCollection.AddSingleton<SettingPanelViewModel>();
         serviceCollection.AddSingleton<HighlighterViewModel>();
         serviceCollection.AddSingleton<BrushSettingsViewModel>();

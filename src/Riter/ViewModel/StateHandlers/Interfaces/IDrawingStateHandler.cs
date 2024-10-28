@@ -14,7 +14,7 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
     /// </summary>
     bool IsReleased { get; }
 
-    string ButtonSelectedName { get; }
+    //string ButtonSelectedName { get; }
 
     /// <summary>
     /// Releases the ink based on the button pressed.

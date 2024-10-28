@@ -12,7 +12,8 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
         BrushSettingsViewModel brushSettingsViewModel,
         InkEditingModeViewModel inkEditingModeViewModel,
         HighlighterViewModel highlighterViewModel,
-        SettingPanelViewModel settingPanelViewModel)
+        SettingPanelViewModel settingPanelViewModel,
+        ButtonSelectedViewModel buttonSelectedViewModel)
     {
         DrawingViewModel = drawingViewModel;
         StrokeVisibilityViewModel = strokeVisibilityViewModel;
@@ -21,11 +22,13 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
         InkEditingModeViewModel = inkEditingModeViewModel;
         HighlighterViewModel = highlighterViewModel;
         SettingPanelViewModel = settingPanelViewModel;
+        ButtonSelectedViewModel = buttonSelectedViewModel;
 
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         HighlighterViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         DrawingViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         SettingPanelViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
+        buttonSelectedViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
     }
 
     public DrawingViewModel DrawingViewModel { get; init; }
@@ -42,11 +45,13 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
 
     public SettingPanelViewModel SettingPanelViewModel { get; init; }
 
+    public ButtonSelectedViewModel ButtonSelectedViewModel { get; init; }
+
     public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(BrushSettingsViewModel.InkColor, BrushSettingsViewModel.SizeOfBrush, HighlighterViewModel.IsHighlighter);
 
     public Visibility SettingPanelVisibility => SettingPanelViewModel.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
-    public string ButtonSelectedName => DrawingViewModel.ButtonSelectedName;
+    public string ButtonSelectedName => ButtonSelectedViewModel.ButtonSelectedName;
 
     public void HandleHotkey(HotKey hotKey)
     {
