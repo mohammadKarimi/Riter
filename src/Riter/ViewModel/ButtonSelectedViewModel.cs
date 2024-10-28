@@ -10,4 +10,6 @@ public class ButtonSelectedViewModel : BaseViewModel
     }
 
     public string ButtonSelectedName => _buttonSelectedStateHandler.ButtonSelectedName;
+
+    public string ArrowButtonSelectedName => _buttonSelectedStateHandler.ArrowButtonSelectedName;
 }

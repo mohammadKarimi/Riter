@@ -26,9 +26,6 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
 
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         HighlighterViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
-        DrawingViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
-        SettingPanelViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
-        buttonSelectedViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
     }
 
     public DrawingViewModel DrawingViewModel { get; init; }
@@ -48,10 +45,6 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
     public ButtonSelectedViewModel ButtonSelectedViewModel { get; init; }
 
     public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(BrushSettingsViewModel.InkColor, BrushSettingsViewModel.SizeOfBrush, HighlighterViewModel.IsHighlighter);
-
-    public Visibility SettingPanelVisibility => SettingPanelViewModel.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
-
-    public string ButtonSelectedName => ButtonSelectedViewModel.ButtonSelectedName;
 
     public void HandleHotkey(HotKey hotKey)
     {
@@ -98,19 +91,10 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
     private void OnBrushOrHighlightChanged(string propertyName)
     {
         if (propertyName == nameof(BrushSettingsViewModel.SizeOfBrush) ||
-            propertyName == nameof(HighlighterViewModel.IsHighlighter) || propertyName == nameof(BrushSettingsViewModel.InkColor))
+            propertyName == nameof(HighlighterViewModel.IsHighlighter) ||
+            propertyName == nameof(BrushSettingsViewModel.InkColor))
         {
             OnPropertyChanged(nameof(InkDrawingAttributes));
-        }
-
-        if (propertyName == nameof(SettingPanelVisibility))
-        {
-            OnPropertyChanged(nameof(SettingPanelVisibility));
-        }
-
-        if (propertyName == nameof(ButtonSelectedName))
-        {
-            OnPropertyChanged(nameof(ButtonSelectedName));
         }
     }
 }

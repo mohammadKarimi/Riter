@@ -30,11 +30,26 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
 
     public void SetSettingPanelVisibile() => SettingPanelVisibility = true;
 
+    public void ToggleBrushSettingsPanel(string button)
+    {
+        if (SettingPanelVisibility && _buttonSelectedStateHandler.ArrowButtonSelectedName == button)
+        {
+            _buttonSelectedStateHandler.ResetArrowButtonSelected();
+            SettingPanelVisibility = false;
+        }
+        else
+        {
+            _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeBrushSettingButton);
+            SettingPanelVisibility = true;
+        }
+    }
+
     public void ToggleSettingsPanel()
     {
         if (SettingPanelVisibility && _buttonSelectedStateHandler.ButtonSelectedName == ButtonNames.SettingButton)
         {
             _buttonSelectedStateHandler.ResetPreviousButton();
+            _buttonSelectedStateHandler.ResetArrowButtonSelected();
             SettingPanelVisibility = false;
         }
         else
