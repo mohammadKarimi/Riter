@@ -40,16 +40,21 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
     {
         InkColor = color;
         ColorSelected = color;
-        _buttonSelectedStateHandler.ResetPreviousButton();
-        _settingPanelStateHandler.SetSettingPanelInvisibile();
+        ResetSettings();
     }
 
     public void SetSizeOfBrush(string size)
     {
         SizeOfBrush = double.Parse(size);
-        _buttonSelectedStateHandler.ResetPreviousButton();
-        _settingPanelStateHandler.SetSettingPanelInvisibile();
+        ResetSettings();
     }
 
     public void SetSizeOfBrushWithHotKey(BrushSize size) => SizeOfBrush = (double)size;
+
+    private void ResetSettings()
+    {
+        _buttonSelectedStateHandler.ResetPreviousButton();
+        _buttonSelectedStateHandler.ResetArrowButtonSelected();
+        _settingPanelStateHandler.SetSettingPanelInvisibile();
+    }
 }

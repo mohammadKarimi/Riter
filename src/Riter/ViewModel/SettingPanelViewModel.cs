@@ -9,7 +9,9 @@ public class SettingPanelViewModel : BaseViewModel
         _settingPanelStateHandler.PropertyChanged += OnStateChanged;
     }
 
-    public bool SettingPanelVisibility => _settingPanelStateHandler.SettingPanelVisibility;
+    public Visibility SettingPanelVisibility => _settingPanelStateHandler.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
     public ICommand ToggleSettingsPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleSettingsPanel);
+
+    public ICommand ShowBrushSettingsPanelCommand => new RelayCommand<string>(_settingPanelStateHandler.ToggleBrushSettingsPanel);
 }

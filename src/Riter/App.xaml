@@ -65,15 +65,13 @@
                             </StackPanel>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#EEE"/>
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#E5E5E5"/>
                                     <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
                                 </Trigger>
 
                                 <Trigger Property="Tag" Value="Selected">
                                     <Setter TargetName="ButtonBorder" Property="Background" Value="#EEE"/>
-
                                 </Trigger>
-
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
