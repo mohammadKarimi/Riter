@@ -11,8 +11,6 @@ public sealed class DrawingViewModel : BaseViewModel
 
     public bool IsReleased => _drawingHandler.IsReleased;
 
-    public bool SettingPanelVisibility => _drawingHandler.SettingPanelVisibility;
-
     public string ButtonSelectedName => _drawingHandler.ButtonSelectedName;
 
     public ICommand StartDrawingCommand => new RelayCommand(_drawingHandler.StartDrawing);
@@ -20,8 +18,6 @@ public sealed class DrawingViewModel : BaseViewModel
     public ICommand StartErasingCommand => new RelayCommand(_drawingHandler.StartErasing);
 
     public ICommand ReleaseCommand => new RelayCommand(_drawingHandler.Release);
-
-    public ICommand ToggleSettingsPanelCommand => new RelayCommand(_drawingHandler.ToggleSettingsPanel);
 
     public ICommand ToggleHighlighterCommand => new RelayCommand(_drawingHandler.EnableHighlighterInk);
 }

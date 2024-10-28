@@ -11,7 +11,8 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
         StrokeHistoryViewModel strokeHistoryViewModel,
         BrushSettingsViewModel brushSettingsViewModel,
         InkEditingModeViewModel inkEditingModeViewModel,
-        HighlighterViewModel highlighterViewModel)
+        HighlighterViewModel highlighterViewModel,
+        SettingPanelViewModel settingPanelViewModel)
     {
         DrawingViewModel = drawingViewModel;
         StrokeVisibilityViewModel = strokeVisibilityViewModel;
@@ -19,10 +20,12 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
         BrushSettingsViewModel = brushSettingsViewModel;
         InkEditingModeViewModel = inkEditingModeViewModel;
         HighlighterViewModel = highlighterViewModel;
+        SettingPanelViewModel = settingPanelViewModel;
 
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         HighlighterViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         DrawingViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
+        SettingPanelViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
     }
 
     public DrawingViewModel DrawingViewModel { get; init; }
@@ -37,9 +40,11 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
 
     public HighlighterViewModel HighlighterViewModel { get; init; }
 
+    public SettingPanelViewModel SettingPanelViewModel { get; init; }
+
     public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(BrushSettingsViewModel.InkColor, BrushSettingsViewModel.SizeOfBrush, HighlighterViewModel.IsHighlighter);
 
-    public Visibility SettingPanelVisibility => DrawingViewModel.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
+    public Visibility SettingPanelVisibility => SettingPanelViewModel.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
     public string ButtonSelectedName => DrawingViewModel.ButtonSelectedName;
 

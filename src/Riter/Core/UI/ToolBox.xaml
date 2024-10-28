@@ -51,7 +51,7 @@
                                         </Button>
                                     </Border>
                                     <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button x:Name="ChangeInkSizeButton"  Content="{StaticResource Icon_PenArrow}" Command="{Binding DrawingViewModel.ToggleSettingsPanelCommand}" >
+                                        <Button x:Name="ChangeInkSizeButton"  Content="{StaticResource Icon_PenArrow}" Command="{Binding SettingPanelViewModel.ToggleSettingsPanelCommand}" >
                                             <Button.Style>
                                                 <Style TargetType="Button" BasedOn="{StaticResource ArrowButtonStyle}">
                                                     <Setter Property="Tag" Value="UnSelected"/>
@@ -139,7 +139,7 @@
                                     </Button>
                                 </Border>
                                 <Border Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Button ToolTip="Settings [s]" x:Name="SettingButton" Content="{StaticResource Icon_Setting}" Command="{Binding DrawingViewModel.ToggleSettingsPanelCommand}" >
+                                    <Button ToolTip="Settings [s]" x:Name="SettingButton" Content="{StaticResource Icon_Setting}" Command="{Binding SettingPanelViewModel.ToggleSettingsPanelCommand}" >
                                         <Button.Style>
                                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                 <Setter Property="Tag" Value="UnSelected"/>
