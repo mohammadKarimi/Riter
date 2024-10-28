@@ -6,8 +6,8 @@
     x:Class="Riter.MainWindow"
     mc:Ignorable="d" ResizeMode="NoResize"
     UseLayoutRounding="True" 
-    WindowStartupLocation="CenterOwner"
-    WindowState="Maximized"
+    WindowStartupLocation="Manual"
+     
     AllowsTransparency="True" 
     WindowStyle="None">
     <Window.Style>
