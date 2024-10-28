@@ -11,8 +11,6 @@ public sealed class DrawingViewModel : BaseViewModel
 
     public bool IsReleased => _drawingHandler.IsReleased;
 
-    public string ButtonSelectedName => _drawingHandler.ButtonSelectedName;
-
     public ICommand StartDrawingCommand => new RelayCommand(_drawingHandler.StartDrawing);
 
     public ICommand StartErasingCommand => new RelayCommand(_drawingHandler.StartErasing);
