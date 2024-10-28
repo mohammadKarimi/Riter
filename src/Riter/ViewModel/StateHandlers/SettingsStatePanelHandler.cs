@@ -3,7 +3,6 @@
 namespace Riter.ViewModel.Handlers;
 public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHandler
 {
-
     public void ToggleSettingsPanel()
     {
         if (SettingPanelVisibility && ButtonSelectedName == ButtonNames.SettingButton)

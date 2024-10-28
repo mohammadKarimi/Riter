@@ -1,5 +1,4 @@
-﻿using Riter.Core;
-using Riter.Core.Enum;
+﻿using Riter.Core.Enum;
 
 namespace Riter.ViewModel.StateHandlers;
 
