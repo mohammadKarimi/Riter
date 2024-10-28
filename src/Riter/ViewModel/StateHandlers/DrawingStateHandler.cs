@@ -46,20 +46,6 @@ public class DrawingStateHandler(IInkEditingModeStateHandler inkEditingModeState
         ButtonSelectedName = ButtonNames.ErasingButton;
     }
 
-    public void ToggleSettingsPanel()
-    {
-        if (SettingPanelVisibility && ButtonSelectedName == ButtonNames.SettingButton)
-        {
-            ResetPreviousButton();
-        }
-        else
-        {
-            StoreCurrentButton();
-            ButtonSelectedName = ButtonNames.SettingButton;
-            SettingPanelVisibility = true;
-        }
-    }
-
     public void EnableHighlighterInk()
     {
         _highlighterStateHandler.EnableHighlighter();
