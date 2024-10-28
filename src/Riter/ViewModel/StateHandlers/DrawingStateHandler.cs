@@ -46,7 +46,7 @@ public class DrawingStateHandler(IInkEditingModeStateHandler inkEditingModeState
         ButtonSelectedName = ButtonNames.ErasingButton;
     }
 
-    public void EnableHighlighterInk()
+    public void StartHighlighterDrawing()
     {
         _highlighterStateHandler.EnableHighlighter();
         ButtonSelectedName = ButtonNames.HighlighterButton;

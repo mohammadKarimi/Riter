@@ -19,5 +19,5 @@ public sealed class DrawingViewModel : BaseViewModel
 
     public ICommand ReleaseCommand => new RelayCommand(_drawingHandler.Release);
 
-    public ICommand ToggleHighlighterCommand => new RelayCommand(_drawingHandler.EnableHighlighterInk);
+    public ICommand ToggleHighlighterCommand => new RelayCommand(_drawingHandler.StartHighlighterDrawing);
 }

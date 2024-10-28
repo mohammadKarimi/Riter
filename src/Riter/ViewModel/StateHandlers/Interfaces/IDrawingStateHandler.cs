@@ -31,5 +31,5 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
     /// </summary>
     void StartErasing();
 
-    void EnableHighlighterInk();
+    void StartHighlighterDrawing();
 }
