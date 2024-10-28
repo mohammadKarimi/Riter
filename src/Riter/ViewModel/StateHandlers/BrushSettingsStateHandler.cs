@@ -4,12 +4,16 @@ namespace Riter.ViewModel.StateHandlers;
 
 public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHandler
 {
+    private readonly IButtonSelectedStateHandler _buttonSelectedStateHandler;
+    private readonly ISettingPanelStateHandler _settingPanelStateHandler;
     private string _inkColor;
     private string _colorSelected;
     private double _sizeOfBrush;
 
-    public BrushSettingsStateHandler()
+    public BrushSettingsStateHandler(IButtonSelectedStateHandler buttonSelectedStateHandler, ISettingPanelStateHandler settingPanelStateHandler)
     {
+        _buttonSelectedStateHandler = buttonSelectedStateHandler;
+        _settingPanelStateHandler = settingPanelStateHandler;
         SetInkColor(AppSettings.InkDefaultColor);
         SizeOfBrush = AppSettings.BrushSize;
     }
@@ -36,13 +40,15 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
     {
         InkColor = color;
         ColorSelected = color;
-        ResetPreviousButton();
+        _buttonSelectedStateHandler.ResetPreviousButton();
+        _settingPanelStateHandler.SetSettingPanelInvisibile();
     }
 
     public void SetSizeOfBrush(string size)
     {
         SizeOfBrush = double.Parse(size);
-        ResetPreviousButton();
+        _buttonSelectedStateHandler.ResetPreviousButton();
+        _settingPanelStateHandler.SetSettingPanelInvisibile();
     }
 
     public void SetSizeOfBrushWithHotKey(BrushSize size) => SizeOfBrush = (double)size;
