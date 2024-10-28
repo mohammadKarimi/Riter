@@ -2,11 +2,11 @@
 
 namespace Riter.ViewModel.StateHandlers;
 
-public class DrawingStateHandler(IInkEditingModeStateHandler inkEditingModeStateHandler) : BaseStateHandler, IDrawingStateHandler
+public class DrawingStateHandler(IInkEditingModeStateHandler inkEditingModeStateHandler, IHighlighterStateHandler highlighterStateHandler) : BaseStateHandler, IDrawingStateHandler
 {
     private readonly IInkEditingModeStateHandler _inkEditingModeStateHandler = inkEditingModeStateHandler;
+    private readonly IHighlighterStateHandler _highlighterStateHandler = highlighterStateHandler;
     private bool _isReleased = true;
-    private bool _isHighlighter;
 
     public bool IsReleased
     {
@@ -24,12 +24,6 @@ public class DrawingStateHandler(IInkEditingModeStateHandler inkEditingModeState
         });
     }
 
-    public bool IsHighlighter
-    {
-        get => _isHighlighter;
-        private set => SetProperty(ref _isHighlighter, value, nameof(IsHighlighter));
-    }
-
     public void Release()
     {
         ButtonSelectedName = ButtonNames.ReleaseButton;
@@ -38,7 +32,7 @@ public class DrawingStateHandler(IInkEditingModeStateHandler inkEditingModeState
 
     public void StartDrawing()
     {
-        IsHighlighter = false;
+        _highlighterStateHandler.DisableHighlighter();
         ButtonSelectedName = ButtonNames.DrawingButton;
         _inkEditingModeStateHandler.Ink();
         IsReleased = false;
@@ -66,9 +60,9 @@ public class DrawingStateHandler(IInkEditingModeStateHandler inkEditingModeState
         }
     }
 
-    public void EnableHighlighter()
+    public void EnableHighlighterInk()
     {
-        IsHighlighter = true;
+        _highlighterStateHandler.EnableHighlighter();
         ButtonSelectedName = ButtonNames.HighlighterButton;
         _inkEditingModeStateHandler.Ink();
         IsReleased = false;
