@@ -12,4 +12,7 @@ public enum HotKey
     SizeOfBrush1X = 9008,
     SizeOfBrush2X = 9009,
     SizeOfBrush3X = 9010,
+    TransparentBackground = 9011,
+    WhiteboardBackground = 9012,
+    BlackboardBackground = 9013,
 }

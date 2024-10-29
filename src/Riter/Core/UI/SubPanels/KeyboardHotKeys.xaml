@@ -1,0 +1,106 @@
+﻿<UserControl x:Class="Riter.Core.UI.SubPanels.KeyboardHotKeys"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewmodel="clr-namespace:Riter.ViewModel"
+             d:DataContext="{d:DesignInstance Type=viewmodel:PalleteStateOrchestratorViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="290" d:DesignWidth="550">
+    <Grid Margin="0,4,0,4" Background="White">
+
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Column 1: Drawing Shortcuts -->
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Drawing" Width="110" Padding="0,4"/>
+                <TextBox Text="D" Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Erasing" Width="110" Padding="0,4"/>
+                <TextBox Text="E"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Undo" Width="110" Padding="0,4"/>
+                <TextBox Text="Z"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Redo" Width="110" Padding="0,4"/>
+                <TextBox Text="X"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Highlighter" Width="110" Padding="0,4"/>
+                <TextBox Text="H"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Release" Width="110" Padding="0,4"/>
+                <TextBox Text="R"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Draw Line" Width="110" Padding="0,4"/>
+                <TextBox Text="Press Shift on Drawing"  Padding="3" Width="130"/>
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="7" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Hide All" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + H"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Trash" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + T"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="1x Brush Size" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + 1"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="2x Brush Size" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + 2"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="3x Brush Size" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + 3"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,4">
+                <TextBlock Text="Transparent Board" Width="110" Padding="0,4"/>
+                <TextBox Text="Shift + T"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Whiteboard" Width="110" Padding="0,4"/>
+                <TextBox Text="Shift + W"  Padding="3" Width="130"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
+                <TextBlock Text="Blackboard" Width="110" Padding="0,4"/>
+                <TextBox Text="Shift + B"  Padding="3" Width="130"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

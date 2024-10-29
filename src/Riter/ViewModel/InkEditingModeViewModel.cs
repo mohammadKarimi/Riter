@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Riter.ViewModel;
 public class InkEditingModeViewModel : BaseViewModel
@@ -12,4 +13,12 @@ public class InkEditingModeViewModel : BaseViewModel
     }
 
     public InkCanvasEditingMode InkEditingMode => _inkEditingModeStateHandler.InkEditingMode;
+
+    public Brush Background => _inkEditingModeStateHandler.Background;
+
+    public ICommand EnableBlackboardCommand => new RelayCommand(_inkEditingModeStateHandler.EnableBlackboard);
+
+    public ICommand EnableTransparentCommand => new RelayCommand(_inkEditingModeStateHandler.EnableTransparent);
+
+    public ICommand EnableWhiteboardCommand => new RelayCommand(_inkEditingModeStateHandler.EnableWhiteboard);
 }
