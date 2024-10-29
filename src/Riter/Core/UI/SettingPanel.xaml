@@ -58,7 +58,10 @@
                         <StackPanel Orientation="Vertical">
                             <Label Content="Other Tools" Opacity="0.5"/>
                             <Grid Height="40" Margin="0,4,0,0">
-                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0" MouseLeftButtonDown="EnableTransparent_Click">
+                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                                    <Border.InputBindings>
+                                        <MouseBinding Gesture="LeftClick" Command="{Binding InkEditingModeViewModel.EnableTransparentCommand}" />
+                                    </Border.InputBindings>
                                     <Border.Style>
                                         <Style TargetType="Border">
                                             <Setter Property="Background" Value="Transparent"/>
@@ -84,7 +87,10 @@
                                 </Border>
                             </Grid>
                             <Grid Height="40" Margin="0,4,0,0">
-                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0" MouseLeftButtonDown="EnableWhiteboard_Click">
+                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                                    <Border.InputBindings>
+                                        <MouseBinding Gesture="LeftClick" Command="{Binding InkEditingModeViewModel.EnableWhiteboardCommand}" />
+                                    </Border.InputBindings>
                                     <Border.Style>
                                         <Style TargetType="Border">
                                             <Setter Property="Background" Value="Transparent"/>
@@ -110,7 +116,10 @@
                                 </Border>
                             </Grid>
                             <Grid Height="40" Margin="0,4,0,0">
-                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0" MouseLeftButtonDown="EnableBlackboard_Click">
+                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                                    <Border.InputBindings>
+                                        <MouseBinding Gesture="LeftClick" Command="{Binding InkEditingModeViewModel.EnableBlackboardCommand}" />
+                                    </Border.InputBindings>
                                     <Border.Style>
                                         <Style TargetType="Border">
                                             <Setter Property="Background" Value="Transparent"/>

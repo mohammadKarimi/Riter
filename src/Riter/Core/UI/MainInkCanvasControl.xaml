@@ -12,7 +12,7 @@
     <Grid>
         <InkCanvas x:Name="MainInkCanvas"
                    EditingMode="{Binding InkEditingModeViewModel.InkEditingMode}"
-                   Background="{x:Null}"
+                    Background="{Binding InkEditingModeViewModel.Background}"
                    MoveEnabled="False"
                    ResizeEnabled="False"
                    Cursor="Pen"
