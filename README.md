@@ -59,7 +59,14 @@ Ctrl+1 -> 1x Brush size
 Ctrl+2 -> 2x Brush size
 <br/>
 Ctrl+3 -> 3x Brush size
+<br/>
+Shift + T -> Transparent Board
+<br/>
+Shift + B -> Blackboard
+<br/>
+Shift + W -> Whiteboard
 
+ 
 # Features
 - Drawing Functionality
 Ink Canvas: Users can draw freely on the screen using an InkCanvas control.
