@@ -27,79 +27,79 @@
 
             <!-- Column 1: Drawing Shortcuts -->
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Drawing" Width="100"/>
-                <TextBox Text="{Binding Drawing, UpdateSourceTrigger=PropertyChanged}" Padding="3" Width="120"/>
+                <TextBlock Text="Drawing" Width="110" Padding="0,4"/>
+                <TextBox Text="D" Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Erasing" Width="100"/>
-                <TextBox Text="{Binding Erasing, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Erasing" Width="110" Padding="0,4"/>
+                <TextBox Text="E"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Undo" Width="100"/>
-                <TextBox Text="{Binding Undo, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Undo" Width="110" Padding="0,4"/>
+                <TextBox Text="Z"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Redo" Width="100"/>
-                <TextBox Text="{Binding Redo, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Redo" Width="110" Padding="0,4"/>
+                <TextBox Text="X"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Highlighter" Width="100"/>
-                <TextBox Text="{Binding Highlighter, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Highlighter" Width="110" Padding="0,4"/>
+                <TextBox Text="H"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Release" Width="100"/>
-                <TextBox Text="{Binding Release, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Release" Width="110" Padding="0,4"/>
+                <TextBox Text="R"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Draw Line" Width="100"/>
-                <TextBox Text="{Binding DrawLine, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Draw Line" Width="110" Padding="0,4"/>
+                <TextBox Text="Press Shift on Drawing"  Padding="3" Width="130"/>
             </StackPanel>
 
 
             <StackPanel Grid.Row="7" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Hide All" Width="100"/>
-                <TextBox Text="{Binding HideAll, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Hide All" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + H"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Trash" Width="100"/>
-                <TextBox Text="{Binding Trash, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Trash" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + T"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="1x Brush Size" Width="100"/>
-                <TextBox Text="{Binding BrushSize1x, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="1x Brush Size" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + 1"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="2x Brush Size" Width="100"/>
-                <TextBox Text="{Binding BrushSize2x, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="2x Brush Size" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + 2"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="3x Brush Size" Width="100"/>
-                <TextBox Text="{Binding BrushSize3x, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="3x Brush Size" Width="110" Padding="0,4"/>
+                <TextBox Text="Ctrl + 3"  Padding="3" Width="130"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Transparent Board" Width="100"/>
-                <TextBox Text="{Binding TransparentBoard, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,4">
+                <TextBlock Text="Transparent Board" Width="110" Padding="0,4"/>
+                <TextBox Text="Shift + T"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Whiteboard" Width="100"/>
-                <TextBox Text="{Binding Whiteboard, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Whiteboard" Width="110" Padding="0,4"/>
+                <TextBox Text="Shift + W"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Blackboard" Width="100"/>
-                <TextBox Text="{Binding Blackboard, UpdateSourceTrigger=PropertyChanged}"  Padding="3" Width="120"/>
+                <TextBlock Text="Blackboard" Width="110" Padding="0,4"/>
+                <TextBox Text="Shift + B"  Padding="3" Width="130"/>
             </StackPanel>
         </Grid>
     </Grid>
