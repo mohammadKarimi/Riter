@@ -90,32 +90,21 @@ public partial class MainWindow : Window
     /// <param name="e">Contains the data of routed event.</param>
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
-        var canvasWidth = Layout.ActualWidth;
-        var canvasHeight = Layout.ActualHeight;
-        var palleteWidth = MainPallete.ActualWidth;
-        var palleteHeight = MainPallete.ActualHeight;
-
-        Canvas.SetLeft(MainPallete, (canvasWidth - palleteWidth) / 2);
-        Canvas.SetTop(MainPallete, canvasHeight - palleteHeight - 75);
-
-        // AdjustWindowSize();
+        AdjustWindowSize();
         Microsoft.Win32.SystemEvents.DisplaySettingsChanged += (_, _) => AdjustWindowSize();
     }
 
     private void AdjustWindowSize()
     {
-        var primaryScreenWidth = SystemParameters.WorkArea.Width;
-        var primaryScreenHeight = SystemParameters.WorkArea.Height;
-
-        Left = 0;
-        Top = 0;
-        Width = primaryScreenWidth;
-        Height = primaryScreenHeight;
+        var canvasWidth = Layout.ActualWidth;
+        var canvasHeight = Layout.ActualHeight;
+        var palleteWidth = MainPallete.ActualWidth;
+        var palleteHeight = MainPallete.ActualHeight;
 
         if (MainPallete != null)
         {
-            Canvas.SetTop(MainPallete, (primaryScreenHeight / 2) - (MainPallete.ActualHeight / 2) - 75);
-            Canvas.SetLeft(MainPallete, (primaryScreenWidth / 2) - (MainPallete.ActualWidth / 2));
+            Canvas.SetLeft(MainPallete, (canvasWidth - palleteWidth) / 2);
+            Canvas.SetTop(MainPallete, canvasHeight - palleteHeight - 75);
         }
     }
 }
