@@ -96,7 +96,7 @@ public partial class MainWindow : Window
         var palleteHeight = MainPallete.ActualHeight;
 
         Canvas.SetLeft(MainPallete, (canvasWidth - palleteWidth) / 2);
-        Canvas.SetTop(MainPallete, canvasHeight - palleteHeight);
+        Canvas.SetTop(MainPallete, canvasHeight - palleteHeight - 75);
 
         // AdjustWindowSize();
         Microsoft.Win32.SystemEvents.DisplaySettingsChanged += (_, _) => AdjustWindowSize();
@@ -114,7 +114,7 @@ public partial class MainWindow : Window
 
         if (MainPallete != null)
         {
-            Canvas.SetTop(MainPallete, (primaryScreenHeight / 2) - (MainPallete.ActualHeight / 2));
+            Canvas.SetTop(MainPallete, (primaryScreenHeight / 2) - (MainPallete.ActualHeight / 2) - 75);
             Canvas.SetLeft(MainPallete, (primaryScreenWidth / 2) - (MainPallete.ActualWidth / 2));
         }
     }

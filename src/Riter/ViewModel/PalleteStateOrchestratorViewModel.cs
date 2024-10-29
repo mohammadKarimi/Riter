@@ -83,6 +83,15 @@ public class PalleteStateOrchestratorViewModel : BaseViewModel
             case HotKey.SizeOfBrush3X:
                 BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X3);
                 break;
+            case HotKey.TransparentBackground:
+                InkEditingModeViewModel.EnableTransparentCommand.Execute(null);
+                break;
+            case HotKey.BlackboardBackground:
+                InkEditingModeViewModel.EnableBlackboardCommand.Execute(null);
+                break;
+            case HotKey.WhiteboardBackground:
+                InkEditingModeViewModel.EnableWhiteboardCommand.Execute(null);
+                break;
             default:
                 break;
         }

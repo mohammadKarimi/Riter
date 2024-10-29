@@ -7,7 +7,7 @@
     mc:Ignorable="d" ResizeMode="NoResize"
     UseLayoutRounding="True" 
     WindowStartupLocation="Manual"
-     
+    WindowState="Maximized"
     AllowsTransparency="True" 
     WindowStyle="None">
     <Window.Style>
