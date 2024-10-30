@@ -15,4 +15,15 @@ public enum HotKey
     TransparentBackground = 9011,
     WhiteboardBackground = 9012,
     BlackboardBackground = 9013,
+
+    Yellow = 9014,
+    Purple = 9015,
+    Mint = 9016,
+    Coral = 9017,
+    Red = 9018,
+    Cyan = 9019,
+    White = 9020,
+    Orange = 9021,
+    Gray = 9022,
+    Black = 9023
 }

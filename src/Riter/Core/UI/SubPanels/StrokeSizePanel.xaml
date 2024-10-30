@@ -203,8 +203,8 @@
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="8,0,0,0">
 
                         <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-                            <Border Background="#FFF" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFF"/>
+                            <Border Background="Yellow" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                                <Button Width="32" Height="32" Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Yellow"/>
                             </Border>
                             <Border Background="#7853DE" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
                                 <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#7853DE"/>
@@ -216,10 +216,10 @@
 
                         </StackPanel>
                         <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-                            <Border Background="Yellow" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Width="32" Height="32" Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Yellow"/>
+                           
+   <Border Background="#FF8C82" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FF8C82"/>
                             </Border>
-
                             <Border Background="#FFFF5656" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
                                 <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFFF5656"/>
                             </Border>
@@ -234,10 +234,10 @@
                         </StackPanel>
 
                         <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-                            <Border Background="#FF8C82" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FF8C82"/>
-                            </Border>
 
+                            <Border Background="#FFF" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFF"/>
+                            </Border>
                             <Border Background="#FFB31B" Tag="Selected" Margin="8,8,0,0"   CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
                                 <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFB31B"/>
                             </Border>

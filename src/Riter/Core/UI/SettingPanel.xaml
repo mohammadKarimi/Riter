@@ -167,7 +167,7 @@
                                             <ContentControl Width="16" Height="16" Content="{StaticResource Icon_SourceCode}" VerticalAlignment="Center" />
                                             <Label Content="Source Code in Github" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
-                                        <Label Grid.Column="1" Content="[ Ctrl + G ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                        <Label Grid.Column="1" Content="" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                                     </Grid>
                                 </Border>
                             </Grid>
