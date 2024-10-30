@@ -7,6 +7,18 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
+<a name="readme-top"></a>
+
+
+## 📐 Riter - Modern screen drawing
+
+![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Panel.png)
+![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Whiteboard.png)
+![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Highlighter.png)
+
+Riter is a modern, versatile screen drawing application built with WPF (Windows Presentation Foundation) that enables users to draw directly on their screens. Whether for visual communication, presentations, or tutorials, Riter offers a streamlined and intuitive interface, making it an ideal tool for professionals and educators alike.
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -14,135 +26,106 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 ![dotnet-version]
-<a name="readme-top"></a>
+---
 
+## Features
 
-## 📐 Riter - Modern screen drawing
+### Drawing Tools
+- **Ink Canvas**: Draw freely on your screen using the InkCanvas control.
+- **Modes**: Switch between drawing, erasing, and highlighting modes.
+- **Brush Size Selection**: Choose brush sizes (1x, 2x, 3x) for different stroke thicknesses.
 
-![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview.png)
-![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Panel.png)
-![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Whiteboard.png)
-![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Highlighter.png)
-<br/>
-The project is called "Riter," and it is a drawing application built using WPF (Windows Presentation Foundation). Here's a brief overview of the project:
+### Color Management
+- **Color Palette**: Select from a pre-configured set of colors.
+- **Custom Color Selection**: Choose personalized colors for added flexibility.
 
-Purpose: Riter is a screen drawing application that allows users to draw directly on their computer screens.
+### Stroke Management
+- **Undo/Redo**: Reverse or reapply recent drawing actions.
+- **Clear All**: Quickly remove all strokes from the canvas.
 
-# Riter
-Riter is a modern screen drawing application built using WPF (Windows Presentation Foundation). It allows users to draw directly on their computer screens, making it an ideal tool for visual communication, presentations, and tutorials.
+### View Modes
+- **Hide All**: Temporarily hide drawings.
+- **Background Modes**: Choose between transparent, whiteboard, or blackboard backgrounds.
 
-GitHub contributors GitHub forks GitHub stars GitHub issues GitHub license
+### Toolbox & UI
+- **Floating Toolbox**: Easy access to tools and settings with a stylish, floating toolbox.
+- **Visual Feedback**: Hover and selection effects enhance user interaction.
 
-# Defaults HotKeys
+### Settings & Customization
+- **Settings Panel**: Customize colors, brush sizes, application behavior, and more.
+- **Global Hotkeys**: Access tools quickly with keyboard shortcuts, even when the app is out of focus.
 
-D -> Drawing
-<br/>
-E -> Erasing
-<br/>
-CTRL + H -> HideAll
-<br/>
-CTRL + T -> Trash
-<br/>
-Z -> Undo
-<br/>
-X -> Redo
-<br/>
-H -> Highlighter
-<br/>
-R -> Release
-<br/>
-Shift(On Drawing Mode) -> Draw a line
-<br/>
-Ctrl+1 -> 1x Brush size
-<br/>
-Ctrl+2 -> 2x Brush size
-<br/>
-Ctrl+3 -> 3x Brush size
-<br/>
-Shift + T -> Transparent Board
-<br/>
-Shift + B -> Blackboard
-<br/>
-Shift + W -> Whiteboard
+### Performance
+- **Efficient Stroke Handling**: Optimized stroke management ensures smooth performance during extended usage.
 
-<b>For Color changing</b>
-<br/>
-Alt + 1 -> Yellow
-<br/>
-Alt + 2 -> Purple
-<br/>
-Alt + 3 -> Mint
-<br/>
-Alt + 4 -> Coral
-<br/>
-Alt + 5 -> Red
-<br/>
-Alt + 6 -> Cyan
-<br/>
-Alt + 7 -> White
-<br/>
-Alt + 8 -> Orange
-<br/>
-Alt + 9 -> Gray
-<br/>
-Alt + 0 -> Black
+---
 
- 
-# Features
-- Drawing Functionality
-Ink Canvas: Users can draw freely on the screen using an InkCanvas control.
-Multiple Drawing Modes: Switch between drawing and erasing modes.
-Brush Size Selection: Adjust the size of the brush for different stroke thicknesses.
+## Hotkeys
 
+### Drawing & Erasing
+- **D** - Switch to Drawing mode
+- **E** - Switch to Erasing mode
+- **H** - Highlighter
+- **R** - Release tool
 
-- Color Management
-Color Palette: Choose from a variety of colors for drawing.
-Custom Color Selection: Set custom ink colors for more personalized drawings.
+### Stroke History
+- **Z** - Undo
+- **X** - Redo
 
+### View Modes
+- **Ctrl + H** - Hide all drawings
+- **Ctrl + T** - Clear canvas
+- **Shift + T** - Transparent board
+- **Shift + B** - Blackboard
+- **Shift + W** - Whiteboard
 
-- Stroke History Management
-Undo/Redo: Easily undo or redo drawing actions.
-Clear All: Option to clear all strokes from the canvas.
+### Brush Size
+- **Ctrl + 1** - 1x Brush size
+- **Ctrl + 2** - 2x Brush size
+- **Ctrl + 3** - 3x Brush size
 
+### Color Shortcuts
+- **Alt + 1** - Yellow
+- **Alt + 2** - Purple
+- **Alt + 3** - Mint
+- **Alt + 4** - Coral
+- **Alt + 5** - Red
+- **Alt + 6** - Cyan
+- **Alt + 7** - White
+- **Alt + 8** - Orange
+- **Alt + 9** - Gray
+- **Alt + 0** - Black
 
-- View Options
-Hide All: Temporarily hide all drawings on the screen.
-Transparency: Enable transparent background for drawing over other applications.
-Whiteboard/Blackboard: Switch between whiteboard and blackboard modes for different visual styles.
+---
 
+## Getting Started
 
-- Toolbox Interface
-Floating Toolbox: A user-friendly toolbox with quick access to drawing tools and options.
-Tool Selection: Buttons for selecting different drawing tools and actions.
+### Requirements
+- **OS**: Windows
+- **Framework**: .NET 8 (x86/x64)
 
+### Installation
+1. Clone the repository: 
+   ```bash
+   git clone https://github.com/username/Riter.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd Riter
+   ```
+3. Build and run the project in Visual Studio or via .NET CLI:
+   ```bash
+   dotnet run
+   ```
 
-- Settings Panel
-Customizable Options: Access additional settings and tools through a tabbed interface.
-Application Behavior: Configure settings like "Always on Top" for the application window.
-
-
-- Global Hotkeys
-Keyboard Shortcuts: Use global hotkeys for quick actions, even when the app is not in focus.
-
-
-- User Interface
-Modern Design: Clean and intuitive interface with styled buttons and controls.
-Visual Feedback: Hover and selection effects for better user interaction.
-
-- Performance
-Efficient Stroke Handling: Optimized stroke history management for smooth performance.
-
-- Customization
-Configurable Settings: Adjust default colors, brush sizes, and other preferences.
-
- ## Usage
-
-## Requirements
- Windows OS
-.Net 8 x86/x64
+---
 
 ## License
-MIT
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+--- 
+
+Feel free to contribute, report issues, or fork the repository to add your own features. Happy drawing!
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
