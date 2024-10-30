@@ -13,10 +13,6 @@
 
 ## 📐 Riter - Modern screen drawing
 
-![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Panel.png)
-![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Whiteboard.png)
-![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Highlighter.png)
-
 Riter is a modern, versatile screen drawing application built with WPF (Windows Presentation Foundation) that enables users to draw directly on their screens. Whether for visual communication, presentations, or tutorials, Riter offers a streamlined and intuitive interface, making it an ideal tool for professionals and educators alike.
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -26,6 +22,11 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 ![dotnet-version]
+
+![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Panel.png)
+![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Whiteboard.png)
+![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Highlighter.png)
+
 ---
 
 ## Features
