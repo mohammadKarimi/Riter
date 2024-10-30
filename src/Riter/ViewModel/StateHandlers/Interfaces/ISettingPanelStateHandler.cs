@@ -5,6 +5,8 @@ public interface ISettingPanelStateHandler : INotifyPropertyChanged
 {
     bool SettingPanelVisibility { get; }
 
+    bool SettingButtonClicked { get; }
+
     void SetSettingPanelInvisibile();
 
     void SetSettingPanelVisibile();

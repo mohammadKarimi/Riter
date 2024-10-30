@@ -144,8 +144,11 @@
                                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                 <Setter Property="Tag" Value="UnSelected"/>
                                                 <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding ButtonSelectedViewModel.ButtonSelectedName}" Value="SettingButton">
+                                                    <DataTrigger Binding="{Binding SettingPanelViewModel.SettingButtonClicked}" Value="True">
                                                         <Setter Property="Tag" Value="Selected"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding SettingPanelViewModel.SettingButtonClicked}" Value="False">
+                                                        <Setter Property="Tag" Value="UnSelected"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>

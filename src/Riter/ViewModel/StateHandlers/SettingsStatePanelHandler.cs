@@ -3,6 +3,7 @@
 namespace Riter.ViewModel.Handlers;
 public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHandler
 {
+    private static bool _settingButtonClicked;
     private static bool _isSettingPanelOpened;
     private readonly IButtonSelectedStateHandler _buttonSelectedStateHandler;
 
@@ -26,6 +27,12 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         protected set => SetProperty(ref _isSettingPanelOpened, value, nameof(SettingPanelVisibility));
     }
 
+    public bool SettingButtonClicked
+    {
+        get => _settingButtonClicked;
+        protected set => SetProperty(ref _settingButtonClicked, value, nameof(SettingButtonClicked));
+    }
+
     public void SetSettingPanelInvisibile() => SettingPanelVisibility = false;
 
     public void SetSettingPanelVisibile() => SettingPanelVisibility = true;
@@ -46,16 +53,15 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
 
     public void ToggleSettingsPanel()
     {
-        if (SettingPanelVisibility && _buttonSelectedStateHandler.ButtonSelectedName == ButtonNames.SettingButton)
+        if (SettingPanelVisibility)
         {
-            _buttonSelectedStateHandler.ResetPreviousButton();
-            _buttonSelectedStateHandler.ResetArrowButtonSelected();
+            SettingButtonClicked = false;
             SettingPanelVisibility = false;
+            _buttonSelectedStateHandler.ResetArrowButtonSelected();
         }
         else
         {
-            _buttonSelectedStateHandler.StoreCurrentButton();
-            _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.SettingButton);
+            SettingButtonClicked = true;
             SettingPanelVisibility = true;
         }
     }
