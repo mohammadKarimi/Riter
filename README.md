@@ -19,7 +19,6 @@
 
 ## 📐 Riter - Modern screen drawing
 
-![image](https://github.com/user-attachments/assets/c17409e8-49c3-4d9a-8269-3a381a8a55df)
 ![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview.png)
 ![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Panel.png)
 ![image](https://github.com/mohammadKarimi/Riter/blob/main/screenshots/Preview_Whiteboard.png)
@@ -65,6 +64,18 @@ Shift + T -> Transparent Board
 Shift + B -> Blackboard
 <br/>
 Shift + W -> Whiteboard
+
+For Color changing
+Alt + 1 -> Yellow
+Alt + 2 -> Purple
+Alt + 3 -> Mint
+Alt + 4 -> Coral
+Alt + 5 -> Red
+Alt + 6 -> Cyan
+Alt + 7 -> White
+Alt + 8 -> Orange
+Alt + 9 -> Gray
+Alt + 0 -> Black
 
  
 # Features
