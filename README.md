@@ -65,16 +65,26 @@ Shift + B -> Blackboard
 <br/>
 Shift + W -> Whiteboard
 
-For Color changing
+<b>For Color changing</b>
+<br/>
 Alt + 1 -> Yellow
+<br/>
 Alt + 2 -> Purple
+<br/>
 Alt + 3 -> Mint
+<br/>
 Alt + 4 -> Coral
+<br/>
 Alt + 5 -> Red
+<br/>
 Alt + 6 -> Cyan
+<br/>
 Alt + 7 -> White
+<br/>
 Alt + 8 -> Orange
+<br/>
 Alt + 9 -> Gray
+<br/>
 Alt + 0 -> Black
 
  
