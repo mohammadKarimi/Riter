@@ -43,6 +43,7 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         {
             _buttonSelectedStateHandler.ResetArrowButtonSelected();
             SettingPanelVisibility = false;
+            SettingButtonClicked = false;
         }
         else
         {

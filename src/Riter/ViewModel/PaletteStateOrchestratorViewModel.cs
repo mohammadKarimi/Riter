@@ -3,9 +3,9 @@ using Riter.Core.Enum;
 
 namespace Riter.ViewModel;
 
-public class PalleteStateOrchestratorViewModel : BaseViewModel
+public class PaletteStateOrchestratorViewModel : BaseViewModel
 {
-    public PalleteStateOrchestratorViewModel(
+    public PaletteStateOrchestratorViewModel(
         DrawingViewModel drawingViewModel,
         StrokeVisibilityViewModel strokeVisibilityViewModel,
         StrokeHistoryViewModel strokeHistoryViewModel,

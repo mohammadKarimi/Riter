@@ -71,7 +71,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<StrokeHistoryViewModel>();
         serviceCollection.AddSingleton<StrokeVisibilityViewModel>();
         serviceCollection.AddSingleton<InkEditingModeViewModel>();
-        serviceCollection.AddSingleton<PalleteStateOrchestratorViewModel>();
+        serviceCollection.AddSingleton<PaletteStateOrchestratorViewModel>();
         serviceCollection.AddTransient(typeof(MainWindow));
     }
 }

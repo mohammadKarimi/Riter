@@ -5,7 +5,7 @@ namespace Riter.ViewModel.StateHandlers;
 public abstract class BaseStateHandler : INotifyPropertyChanged
 {
     /// <summary>
-    /// This event is for subscribing the PalleteViewModel for it to send these changes to UI.
+    /// This event is for subscribing the PaletteViewModel for it to send these changes to UI.
     /// </summary>
     public event PropertyChangedEventHandler PropertyChanged;
 

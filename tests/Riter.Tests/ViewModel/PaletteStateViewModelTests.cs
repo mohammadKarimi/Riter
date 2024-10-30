@@ -4,22 +4,22 @@ using Riter.ViewModel.Handlers;
 
 namespace Riter.Tests.ViewModel;
 
-public class PalleteStateViewModelTests
+public class PaletteStateViewModelTests
 {
-    //private readonly PalleteStateOrchestratorViewModel _viewModel;
+    //private readonly PaletteStateOrchestratorViewModel _viewModel;
     //private readonly IDrawingHandler _DrawingHandler;
     //private readonly IStrokeHistoryService _strokeHistoryService;
     //private readonly IBrushSettingsHandler _brushSettingsHandler;
     //private readonly IStrokeVisibilityHandler _strokeVisibilityHandler;
 
 
-    //public PalleteStateViewModelTests()
+    //public PaletteStateViewModelTests()
     //{
     //    _DrawingHandler = new DrawingHandler();
     //    _strokeHistoryService = new StrokeHistoryService();
     //    _brushSettingsHandler = new BrushSettingsHandler();
     //    _strokeVisibilityHandler = new StrokeVisibilityHandler();
-    //    _viewModel = new PalleteStateOrchestratorViewModel(_DrawingHandler, _strokeHistoryService, _strokeVisibilityHandler, _brushSettingsHandler);
+    //    _viewModel = new PaletteStateOrchestratorViewModel(_DrawingHandler, _strokeHistoryService, _strokeVisibilityHandler, _brushSettingsHandler);
     //}
 
     //[Fact]

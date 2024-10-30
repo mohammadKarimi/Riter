@@ -15,14 +15,14 @@ public static class WindowDragableExtensions
     /// Attaches drag functionality to a given UIElement (like Canvas or Panel).
     /// </summary>
     /// <param name="mainWindow">The window containing the element, used for mouse position calculations.</param>
-    /// <param name="element">The element that you want to make draggable (e.g., MainPallete).</param>
+    /// <param name="element">The element that you want to make draggable (e.g., MainPalette).</param>
     /// <returns>MainWindow to follow Fluent chain.</returns>
     public static MainWindow EnableDragging(this MainWindow mainWindow, UIElement element)
     {
         mainWindow.WindowControl.MoveButton.MouseDown += (sender, e) => StartDrag(mainWindow, element);
-        mainWindow.MainPallete.MouseMove += (sender, e) => PerformDrag(mainWindow, element, e);
-        mainWindow.MainPallete.MouseUp += (sender, e) => EndDrag(element);
-        mainWindow.MainPallete.MouseLeave += (sender, e) => EndDrag(element);
+        mainWindow.MainPalette.MouseMove += (sender, e) => PerformDrag(mainWindow, element, e);
+        mainWindow.MainPalette.MouseUp += (sender, e) => EndDrag(element);
+        mainWindow.MainPalette.MouseLeave += (sender, e) => EndDrag(element);
         return mainWindow;
     }
 

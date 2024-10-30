@@ -13,11 +13,11 @@ public partial class MainWindow : Window
 {
     private readonly IStrokeHistoryService _strokeHistoryService;
     private readonly HotKeyLoader _hotKeyLoader;
-    private readonly PalleteStateOrchestratorViewModel _orchestratorViewModel;
+    private readonly PaletteStateOrchestratorViewModel _orchestratorViewModel;
     private GlobalHotKeyManager _globalHotkeyManager;
 
     public MainWindow(
-        PalleteStateOrchestratorViewModel orchestratorViewModel,
+        PaletteStateOrchestratorViewModel orchestratorViewModel,
         HotKeyLoader hotKeyLoader,
         IStrokeHistoryService strokeHistoryService)
     {
@@ -29,7 +29,7 @@ public partial class MainWindow : Window
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
         MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
 
-        this.EnableDragging(MainPallete)
+        this.EnableDragging(MainPalette)
             .SetTopMost(true);
 
         Loaded += MainWindow_Loaded;
@@ -98,13 +98,13 @@ public partial class MainWindow : Window
     {
         var canvasWidth = Layout.ActualWidth;
         var canvasHeight = Layout.ActualHeight;
-        var palleteWidth = MainPallete.ActualWidth;
-        var palleteHeight = MainPallete.ActualHeight;
+        var PaletteWidth = MainPalette.ActualWidth;
+        var PaletteHeight = MainPalette.ActualHeight;
 
-        if (MainPallete != null)
+        if (MainPalette != null)
         {
-            Canvas.SetLeft(MainPallete, (canvasWidth - palleteWidth) / 2);
-            Canvas.SetTop(MainPallete, canvasHeight - palleteHeight - 75);
+            Canvas.SetLeft(MainPalette, (canvasWidth - PaletteWidth) / 2);
+            Canvas.SetTop(MainPalette, canvasHeight - PaletteHeight - 75);
         }
     }
 }

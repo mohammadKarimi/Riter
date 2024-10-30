@@ -5,7 +5,7 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
    xmlns:viewmodel="clr-namespace:Riter.ViewModel"
-   d:DataContext="{d:DesignInstance Type=viewmodel:PalleteStateOrchestratorViewModel}"
+   d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
    mc:Ignorable="d" 
              Width="545" Height="340" DataContext="{Binding}" >
     <Grid Margin="0,0,0,4">
