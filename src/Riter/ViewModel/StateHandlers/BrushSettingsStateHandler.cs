@@ -43,6 +43,8 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
         ResetSettings();
     }
 
+    public void SetInkColorWithHotKey(InkColor color) => InkColor = ColorPalette.Colors[color].Hex;
+
     public void SetSizeOfBrush(string size)
     {
         SizeOfBrush = double.Parse(size);

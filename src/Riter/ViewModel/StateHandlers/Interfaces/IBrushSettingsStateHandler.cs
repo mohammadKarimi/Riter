@@ -33,4 +33,10 @@ public interface IBrushSettingsStateHandler : INotifyPropertyChanged
     void SetSizeOfBrush(string size);
 
     void SetSizeOfBrushWithHotKey(BrushSize size);
+
+    /// <summary>
+    /// set InkColor from settings.
+    /// </summary>
+    /// <param name="color">The color user selected.</param>
+    void SetInkColorWithHotKey(InkColor color);
 }
