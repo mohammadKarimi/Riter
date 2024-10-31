@@ -64,6 +64,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<IButtonSelectedStateHandler, ButtonSelectedStateHandler>();
 
         serviceCollection.AddSingleton<ButtonSelectedViewModel>();
+        serviceCollection.AddSingleton<DrawingShapeViewModel>();
         serviceCollection.AddSingleton<SettingPanelViewModel>();
         serviceCollection.AddSingleton<HighlighterViewModel>();
         serviceCollection.AddSingleton<BrushSettingsViewModel>();
