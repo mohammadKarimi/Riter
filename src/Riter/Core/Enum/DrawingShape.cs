@@ -4,5 +4,5 @@ public enum DrawingShape
     FreeDraw,
     Arrow,
     Circle,
-    Square
+    Rectangle
 }

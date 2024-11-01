@@ -49,7 +49,15 @@ public partial class MainInkCanvasControl : UserControl
         }
         else if (viewModel.DrawingShapeViewModel.CurrentShape == DrawingShape.Circle)
         {
+            DrawCircle(sender, e);
+        }
+        else if (viewModel.DrawingShapeViewModel.CurrentShape == DrawingShape.Arrow)
+        {
             DrawArrow(sender, e);
+        }
+        else if (viewModel.DrawingShapeViewModel.CurrentShape == DrawingShape.Rectangle)
+        {
+            DrawRectangle(sender, e);
         }
     }
 
