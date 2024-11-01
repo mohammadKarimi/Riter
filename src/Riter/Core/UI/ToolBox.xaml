@@ -89,7 +89,7 @@
                          HorizontalAlignment="Center"
                          VerticalAlignment="Center">
 
-                                        <Button ToolTip="Shape" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_RoundedRectangle}" Command="{Binding DrawingShapeViewModel.SetSquareShapeCommand}"/>
+                                        <Button ToolTip="Shape" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_RoundedRectangle}" Command="{Binding DrawingShapeViewModel.SetCircleShapeCommand}"/>
                                     </Border>
                                     <Border Width="12" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <ContentControl Content="{StaticResource Icon_SquareArrow}" />
