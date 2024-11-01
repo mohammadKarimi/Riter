@@ -1,8 +1,10 @@
-﻿using Riter.Core.Enum;
+﻿using System.Windows.Controls;
+using Riter.Core.Enum;
 
 namespace Riter.ViewModel;
-public class DrawingShapeViewModel : BaseViewModel
+public class DrawingShapeViewModel(IInkEditingModeStateHandler inkEditingModeStateHandler) : BaseViewModel
 {
+    private readonly IInkEditingModeStateHandler _inkEditingModeStateHandler = inkEditingModeStateHandler;
     private DrawingShape _currentShape = DrawingShape.FreeDraw;
 
     public DrawingShape CurrentShape
@@ -17,7 +19,11 @@ public class DrawingShapeViewModel : BaseViewModel
 
     public ICommand SetArrowShapeCommand => new RelayCommand(() => CurrentShape = DrawingShape.Arrow);
 
-    public ICommand SetCircleShapeCommand => new RelayCommand(() => CurrentShape = DrawingShape.Circle);
-
     public ICommand SetSquareShapeCommand => new RelayCommand(() => CurrentShape = DrawingShape.Square);
+
+    public ICommand SetCircleShapeCommand => new RelayCommand(() =>
+    {
+        CurrentShape = DrawingShape.Circle;
+        _inkEditingModeStateHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.None);
+    });
 }
