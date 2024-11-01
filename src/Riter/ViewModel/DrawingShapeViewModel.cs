@@ -19,7 +19,7 @@ public class DrawingShapeViewModel(IInkEditingModeStateHandler inkEditingModeSta
 
     public ICommand SetArrowShapeCommand => new RelayCommand(() => CurrentShape = DrawingShape.Arrow);
 
-    public ICommand SetSquareShapeCommand => new RelayCommand(() => CurrentShape = DrawingShape.Square);
+    public ICommand SetRectangleShapeCommand => new RelayCommand(() => CurrentShape = DrawingShape.Rectangle);
 
     public ICommand SetCircleShapeCommand => new RelayCommand(() =>
     {
