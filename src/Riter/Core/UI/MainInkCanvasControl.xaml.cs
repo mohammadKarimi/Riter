@@ -5,7 +5,6 @@ using System.Windows.Shapes;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
-using Riter.Services;
 using Riter.ViewModel;
 
 namespace Riter.Core.UI;
@@ -21,7 +20,7 @@ public partial class MainInkCanvasControl : UserControl
     private bool _isMoving = false;
     private Point _startPoint;
     private Stroke _lastStroke;
-    StrokeCollection _arrowheadCollection = [];
+    private StrokeCollection _arrowheadCollection = [];
     private Shape _currentShape;
 
     /// <summary>
