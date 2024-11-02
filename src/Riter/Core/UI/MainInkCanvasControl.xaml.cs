@@ -43,19 +43,19 @@ public partial class MainInkCanvasControl : UserControl
     {
         var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
 
-        if (viewModel.DrawingShapeViewModel.CurrentShape == DrawingShape.FreeDraw)
+        if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.FreeDraw)
         {
             DrawLine(sender, e);
         }
-        else if (viewModel.DrawingShapeViewModel.CurrentShape == DrawingShape.Circle)
+        else if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.Circle)
         {
             DrawCircle(sender, e);
         }
-        else if (viewModel.DrawingShapeViewModel.CurrentShape == DrawingShape.Arrow)
+        else if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.Arrow)
         {
             DrawArrow(sender, e);
         }
-        else if (viewModel.DrawingShapeViewModel.CurrentShape == DrawingShape.Rectangle)
+        else if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.Rectangle)
         {
             DrawRectangle(sender, e);
         }
@@ -72,7 +72,9 @@ public partial class MainInkCanvasControl : UserControl
 
     private void Window_KeyUp(object sender, KeyEventArgs e)
     {
-        if (IsDrawingShapeKeyEntered(e.Key) && _inkEditingModeStateHandler.InkEditingMode == InkCanvasEditingMode.None)
+        if (IsDrawingShapeKeyEntered(e.Key)
+            && _inkEditingModeStateHandler.InkEditingMode == InkCanvasEditingMode.None
+            && ((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.CurrentShape == DrawingShape.FreeDraw)
         {
             _inkEditingModeStateHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.Ink);
             MainInkCanvas.UseCustomCursor = false;
