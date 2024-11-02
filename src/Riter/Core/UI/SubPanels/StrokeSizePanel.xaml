@@ -9,255 +9,253 @@
              d:DesignHeight="260" d:DesignWidth="550">
 
     <Grid Margin="0,12,0,4" Background="White">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="240" >
-                <Label Content="Select Your Scale" Opacity="0.5"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="240" >
+            <Label Content="Select Your Scale" Opacity="0.5"/>
 
-                <Grid Margin="0,8,0,0">
-                    <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="5" >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="5">
-                                                                <Setter Property="Cursor" Value="Hand"/>
-                                                                <Setter Property="BorderBrush" Value="#317BF4" />
-                                                                <Setter Property="BorderThickness" Value="1.2" />
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Border.Style>
-                                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Grid Margin="0,8,0,0">
+                <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="5" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="5">
+                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderThickness" Value="1.2" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#F1F1F1" />
-                                        <Setter Property="Cursor" Value="Hand" />
-                                    </Trigger>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#F1F1F1" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
 
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Label Content="1x" FontSize="12" />
-                            </StackPanel>
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Label Content="1x" FontSize="12" />
+                        </StackPanel>
 
-                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen1x}" HorizontalAlignment="Right" />
-                        </Grid>
-                    </Button>
-                </Grid>
-                <Grid Margin="0,8,0,0">
-                    <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="8" >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="8">
-                                                                <Setter Property="Cursor" Value="Hand"/>
-                                                                <Setter Property="BorderBrush" Value="#317BF4" />
-                                                                <Setter Property="BorderThickness" Value="1.2" />
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Border.Style>
-                                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen1x}" HorizontalAlignment="Right" />
+                    </Grid>
+                </Button>
+            </Grid>
+            <Grid Margin="0,8,0,0">
+                <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="8" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="8">
+                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderThickness" Value="1.2" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#F1F1F1" />
-                                        <Setter Property="Cursor" Value="Hand" />
-                                    </Trigger>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#F1F1F1" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
 
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Label Content="2x" FontSize="12" />
-                            </StackPanel>
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Label Content="2x" FontSize="12" />
+                        </StackPanel>
 
-                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen2x}" HorizontalAlignment="Right" />
-                        </Grid>
-                    </Button>
-                </Grid>
-                <Grid Margin="0,8,0,0">
-                    <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="13" >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Background" Value="Transparent"/>
-                                <Setter Property="BorderBrush" Value="Transparent"/>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
-                                                <Border.Style>
-                                                    <Style TargetType="Border">
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="13">
-                                                                <Setter Property="Cursor" Value="Hand"/>
-                                                                <Setter Property="BorderBrush" Value="#317BF4" />
-                                                                <Setter Property="BorderThickness" Value="1.2" />
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </Border.Style>
-                                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen2x}" HorizontalAlignment="Right" />
+                    </Grid>
+                </Button>
+            </Grid>
+            <Grid Margin="0,8,0,0">
+                <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="13" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="13">
+                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderThickness" Value="1.2" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#F1F1F1" />
-                                        <Setter Property="Cursor" Value="Hand" />
-                                    </Trigger>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#F1F1F1" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
 
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
 
-                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Label Content="3x" FontSize="12" />
-                            </StackPanel>
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Label Content="3x" FontSize="12" />
+                        </StackPanel>
 
-                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen3x}" HorizontalAlignment="Right" />
-                        </Grid>
-                    </Button>
-                </Grid>
+                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen3x}" HorizontalAlignment="Right" />
+                    </Grid>
+                </Button>
+            </Grid>
 
-            </StackPanel>
-            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="12,0,0,0">
-                <Label Content="Select Your Color" Opacity="0.5"/>
-                <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
-                    <Border Tag="Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{Binding BrushSettingsViewModel.ColorSelected}" Margin="8,6,0,0" CornerRadius="6" Height="65" Width="65">
-                        <Border.Style>
-                            <Style TargetType="Border">
-                                <Style.Triggers>
-                                    <Trigger Property="Tag" Value="Selected">
-                                        <Setter Property="Background" Value="#FFF"/>
-                                        <Setter Property="Cursor" Value="Hand"/>
-                                        <Setter Property="BorderBrush" Value="#21124B"/>
-                                        <Setter Property="BorderThickness" Value="2.5"/>
-                                        <Setter Property="Effect">
-                                            <Setter.Value>
-                                                <DropShadowEffect Color="#317BF4"
+        </StackPanel>
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="12,0,0,0">
+            <Label Content="Select Your Color" Opacity="0.5"/>
+            <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
+                <Border Tag="Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{Binding BrushSettingsViewModel.ColorSelected}" Margin="8,6,0,0" CornerRadius="6" Height="65" Width="65">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Style.Triggers>
+                                <Trigger Property="Tag" Value="Selected">
+                                    <Setter Property="Background" Value="#FFF"/>
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                    <Setter Property="BorderBrush" Value="#21124B"/>
+                                    <Setter Property="BorderThickness" Value="2.5"/>
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect Color="#317BF4"
             BlurRadius="10"
             ShadowDepth="1"
             Opacity="0.3"/>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
-                    </Border>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="8,0,0,0">
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                </Border>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="8,0,0,0">
 
-                        <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-                            <Border Background="Yellow" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Width="32" Height="32" Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Yellow"/>
-                            </Border>
-                            <Border Background="#7853DE" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#7853DE"/>
-                            </Border>
-                            <Border Background="#3BE1A9" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#3BE1A9"/>
-                            </Border>
-
-
-                        </StackPanel>
-                        <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-                           
-   <Border Background="#FF8C82" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FF8C82"/>
-                            </Border>
-                            <Border Background="#FFFF5656" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFFF5656"/>
-                            </Border>
+                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
+                        <Border Background="Yellow" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Width="32" Height="32" Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Yellow"/>
+                        </Border>
+                        <Border Background="#7853DE" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#7853DE"/>
+                        </Border>
+                        <Border Background="#3BE1A9" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#3BE1A9"/>
+                        </Border>
 
 
+                    </StackPanel>
+                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
 
-                            <Border Background="#01C7FC" Tag="Selected" Margin="8,8,0,0"   CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#01C7FC"/>
-                            </Border>
-
-
-                        </StackPanel>
-
-                        <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-
-                            <Border Background="#FFF" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFF"/>
-                            </Border>
-                            <Border Background="#FFB31B" Tag="Selected" Margin="8,8,0,0"   CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFB31B"/>
-                            </Border>
-
-                            <Border Background="#909090" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#909090"/>
-                            </Border>
+                        <Border Background="#FF8C82" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FF8C82"/>
+                        </Border>
+                        <Border Background="#FFFF5656" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFFF5656"/>
+                        </Border>
 
 
-                        </StackPanel>
-                        <StackPanel Margin="6,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Border Background="Black" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                                <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Black"/>
-                            </Border>
 
-                        </StackPanel>
+                        <Border Background="#01C7FC" Tag="Selected" Margin="8,8,0,0"   CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#01C7FC"/>
+                        </Border>
+
+
+                    </StackPanel>
+
+                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
+
+                        <Border Background="#FFF" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFF"/>
+                        </Border>
+                        <Border Background="#FFB31B" Tag="Selected" Margin="8,8,0,0"   CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFB31B"/>
+                        </Border>
+
+                        <Border Background="#909090" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#909090"/>
+                        </Border>
+
+
+                    </StackPanel>
+                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Border Background="Black" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Black"/>
+                        </Border>
+
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-        </Grid>
+        </StackPanel>
     </Grid>
 
 </UserControl>

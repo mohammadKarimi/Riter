@@ -214,6 +214,16 @@
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
+                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_hexagonal}" VerticalAlignment="Center" />
+                            <TextBlock Text="Shape" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <local:DrawingShapePanel DataContext="{Binding}"/>
+                </TabItem>
+
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
                             <ContentControl Width="16" Height="16" Content="{StaticResource Icon_Keyboard}" VerticalAlignment="Center" />
                             <TextBlock Text="Keyboard Shortcuts" Margin="5,0,0,0"/>
                         </StackPanel>
