@@ -231,6 +231,8 @@ public partial class MainInkCanvasControl : UserControl
             {
                 MainInkCanvas.Strokes.Remove(item);
             }
+
+            _arrowheadCollection.Clear();
         }
 
         var endPoint = e.GetPosition(MainInkCanvas);
@@ -243,8 +245,8 @@ public partial class MainInkCanvasControl : UserControl
         MainInkCanvas.Strokes.Add(lineStroke);
         _lastStroke = lineStroke;
 
-        DrawArrowheadLine(15);  // Rotate 15 degrees for the right arrowhead line
-        DrawArrowheadLine(-15); // Rotate -15 degrees for the left arrowhead line
+        DrawArrowheadLine(15);
+        DrawArrowheadLine(-15);
         void DrawArrowheadLine(double rotation)
         {
             var arrowAttributes = MainInkCanvas.DefaultDrawingAttributes.Clone();
@@ -260,7 +262,6 @@ public partial class MainInkCanvasControl : UserControl
             Matrix rotatingMatrix = new();
             rotatingMatrix.RotateAt(rotation, endPoint.X, endPoint.Y);
 
-            // Create the stroke for the arrowhead line
             var arrowStroke = new Stroke(new StylusPointCollection(arrowPoints)) { DrawingAttributes = arrowAttributes };
             arrowStroke.Transform(rotatingMatrix, false);
             MainInkCanvas.Strokes.Add(arrowStroke);
