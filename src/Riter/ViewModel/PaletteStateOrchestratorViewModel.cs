@@ -13,8 +13,7 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         InkEditingModeViewModel inkEditingModeViewModel,
         HighlighterViewModel highlighterViewModel,
         SettingPanelViewModel settingPanelViewModel,
-        ButtonSelectedViewModel buttonSelectedViewModel,
-        DrawingShapeViewModel drawingShapeViewModel)
+        ButtonSelectedViewModel buttonSelectedViewModel)
     {
         DrawingViewModel = drawingViewModel;
         StrokeVisibilityViewModel = strokeVisibilityViewModel;
@@ -24,7 +23,6 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         HighlighterViewModel = highlighterViewModel;
         SettingPanelViewModel = settingPanelViewModel;
         ButtonSelectedViewModel = buttonSelectedViewModel;
-        DrawingShapeViewModel = drawingShapeViewModel;
 
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         HighlighterViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
@@ -45,8 +43,6 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
     public SettingPanelViewModel SettingPanelViewModel { get; init; }
 
     public ButtonSelectedViewModel ButtonSelectedViewModel { get; init; }
-
-    public DrawingShapeViewModel DrawingShapeViewModel { get; init; }
 
     public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(BrushSettingsViewModel.InkColor, BrushSettingsViewModel.SizeOfBrush, HighlighterViewModel.IsHighlighter);
 
