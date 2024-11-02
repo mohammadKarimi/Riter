@@ -1,8 +1,8 @@
 ﻿namespace Riter.Core.Enum;
 public enum DrawingShape
 {
-    FreeDraw,
-    Arrow,
-    Circle,
-    Rectangle
+    FreeDraw = 0,
+    Arrow = 1,
+    Circle = 2,
+    Rectangle = 3
 }

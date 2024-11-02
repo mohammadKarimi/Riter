@@ -17,8 +17,6 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
 
     public DrawingShape CurrentShape { get; }
 
-    public string CurrentShapeName { get; }
-
     /// <summary>
     /// Releases the ink based on the button pressed.
     /// </summary>
@@ -36,5 +34,5 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
 
     void StartHighlighterDrawing();
 
-    void StartDrawingShape(string shapeName);
+    void StartDrawingShape(string shapeId = "1");
 }

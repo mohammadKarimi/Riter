@@ -15,7 +15,6 @@ public class DrawingStateHandler(
     private readonly ISettingPanelStateHandler _settingPanelStateHandler = settingPanelStateHandler;
     private bool _isReleased = true;
     private DrawingShape _currentShape = DrawingShape.FreeDraw;
-    private string _currentShapeName = string.Empty;
 
     public bool IsReleased
     {
@@ -33,17 +32,10 @@ public class DrawingStateHandler(
         });
     }
 
-
     public DrawingShape CurrentShape
     {
         get => _currentShape;
         private set => SetProperty(ref _currentShape, value, nameof(CurrentShape));
-    }
-
-    public string CurrentShapeName
-    {
-        get => _currentShapeName;
-        private set => SetProperty(ref _currentShapeName, value, nameof(CurrentShapeName));
     }
 
     public void Release()
@@ -62,11 +54,12 @@ public class DrawingStateHandler(
         _settingPanelStateHandler.SetSettingPanelInvisibile();
     }
 
-    public void StartDrawingShape(string shapeName)
+    public void StartDrawingShape(string shapeId = "1")
     {
-        CurrentShapeName = shapeName;
-        CurrentShape = DrawingShape.Arrow;
+        CurrentShape = (DrawingShape)byte.Parse(shapeId);
         IsReleased = false;
+        _settingPanelStateHandler.SetSettingPanelInvisibile();
+        _buttonSelectedStateHandler.ResetArrowButtonSelected();
         _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ShapeDrawButton);
         _inkEditingModeStateHandler.None();
     }
