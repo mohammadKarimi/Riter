@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Riter.Core.Enum;
 
 namespace Riter.ViewModel.StateHandlers;
 
@@ -14,7 +15,9 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
     /// </summary>
     bool IsReleased { get; }
 
-    //string ButtonSelectedName { get; }
+    public DrawingShape CurrentShape { get; }
+
+    public string CurrentShapeName { get; }
 
     /// <summary>
     /// Releases the ink based on the button pressed.
@@ -32,4 +35,6 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
     void StartErasing();
 
     void StartHighlighterDrawing();
+
+    void StartDrawingShape(string shapeName);
 }

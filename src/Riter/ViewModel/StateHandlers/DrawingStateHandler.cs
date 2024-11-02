@@ -1,4 +1,5 @@
 ﻿using Riter.Core.Consts;
+using Riter.Core.Enum;
 
 namespace Riter.ViewModel.StateHandlers;
 
@@ -13,6 +14,8 @@ public class DrawingStateHandler(
     private readonly IButtonSelectedStateHandler _buttonSelectedStateHandler = buttonSelectedStateHandler;
     private readonly ISettingPanelStateHandler _settingPanelStateHandler = settingPanelStateHandler;
     private bool _isReleased = true;
+    private DrawingShape _currentShape = DrawingShape.FreeDraw;
+    private string _currentShapeName = string.Empty;
 
     public bool IsReleased
     {
@@ -30,6 +33,19 @@ public class DrawingStateHandler(
         });
     }
 
+
+    public DrawingShape CurrentShape
+    {
+        get => _currentShape;
+        private set => SetProperty(ref _currentShape, value, nameof(CurrentShape));
+    }
+
+    public string CurrentShapeName
+    {
+        get => _currentShapeName;
+        private set => SetProperty(ref _currentShapeName, value, nameof(CurrentShapeName));
+    }
+
     public void Release()
     {
         _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ReleaseButton);
@@ -38,11 +54,21 @@ public class DrawingStateHandler(
 
     public void StartDrawing()
     {
+        CurrentShape = DrawingShape.FreeDraw;
         _highlighterStateHandler.DisableHighlighter();
         _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.DrawingButton);
         _inkEditingModeStateHandler.Ink();
         IsReleased = false;
         _settingPanelStateHandler.SetSettingPanelInvisibile();
+    }
+
+    public void StartDrawingShape(string shapeName)
+    {
+        CurrentShapeName = shapeName;
+        CurrentShape = DrawingShape.Arrow;
+        IsReleased = false;
+        _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ShapeDrawButton);
+        _inkEditingModeStateHandler.None();
     }
 
     public void StartErasing()
