@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
 using System.Windows.Interop;
 
 namespace Riter.Core;
@@ -16,7 +17,7 @@ public partial class GlobalHotKeyManager : IDisposable
     private bool _isHookAdded;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="GlobalHotkeyManager"/> class for the specified WPF window.
+    /// Initializes a new instance of the <see cref="GlobalHotKeyManager"/> class for the specified WPF window.
     /// </summary>
     /// <param name="window">The WPF window that the global hotkeys will be tied to.</param>
     public GlobalHotKeyManager(Window window)
@@ -41,6 +42,7 @@ public partial class GlobalHotKeyManager : IDisposable
 
         return registered;
     }
+
 
     /// <summary>
     /// Unregisters a hotkey by its unique identifier.
@@ -78,6 +80,9 @@ public partial class GlobalHotKeyManager : IDisposable
     [return: MarshalAs(UnmanagedType.Bool)]
     private static partial bool UnregisterHotKey(IntPtr hWnd, int id);
 
+    [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
+
     /// <summary>
     /// Processes window messages for registered hotkeys.
     /// Invokes the associated callback action when a hotkey is pressed.
@@ -103,6 +108,7 @@ public partial class GlobalHotKeyManager : IDisposable
             }
         }
 
-        return IntPtr.Zero;
+        // Call the next hook in the chain, allowing other applications to receive the keystroke
+        return CallNextHookEx(IntPtr.Zero, msg, wParam, lParam);
     }
 }
