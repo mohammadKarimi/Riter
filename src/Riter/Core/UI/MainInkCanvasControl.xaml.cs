@@ -43,19 +43,19 @@ public partial class MainInkCanvasControl : UserControl
     {
         var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
 
-        if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.FreeDraw)
+        if (viewModel.DrawingViewModel.CurrentShape is DrawingShape.FreeDraw)
         {
             DrawLine(sender, e);
         }
-        else if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.Circle)
+        else if (viewModel.DrawingViewModel.CurrentShape is DrawingShape.Circle)
         {
             DrawCircle(sender, e);
         }
-        else if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.Arrow)
+        else if (viewModel.DrawingViewModel.CurrentShape is DrawingShape.Arrow)
         {
             DrawArrow(sender, e);
         }
-        else if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.Rectangle)
+        else if (viewModel.DrawingViewModel.CurrentShape is DrawingShape.Rectangle)
         {
             DrawRectangle(sender, e);
         }
@@ -63,9 +63,9 @@ public partial class MainInkCanvasControl : UserControl
 
     private void Window_KeyDown(object sender, KeyEventArgs e)
     {
-        if (IsDrawingShapeKeyEntered(e.Key) && _inkEditingModeStateHandler.InkEditingMode == InkCanvasEditingMode.Ink)
+        if (IsDrawingShapeKeyEntered(e.Key) && _inkEditingModeStateHandler.InkEditingMode is InkCanvasEditingMode.Ink)
         {
-            _inkEditingModeStateHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.None);
+            _inkEditingModeStateHandler.None();
             MainInkCanvas.UseCustomCursor = true;
         }
     }
@@ -73,10 +73,10 @@ public partial class MainInkCanvasControl : UserControl
     private void Window_KeyUp(object sender, KeyEventArgs e)
     {
         if (IsDrawingShapeKeyEntered(e.Key)
-            && _inkEditingModeStateHandler.InkEditingMode == InkCanvasEditingMode.None
-            && ((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.CurrentShape == DrawingShape.FreeDraw)
+            && _inkEditingModeStateHandler.InkEditingMode is InkCanvasEditingMode.None
+            && ((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.CurrentShape is DrawingShape.FreeDraw)
         {
-            _inkEditingModeStateHandler.SetInkCanvasEditingMode(InkCanvasEditingMode.Ink);
+            _inkEditingModeStateHandler.Ink();
             MainInkCanvas.UseCustomCursor = false;
         }
     }
@@ -92,10 +92,10 @@ public partial class MainInkCanvasControl : UserControl
 
     private void EndDrawing(object sender, MouseButtonEventArgs e)
     {
-        if (_isMoving == true)
+        if (_isMoving is true)
         {
             var endPoint = e.GetPosition(MainInkCanvas);
-            if (_lastStroke != null)
+            if (_lastStroke is not null)
             {
                 StrokeCollection collection = [_lastStroke, .. _arrowheadCollection];
                 _strokeHistoryService.Push(StrokesHistoryNode.CreateAddedType(collection));
@@ -109,7 +109,7 @@ public partial class MainInkCanvasControl : UserControl
 
     private void DrawLine(object sender, MouseEventArgs e)
     {
-        if (_isMoving == false)
+        if (_isMoving is false)
         {
             return;
         }
@@ -131,12 +131,12 @@ public partial class MainInkCanvasControl : UserControl
             DrawingAttributes = newLine,
         };
 
-        if (_lastStroke != null)
+        if (_lastStroke is not null)
         {
             MainInkCanvas.Strokes.Remove(_lastStroke);
         }
 
-        if (stroke != null)
+        if (stroke is not null)
         {
             MainInkCanvas.Strokes.Add(stroke);
         }
@@ -146,7 +146,7 @@ public partial class MainInkCanvasControl : UserControl
 
     private void DrawCircle(object sender, MouseEventArgs e)
     {
-        if (_isMoving == false)
+        if (_isMoving is false)
         {
             return;
         }
@@ -172,7 +172,7 @@ public partial class MainInkCanvasControl : UserControl
         {
             DrawingAttributes = newAttributes,
         };
-        if (_lastStroke != null)
+        if (_lastStroke is not null)
         {
             MainInkCanvas.Strokes.Remove(_lastStroke);
         }
@@ -183,7 +183,7 @@ public partial class MainInkCanvasControl : UserControl
 
     private void DrawRectangle(object sender, MouseEventArgs e)
     {
-        if (!_isMoving)
+        if (_isMoving is false)
         {
             return;
         }
@@ -215,12 +215,12 @@ public partial class MainInkCanvasControl : UserControl
 
     private void DrawArrow(object sender, MouseEventArgs e)
     {
-        if (!_isMoving)
+        if (_isMoving is false)
         {
             return;
         }
 
-        if (_lastStroke != null)
+        if (_lastStroke is not null)
         {
             MainInkCanvas.Strokes.Remove(_lastStroke);
         }

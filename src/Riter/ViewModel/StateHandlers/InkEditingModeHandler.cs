@@ -31,5 +31,4 @@ public class InkEditingModeStateHandler : BaseStateHandler, IInkEditingModeState
 
     public void None() => InkEditingMode = InkCanvasEditingMode.None;
 
-    public void SetInkCanvasEditingMode(InkCanvasEditingMode inkCanvasEditing) => InkEditingMode = inkCanvasEditing;
 }

@@ -1,5 +1,7 @@
-﻿using Riter.Core.Consts;
+﻿using System.Windows.Controls;
+using Riter.Core.Consts;
 using Riter.Core.Enum;
+using Riter.Core.Extensions;
 
 namespace Riter.ViewModel.StateHandlers;
 
@@ -46,22 +48,17 @@ public class DrawingStateHandler(
 
     public void StartDrawing()
     {
-        CurrentShape = DrawingShape.FreeDraw;
-        _highlighterStateHandler.DisableHighlighter();
-        _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.DrawingButton);
         _inkEditingModeStateHandler.Ink();
-        IsReleased = false;
-        _settingPanelStateHandler.SetSettingPanelInvisibile();
+        _highlighterStateHandler.DisableHighlighter();
+        SetupDrawingMode(DrawingShape.FreeDraw, ButtonNames.DrawingButton);
     }
 
     public void StartDrawingShape(string shapeId = "1")
     {
-        CurrentShape = (DrawingShape)byte.Parse(shapeId);
-        IsReleased = false;
-        _settingPanelStateHandler.SetSettingPanelInvisibile();
-        _buttonSelectedStateHandler.ResetArrowButtonSelected();
-        _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ShapeDrawButton);
+        var shape = shapeId.ToDrawingShape();
         _inkEditingModeStateHandler.None();
+        _highlighterStateHandler.DisableHighlighter();
+        SetupDrawingMode(shape, ButtonNames.ShapeDrawButton);
     }
 
     public void StartErasing()
@@ -74,9 +71,17 @@ public class DrawingStateHandler(
     public void StartHighlighterDrawing()
     {
         _highlighterStateHandler.EnableHighlighter();
-        _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.HighlighterButton);
         _inkEditingModeStateHandler.Ink();
+        SetupDrawingMode(DrawingShape.FreeDraw, ButtonNames.HighlighterButton);
+    }
+
+    private void SetupDrawingMode(DrawingShape shape, string buttonName)
+    {
+        CurrentShape = shape;
         IsReleased = false;
+
+        _buttonSelectedStateHandler.SetButtonSelectedName(buttonName);
         _settingPanelStateHandler.SetSettingPanelInvisibile();
+        _buttonSelectedStateHandler.ResetArrowButtonSelected();
     }
 }

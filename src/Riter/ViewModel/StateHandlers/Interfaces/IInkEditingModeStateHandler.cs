@@ -14,13 +14,16 @@ public interface IInkEditingModeStateHandler : INotifyPropertyChanged
     Brush Background { get; }
 
     void EnableBlackboard();
+
     void EnableTransparent();
+
     void EnableWhiteboard();
+
     void EraseByStroke();
 
     void Ink();
 
     void None();
 
-    void SetInkCanvasEditingMode(InkCanvasEditingMode inkCanvasEditing);
+    // void SetInkCanvasEditingMode(InkCanvasEditingMode inkCanvasEditing);
 }
