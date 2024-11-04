@@ -1,7 +1,10 @@
-﻿using System.Windows.Controls;
+﻿using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Windows.Controls;
 using System.Windows.Ink;
 using Riter.Core.Extensions;
 using Riter.Core.Interfaces;
+using Riter.Core.UI;
 using Riter.ViewModel;
 
 namespace Riter;
@@ -11,21 +14,41 @@ namespace Riter;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private readonly IStrokeHistoryService _strokeHistoryService;
-    private readonly HotKeyLoader _hotKeyLoader;
-    private readonly PaletteStateOrchestratorViewModel _orchestratorViewModel;
-    private GlobalHotKeyManager _globalHotkeyManager;
+    private const int WHKEYBOARDLL = 13;
+    private const int WMKEYDOWN = 0x0100;
+    private const int WMKEYUP = 0x0101;
 
-    public MainWindow(
-        PaletteStateOrchestratorViewModel orchestratorViewModel,
-        HotKeyLoader hotKeyLoader,
-        IStrokeHistoryService strokeHistoryService)
+    private static readonly LowLevelKeyboardProc _proc = HookCallback;
+    private static IntPtr _hookID = IntPtr.Zero;
+    private static bool _ctrlPressed = false;
+    private static bool _shiftPressed = false;
+    private static PaletteStateOrchestratorViewModel _orchestratorViewModel;
+
+    private readonly IStrokeHistoryService _strokeHistoryService;
+
+    private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+
+    [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+
+    [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool UnhookWindowsHookEx(IntPtr hhk);
+
+    [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
+
+    [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+    private static extern IntPtr GetModuleHandle(string lpModuleName);
+
+    public MainWindow(PaletteStateOrchestratorViewModel orchestratorViewModel,
+    IStrokeHistoryService strokeHistoryService)
     {
         InitializeComponent();
         DataContext = orchestratorViewModel;
         _orchestratorViewModel = orchestratorViewModel;
         _strokeHistoryService = strokeHistoryService;
-        _hotKeyLoader = hotKeyLoader;
+        // _hotKeyLoader = hotKeyLoader;
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
         MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
 
@@ -35,28 +58,69 @@ public partial class MainWindow : Window
         Loaded += MainWindow_Loaded;
     }
 
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+        UnhookWindowsHookEx(_hookID);
+    }
+
     /// <inheritdoc/>
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
-        _globalHotkeyManager = new GlobalHotKeyManager(this);
-        var hotkies = _hotKeyLoader.Loads(_orchestratorViewModel);
-
-        foreach (var hotkey in hotkies)
-        {
-            _globalHotkeyManager.RegisterHotkey(
-                hotkey.Key,
-                hotkey.Value.modifiers,
-                hotkey.Value.key,
-                hotkey.Value.callback);
-        }
+        _hookID = SetHook(_proc);
     }
 
-    /// <inheritdoc/>
-    protected override void OnClosed(EventArgs e)
+    private static IntPtr SetHook(LowLevelKeyboardProc proc)
     {
-        _globalHotkeyManager.Dispose();
-        base.OnClosed(e);
+        using var curProcess = Process.GetCurrentProcess();
+        using var curModule = curProcess.MainModule;
+        return SetWindowsHookEx(WHKEYBOARDLL, proc, GetModuleHandle(curModule.ModuleName), 0);
+    }
+
+    private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+    {
+        var isKey = true;
+        if (nCode >= 0 && (wParam == WMKEYDOWN || wParam == WMKEYUP))
+        {
+            var vkCode = Marshal.ReadInt32(lParam);
+
+            if (wParam is WMKEYDOWN)
+            {
+                if (vkCode == KeyInterop.VirtualKeyFromKey(Key.LeftCtrl) || vkCode == KeyInterop.VirtualKeyFromKey(Key.RightCtrl))
+                {
+                    _ctrlPressed = true;
+                    isKey = false;
+                }
+
+                if (vkCode == KeyInterop.VirtualKeyFromKey(Key.LeftShift) || vkCode == KeyInterop.VirtualKeyFromKey(Key.RightShift))
+                {
+                    _shiftPressed = true;
+                    isKey = false;
+                }
+
+                if (isKey)
+                {
+                    _orchestratorViewModel.HandleHotkey(new HotKey(vkCode, _ctrlPressed, _shiftPressed));
+                    _ctrlPressed = false;
+                    _shiftPressed = false;
+                }
+            }
+            else if (wParam == WMKEYUP)
+            {
+                if (vkCode == KeyInterop.VirtualKeyFromKey(Key.LeftCtrl) || vkCode == KeyInterop.VirtualKeyFromKey(Key.RightCtrl))
+                {
+                    _ctrlPressed = false;
+                }
+
+                if (vkCode == KeyInterop.VirtualKeyFromKey(Key.LeftShift) || vkCode == KeyInterop.VirtualKeyFromKey(Key.RightShift))
+                {
+                    _shiftPressed = false;
+                }
+            }
+        }
+
+        return CallNextHookEx(_hookID, nCode, wParam, lParam);
     }
 
     /// <summary>
