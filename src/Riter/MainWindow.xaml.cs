@@ -101,7 +101,7 @@ public partial class MainWindow : Window
 
                 if (isKey)
                 {
-                    _orchestratorViewModel.HandleHotkey(new HotKey(vkCode, _ctrlPressed, _shiftPressed));
+                    _orchestratorViewModel.HandleHotkey(new HotKeiesPressed(KeyInterop.KeyFromVirtualKey(vkCode).ToString(), _ctrlPressed, _shiftPressed));
                     _ctrlPressed = false;
                     _shiftPressed = false;
                 }

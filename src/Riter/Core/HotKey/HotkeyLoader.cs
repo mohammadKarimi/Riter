@@ -1,6 +1,6 @@
-﻿using Riter.ViewModel;
+﻿//using Riter.ViewModel;
 
-namespace Riter.Core;
+//namespace Riter.Core;
 
 //public class HotKeyLoader(AppSettings options)
 //{
