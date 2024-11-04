@@ -9,7 +9,7 @@ public class Value
 
 public class HotKeysConfig
 {
-    public string Key { get; set; }
+    public string Key { get; init; }
 
-    public Value Value { get; set; }
+    public Value Value { get; init; }
 }
