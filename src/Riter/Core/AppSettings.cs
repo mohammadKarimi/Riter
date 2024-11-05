@@ -33,5 +33,5 @@ public class AppSettings
     /// </summary>
     public const string MyTelegram = "https://t.me/mhakarimi";
 
-    public IEnumerable<HotKeysConfig> HotKeysConfig { get; set; }
+    public List<HotKeysConfig> HotKeysConfig { get; set; }
 }

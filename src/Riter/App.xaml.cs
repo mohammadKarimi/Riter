@@ -53,7 +53,6 @@ public partial class App : Application
 
     private static void ConfigureServices(ServiceCollection serviceCollection)
     {
-        serviceCollection.AddSingleton<HotKeyLoader>();
         serviceCollection.AddSingleton<IInkEditingModeStateHandler, InkEditingModeStateHandler>();
         serviceCollection.AddSingleton<IBrushSettingsStateHandler, BrushSettingsStateHandler>();
         serviceCollection.AddSingleton<IStrokeVisibilityStateHandler, StrokeVisibilityStateHandler>();
