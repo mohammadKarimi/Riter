@@ -6,6 +6,7 @@ namespace Riter.ViewModel;
 public class PaletteStateOrchestratorViewModel : BaseViewModel
 {
     private readonly AppSettings _appSettings;
+    private readonly Dictionary<HotKey, Action> _hotKeyCommandMap = [];
 
     public PaletteStateOrchestratorViewModel(
         DrawingViewModel drawingViewModel,
@@ -27,6 +28,34 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         HighlighterViewModel = highlighterViewModel;
         SettingPanelViewModel = settingPanelViewModel;
         ButtonSelectedViewModel = buttonSelectedViewModel;
+
+        _hotKeyCommandMap = new()
+            {
+                { HotKey.Drawing, () => DrawingViewModel.StartDrawingCommand.Execute(null) },
+                { HotKey.Erasing, () => DrawingViewModel.StartErasingCommand.Execute(null) },
+                { HotKey.Trash, () => StrokeHistoryViewModel.ClearCommand.Execute(null) },
+                { HotKey.Highlighter, () => DrawingViewModel.ToggleHighlighterCommand.Execute(null) },
+                { HotKey.Release, () => DrawingViewModel.ReleaseCommand.Execute(null) },
+                { HotKey.HideAll, () => StrokeVisibilityViewModel.HideAllCommand.Execute(null) },
+                { HotKey.Undo, () => StrokeHistoryViewModel.UndoCommand.Execute(null) },
+                { HotKey.Redo, () => StrokeHistoryViewModel.RedoCommand.Execute(null) },
+                { HotKey.SizeOfBrush1X, () => BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X1) },
+                { HotKey.SizeOfBrush2X, () => BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X2) },
+                { HotKey.SizeOfBrush3X, () => BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X3) },
+                { HotKey.Yellow, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Yellow) },
+                { HotKey.Purple, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Purple) },
+                { HotKey.Mint, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Mint) },
+                { HotKey.Coral, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Coral) },
+                { HotKey.Red, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Red) },
+                { HotKey.Cyan, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Cyan) },
+                { HotKey.White, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.White) },
+                { HotKey.Orange, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Orange) },
+                { HotKey.Gray, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Gray) },
+                { HotKey.Black, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Black) },
+                { HotKey.TransparentBackground, () => InkEditingModeViewModel.EnableTransparentCommand.Execute(null) },
+                { HotKey.BlackboardBackground, () => InkEditingModeViewModel.EnableBlackboardCommand.Execute(null) },
+                { HotKey.WhiteboardBackground, () => InkEditingModeViewModel.EnableWhiteboardCommand.Execute(null) },
+            };
 
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
         HighlighterViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
@@ -52,8 +81,27 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
 
     public void HandleHotkey(HotKeiesPressed hotKeies)
     {
+        var keiesMap = BuildKeyCombination(hotKeies);
+        var hotkey = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Key == keiesMap);
+        if (hotkey is null)
+        {
+            return;
+        }
+
+        if (!Enum.TryParse<HotKey>(hotkey.Value, out var hotKeyEnum))
+        {
+            return;
+        }
+
+        if (_hotKeyCommandMap.TryGetValue(hotKeyEnum, out var command))
+        {
+            command();
+        }
+    }
+
+    private static string BuildKeyCombination(HotKeiesPressed hotKeies)
+    {
         var keiesMap = string.Empty;
-        var keyString = hotKeies.Key.ToString();
         if (hotKeies.CtrlPressed)
         {
             keiesMap += "CTRL + ";
@@ -64,92 +112,8 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
             keiesMap += "SHIFT + ";
         }
 
-        keiesMap += keyString.ToUpper();
-        var hotkey = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Key == keiesMap);
-        if (hotkey is null)
-        {
-            return;
-        }
-
-        switch (Enum.Parse<HotKey>(hotkey.Value))
-        {
-            case HotKey.Drawing:
-                DrawingViewModel.StartDrawingCommand.Execute(null);
-                break;
-            case HotKey.Erasing:
-                DrawingViewModel.StartErasingCommand.Execute(null);
-                break;
-            case HotKey.Trash:
-                StrokeHistoryViewModel.ClearCommand.Execute(null);
-                break;
-            case HotKey.Highlighter:
-                DrawingViewModel.ToggleHighlighterCommand.Execute(null);
-                break;
-            case HotKey.Release:
-                DrawingViewModel.ReleaseCommand.Execute(null);
-                break;
-            case HotKey.HideAll:
-                StrokeVisibilityViewModel.HideAllCommand.Execute(null);
-                break;
-            case HotKey.Undo:
-                StrokeHistoryViewModel.UndoCommand.Execute(null);
-                break;
-            case HotKey.Redo:
-                StrokeHistoryViewModel.RedoCommand.Execute(null);
-                break;
-            case HotKey.SizeOfBrush1X:
-                BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X1);
-                break;
-            case HotKey.SizeOfBrush2X:
-                BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X2);
-                break;
-            case HotKey.SizeOfBrush3X:
-                BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X3);
-                break;
-
-            case HotKey.Yellow:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Yellow);
-                break;
-            case HotKey.Purple:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Purple);
-                break;
-            case HotKey.Mint:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Mint);
-                break;
-            case HotKey.Coral:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Coral);
-                break;
-            case HotKey.Red:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Red);
-                break;
-            case HotKey.Cyan:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Cyan);
-                break;
-            case HotKey.White:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.White);
-                break;
-            case HotKey.Orange:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Orange);
-                break;
-            case HotKey.Gray:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Gray);
-                break;
-            case HotKey.Black:
-                BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Black);
-                break;
-
-            case HotKey.TransparentBackground:
-                InkEditingModeViewModel.EnableTransparentCommand.Execute(null);
-                break;
-            case HotKey.BlackboardBackground:
-                InkEditingModeViewModel.EnableBlackboardCommand.Execute(null);
-                break;
-            case HotKey.WhiteboardBackground:
-                InkEditingModeViewModel.EnableWhiteboardCommand.Execute(null);
-                break;
-            default:
-                break;
-        }
+        keiesMap += hotKeies.Key.ToString().ToUpper();
+        return keiesMap;
     }
 
     private void OnBrushOrHighlightChanged(string propertyName)

@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows.Controls;
 using System.Windows.Ink;
+using System.Windows.Input;
 using Riter.Core.Extensions;
 using Riter.Core.Interfaces;
 using Riter.Core.UI;
