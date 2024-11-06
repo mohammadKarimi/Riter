@@ -56,9 +56,9 @@ public class DrawingStateHandler(
     public void StartDrawingShape(string shapeId = "1")
     {
         var shape = shapeId.ToDrawingShape();
-        _inkEditingModeStateHandler.None();
         _highlighterStateHandler.DisableHighlighter();
         SetupDrawingMode(shape, ButtonNames.ShapeDrawButton);
+        _inkEditingModeStateHandler.None();
     }
 
     public void StartErasing()
