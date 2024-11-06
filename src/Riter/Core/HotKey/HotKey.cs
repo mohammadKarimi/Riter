@@ -1,7 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Text;
-
-namespace Riter.Core;
+﻿namespace Riter.Core;
 public enum HotKey
 {
     Drawing = 9000,
@@ -28,7 +25,11 @@ public enum HotKey
     White = 9020,
     Orange = 9021,
     Gray = 9022,
-    Black = 9023
+    Black = 9023,
+
+    Arrow = 1,
+    Circle = 2,
+    Rectangle = 3,
 }
 
 public record struct HotKeiesPressed(string Key, bool CtrlPressed, bool ShiftPressed);

@@ -55,6 +55,9 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
                 { HotKey.TransparentBackground, () => InkEditingModeViewModel.EnableTransparentCommand.Execute(null) },
                 { HotKey.BlackboardBackground, () => InkEditingModeViewModel.EnableBlackboardCommand.Execute(null) },
                 { HotKey.WhiteboardBackground, () => InkEditingModeViewModel.EnableWhiteboardCommand.Execute(null) },
+                { HotKey.Arrow, () => drawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Arrow).ToString()) },
+                { HotKey.Rectangle, () => drawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Rectangle).ToString()) },
+                { HotKey.Circle, () => drawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Circle).ToString()) },
             };
 
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
