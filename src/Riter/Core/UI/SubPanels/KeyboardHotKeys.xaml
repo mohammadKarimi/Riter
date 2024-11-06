@@ -28,32 +28,32 @@
             <!-- Column 1: Drawing Shortcuts -->
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
                 <TextBlock Text="Drawing" Width="110" Padding="0,4"/>
-                <TextBox Text="D" Padding="3" Width="130"/>
+                <TextBox Text="CTRL + D" Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
                 <TextBlock Text="Erasing" Width="110" Padding="0,4"/>
-                <TextBox Text="E"  Padding="3" Width="130"/>
+                <TextBox Text="CTRL + E"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
                 <TextBlock Text="Undo" Width="110" Padding="0,4"/>
-                <TextBox Text="Z"  Padding="3" Width="130"/>
+                <TextBox Text="CTRL + Z"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
                 <TextBlock Text="Redo" Width="110" Padding="0,4"/>
-                <TextBox Text="X"  Padding="3" Width="130"/>
+                <TextBox Text="CTRL + X"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
                 <TextBlock Text="Highlighter" Width="110" Padding="0,4"/>
-                <TextBox Text="H"  Padding="3" Width="130"/>
+                <TextBox Text="CTRL + H"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
                 <TextBlock Text="Release" Width="110" Padding="0,4"/>
-                <TextBox Text="R"  Padding="3" Width="130"/>
+                <TextBox Text="CTRL + R"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
@@ -64,7 +64,7 @@
 
             <StackPanel Grid.Row="7" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
                 <TextBlock Text="Hide All" Width="110" Padding="0,4"/>
-                <TextBox Text="Ctrl + H"  Padding="3" Width="130"/>
+                <TextBox Text="Ctrl + SHIFT + H"  Padding="3" Width="130"/>
             </StackPanel>
 
             <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
