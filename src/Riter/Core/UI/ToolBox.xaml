@@ -17,7 +17,7 @@
                     <DropShadowEffect Opacity="0.1" ShadowDepth="1" BlurRadius="16" />
                 </Border.Effect>
                 <StackPanel>
-                    <Border  Padding="12,12" Background="#FFF" CornerRadius="16">
+                    <Border  Padding="8,8" Background="#FFF" CornerRadius="16">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal"
                      HorizontalAlignment="Center">
