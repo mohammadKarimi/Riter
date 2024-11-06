@@ -146,21 +146,27 @@ public partial class MainInkCanvasControl : UserControl
 
     private void DrawCircle(object sender, MouseEventArgs e)
     {
-        if (_isMoving is false)
+        if (!_isMoving)
         {
             return;
         }
 
         var currentPoint = e.GetPosition(MainInkCanvas);
-        var radius = Math.Abs(currentPoint.X - _startPoint.X);
-        var points = new List<Point>();
 
+        // Calculate the center of the circle
+        var centerX = (_startPoint.X + currentPoint.X) / 2;
+        var centerY = (_startPoint.Y + currentPoint.Y) / 2;
+        var center = new Point(centerX, centerY);
+
+        var radius = Math.Sqrt(Math.Pow(currentPoint.X - centerX, 2) + Math.Pow(currentPoint.Y - centerY, 2));
+
+        var points = new List<Point>();
         var segments = 100;
         for (var i = 0; i <= segments; i++)
         {
             var angle = 2 * Math.PI * i / segments;
-            var x = _startPoint.X + (radius * Math.Cos(angle));
-            var y = _startPoint.Y + (radius * Math.Sin(angle));
+            var x = center.X + (radius * Math.Cos(angle));
+            var y = center.Y + (radius * Math.Sin(angle));
             points.Add(new Point(x, y));
         }
 
@@ -168,11 +174,13 @@ public partial class MainInkCanvasControl : UserControl
         var newAttributes = MainInkCanvas.DefaultDrawingAttributes.Clone();
         newAttributes.StylusTip = StylusTip.Ellipse;
         newAttributes.IgnorePressure = true;
+
         var stroke = new Stroke(stylusPoints)
         {
             DrawingAttributes = newAttributes,
         };
-        if (_lastStroke is not null)
+
+        if (_lastStroke != null)
         {
             MainInkCanvas.Strokes.Remove(_lastStroke);
         }
