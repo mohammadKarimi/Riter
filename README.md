@@ -75,7 +75,7 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 - **Ctrl + X** - Redo
 
 ### View Modes
-- **Ctrl + H** - Hide all drawings
+- **Ctrl + Shift + H** - Hide all drawings
 - **Ctrl + T** - Clear canvas
 - **Shift + T** - Transparent board
 - **Shift + B** - Blackboard
