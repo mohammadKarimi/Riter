@@ -25,5 +25,4 @@ public interface IInkEditingModeStateHandler : INotifyPropertyChanged
 
     void None();
 
-    // void SetInkCanvasEditingMode(InkCanvasEditingMode inkCanvasEditing);
 }

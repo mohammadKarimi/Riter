@@ -78,7 +78,10 @@ public class DrawingStateHandler(
     private void SetupDrawingMode(DrawingShape shape, string buttonName)
     {
         CurrentShape = shape;
-        IsReleased = false;
+        if (IsReleased)
+        {
+            IsReleased = false;
+        }
 
         _buttonSelectedStateHandler.SetButtonSelectedName(buttonName);
         _settingPanelStateHandler.SetSettingPanelInvisibile();
