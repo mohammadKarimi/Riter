@@ -104,7 +104,9 @@
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="3">
                                                             <Setter Property="Content" Value="{StaticResource Icon_Rectangle}"/>
                                                         </DataTrigger>
-
+                                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="4">
+                                                            <Setter Property="Content" Value="{StaticResource Icon_Database}"/>
+                                                        </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
                                             </Button.Style>
