@@ -58,6 +58,7 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
                 { HotKey.Arrow, () => drawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Arrow).ToString()) },
                 { HotKey.Rectangle, () => drawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Rectangle).ToString()) },
                 { HotKey.Circle, () => drawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Circle).ToString()) },
+                { HotKey.Database, () => drawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Database).ToString()) },
             };
 
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
