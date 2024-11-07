@@ -96,16 +96,16 @@
                                                             <Setter Property="Content" Value="{StaticResource Icon_RoundedRectangle}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="Arrow">
-                                                            <Setter Property="Content" Value="{StaticResource Icon_Arrow}"/>
+                                                            <Setter Property="Content" Value="{StaticResource Icon_Arrow_Toolbox}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="2">
-                                                            <Setter Property="Content" Value="{StaticResource Icon_Circle}"/>
+                                                            <Setter Property="Content" Value="{StaticResource Icon_Circle_Toolbox}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="3">
-                                                            <Setter Property="Content" Value="{StaticResource Icon_Rectangle}"/>
+                                                            <Setter Property="Content" Value="{StaticResource Icon_Rectangle_Toolbox}"/>
                                                         </DataTrigger>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="4">
-                                                            <Setter Property="Content" Value="{StaticResource Icon_Database}"/>
+                                                            <Setter Property="Content" Value="{StaticResource Icon_Database_Toolbox}"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
