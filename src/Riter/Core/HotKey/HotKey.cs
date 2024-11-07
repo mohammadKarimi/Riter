@@ -30,6 +30,7 @@ public enum HotKey
     Arrow = 1,
     Circle = 2,
     Rectangle = 3,
+    Database = 4
 }
 
 public record struct HotKeiesPressed(string Key, bool CtrlPressed, bool ShiftPressed);
