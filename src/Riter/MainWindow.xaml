@@ -21,20 +21,34 @@
         </Style>
     </Window.Style>
     <Grid x:Name="Layout">
-        <local:MainInkCanvasControl DataContext="{Binding}" x:Name="MainInkCanvasControl" />
+        <local:MainInkCanvasControl  DataContext="{Binding}" x:Name="MainInkCanvasControl" />
         <Canvas>
             <StackPanel x:Name="MainPalette" Orientation="Vertical" VerticalAlignment="Center">
-                <local:SettingPanel DataContext="{Binding}" x:Name="SettingPanel" />
+                <Grid VerticalAlignment="Bottom">
+                    <local:SettingPanel DataContext="{Binding}" x:Name="SettingPanel" />
+                    <Border Padding="8,8" VerticalAlignment="Bottom" Margin="0,0,0,8" Width="218" Height="240" CornerRadius="12" Background="#1E1E1E" BorderBrush="#1E1E1E" BorderThickness="1">
+                        <Border.Effect>
+                            <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
+                        </Border.Effect>
+                        <subpanel:DrawingShapePanel x:Name="DrawindShapePanel"/>
+                    </Border>
+                    <Border Padding="8,8" VerticalAlignment="Bottom" Margin="0,0,0,8" Width="450" Height="240" CornerRadius="12" Background="#1E1E1E" BorderBrush="#1E1E1E" BorderThickness="1">
+                        <Border.Effect>
+                            <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
+                        </Border.Effect>
+                        <subpanel:StrokeSizePanel x:Name="StrokeSizePanel"/>
+                    </Border>
+                </Grid>
+
                 <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         MinWidth="0">
+
                     <local:ToolBox x:Name="ToolBox" DataContext="{Binding}"/>
                     <local:WindowControl x:Name="WindowControl"/>
-                    
+
                 </StackPanel>
             </StackPanel>
-
-
         </Canvas>
     </Grid>
 </Window>
