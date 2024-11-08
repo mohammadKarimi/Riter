@@ -147,7 +147,7 @@
 
                                     <Setter TargetName="ButtonBorder" Property="Effect">
                                         <Setter.Value>
-                                            <DropShadowEffect Color="#317BF4" 
+                                            <DropShadowEffect Color="#FFF" 
                                              BlurRadius="10" 
                                              ShadowDepth="1" 
                                              Opacity="0.3" />
