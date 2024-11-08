@@ -6,14 +6,14 @@
              xmlns:viewmodel="clr-namespace:Riter.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="260" d:DesignWidth="550">
+             d:DesignHeight="260" d:DesignWidth="500">
 
     <Grid >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="200" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="200" >
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="180" >
             <Label Content="Select Your Scale"  Foreground="#FFF"/>
 
             <Grid Margin="0,8,0,0">
@@ -174,10 +174,10 @@
             </Grid>
 
         </StackPanel>
-        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="12,0,0,0">
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="18,0,0,0">
             <Label Content="Select Your Color" Foreground="#FFF"/>
             <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
-                <Border Tag="Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{Binding BrushSettingsViewModel.ColorSelected}" Margin="8,6,0,0" CornerRadius="6" Height="65" Width="65">
+                <Border Tag="Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{Binding BrushSettingsViewModel.ColorSelected}" Margin="8,6,0,0" CornerRadius="6" Height="45" Width="45">
                     <Border.Style>
                         <Style TargetType="Border">
                             <Style.Triggers>
@@ -237,8 +237,8 @@
                         <Border Background="#FFF" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
                             <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFF"/>
                         </Border>
-                        <Border Background="#FFB31B" Tag="Selected" Margin="8,8,0,0"   CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFB31B"/>
+                        <Border Background="Black" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Black"/>
                         </Border>
 
                         <Border Background="#909090" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
@@ -247,12 +247,7 @@
 
 
                     </StackPanel>
-                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Border Background="Black" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Black"/>
-                        </Border>
-
-                    </StackPanel>
+                    
                 </StackPanel>
             </StackPanel>
         </StackPanel>

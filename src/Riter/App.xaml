@@ -166,8 +166,8 @@
                     <Trigger Property="Tag" Value="Selected">
                         <Setter Property="Background" Value="#FFF"/>
                         <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="BorderBrush" Value="#21124B"/>
-                        <Setter Property="BorderThickness" Value="2"/>
+                        <Setter Property="BorderBrush" Value="#FFF"/>
+                        <Setter Property="BorderThickness" Value="1.5"/>
                         <Setter Property="Effect">
                             <Setter.Value>
                                 <DropShadowEffect Color="#317BF4"
