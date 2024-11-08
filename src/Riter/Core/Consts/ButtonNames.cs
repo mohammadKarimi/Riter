@@ -19,5 +19,8 @@ public class ButtonNames
     public const string HighlighterButton = "HighlighterButton";
 
     public const string ChangeBrushSettingButton = "ChangeBrushSettingButton";
+
+    public const string ChangeShapeSettingButton = "ChangeShapeSettingButton";
+
     public const string ShapeDrawButton = "ShapeDrawButton";
 }

@@ -61,43 +61,43 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
 
     public void ToggleBrushSettingsPanel(string button)
     {
-        HideAllPanels();
         if (BrushPanelVisibility && _buttonSelectedStateHandler.ArrowButtonSelectedName == button)
         {
             _buttonSelectedStateHandler.ResetArrowButtonSelected();
+            HideAllPanels();
+            return;
         }
-        else
-        {
-            _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeBrushSettingButton);
-            BrushPanelVisibility = true;
-        }
+
+        HideAllPanels();
+        _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeBrushSettingButton);
+        BrushPanelVisibility = true;
     }
 
     public void ToggleShapePanel(string button)
     {
-        HideAllPanels();
         if (ShapePanelVisibility && _buttonSelectedStateHandler.ArrowButtonSelectedName == button)
         {
             _buttonSelectedStateHandler.ResetArrowButtonSelected();
+            HideAllPanels();
+            return;
         }
-        else
-        {
-            _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeBrushSettingButton);
-            ShapePanelVisibility = true;
-        }
+
+        HideAllPanels();
+        _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeShapeSettingButton);
+        ShapePanelVisibility = true;
     }
 
     public void ToggleSettingsPanel()
     {
-        HideAllPanels();
         if (SettingPanelVisibility)
         {
             _buttonSelectedStateHandler.ResetArrowButtonSelected();
+            HideAllPanels();
+            return;
         }
-        else
-        {
-            SettingButtonClicked = true;
-            SettingPanelVisibility = true;
-        }
+
+        HideAllPanels();
+        SettingButtonClicked = true;
+        SettingPanelVisibility = true;
     }
 }
