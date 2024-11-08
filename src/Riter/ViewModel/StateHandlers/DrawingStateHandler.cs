@@ -84,7 +84,7 @@ public class DrawingStateHandler(
         }
 
         _buttonSelectedStateHandler.SetButtonSelectedName(buttonName);
-        _settingPanelStateHandler.SetSettingPanelInvisibile();
+        _settingPanelStateHandler.HideAllPanels();
         _buttonSelectedStateHandler.ResetArrowButtonSelected();
     }
 }

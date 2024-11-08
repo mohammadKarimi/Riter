@@ -57,6 +57,6 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
     {
         _buttonSelectedStateHandler.ResetPreviousButton();
         _buttonSelectedStateHandler.ResetArrowButtonSelected();
-        _settingPanelStateHandler.SetSettingPanelInvisibile();
+        _settingPanelStateHandler.HideAllPanels();
     }
 }
