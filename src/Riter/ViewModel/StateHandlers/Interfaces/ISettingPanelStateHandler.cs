@@ -5,9 +5,15 @@ public interface ISettingPanelStateHandler : INotifyPropertyChanged
 {
     bool SettingPanelVisibility { get; }
 
+    bool BrushPanelVisibility { get; }
+
+    bool ShapePanelVisibility { get; }
+
     bool SettingButtonClicked { get; }
 
-    void SetSettingPanelInvisibile();
+    void HideAllPanels();
+
+    void ToggleShapePanel(string button);
 
     void SetSettingPanelVisibile();
 

@@ -1,10 +1,13 @@
 ﻿using Riter.Core.Consts;
 
 namespace Riter.ViewModel.Handlers;
+
 public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHandler
 {
     private static bool _settingButtonClicked;
     private static bool _isSettingPanelOpened;
+    private static bool _isBrushPanelOpened;
+    private static bool _isShapePanelOpened;
     private readonly IButtonSelectedStateHandler _buttonSelectedStateHandler;
 
     static SettingsPanelStateHandler()
@@ -27,43 +30,74 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         protected set => SetProperty(ref _isSettingPanelOpened, value, nameof(SettingPanelVisibility));
     }
 
+    public bool BrushPanelVisibility
+    {
+        get => _isBrushPanelOpened;
+        protected set => SetProperty(ref _isBrushPanelOpened, value, nameof(BrushPanelVisibility));
+    }
+
+    public bool ShapePanelVisibility
+    {
+        get => _isShapePanelOpened;
+        protected set => SetProperty(ref _isShapePanelOpened, value, nameof(ShapePanelVisibility));
+    }
+
     public bool SettingButtonClicked
     {
         get => _settingButtonClicked;
         protected set => SetProperty(ref _settingButtonClicked, value, nameof(SettingButtonClicked));
     }
 
-    public void SetSettingPanelInvisibile() => SettingPanelVisibility = false;
+    public void HideAllPanels()
+    {
+        SettingPanelVisibility = false;
+        BrushPanelVisibility = false;
+        ShapePanelVisibility = false;
+        SettingButtonClicked = false;
+        _buttonSelectedStateHandler.ResetArrowButtonSelected();
+    }
 
     public void SetSettingPanelVisibile() => SettingPanelVisibility = true;
 
     public void ToggleBrushSettingsPanel(string button)
     {
-        if (SettingPanelVisibility && _buttonSelectedStateHandler.ArrowButtonSelectedName == button)
+        if (BrushPanelVisibility && _buttonSelectedStateHandler.ArrowButtonSelectedName == button)
         {
             _buttonSelectedStateHandler.ResetArrowButtonSelected();
-            SettingPanelVisibility = false;
-            SettingButtonClicked = false;
+            HideAllPanels();
+            return;
         }
-        else
+
+        HideAllPanels();
+        _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeBrushSettingButton);
+        BrushPanelVisibility = true;
+    }
+
+    public void ToggleShapePanel(string button)
+    {
+        if (ShapePanelVisibility && _buttonSelectedStateHandler.ArrowButtonSelectedName == button)
         {
-            _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeBrushSettingButton);
-            SettingPanelVisibility = true;
+            _buttonSelectedStateHandler.ResetArrowButtonSelected();
+            HideAllPanels();
+            return;
         }
+
+        HideAllPanels();
+        _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeShapeSettingButton);
+        ShapePanelVisibility = true;
     }
 
     public void ToggleSettingsPanel()
     {
         if (SettingPanelVisibility)
         {
-            SettingButtonClicked = false;
-            SettingPanelVisibility = false;
             _buttonSelectedStateHandler.ResetArrowButtonSelected();
+            HideAllPanels();
+            return;
         }
-        else
-        {
-            SettingButtonClicked = true;
-            SettingPanelVisibility = true;
-        }
+
+        HideAllPanels();
+        SettingButtonClicked = true;
+        SettingPanelVisibility = true;
     }
 }
