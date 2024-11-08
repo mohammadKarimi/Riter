@@ -6,15 +6,17 @@
             xmlns:viewmodel="clr-namespace:Riter.ViewModel"
             d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
             mc:Ignorable="d" 
-            d:DesignHeight="260" d:DesignWidth="256">
-    <Grid Margin="0,0,0,4" Background="#1E1E1E">
+            d:DesignHeight="260" d:DesignWidth="550">
+    <Grid Margin="0,12,0,4" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="200" >
-            <!--<Label Content="Select Your Shape" Opacity="0.5"/>-->
-            <Grid Margin="0,6,0,0">
-                <Button Padding="4,4" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="1" >
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="240" >
+            <Label Content="Select Your Shape" Opacity="0.5"/>
+
+            <Grid Margin="0,8,0,0">
+                <Button Padding="6,6" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="1" >
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
@@ -22,7 +24,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
-                                        <Border x:Name="FreeDrawingButton" Padding="4,4" CornerRadius="6" Background="{TemplateBinding Background}">
+                                        <Border x:Name="FreeDrawingButton" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
                                             <Border.Style>
                                                 <Style TargetType="Border">
                                                     <Style.Triggers>
@@ -42,7 +44,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="#F1F1F1" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -58,15 +60,16 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="Arrow" FontSize="12" Foreground="White"  />
+                            <Label Content="Arrow" FontSize="12" />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Arrow}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>
-            <Grid Margin="0,6,0,0">
-                <Button Padding="4,4" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="3" >
+
+            <Grid Margin="0,8,0,0">
+                <Button Padding="6,6" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="3" >
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
@@ -74,14 +77,14 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
-                                        <Border x:Name="FreeDrawingButton" Padding="4,4" CornerRadius="6" Background="{TemplateBinding Background}">
+                                        <Border x:Name="FreeDrawingButton" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
                                             <Border.Style>
                                                 <Style TargetType="Border">
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="3">
                                                             <Setter Property="Cursor" Value="Hand"/>
                                                             <Setter Property="BorderBrush" Value="#317BF4" />
-                                                            <Setter Property="BorderThickness" Value="1" />
+                                                            <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
@@ -94,7 +97,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="#F1F1F1" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -110,15 +113,15 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="Rectangle" FontSize="12" Foreground="White" />
+                            <Label Content="Rectangle" FontSize="12" />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Rectangle}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>
-            <Grid Margin="0,6,0,0">
-                <Button Padding="4,4" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="2" >
+            <Grid Margin="0,8,0,0">
+                <Button Padding="6,6" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="2" >
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
@@ -126,7 +129,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
-                                        <Border x:Name="FreeDrawingButton" Padding="4,4" CornerRadius="6" Background="{TemplateBinding Background}">
+                                        <Border x:Name="FreeDrawingButton" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
                                             <Border.Style>
                                                 <Style TargetType="Border">
                                                     <Style.Triggers>
@@ -146,7 +149,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="#F1F1F1" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -162,15 +165,15 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="Circle" FontSize="12" Foreground="White" />
+                            <Label Content="Circle" FontSize="12" />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Circle}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>
-            <Grid Margin="0,6,0,0">
-                <Button Padding="4,4" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="4" >
+            <Grid Margin="0,8,0,0">
+                <Button Padding="6,6" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="4" >
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
@@ -178,7 +181,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="Button">
-                                        <Border x:Name="DatabaseButton" Padding="4,4" CornerRadius="6" Background="{TemplateBinding Background}">
+                                        <Border x:Name="DatabaseButton" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
                                             <Border.Style>
                                                 <Style TargetType="Border">
                                                     <Style.Triggers>
@@ -198,7 +201,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="#F1F1F1" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -214,13 +217,14 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="Database" FontSize="12" Foreground="White" />
+                            <Label Content="Database" FontSize="12" />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Database}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>
+
         </StackPanel>
     </Grid>
 </UserControl>

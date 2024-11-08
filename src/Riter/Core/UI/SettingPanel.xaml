@@ -201,7 +201,7 @@
                     </ScrollViewer>
                 </TabItem>
 
-                <!--<TabItem>
+                <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <ContentControl Width="16" Height="16" Content="{StaticResource Icon_PenSetting}" VerticalAlignment="Center" />
@@ -210,8 +210,8 @@
                     </TabItem.Header>
                     <local:StrokeSizePanel DataContext="{Binding}"/>
 
-                </TabItem>-->
-                <!--<TabItem>
+                </TabItem>
+                <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <ContentControl Width="16" Height="16" Content="{StaticResource Icon_hexagonal}" VerticalAlignment="Center" />
@@ -219,7 +219,7 @@
                         </StackPanel>
                     </TabItem.Header>
                     <local:DrawingShapePanel DataContext="{Binding}"/>
-                </TabItem>-->
+                </TabItem>
 
                 <TabItem>
                     <TabItem.Header>
