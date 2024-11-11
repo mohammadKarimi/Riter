@@ -23,4 +23,3 @@ public class SettingPanelViewModel : BaseViewModel
 
     public ICommand ShowShapePanelCommand => new RelayCommand<string>(_settingPanelStateHandler.ToggleShapePanel);
 }
-

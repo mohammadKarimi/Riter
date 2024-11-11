@@ -1,5 +1,4 @@
-﻿using Riter.Core;
-using Riter.Core.Interfaces;
+﻿using Riter.Core.Interfaces;
 
 namespace Riter.ViewModel;
 public sealed class StrokeHistoryViewModel(IStrokeHistoryService strokeHistoryService) : BaseViewModel

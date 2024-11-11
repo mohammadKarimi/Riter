@@ -2,7 +2,6 @@
 using System.Runtime.InteropServices;
 using System.Windows.Controls;
 using System.Windows.Ink;
-using System.Windows.Input;
 using Riter.Core.Extensions;
 using Riter.Core.Interfaces;
 using Riter.Core.UI;
@@ -27,6 +26,23 @@ public partial class MainWindow : Window
 
     private readonly IStrokeHistoryService _strokeHistoryService;
 
+    public MainWindow(
+        PaletteStateOrchestratorViewModel orchestratorViewModel,
+        IStrokeHistoryService strokeHistoryService)
+    {
+        InitializeComponent();
+        DataContext = orchestratorViewModel;
+        _orchestratorViewModel = orchestratorViewModel;
+        _strokeHistoryService = strokeHistoryService;
+        _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
+        MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
+
+        this.EnableDragging(MainPalette)
+            .SetTopMost(true);
+
+        Loaded += MainWindow_Loaded;
+    }
+
     private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
     [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
@@ -41,23 +57,6 @@ public partial class MainWindow : Window
 
     [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
     private static extern IntPtr GetModuleHandle(string lpModuleName);
-
-    public MainWindow(PaletteStateOrchestratorViewModel orchestratorViewModel,
-    IStrokeHistoryService strokeHistoryService)
-    {
-        InitializeComponent();
-        DataContext = orchestratorViewModel;
-        _orchestratorViewModel = orchestratorViewModel;
-        _strokeHistoryService = strokeHistoryService;
-        // _hotKeyLoader = hotKeyLoader;
-        _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
-        MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
-
-        this.EnableDragging(MainPalette)
-            .SetTopMost(true);
-
-        Loaded += MainWindow_Loaded;
-    }
 
     protected override void OnClosed(EventArgs e)
     {
