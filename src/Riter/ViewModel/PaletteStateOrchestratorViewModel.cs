@@ -82,9 +82,14 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
     public ButtonSelectedViewModel ButtonSelectedViewModel { get; init; }
 
     public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(BrushSettingsViewModel.InkColor, BrushSettingsViewModel.SizeOfBrush, HighlighterViewModel.IsHighlighter);
-
+    
     public void HandleHotkey(HotKeiesPressed hotKeies)
     {
+        if (DrawingViewModel.IsReleased)
+        {
+            return;
+        }
+
         var keiesMap = BuildKeyCombination(hotKeies);
         var hotkey = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Key == keiesMap);
         if (hotkey is null)
