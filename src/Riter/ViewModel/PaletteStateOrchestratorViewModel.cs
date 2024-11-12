@@ -82,22 +82,22 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
     public ButtonSelectedViewModel ButtonSelectedViewModel { get; init; }
 
     public DrawingAttributes InkDrawingAttributes => DrawingAttributesFactory.CreateDrawingAttributes(BrushSettingsViewModel.InkColor, BrushSettingsViewModel.SizeOfBrush, HighlighterViewModel.IsHighlighter);
-    
+
     public void HandleHotkey(HotKeiesPressed hotKeies)
     {
-        if (DrawingViewModel.IsReleased)
+        if (DrawingViewModel.IsReleased || SettingPanelViewModel.SettingPanelVisibility == Visibility.Visible)
         {
             return;
         }
 
         var keiesMap = BuildKeyCombination(hotKeies);
-        var hotkey = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Key == keiesMap);
+        var hotkey = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Value == keiesMap);
         if (hotkey is null)
         {
             return;
         }
 
-        if (!Enum.TryParse<HotKey>(hotkey.Value, out var hotKeyEnum))
+        if (!Enum.TryParse<HotKey>(hotkey.Key, out var hotKeyEnum))
         {
             return;
         }
