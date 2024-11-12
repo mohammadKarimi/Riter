@@ -60,7 +60,7 @@
 
             <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
                 <TextBlock Text="Draw Line" Width="110" Padding="0,4"/>
-                <TextBox Text="Press Shift on Drawing"  Padding="3" Width="130" />
+                <TextBox Text="Press Shift on Drawing"  Padding="3" Width="130" Focusable="False" />
             </StackPanel>
 
 
