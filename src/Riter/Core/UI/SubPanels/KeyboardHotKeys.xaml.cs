@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.IO;
+using System.Text.Json;
+using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Riter.Core.UI.SubPanels;
@@ -14,7 +16,7 @@ public partial class KeyboardHotKeys : UserControl
     public KeyboardHotKeys()
     {
         InitializeComponent();
-
+        
         _settings = App.ServiceProvider.GetService<AppSettings>();
         _hotkeys = _settings.HotKeysConfig.ToDictionary(x => x.Key, x => x.Value);
         Drawing.Text = _hotkeys[HotKey.Drawing.ToString()];
@@ -58,7 +60,19 @@ public partial class KeyboardHotKeys : UserControl
 
             focusedTextBox.Text = keyCombination;
             e.Handled = true;
-            _hotkeys[focusedTextBox.Name] = keyCombination;
+            var item = _settings.HotKeysConfig.Where(x => x.Key == focusedTextBox.Name).FirstOrDefault();
+
+            if (item is not null)
+            {
+                item.Value = keyCombination;
+            }
         }
+    }
+
+    private void UserControl_KeyUp(object sender, KeyEventArgs e)
+    {
+        var json = JsonSerializer.Serialize(new { AppSettings = _settings });
+        var filePath = "appsettings.json";
+        File.WriteAllText(filePath, json);
     }
 }
