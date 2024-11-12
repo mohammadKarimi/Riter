@@ -58,7 +58,7 @@ public partial class KeyboardHotKeys : UserControl
 
             focusedTextBox.Text = keyCombination;
             e.Handled = true;
-
+            _hotkeys[focusedTextBox.Name] = keyCombination;
         }
     }
 }
