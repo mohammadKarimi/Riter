@@ -13,8 +13,8 @@
 
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"  />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="175"  />
+                <ColumnDefinition Width="195" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -30,79 +30,79 @@
 
             <!-- Column 1: Drawing Shortcuts -->
             <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Drawing" Width="65" Padding="0,4"/>
-                <TextBox Text="" Padding="3" Width="110" x:Name="Drawing"/>
+                <TextBlock Text="Drawing" Width="75" Padding="0,4"/>
+                <TextBox Text="" Padding="3" Width="100" x:Name="Drawing"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Erasing" Width="65" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="Erasing"/>
+                <TextBlock Text="Erasing" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="Erasing"/>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Undo" Width="65" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="Undo"/>
+                <TextBlock Text="Undo" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="Undo"/>
             </StackPanel>
 
             <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Redo" Width="65" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="Redo"/>
+                <TextBlock Text="Redo" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="Redo"/>
             </StackPanel>
 
             <StackPanel Grid.Row="4" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Highlighter" Width="65" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="Highlighter"/>
+                <TextBlock Text="Highlighter" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="Highlighter"/>
             </StackPanel>
 
             <StackPanel Grid.Row="5" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Release" Width="65" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="Release"/>
+                <TextBlock Text="Release" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="Release"/>
             </StackPanel>
 
             <StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Draw Line" Width="65" Padding="0,4"/>
-                <TextBox Text="Shift + Drawing"  Padding="3" Width="110" Focusable="False" />
+                <TextBlock Text="Draw Line" Width="75" Padding="0,4"/>
+                <TextBox Text="Shift + Drawing"  Padding="3" Width="100" Focusable="False" />
             </StackPanel>
 
 
             <StackPanel Grid.Row="7" Grid.Column="0" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Hide All" Width="65" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="HideAll"/>
+                <TextBlock Text="Hide All" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="HideAll"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Trash" Width="110" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="130" x:Name="Trash"/>
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Margin="8,4">
+                <TextBlock Text="Trash" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="Trash"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="1x Brush Size" Width="110" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush1X"/>
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="8,4">
+                <TextBlock Text="1x Brush Size" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="SizeOfBrush1X"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="8,4">
                 <TextBlock Text="2x Brush Size" Width="75" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="SizeOfBrush2X"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="SizeOfBrush2X"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Margin="8,4">
                 <TextBlock Text="3x Brush Size" Width="75" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="SizeOfBrush3X"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="SizeOfBrush3X"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,4">
-                <TextBlock Text="Transparent" Width="65" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="TransparentBackground"/>
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="8,4">
+                <TextBlock Text="Transparent" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="TransparentBackground"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Whiteboard" Width="110" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="130" x:Name="WhiteboardBackground"/>
+            <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" Margin="8,4">
+                <TextBlock Text="Whiteboard" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="WhiteboardBackground"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
-                <TextBlock Text="Blackboard" Width="65" Padding="0,4"/>
-                <TextBox Text=""  Padding="3" Width="110" x:Name="BlackboardBackground"/>
+            <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" Margin="8,4">
+                <TextBlock Text="Blackboard" Width="75" Padding="0,4"/>
+                <TextBox Text=""  Padding="3" Width="100" x:Name="BlackboardBackground"/>
             </StackPanel>
         </Grid>
     </Grid>

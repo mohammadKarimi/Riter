@@ -7,7 +7,7 @@
    xmlns:viewmodel="clr-namespace:Riter.ViewModel"
    d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
    mc:Ignorable="d" 
-             Width="600" Height="340" DataContext="{Binding}" >
+             Width="580" Height="340" DataContext="{Binding}" >
     <Grid Margin="0,0,0,4">
         <Border Padding="8,8" CornerRadius="12" Visibility="{Binding SettingPanelViewModel.SettingPanelVisibility}" Background="#FFF" BorderBrush="#E5E5E5" BorderThickness="1">
             <Border.Effect>
