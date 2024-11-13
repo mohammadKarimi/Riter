@@ -37,7 +37,7 @@
                             Margin="8,0,0,8" VerticalAlignment="Bottom"
                             CornerRadius="12"
                             Background="#FFF"
-                            BorderBrush="#FFF" BorderThickness="1">
+                            BorderBrush="#1E1E1E" BorderThickness="1">
                         <Border.Effect>
                             <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
                         </Border.Effect>
@@ -49,7 +49,7 @@
                              Margin="8,0,0,8" VerticalAlignment="Bottom"
                              CornerRadius="12"
                              Background="#FFF"
-                             BorderBrush="#FFF" BorderThickness="1">    
+                             BorderBrush="#1E1E1E" BorderThickness="1">    
                         <Border.Effect>
                             <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
                         </Border.Effect>
