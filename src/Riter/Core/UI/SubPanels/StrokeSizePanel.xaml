@@ -9,13 +9,8 @@
              d:DesignHeight="260" d:DesignWidth="185">
 
     <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="180" />
-         
-        </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="180" >
-            <Label Content="Select Your Scale"  Foreground="#FFF"/>
-
+            <Label Content="Select Your Scale"/>
             <Grid Margin="0,8,0,0">
                 <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="5" >
                     <Button.Style>
@@ -61,7 +56,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="1x" FontSize="12" Foreground="#FFF" />
+                            <Label Content="1x" FontSize="12" />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen1x}" HorizontalAlignment="Right" />
@@ -113,7 +108,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="2x" FontSize="12" Foreground="#FFF" />
+                            <Label Content="2x" FontSize="12"  />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen2x}" HorizontalAlignment="Right" />
@@ -165,16 +160,14 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="3x" FontSize="12" Foreground="#FFF"  />
+                            <Label Content="3x" FontSize="12"   />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen3x}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>
-
         </StackPanel>
-      
     </Grid>
 
 </UserControl>
