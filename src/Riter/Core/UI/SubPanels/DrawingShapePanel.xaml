@@ -7,7 +7,7 @@
             d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
             mc:Ignorable="d" 
             d:DesignHeight="260" d:DesignWidth="256">
-    <Grid Margin="0,0,0,4" Background="#1E1E1E">
+    <Grid Margin="0,0,0,4" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -58,7 +58,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="Arrow" FontSize="12" Foreground="White"  />
+                            <Label Content="Arrow" FontSize="12"   />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Arrow}" HorizontalAlignment="Right" />
@@ -110,7 +110,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="Rectangle" FontSize="12" Foreground="White" />
+                            <Label Content="Rectangle" FontSize="12"  />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Rectangle}" HorizontalAlignment="Right" />
@@ -162,7 +162,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="Circle" FontSize="12" Foreground="White" />
+                            <Label Content="Circle" FontSize="12"  />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Circle}" HorizontalAlignment="Right" />
@@ -214,7 +214,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="Database" FontSize="12" Foreground="White" />
+                            <Label Content="Database" FontSize="12"  />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Database}" HorizontalAlignment="Right" />
