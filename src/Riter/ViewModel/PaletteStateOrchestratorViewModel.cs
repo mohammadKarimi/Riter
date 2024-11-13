@@ -131,6 +131,7 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
             propertyName == nameof(BrushSettingsViewModel.InkColor))
         {
             OnPropertyChanged(nameof(InkDrawingAttributes));
+            OnPropertyChanged(nameof(InkColor));
         }
     }
 }
