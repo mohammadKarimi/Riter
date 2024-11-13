@@ -11,6 +11,8 @@ public interface ISettingPanelStateHandler : INotifyPropertyChanged
 
     bool SettingButtonClicked { get; }
 
+    bool ColorPanelVisibility { get; }
+
     void HideAllPanels();
 
     void ToggleShapePanel(string button);
@@ -20,4 +22,6 @@ public interface ISettingPanelStateHandler : INotifyPropertyChanged
     void ToggleBrushSettingsPanel(string button);
 
     void ToggleSettingsPanel();
+
+    void ToggleColorPanel();
 }

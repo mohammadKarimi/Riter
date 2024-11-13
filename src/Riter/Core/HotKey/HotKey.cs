@@ -22,15 +22,14 @@ public enum HotKey
     Coral = 9017,
     Red = 9018,
     Cyan = 9019,
-    White = 9020,
-    Orange = 9021,
+    Pink = 9020,
     Gray = 9022,
     Black = 9023,
 
     Arrow = 1,
     Circle = 2,
     Rectangle = 3,
-    Database = 4
+    Database = 4,
 }
 
 public record struct HotKeiesPressed(string Key, bool CtrlPressed, bool ShiftPressed);

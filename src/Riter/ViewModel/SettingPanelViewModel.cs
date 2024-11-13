@@ -13,6 +13,8 @@ public class SettingPanelViewModel : BaseViewModel
 
     public Visibility BrushPanelVisibility => _settingPanelStateHandler.BrushPanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
+    public Visibility ColorPanelVisibility => _settingPanelStateHandler.ColorPanelVisibility ? Visibility.Visible : Visibility.Hidden;
+
     public Visibility ShapePanelVisibility => _settingPanelStateHandler.ShapePanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
     public bool SettingButtonClicked => _settingPanelStateHandler.SettingButtonClicked;
@@ -22,4 +24,6 @@ public class SettingPanelViewModel : BaseViewModel
     public ICommand ShowBrushSettingsPanelCommand => new RelayCommand<string>(_settingPanelStateHandler.ToggleBrushSettingsPanel);
 
     public ICommand ShowShapePanelCommand => new RelayCommand<string>(_settingPanelStateHandler.ToggleShapePanel);
+
+    public ICommand ShowColorPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleColorPanel);
 }

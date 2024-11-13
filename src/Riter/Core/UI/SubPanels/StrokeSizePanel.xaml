@@ -6,16 +6,11 @@
              xmlns:viewmodel="clr-namespace:Riter.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="260" d:DesignWidth="500">
+             d:DesignHeight="260" d:DesignWidth="185">
 
     <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="180" />
-            <ColumnDefinition Width="200" />
-        </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="180" >
-            <Label Content="Select Your Scale"  Foreground="#FFF"/>
-
+            <Label Content="Select Your Scale"/>
             <Grid Margin="0,8,0,0">
                 <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="5" >
                     <Button.Style>
@@ -61,7 +56,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="1x" FontSize="12" Foreground="#FFF" />
+                            <Label Content="1x" FontSize="12" />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen1x}" HorizontalAlignment="Right" />
@@ -113,7 +108,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="2x" FontSize="12" Foreground="#FFF" />
+                            <Label Content="2x" FontSize="12"  />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen2x}" HorizontalAlignment="Right" />
@@ -165,91 +160,13 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="3x" FontSize="12" Foreground="#FFF"  />
+                            <Label Content="3x" FontSize="12"   />
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen3x}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>
-
-        </StackPanel>
-        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="18,0,0,0">
-            <Label Content="Select Your Color" Foreground="#FFF"/>
-            <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,8,0,0">
-                <Border Tag="Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{Binding BrushSettingsViewModel.ColorSelected}" Margin="8,6,0,0" CornerRadius="6" Height="45" Width="45">
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Style.Triggers>
-                                <Trigger Property="Tag" Value="Selected">
-                                    <Setter Property="Background" Value="#FFF"/>
-                                    <Setter Property="Cursor" Value="Hand"/>
-                                    <Setter Property="BorderBrush" Value="#FFF"/>
-                                    <Setter Property="BorderThickness" Value="2.5"/>
-                                    <Setter Property="Effect">
-                                        <Setter.Value>
-                                            <DropShadowEffect Color="#317BF4"
-            BlurRadius="10"
-            ShadowDepth="1"
-            Opacity="0.3"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                </Border>
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="8,0,0,0">
-
-                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-                        <Border Background="Yellow" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Width="32" Height="32" Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Yellow"/>
-                        </Border>
-                        <Border Background="#7853DE" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#7853DE"/>
-                        </Border>
-                        <Border Background="#3BE1A9" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#3BE1A9"/>
-                        </Border>
-
-
-                    </StackPanel>
-                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-
-                        <Border Background="#FF8C82" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FF8C82"/>
-                        </Border>
-                        <Border Background="#FFFF5656" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFFF5656"/>
-                        </Border>
-
-
-
-                        <Border Background="#01C7FC" Tag="Selected" Margin="8,8,0,0"   CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#01C7FC"/>
-                        </Border>
-
-
-                    </StackPanel>
-
-                    <StackPanel Margin="6,0,0,0" Orientation="Horizontal">
-
-                        <Border Background="#FFF" Tag="Selected" Margin="0,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#FFF"/>
-                        </Border>
-                        <Border Background="Black" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Black"/>
-                        </Border>
-
-                        <Border Background="#909090" Tag="Selected" Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
-                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="#909090"/>
-                        </Border>
-
-
-                    </StackPanel>
-                    
-                </StackPanel>
-            </StackPanel>
         </StackPanel>
     </Grid>
 

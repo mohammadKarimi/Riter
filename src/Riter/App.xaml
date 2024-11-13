@@ -138,23 +138,6 @@
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
                                 </Trigger>
-
-                                <Trigger Property="Tag" Value="Selected">
-                                    <Setter TargetName="ButtonBorder" Property="Background" Value="#FFF"/>
-                                    <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
-                                    <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#317BF4" />
-                                    <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="1.2" />
-
-                                    <Setter TargetName="ButtonBorder" Property="Effect">
-                                        <Setter.Value>
-                                            <DropShadowEffect Color="#FFF" 
-                                             BlurRadius="10" 
-                                             ShadowDepth="1" 
-                                             Opacity="0.3" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -162,20 +145,19 @@
             </Style>
 
             <Style x:Key="ColorPallateStyle" TargetType="Border">
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="#EEE"
+                                           BlurRadius="8"
+                                           ShadowDepth="1"
+                                           Opacity="0.5"/>
+                    </Setter.Value>
+                </Setter>
                 <Style.Triggers>
                     <Trigger Property="Tag" Value="Selected">
                         <Setter Property="Background" Value="#FFF"/>
                         <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="BorderBrush" Value="#FFF"/>
-                        <Setter Property="BorderThickness" Value="1.5"/>
-                        <Setter Property="Effect">
-                            <Setter.Value>
-                                <DropShadowEffect Color="#317BF4"
-                                          BlurRadius="10"
-                                          ShadowDepth="1"
-                                          Opacity="0.3"/>
-                            </Setter.Value>
-                        </Setter>
+
                     </Trigger>
                     <Trigger Property="IsMouseOver" Value="True">
                         <Setter Property="Background" Value="#FFFACD"/>

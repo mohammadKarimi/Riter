@@ -32,14 +32,32 @@
                         </Border.Effect>
                         <subpanel:DrawingShapePanel x:Name="DrawindShapePanel"/>
                     </Border>
-                    <Border Visibility="{Binding SettingPanelViewModel.BrushPanelVisibility}" Padding="8,8" HorizontalAlignment="Left" Margin="0,0,0,8" VerticalAlignment="Bottom" Width="410" Height="240" CornerRadius="12" Background="#1E1E1E" BorderBrush="#1E1E1E" BorderThickness="1">
+                    <Border Visibility="{Binding SettingPanelViewModel.BrushPanelVisibility}"
+                            Padding="8,8" HorizontalAlignment="Left"
+                            Margin="8,0,0,8" VerticalAlignment="Bottom"
+                            CornerRadius="12"
+                            Background="#FFF"
+                            BorderBrush="#FFF" BorderThickness="1">
                         <Border.Effect>
                             <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
                         </Border.Effect>
                         <subpanel:StrokeSizePanel x:Name="StrokeSizePanel"/>
                     </Border>
+
+                    <Border Visibility="{Binding SettingPanelViewModel.ColorPanelVisibility}"
+                             Padding="8,8" HorizontalAlignment="Left"
+                             Margin="8,0,0,8" VerticalAlignment="Bottom"
+                             CornerRadius="12"
+                             Background="#FFF"
+                             BorderBrush="#FFF" BorderThickness="1">    
+                        <Border.Effect>
+                            <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
+                        </Border.Effect>
+                        <subpanel:ColorPalettePanel x:Name="ColorPalettePanel"/>
+                    </Border>
                 </Grid>
 
+                
                 <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         MinWidth="0">
