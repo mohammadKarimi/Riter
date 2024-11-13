@@ -32,7 +32,7 @@
                         </Border.Effect>
                         <subpanel:DrawingShapePanel x:Name="DrawindShapePanel"/>
                     </Border>
-                    <!--<Border Visibility="{Binding SettingPanelViewModel.BrushPanelVisibility}"
+                    <Border Visibility="{Binding SettingPanelViewModel.BrushPanelVisibility}"
                             Padding="8,8" HorizontalAlignment="Left"
                             Margin="8,0,0,8" VerticalAlignment="Bottom"
                             CornerRadius="12"
@@ -42,9 +42,9 @@
                             <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
                         </Border.Effect>
                         <subpanel:StrokeSizePanel x:Name="StrokeSizePanel"/>
-                    </Border>-->
+                    </Border>
 
-                    <Border Visibility="{Binding SettingPanelViewModel.BrushPanelVisibility}"
+                    <Border Visibility="{Binding SettingPanelViewModel.ColorPanelVisibility}"
                              Padding="8,8" HorizontalAlignment="Left"
                              Margin="8,0,0,8" VerticalAlignment="Bottom"
                              CornerRadius="12"

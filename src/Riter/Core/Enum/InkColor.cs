@@ -8,8 +8,7 @@ public enum InkColor
     Coral,
     Red,
     Cyan,
-    White,
-    Orange,
+    Pink,
     Gray,
     Black
 }

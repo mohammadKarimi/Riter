@@ -12,8 +12,7 @@ public static class ColorPalette
         { InkColor.Coral, ("Coral", "#FF8C82") },
         { InkColor.Red, ("Red", "#FF5656") },
         { InkColor.Cyan, ("Cyan", "#01C7FC") },
-        { InkColor.White, ("White", "#FFFFFF") },
-        { InkColor.Orange, ("Orange", "#FFB31B") },
+        { InkColor.Pink, ("White", "#DB6EBD") },
         { InkColor.Gray, ("Gray", "#909090") },
         { InkColor.Black, ("Black", "#000000") },
     };

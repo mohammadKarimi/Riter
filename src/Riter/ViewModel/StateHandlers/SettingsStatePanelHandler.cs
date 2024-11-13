@@ -8,6 +8,7 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
     private static bool _isSettingPanelOpened;
     private static bool _isBrushPanelOpened;
     private static bool _isShapePanelOpened;
+    private static bool _isColorPanelOpened;
     private readonly IButtonSelectedStateHandler _buttonSelectedStateHandler;
 
     static SettingsPanelStateHandler()
@@ -21,13 +22,16 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         _isSettingPanelOpened = false;
     }
 
-    /// <summary>
-    /// Gets or sets a value indicating whether value for showing setting pannel.
-    /// </summary>
     public bool SettingPanelVisibility
     {
         get => _isSettingPanelOpened;
         protected set => SetProperty(ref _isSettingPanelOpened, value, nameof(SettingPanelVisibility));
+    }
+
+    public bool ColorPanelVisibility
+    {
+        get => _isColorPanelOpened;
+        protected set => SetProperty(ref _isColorPanelOpened, value, nameof(ColorPanelVisibility));
     }
 
     public bool BrushPanelVisibility
@@ -54,6 +58,7 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         BrushPanelVisibility = false;
         ShapePanelVisibility = false;
         SettingButtonClicked = false;
+        ColorPanelVisibility=false;
         _buttonSelectedStateHandler.ResetArrowButtonSelected();
     }
 
@@ -99,5 +104,17 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         HideAllPanels();
         SettingButtonClicked = true;
         SettingPanelVisibility = true;
+    }
+
+    public void ToggleColorPanel()
+    {
+        if (ColorPanelVisibility)
+        {
+            HideAllPanels();
+            return;
+        }
+
+        HideAllPanels();
+        ColorPanelVisibility = true;
     }
 }
