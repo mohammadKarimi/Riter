@@ -37,22 +37,20 @@
                                 </Border>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
                                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        
-                                    </Border>
-                                    <Border Width="12" Height="32" CornerRadius="4" Margin="2,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button x:Name="ChangeColorSettingButton" CommandParameter="ChangeBrushSettingButton" Content="{StaticResource Icon_ColorArrow}" Command="{Binding SettingPanelViewModel.ShowBrushSettingsPanelCommand}" >
+                                        <Button x:Name="DropButton" ToolTip="Ink" Content="{StaticResource Icon_Drop}" Command="{Binding DrawingViewModel.StartDrawingCommand}" >
                                             <Button.Style>
-                                                <Style TargetType="Button" BasedOn="{StaticResource ArrowButtonStyle}">
+                                                <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                     <Setter Property="Tag" Value="UnSelected"/>
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding ButtonSelectedViewModel.ArrowButtonSelectedName}" Value="ChangeBrushSettingButton">
+                                                    <!--<Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ButtonSelectedViewModel.ButtonSelectedName}" Value="DrawingButton">
                                                             <Setter Property="Tag" Value="Selected"/>
                                                         </DataTrigger>
-                                                    </Style.Triggers>
+                                                    </Style.Triggers>-->
                                                 </Style>
                                             </Button.Style>
                                         </Button>
                                     </Border>
+                                  
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
                                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">

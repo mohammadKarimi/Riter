@@ -28,6 +28,11 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
+    <ItemGroup>
+      <Compile Update="Core\UI\SubPanels\ColorPalettePanel.xaml.cs">
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
 
     <ItemGroup>
         <None Update="appsettings.json">
