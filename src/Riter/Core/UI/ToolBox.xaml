@@ -75,7 +75,7 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
                                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button x:Name="DrawButton" ToolTip="Ink" Content="{StaticResource Icon_Pen}" Command="{Binding DrawingViewModel.StartDrawingCommand}" >
+                                        <Button x:Name="DrawButton" ToolTip="Ink" Command="{Binding DrawingViewModel.StartDrawingCommand}" >
                                             <Button.Style>
                                                 <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                                     <Setter Property="Tag" Value="UnSelected"/>
@@ -83,9 +83,20 @@
                                                         <DataTrigger Binding="{Binding ButtonSelectedViewModel.ButtonSelectedName}" Value="DrawingButton">
                                                             <Setter Property="Tag" Value="Selected"/>
                                                         </DataTrigger>
+                                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="5">
+                                                            <Setter Property="Content" Value="{StaticResource Icon_SelectedPen1x}"/>
+                                                        </DataTrigger>
+
+                                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="8">
+                                                            <Setter Property="Content" Value="{StaticResource Icon_SelectedPen2x}"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="13">
+                                                            <Setter Property="Content" Value="{StaticResource Icon_SelectedPen3x}"/>
+                                                        </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
                                             </Button.Style>
+
                                         </Button>
                                     </Border>
                                     <Border Width="12" Height="32" CornerRadius="4" Margin="2,0" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -119,7 +130,7 @@
                                         </Button>
                                     </Border>
                                 </StackPanel>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,2,0">
                                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <Button ToolTip="Shape"  Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="1">
                                             <Button.Style>
