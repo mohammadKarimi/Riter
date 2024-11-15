@@ -82,7 +82,7 @@
                                             <ContentControl Width="16" Height="16" Content="{StaticResource Icon_Transparent}" VerticalAlignment="Center" />
                                             <Label Content="Enable Transparent" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
-                                        <Label Grid.Column="1" Content="[ Shift + T ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                        <Label Grid.Column="1" x:Name="TransparentLable" Content="[ Shift + T ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                                     </Grid>
                                 </Border>
                             </Grid>
@@ -111,7 +111,7 @@
                                             <ContentControl Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
                                             <Label Content="Enable Whiteboard" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
-                                        <Label Grid.Column="1" Content="[ Shift + W ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                        <Label  x:Name="WhiteBoatdLable" Grid.Column="1" Content="[ Shift + W ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                                     </Grid>
                                 </Border>
                             </Grid>
@@ -140,7 +140,7 @@
                                             <ContentControl Width="16" Height="16" Content="{StaticResource Icon_BlackBoard}" VerticalAlignment="Center" />
                                             <Label Content="Enable Blackboard" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
-                                        <Label Grid.Column="1" Content="[ Shift + B ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                        <Label  x:Name="BlackBoatdLable" Grid.Column="1" Content="[ Shift + B ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
                                     </Grid>
                                 </Border>
                             </Grid>

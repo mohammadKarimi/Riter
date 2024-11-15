@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Riter.Core.UI;
 
@@ -9,12 +10,18 @@ namespace Riter.Core.UI;
 /// </summary>
 public partial class SettingPanel : UserControl
 {
+    private readonly AppSettings _appSettings;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="SettingPanel"/> class.
     /// </summary>
     public SettingPanel()
     {
         InitializeComponent();
+        _appSettings = App.ServiceProvider.GetService<AppSettings>();
+        TransparentLable.Content = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Key == HotKey.TransparentBackground.ToString()).Value;
+        WhiteBoatdLable.Content = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Key == HotKey.WhiteboardBackground.ToString()).Value;
+        BlackBoatdLable.Content = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Key == HotKey.BlackboardBackground.ToString()).Value;
     }
 
     /// <summary>
