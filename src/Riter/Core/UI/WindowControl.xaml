@@ -9,8 +9,7 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
 
 
-                <Border  Width="32" Height="32" x:Name="MoveButton" Margin="8,0,0,0" Cursor="SizeAll" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-
+                <Border Width="32" Height="32" x:Name="MoveButton" Margin="8,0,0,0" Cursor="SizeAll" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Border.Style>
                         <Style TargetType="Border">
                             <Setter Property="Background" Value="Transparent" />
@@ -21,11 +20,21 @@
                             </Style.Triggers>
                         </Style>
                     </Border.Style>
-
-                    <ContentControl  Content="{StaticResource Icon_Move}" ToolTip="Move" />
+                    <ContentControl ToolTip="Move">
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Setter Property="Content" Value="{StaticResource Icon_Move}" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True">
+                                        <Setter Property="Content" Value="{StaticResource Icon_MoveGrabbing}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
                 </Border>
-                
-                <Border Margin="8,0,8,0" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <Border Margin="4,0,4,0" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button ToolTip="Minimize" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Minimize}" Click="MinimizeButton_Click"/>
                 </Border>
                 <Border Margin="0,0,8,0" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
