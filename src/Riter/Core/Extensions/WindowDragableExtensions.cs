@@ -1,12 +1,11 @@
-﻿using System.Windows.Controls;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace Riter.Core.Extensions;
 
 /// <summary>
 /// This Extension is aimed for adding dragable feature into MainWindow.
 /// </summary>
-public static class WindowDragableExtensions
+public static class WindowDraggableExtensions
 {
     private static Point _lastMousePosition;
     private static bool _isDragging;
@@ -19,21 +18,27 @@ public static class WindowDragableExtensions
     /// <returns>MainWindow to follow Fluent chain.</returns>
     public static MainWindow EnableDragging(this MainWindow mainWindow, UIElement element)
     {
-        mainWindow.WindowControl.MoveButton.MouseDown += (sender, e) => StartDrag(mainWindow, element);
-        mainWindow.MainPalette.MouseMove += (sender, e) => PerformDrag(mainWindow, element, e);
-        mainWindow.MainPalette.MouseUp += (sender, e) => EndDrag(element);
-        mainWindow.MainPalette.MouseLeave += (sender, e) => EndDrag(element);
+        mainWindow.WindowControl.MoveButton.MouseDown += (sender, e) => StartDrag(mainWindow, element, e);
+        mainWindow.MouseMove += (sender, e) => PerformDrag(mainWindow, element, e);
+        mainWindow.MouseUp += (sender, e) => EndDrag(mainWindow);
         return mainWindow;
     }
 
     /// <summary>
     /// Begins the drag operation by capturing the mouse position.
     /// </summary>
-    private static void StartDrag(Window window, UIElement element)
+    private static void StartDrag(Window window, UIElement element, MouseButtonEventArgs e)
     {
-        _lastMousePosition = Mouse.GetPosition(window);
+        _lastMousePosition = e.GetPosition(window);
         _isDragging = true;
-        element.SetValue(Panel.BackgroundProperty, new SolidColorBrush(Colors.Transparent));
+
+        Mouse.Capture(window);
+        window.Cursor = Cursors.SizeAll;
+
+        if (element.RenderTransform is not TranslateTransform)
+        {
+            element.RenderTransform = new TranslateTransform();
+        }
     }
 
     /// <summary>
@@ -46,27 +51,25 @@ public static class WindowDragableExtensions
             return;
         }
 
-        var currentMousePosition = Mouse.GetPosition(window);
+        var currentMousePosition = e.GetPosition(window);
         var offset = currentMousePosition - _lastMousePosition;
 
-        if (element is FrameworkElement frameworkElement)
+        if (element.RenderTransform is TranslateTransform transform)
         {
-            var newTop = Canvas.GetTop(frameworkElement) + offset.Y;
-            var newLeft = Canvas.GetLeft(frameworkElement) + offset.X;
-
-            Canvas.SetTop(frameworkElement, newTop);
-            Canvas.SetLeft(frameworkElement, newLeft);
+            transform.X += offset.X;
+            transform.Y += offset.Y;
         }
 
         _lastMousePosition = currentMousePosition;
     }
 
     /// <summary>
-    /// Ends the drag operation by resetting the background and stopping the drag.
+    /// Ends the drag operation by releasing the mouse capture and resetting the cursor.
     /// </summary>
-    private static void EndDrag(UIElement element)
+    private static void EndDrag(Window window)
     {
         _isDragging = false;
-        element.ClearValue(Panel.BackgroundProperty);
+        Mouse.Capture(null);
+        window.Cursor = Cursors.Arrow;
     }
 }
