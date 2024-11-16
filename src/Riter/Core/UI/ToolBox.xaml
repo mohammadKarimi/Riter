@@ -34,44 +34,41 @@
                         </Button.Style>
                     </Button>
                 </Border>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
-                    <Border Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button x:Name="DropButton" ToolTip="Ink" Command="{Binding SettingPanelViewModel.ShowColorPanelCommand}">
-                            <Button.Style>
-                                <Style TargetType="Button">
-                                    <Setter Property="Cursor" Value="Hand"/>
-                                    <Setter Property="Background" Value="Transparent"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="Button">
-                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                                    <Border x:Name="ButtonBorder"
+                <Border Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button x:Name="DropButton" ToolTip="Ink" Command="{Binding SettingPanelViewModel.ShowColorPanelCommand}">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                <Border x:Name="ButtonBorder"
                                         Width="32" Height="32" CornerRadius="4"
                                         HorizontalAlignment="Center" VerticalAlignment="Center"
                                         Background="{TemplateBinding Background}">
-                                                        <Canvas Width="24" Height="24">
-                                                            <Path Data="M4.62186 12C4.5433 12.4962 4.50256 12.9977 4.5 13.5C4.5 15.4892 5.29019 17.3968 6.69672 18.8033C8.10324 20.2098 10.0108 21 12 21C13.9892 21 15.8968 20.2098 17.3033 18.8033C18.7098 17.3968 19.5 15.4892 19.5 13.5C19.4974 12.9977 19.4567 12.4962 19.3781 12H4.62186Z" Fill="{Binding BrushSettingsViewModel.InkColor, Mode=OneWay}"/>
-                                                            <Path Data="M17.8336 19.3336C17.8336 19.3336 16.6732 20.494 15.1571 21.122C15.1571 21.122 13.641 21.75 12 21.75C12 21.75 10.359 21.75 8.84286 21.122C8.84286 21.122 7.32675 20.494 6.16637 19.3336C6.16637 19.3336 5.00599 18.1733 4.37799 16.6571C4.37799 16.6571 3.75 15.141 3.75 13.5C3.75 13.5 3.75 9.00077 7.68405 4.47662C7.68405 4.47662 8.89304 3.08627 10.3424 1.85433C10.3424 1.85433 11.0723 1.23388 11.5699 0.885576C11.8281 0.704808 12.1719 0.704808 12.4301 0.885576C12.4301 0.885576 12.9277 1.23388 13.6576 1.85433C13.6576 1.85433 15.107 3.08628 16.316 4.47662C16.316 4.47662 20.25 9.00077 20.25 13.5C20.25 13.5 20.25 15.141 19.622 16.6571C19.622 16.6571 18.994 18.1732 17.8336 19.3336ZM16.773 18.273C16.773 18.273 17.7224 17.3236 18.2362 16.0831C18.2362 16.0831 18.75 14.8427 18.75 13.5C18.75 13.5 18.75 9.56173 15.184 5.46088C15.184 5.46088 14.0493 4.15592 12.6861 2.99724C12.6861 2.99724 12.3057 2.67383 12 2.4349C12 2.4349 11.6943 2.67383 11.3139 2.99724C11.3139 2.99724 9.95071 4.15592 8.81595 5.46088C8.81595 5.46088 5.25 9.56173 5.25 13.5C5.25 13.5 5.25 14.8427 5.76381 16.0831C5.76381 16.0831 6.27763 17.3236 7.22703 18.273C7.22703 18.273 8.17643 19.2224 9.41689 19.7362C9.41689 19.7362 10.6573 20.25 12 20.25C12 20.25 13.3427 20.25 14.5831 19.7362C14.5831 19.7362 15.8236 19.2224 16.773 18.273Z" Fill="#1C1C1C"/>
-                                                            <Path Data="M4.62187 12.75H19.3781C19.7923 12.75 20.1281 12.4142 20.1281 12C20.1281 11.5858 19.7923 11.25 19.3781 11.25H4.62187C4.20766 11.25 3.87187 11.5858 3.87187 12C3.87187 12.4142 4.20766 12.75 4.62187 12.75Z" Fill="#1C1C1C"/>
-                                                        </Canvas>
-                                                    </Border>
-                                                </StackPanel>
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsMouseOver" Value="True">
-                                                        <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
-                                                        <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#317BF4" />
-                                                        <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="1.2" />
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                    </Border>
-
-                </StackPanel>
+                                                    <Canvas Width="24" Height="24">
+                                                        <Path Data="M4.62186 12C4.5433 12.4962 4.50256 12.9977 4.5 13.5C4.5 15.4892 5.29019 17.3968 6.69672 18.8033C8.10324 20.2098 10.0108 21 12 21C13.9892 21 15.8968 20.2098 17.3033 18.8033C18.7098 17.3968 19.5 15.4892 19.5 13.5C19.4974 12.9977 19.4567 12.4962 19.3781 12H4.62186Z" Fill="{Binding BrushSettingsViewModel.InkColor, Mode=OneWay}"/>
+                                                        <Path Data="M17.8336 19.3336C17.8336 19.3336 16.6732 20.494 15.1571 21.122C15.1571 21.122 13.641 21.75 12 21.75C12 21.75 10.359 21.75 8.84286 21.122C8.84286 21.122 7.32675 20.494 6.16637 19.3336C6.16637 19.3336 5.00599 18.1733 4.37799 16.6571C4.37799 16.6571 3.75 15.141 3.75 13.5C3.75 13.5 3.75 9.00077 7.68405 4.47662C7.68405 4.47662 8.89304 3.08627 10.3424 1.85433C10.3424 1.85433 11.0723 1.23388 11.5699 0.885576C11.8281 0.704808 12.1719 0.704808 12.4301 0.885576C12.4301 0.885576 12.9277 1.23388 13.6576 1.85433C13.6576 1.85433 15.107 3.08628 16.316 4.47662C16.316 4.47662 20.25 9.00077 20.25 13.5C20.25 13.5 20.25 15.141 19.622 16.6571C19.622 16.6571 18.994 18.1732 17.8336 19.3336ZM16.773 18.273C16.773 18.273 17.7224 17.3236 18.2362 16.0831C18.2362 16.0831 18.75 14.8427 18.75 13.5C18.75 13.5 18.75 9.56173 15.184 5.46088C15.184 5.46088 14.0493 4.15592 12.6861 2.99724C12.6861 2.99724 12.3057 2.67383 12 2.4349C12 2.4349 11.6943 2.67383 11.3139 2.99724C11.3139 2.99724 9.95071 4.15592 8.81595 5.46088C8.81595 5.46088 5.25 9.56173 5.25 13.5C5.25 13.5 5.25 14.8427 5.76381 16.0831C5.76381 16.0831 6.27763 17.3236 7.22703 18.273C7.22703 18.273 8.17643 19.2224 9.41689 19.7362C9.41689 19.7362 10.6573 20.25 12 20.25C12 20.25 13.3427 20.25 14.5831 19.7362C14.5831 19.7362 15.8236 19.2224 16.773 18.273Z" Fill="#1C1C1C"/>
+                                                        <Path Data="M4.62187 12.75H19.3781C19.7923 12.75 20.1281 12.4142 20.1281 12C20.1281 11.5858 19.7923 11.25 19.3781 11.25H4.62187C4.20766 11.25 3.87187 11.5858 3.87187 12C3.87187 12.4142 4.20766 12.75 4.62187 12.75Z" Fill="#1C1C1C"/>
+                                                    </Canvas>
+                                                </Border>
+                                            </StackPanel>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
+                                                    <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="#317BF4" />
+                                                    <Setter TargetName="ButtonBorder" Property="BorderThickness" Value="1.2" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Button x:Name="DrawButton" ToolTip="Ink" Command="{Binding DrawingViewModel.StartDrawingCommand}" >
@@ -113,23 +110,21 @@
                         </Button>
                     </Border>
                 </StackPanel>
+                <Border Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Button ToolTip="Highlighter" Content="{StaticResource Icon_Highlighetr}" Command="{Binding DrawingViewModel.ToggleHighlighterCommand}">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
+                                <Setter Property="Tag" Value="UnSelected"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ButtonSelectedViewModel.ButtonSelectedName}" Value="HighlighterButton">
+                                        <Setter Property="Tag" Value="Selected"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
-                    <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button ToolTip="Highlighter" Content="{StaticResource Icon_Highlighetr}" Command="{Binding DrawingViewModel.ToggleHighlighterCommand}">
-                            <Button.Style>
-                                <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
-                                    <Setter Property="Tag" Value="UnSelected"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ButtonSelectedViewModel.ButtonSelectedName}" Value="HighlighterButton">
-                                            <Setter Property="Tag" Value="Selected"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
-                    </Border>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,2,0">
                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Button ToolTip="Shape"  Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="1">
                             <Button.Style>
@@ -159,7 +154,6 @@
                             </Button.Style>
                         </Button>
                     </Border>
-
                     <Border Width="12" Height="32" CornerRadius="4" Margin="2,0" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Button x:Name="ChangeShapeSettingButton" CommandParameter="ChangeShapeSettingButton" Content="{StaticResource Icon_SquareArrow}" Command="{Binding SettingPanelViewModel.ShowShapePanelCommand}" >
                             <Button.Style>
