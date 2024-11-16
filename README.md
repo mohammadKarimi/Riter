@@ -63,22 +63,22 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 ## Hotkeys
 
 ### Drawing & Erasing
-- **Ctrl + D** - Switch to Drawing mode
-- **Ctrl + E** - Switch to Erasing mode
-- **Ctrl + H** - Highlighter
-- **Ctrl + R** - Release tool
+- **D** - Switch to Drawing mode
+- **E** - Switch to Erasing mode
+- **H** - Highlighter
+- **R** - Release tool
 - **Shift(On Drawing Mode)** - Draw a line
 
 ### Stroke History
-- **Ctrl + Z** - Undo
-- **Ctrl + X** - Redo
+- **Z** - Undo
+- **X** - Redo
 
 ### View Modes
 - **Ctrl + Shift + H** - Hide all drawings
 - **Ctrl + T** - Clear canvas
-- **Shift + T** - Transparent board
-- **Shift + B** - Blackboard
-- **Shift + W** - Whiteboard
+- **Ctrl + T** - Transparent board
+- **Ctrl + B** - Blackboard
+- **Ctrl + W** - Whiteboard
 
 ### Brush Size
 - **Ctrl + 1** - 1x Brush size
@@ -97,10 +97,10 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 - **9** - Black
 
 ### Draw Shape
-- **SHIFT + A** -> Arrow
-- **SHIFT + R** -> Rectangle
-- **SHIFT + C** -> Circle
-- **SHIFT + D** -> Database
+- **Ctrl + A** -> Arrow
+- **Ctrl + R** -> Rectangle
+- **Ctrl + C** -> Circle
+- **Ctrl + D** -> Database
 ---
 
 ## Getting Started

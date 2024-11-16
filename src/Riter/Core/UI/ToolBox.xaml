@@ -10,6 +10,7 @@
         <StackPanel>
             <Border CornerRadius="12"
          Background="#FFF"
+         BorderBrush="#1E1E1E"
          HorizontalAlignment="Center"
          VerticalAlignment="Center"
          BorderThickness="1">
