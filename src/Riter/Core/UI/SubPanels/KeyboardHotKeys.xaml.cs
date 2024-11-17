@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,35 +37,39 @@ public partial class KeyboardHotKeys : UserControl
 
     private void UserControl_KeyDown(object sender, KeyEventArgs e)
     {
-        if (Keyboard.FocusedElement is TextBox focusedTextBox)
+        if (Keyboard.FocusedElement is not TextBox focusedTextBox)
         {
-            var keyCombination = string.Empty;
+            return;
+        }
 
-            if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
-            {
-                keyCombination += "CTRL + ";
-            }
+        var keyCombinationBuilder = new StringBuilder();
 
-            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
-            {
-                keyCombination += "SHIFT + ";
-            }
+        if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
+        {
+            keyCombinationBuilder.Append("CTRL + ");
+        }
 
-            if (Keyboard.IsKeyDown(Key.LeftAlt) || Keyboard.IsKeyDown(Key.RightAlt))
-            {
-                keyCombination += "ALT + ";
-            }
+        if (Keyboard.Modifiers.HasFlag(ModifierKeys.Shift))
+        {
+            keyCombinationBuilder.Append("SHIFT + ");
+        }
 
-            keyCombination += e.Key.ToString().ToUpper();
+        if (Keyboard.Modifiers.HasFlag(ModifierKeys.Alt))
+        {
+            keyCombinationBuilder.Append("ALT + ");
+        }
 
-            focusedTextBox.Text = keyCombination;
-            e.Handled = true;
-            var item = _settings.HotKeysConfig.Where(x => x.Key == focusedTextBox.Name).FirstOrDefault();
+        keyCombinationBuilder.Append(e.Key.ToString().ToUpper());
 
-            if (item is not null)
-            {
-                item.Value = keyCombination;
-            }
+        var keyCombination = keyCombinationBuilder.ToString();
+        focusedTextBox.Text = keyCombination;
+        e.Handled = true;
+
+        var hotKeyConfig = _settings.HotKeysConfig.Where(x => x.Key == focusedTextBox.Name).FirstOrDefault();
+
+        if (hotKeyConfig is not null)
+        {
+            hotKeyConfig.Value = keyCombination;
         }
     }
 

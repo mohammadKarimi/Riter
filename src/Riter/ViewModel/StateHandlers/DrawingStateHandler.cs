@@ -1,5 +1,4 @@
-﻿using System.Windows.Controls;
-using Riter.Core.Consts;
+﻿using Riter.Core.Consts;
 using Riter.Core.Enum;
 using Riter.Core.Extensions;
 
@@ -9,7 +8,7 @@ public class DrawingStateHandler(
     IInkEditingModeStateHandler inkEditingModeStateHandler,
     IHighlighterStateHandler highlighterStateHandler,
     IButtonSelectedStateHandler buttonSelectedStateHandler,
-    ISettingPanelStateHandler settingPanelStateHandler): BaseStateHandler, IDrawingStateHandler
+    ISettingPanelStateHandler settingPanelStateHandler) : BaseStateHandler, IDrawingStateHandler
 {
     private readonly IInkEditingModeStateHandler _inkEditingModeStateHandler = inkEditingModeStateHandler;
     private readonly IHighlighterStateHandler _highlighterStateHandler = highlighterStateHandler;
