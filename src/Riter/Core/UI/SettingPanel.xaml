@@ -53,10 +53,10 @@
                 </TabControl.Resources>
 
                 <!-- First Tab -->
-                <TabItem Header="All">
+                <TabItem Header="General">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Orientation="Vertical">
-                            <Label Content="Other Tools" Opacity="0.5"/>
+                            <Label Content="Board" Opacity="0.5"/>
                             <Grid Height="40" Margin="0,4,0,0">
                                 <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
                                     <Border.InputBindings>
