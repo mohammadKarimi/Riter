@@ -1,4 +1,5 @@
-﻿using System.Windows.Ink;
+﻿using System.Text;
+using System.Windows.Ink;
 using Riter.Core.Enum;
 
 namespace Riter.ViewModel;
@@ -109,19 +110,20 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
 
     private static string BuildKeyCombination(HotKeiesPressed hotKeies)
     {
-        var keiesMap = string.Empty;
-        if (hotKeies.ctrlPressed)
+        var keiesMap = new StringBuilder();
+
+        if (hotKeies.CtrlPressed)
         {
-            keiesMap += "CTRL + ";
+            keiesMap.Append("CTRL + ");
         }
 
-        if (hotKeies.shiftPressed)
+        if (hotKeies.ShiftPressed)
         {
-            keiesMap += "SHIFT + ";
+            keiesMap.Append("SHIFT + ");
         }
 
-        keiesMap += hotKeies.key.ToString().ToUpper();
-        return keiesMap;
+        keiesMap.Append(hotKeies.Key.ToString().ToUpper());
+        return keiesMap.ToString();
     }
 
     private void OnBrushOrHighlightChanged(string propertyName)
