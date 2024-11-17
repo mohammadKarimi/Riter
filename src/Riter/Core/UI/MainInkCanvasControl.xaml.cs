@@ -16,7 +16,6 @@ public partial class MainInkCanvasControl : UserControl
 {
     private readonly IStrokeHistoryService _strokeHistoryService;
     private readonly IInkEditingModeStateHandler _inkEditingModeStateHandler;
-    private readonly bool _lineMode = false;
     private bool _isMoving = false;
     private Point _startPoint;
     private Stroke _lastStroke;

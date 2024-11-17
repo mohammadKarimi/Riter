@@ -162,13 +162,13 @@ public partial class MainWindow : Window
     {
         var canvasWidth = Layout.ActualWidth;
         var canvasHeight = Layout.ActualHeight;
-        var PaletteWidth = MainPalette.ActualWidth;
-        var PaletteHeight = MainPalette.ActualHeight;
+        var paletteWidth = MainPalette.ActualWidth;
+        var paletteHeight = MainPalette.ActualHeight;
 
         if (MainPalette != null)
         {
-            Canvas.SetLeft(MainPalette, (canvasWidth - PaletteWidth) / 2);
-            Canvas.SetTop(MainPalette, canvasHeight - PaletteHeight - 75);
+            Canvas.SetLeft(MainPalette, (canvasWidth - paletteWidth) / 2);
+            Canvas.SetTop(MainPalette, canvasHeight - paletteHeight - 75);
         }
     }
 }

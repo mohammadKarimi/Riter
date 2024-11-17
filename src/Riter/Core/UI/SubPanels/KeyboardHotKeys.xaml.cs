@@ -16,7 +16,6 @@ public partial class KeyboardHotKeys : UserControl
     public KeyboardHotKeys()
     {
         InitializeComponent();
-        
         _settings = App.ServiceProvider.GetService<AppSettings>();
         _hotkeys = _settings.HotKeysConfig.ToDictionary(x => x.Key, x => x.Value);
         Drawing.Text = _hotkeys[HotKey.Drawing.ToString()];

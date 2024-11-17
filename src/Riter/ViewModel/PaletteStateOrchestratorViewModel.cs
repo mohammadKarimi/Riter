@@ -110,17 +110,17 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
     private static string BuildKeyCombination(HotKeiesPressed hotKeies)
     {
         var keiesMap = string.Empty;
-        if (hotKeies.CtrlPressed)
+        if (hotKeies.ctrlPressed)
         {
             keiesMap += "CTRL + ";
         }
 
-        if (hotKeies.ShiftPressed)
+        if (hotKeies.shiftPressed)
         {
             keiesMap += "SHIFT + ";
         }
 
-        keiesMap += hotKeies.Key.ToString().ToUpper();
+        keiesMap += hotKeies.key.ToString().ToUpper();
         return keiesMap;
     }
 

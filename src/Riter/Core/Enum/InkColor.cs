@@ -10,5 +10,5 @@ public enum InkColor
     Cyan,
     Pink,
     Gray,
-    Black
+    Black,
 }

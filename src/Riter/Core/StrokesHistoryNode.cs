@@ -10,7 +10,9 @@ namespace Riter.Core;
 /// <param name="type">type of drawing added or removed.</param>
 public class StrokesHistoryNode
 {
-    private StrokesHistoryNode() { }
+    private StrokesHistoryNode()
+    {
+    }
 
     /// <summary>
     /// Gets strokes of Drawing in canvas.

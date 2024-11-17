@@ -32,4 +32,4 @@ public enum HotKey
     Database = 4,
 }
 
-public record struct HotKeiesPressed(string Key, bool CtrlPressed, bool ShiftPressed);
+public record struct HotKeiesPressed(string key, bool ctrlPressed, bool shiftPressed);

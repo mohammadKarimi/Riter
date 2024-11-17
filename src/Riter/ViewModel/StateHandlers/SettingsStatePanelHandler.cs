@@ -58,7 +58,7 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         BrushPanelVisibility = false;
         ShapePanelVisibility = false;
         SettingButtonClicked = false;
-        ColorPanelVisibility=false;
+        ColorPanelVisibility = false;
         _buttonSelectedStateHandler.ResetArrowButtonSelected();
     }
 

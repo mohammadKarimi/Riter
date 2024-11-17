@@ -1,7 +1,7 @@
 ﻿namespace Riter.Core;
 
 /// <summary>
-/// A generic implementation of the <see cref="ICommand"/> interface, 
+/// A generic implementation of the <see cref="ICommand"/> interface,
 /// allowing commands to be bound to actions with parameters and conditional execution logic.
 /// </summary>
 /// <typeparam name="T">The type of the parameter passed to the command.</typeparam>
@@ -12,7 +12,7 @@
 /// <param name="execute">The action to execute when the command is invoked.</param>
 /// <param name="canExecute">The condition that determines if the command can execute. If null, the command is always executable.</param>
 /// <exception cref="ArgumentNullException">Thrown if the execute action is null.</exception>
-public class RelayCommand(Action execute, Func<bool> canExecute = null) : ICommand
+public class RelayCommand(Action execute, Func<bool> canExecute = null): ICommand
 {
     private readonly Action _execute = execute ?? throw new ArgumentNullException(nameof(execute));
     private readonly Func<bool> _canExecute = canExecute;
@@ -42,9 +42,8 @@ public class RelayCommand(Action execute, Func<bool> canExecute = null) : IComma
     public void Execute(object parameter) => _execute();
 }
 
-
 /// <summary>
-/// A generic implementation of the <see cref="ICommand"/> interface, 
+/// A generic implementation of the <see cref="ICommand"/> interface,
 /// allowing commands to be bound to actions with parameters and conditional execution logic.
 /// </summary>
 /// <typeparam name="T">The type of the parameter passed to the command.</typeparam>
