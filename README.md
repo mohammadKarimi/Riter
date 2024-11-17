@@ -30,32 +30,32 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 
 ## Features
 
-### Drawing Tools
+### 🖌️ Drawing Tools
 - **Ink Canvas**: Draw freely on your screen using the InkCanvas control.
 - **Modes**: Switch between drawing, erasing, and highlighting modes.
 - **Brush Size Selection**: Choose brush sizes (1x, 2x, 3x) for different stroke thicknesses.
 
-### Color Management
+### 🎨 Color Management
 - **Color Palette**: Select from a pre-configured set of colors.
 - **Custom Color Selection**: Choose personalized colors for added flexibility.
 
-### Stroke Management
+### 🧹 Line Management
 - **Undo/Redo**: Reverse or reapply recent drawing actions.
 - **Clear All**: Quickly remove all strokes from the canvas.
 
-### View Modes
+### 🖥️ Display Modes
 - **Hide All**: Temporarily hide drawings.
 - **Background Modes**: Choose between transparent, whiteboard, or blackboard backgrounds.
 
-### Toolbox & UI
-- **Floating Toolbox**: Easy access to tools and settings with a stylish, floating toolbox.
+### 🔧 Toolbar and User Interface
+- **Floating Toolbar**: Easy access to tools and settings with a stylish, floating toolbox.
 - **Visual Feedback**: Hover and selection effects enhance user interaction.
 
-### Settings & Customization
+### ⚙️ Settings and Customization
 - **Settings Panel**: Customize colors, brush sizes, application behavior, and more.
 - **Global Hotkeys**: Access tools quickly with keyboard shortcuts, even when the app is out of focus.
 
-### Performance
+### 🚀 Performance
 - **Efficient Stroke Handling**: Optimized stroke management ensures smooth performance during extended usage.
 
 ---
@@ -110,6 +110,9 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 - **Framework**: .NET 8 (x86/x64)
 
 ### Installation
+
+Follow these steps to set up and use Riter:
+
 1. Clone the repository: 
    ```bash
    git clone https://github.com/username/Riter.git
