@@ -11,7 +11,7 @@ public partial class MainInkCanvasControl : UserControl
 {
     private readonly IStrokeHistoryService _strokeHistoryService;
     private readonly IInkEditingModeStateHandler _inkEditingModeStateHandler;
-    private readonly IDictionary<DrawingShape, IShapeDrawer> _shapeDrawers;
+    private readonly Dictionary<DrawingShape, IShapeDrawer> _shapeDrawers;
     private bool _isDrawing = false;
     private Point _startPoint;
     private Stroke _lastStroke;
