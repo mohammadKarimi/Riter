@@ -5,7 +5,6 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:viewmodel="clr-namespace:Riter.ViewModel"
-            d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
             mc:Ignorable="d" 
              KeyDown="Window_KeyDown"
              KeyUp="Window_KeyUp">

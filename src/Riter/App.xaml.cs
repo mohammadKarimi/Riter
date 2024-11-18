@@ -3,6 +3,7 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core.Interfaces;
+using Riter.Core.Shape;
 using Riter.Services;
 using Riter.ViewModel;
 using Riter.ViewModel.Handlers;
@@ -61,6 +62,12 @@ public partial class App : Application
         serviceCollection.AddSingleton<IHighlighterStateHandler, HighlighterStateHandler>();
         serviceCollection.AddSingleton<ISettingPanelStateHandler, SettingsPanelStateHandler>();
         serviceCollection.AddSingleton<IButtonSelectedStateHandler, ButtonSelectedStateHandler>();
+
+        serviceCollection.AddScoped<IShapeDrawer, LineDrawer>();
+        serviceCollection.AddScoped<IShapeDrawer, CircleDrawer>();
+        serviceCollection.AddScoped<IShapeDrawer, ArrowDrawer>();
+        serviceCollection.AddScoped<IShapeDrawer, RectangleDrawer>();
+        serviceCollection.AddScoped<IShapeDrawer, DatabaseDrawer>();
 
         serviceCollection.AddSingleton<ButtonSelectedViewModel>();
         serviceCollection.AddSingleton<SettingPanelViewModel>();
