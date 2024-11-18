@@ -4,20 +4,16 @@ namespace Riter.ViewModel.Handlers;
 
 public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHandler
 {
-    private static bool _settingButtonClicked;
-    private static bool _isSettingPanelOpened;
-    private static bool _isBrushPanelOpened;
-    private static bool _isShapePanelOpened;
-    private static bool _isColorPanelOpened;
     private readonly IButtonSelectedStateHandler _buttonSelectedStateHandler;
-
-    static SettingsPanelStateHandler()
-    {
-        _isSettingPanelOpened = false;
-    }
+    private bool _settingButtonClicked;
+    private bool _isSettingPanelOpened;
+    private bool _isBrushPanelOpened;
+    private bool _isShapePanelOpened;
+    private bool _isColorPanelOpened;
 
     public SettingsPanelStateHandler(IButtonSelectedStateHandler buttonSelectedStateHandler)
     {
+        _isSettingPanelOpened = false;
         _buttonSelectedStateHandler = buttonSelectedStateHandler;
         _isSettingPanelOpened = false;
     }
