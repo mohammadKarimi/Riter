@@ -1,107 +1,11 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
-using System.Windows.Media;
-using System.Windows.Shapes;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
 using Riter.ViewModel;
 
 namespace Riter.Core.UI;
-
-///// <summary>
-///// Interaction logic for MainInkCanvasControl.xaml.
-///// </summary>
-//public partial class MainInkCanvasControl_1 : UserControl
-//{
-//    private void DrawDatabaseShape(object sender, MouseEventArgs e)
-//    {
-
-//        var currentPoint = e.GetPosition(MainInkCanvas);
-
-//        var width = Math.Abs(currentPoint.X - _startPoint.X);
-//        var height = Math.Abs(currentPoint.Y - _startPoint.Y);
-//        var radiusX = width / 2;
-//        var centerX = (_startPoint.X + currentPoint.X) / 2;
-//        var topY = _startPoint.Y;
-//        var bottomY = _startPoint.Y + height;
-
-//        var topEllipsePoints = GetEllipsePoints(centerX, topY, radiusX, true);
-//        var topStylusPoints = new StylusPointCollection(topEllipsePoints);
-//        var topStroke = new Stroke(topStylusPoints)
-//        {
-//            DrawingAttributes = MainInkCanvas.DefaultDrawingAttributes.Clone(),
-//        };
-
-//        var leftSideStylusPoints = new StylusPointCollection
-//    {
-//        new StylusPoint(centerX - radiusX, topY),
-//        new StylusPoint(centerX - radiusX, bottomY),
-//    };
-//        var rightSideStylusPoints = new StylusPointCollection
-//    {
-//        new StylusPoint(centerX + radiusX, topY),
-//        new StylusPoint(centerX + radiusX, bottomY),
-//    };
-//        var leftSideStroke = new Stroke(leftSideStylusPoints)
-//        {
-//            DrawingAttributes = MainInkCanvas.DefaultDrawingAttributes.Clone(),
-//        };
-//        var rightSideStroke = new Stroke(rightSideStylusPoints)
-//        {
-//            DrawingAttributes = MainInkCanvas.DefaultDrawingAttributes.Clone(),
-//        };
-
-//        var bottomEllipsePoints = GetEllipsePoints(centerX, bottomY, radiusX, false);
-//        var bottomStylusPoints = new StylusPointCollection(bottomEllipsePoints);
-//        var bottomStroke = new Stroke(bottomStylusPoints)
-//        {
-//            DrawingAttributes = MainInkCanvas.DefaultDrawingAttributes.Clone(),
-//        };
-
-//        bottomStroke.DrawingAttributes.StylusTip = StylusTip.Ellipse;
-
-//        if (_topStroke is not null)
-//        {
-//            MainInkCanvas.Strokes.Remove(_topStroke);
-//            MainInkCanvas.Strokes.Remove(_leftSideStroke);
-//            MainInkCanvas.Strokes.Remove(_rightSideStroke);
-//            MainInkCanvas.Strokes.Remove(_bottomStroke);
-//        }
-
-//        MainInkCanvas.Strokes.Add(topStroke);
-//        MainInkCanvas.Strokes.Add(leftSideStroke);
-//        MainInkCanvas.Strokes.Add(rightSideStroke);
-//        MainInkCanvas.Strokes.Add(bottomStroke);
-
-//        _topStroke = topStroke;
-//        _leftSideStroke = leftSideStroke;
-//        _rightSideStroke = rightSideStroke;
-//        _bottomStroke = bottomStroke;
-
-//        static IReadOnlyList<Point> GetEllipsePoints(double centerX, double centerY, double radiusX, bool isTop)
-//        {
-//            var segments = 100;
-//            List<Point> points = [];
-//            var angleStep = Math.PI * 2 / segments;
-//            for (var i = 0; i <= segments; i++)
-//            {
-//                var angle = angleStep * i;
-//                var x = centerX + (radiusX * Math.Cos(angle));
-//                var y = centerY + (radiusX / 2 * Math.Sin(angle));
-//                if (!isTop && angle > Math.PI)
-//                {
-//                    continue;
-//                }
-
-//                points.Add(new Point(x, y));
-//            }
-
-//            return points;
-//        }
-//    }
-//}
-
 
 public partial class MainInkCanvasControl : UserControl
 {
