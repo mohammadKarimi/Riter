@@ -9,9 +9,7 @@ public static class CursorHelper
             new PropertyMetadata(null, OnBoundCursorChanged));
 
     public static void SetBoundCursor(UIElement element, Cursor value)
-    {
-        element.SetValue(BoundCursorProperty, value);
-    }
+        => element.SetValue(BoundCursorProperty, value);
 
     public static Cursor GetBoundCursor(UIElement element)
         => (Cursor)element.GetValue(BoundCursorProperty);
