@@ -49,14 +49,16 @@ public class DrawingStateHandler(
     {
         _inkEditingModeStateHandler.Ink();
         _highlighterStateHandler.DisableHighlighter();
-        SetupDrawingMode(DrawingShape.FreeDraw, ButtonNames.DrawingButton);
+        SetupDrawingMode(ButtonNames.DrawingButton);
     }
 
-    public void StartDrawingShape(string shapeId = "1")
+    public void StartDrawingShape(DrawingShape shape)
     {
-        var shape = shapeId.ToDrawingShape();
+        //var shape = shapeId.ToDrawingShape();
+        CurrentShape = shape;
+
         _highlighterStateHandler.DisableHighlighter();
-        SetupDrawingMode(shape, ButtonNames.ShapeDrawButton);
+        SetupDrawingMode(ButtonNames.ShapeDrawButton);
         _inkEditingModeStateHandler.None();
     }
 
@@ -71,12 +73,11 @@ public class DrawingStateHandler(
     {
         _highlighterStateHandler.EnableHighlighter();
         _inkEditingModeStateHandler.Ink();
-        SetupDrawingMode(DrawingShape.FreeDraw, ButtonNames.HighlighterButton);
+        SetupDrawingMode( ButtonNames.HighlighterButton);
     }
 
-    private void SetupDrawingMode(DrawingShape shape, string buttonName)
+    private void SetupDrawingMode(string buttonName)
     {
-        CurrentShape = shape;
         if (IsReleased)
         {
             IsReleased = false;
