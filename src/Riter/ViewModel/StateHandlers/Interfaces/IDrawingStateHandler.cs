@@ -34,5 +34,5 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
 
     void StartHighlighterDrawing();
 
-    void StartDrawingShape(string shapeId = "1");
+    void StartDrawingShape(DrawingShape shape);
 }
