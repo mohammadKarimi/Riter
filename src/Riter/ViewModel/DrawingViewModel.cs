@@ -11,7 +11,7 @@ public sealed class DrawingViewModel : BaseViewModel
         _drawingHandler.PropertyChanged += OnStateChanged;
     }
 
-    public ICommand DrawShapeCommand => new RelayCommand<string>(_drawingHandler.StartDrawingShape);
+    public ICommand DrawShapeCommand => new RelayCommand<DrawingShape>(_drawingHandler.StartDrawingShape);
 
     public bool IsReleased => _drawingHandler.IsReleased;
 
