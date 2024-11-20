@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewmodel="clr-namespace:Riter.ViewModel"
+              xmlns:enum="clr-namespace:Riter.Core.Enum"
              d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d">
     <Grid>
@@ -137,16 +138,19 @@
                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="FreeDraw">
                                             <Setter Property="Content" Value="{StaticResource Icon_RoundedRectangle}"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="Arrow">
+                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Line}">
+                                            <Setter Property="Content" Value="{StaticResource Icon_Line_Toolbox}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Arrow}">
                                             <Setter Property="Content" Value="{StaticResource Icon_Arrow_Toolbox}"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="2">
+                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Circle}">
                                             <Setter Property="Content" Value="{StaticResource Icon_Circle_Toolbox}"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="3">
+                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Rectangle}">
                                             <Setter Property="Content" Value="{StaticResource Icon_Rectangle_Toolbox}"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="4">
+                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Database}">
                                             <Setter Property="Content" Value="{StaticResource Icon_Database_Toolbox}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
