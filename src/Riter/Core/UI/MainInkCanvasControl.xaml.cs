@@ -43,7 +43,7 @@ public partial class MainInkCanvasControl : UserControl
     {
         if (IsDrawingShapeKeyEntered(e.Key)
             && _inkEditingModeStateHandler.InkEditingMode is InkCanvasEditingMode.None
-            && ((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.CurrentShape is DrawingShape.FreeDraw)
+            && ((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.CurrentShape is DrawingShape.Line)
         {
             _inkEditingModeStateHandler.Ink();
             MainInkCanvas.UseCustomCursor = false;

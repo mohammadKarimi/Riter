@@ -7,7 +7,7 @@ namespace Riter.Core.Shape;
 
 public class LineDrawer : IShapeDrawer
 {
-    public DrawingShape SupportedShape => DrawingShape.FreeDraw;
+    public DrawingShape SupportedShape => DrawingShape.Line;
 
     public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint)
     {
