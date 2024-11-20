@@ -89,10 +89,11 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
             { HotKey.TransparentBackground, () => InkEditingModeViewModel.EnableTransparentCommand.Execute(null) },
             { HotKey.BlackboardBackground, () => InkEditingModeViewModel.EnableBlackboardCommand.Execute(null) },
             { HotKey.WhiteboardBackground, () => InkEditingModeViewModel.EnableWhiteboardCommand.Execute(null) },
-            { HotKey.Arrow, () => DrawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Arrow).ToString()) },
-            { HotKey.Rectangle, () => DrawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Rectangle).ToString()) },
-            { HotKey.Circle, () => DrawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Circle).ToString()) },
-            { HotKey.Database, () => DrawingViewModel.DrawShapeCommand.Execute(((byte)DrawingShape.Database).ToString()) },
+            { HotKey.Arrow, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Arrow) },
+            { HotKey.Rectangle, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Rectangle) },
+            { HotKey.Circle, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Circle) },
+            { HotKey.Database, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Database) },
+            { HotKey.Line, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Line) },
         };
 
     private void OnBrushOrHighlightChanged(string propertyName)
