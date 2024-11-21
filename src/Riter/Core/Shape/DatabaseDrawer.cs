@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.IO;
+using System.Windows.Controls;
 using System.Windows.Ink;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
@@ -11,6 +12,14 @@ public class DatabaseDrawer : IShapeDrawer
 
     public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint)
     {
+        //var filePath = "Resources/Cursor/dbCursor.cur";
+        //if (File.Exists(filePath))
+        //{
+        //    var cursor = new Cursor(filePath);
+        //    canvas.UseCustomCursor = true;
+        //    canvas.Cursor = cursor;
+        //}
+
         var width = Math.Abs(endPoint.X - startPoint.X);
         var height = Math.Abs(endPoint.Y - startPoint.Y);
         var radiusX = width / 2;
