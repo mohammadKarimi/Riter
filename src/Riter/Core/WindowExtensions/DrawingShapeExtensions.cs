@@ -1,6 +1,6 @@
 ﻿using Riter.Core.Enum;
 
-namespace Riter.Core.Extensions;
+namespace Riter.Core.WindowExtensions;
 
 public static class DrawingShapeExtensions
 {
