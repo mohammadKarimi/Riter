@@ -24,7 +24,7 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 ![dotnet-version]
 
 
-![image](https://github.com/user-attachments/assets/cb7a801c-f76b-47e8-b956-48d42daa2043)
+![image](https://github.com/user-attachments/assets/3de0f5d4-821a-4a66-9a4a-c65781997c82)
 
 ---
 
