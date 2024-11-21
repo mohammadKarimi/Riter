@@ -13,7 +13,7 @@
 
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="175"  />
+                <ColumnDefinition Width="300"  />
                 <ColumnDefinition Width="195" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>

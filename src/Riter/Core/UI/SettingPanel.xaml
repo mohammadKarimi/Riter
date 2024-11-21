@@ -200,27 +200,6 @@
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
-
-                <!--<TabItem>
-                    <TabItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_PenSetting}" VerticalAlignment="Center" />
-                            <TextBlock Text="Stroke Options" Margin="5,0,0,0"/>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <local:StrokeSizePanel DataContext="{Binding}"/>
-
-                </TabItem>-->
-                <!--<TabItem>
-                    <TabItem.Header>
-                        <StackPanel Orientation="Horizontal">
-                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_hexagonal}" VerticalAlignment="Center" />
-                            <TextBlock Text="Shape" Margin="5,0,0,0"/>
-                        </StackPanel>
-                    </TabItem.Header>
-                    <local:DrawingShapePanel DataContext="{Binding}"/>
-                </TabItem>-->
-
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -230,6 +209,16 @@
                     </TabItem.Header>
                     <local:KeyboardHotKeys DataContext="{Binding}"/>
                 </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_StartupLocation}" VerticalAlignment="Center" />
+                            <TextBlock Text="StartUp Location" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <local:StartupLocationPanel DataContext="{Binding}" />
+                </TabItem>
+
             </TabControl>
         </Border>
     </Grid>
