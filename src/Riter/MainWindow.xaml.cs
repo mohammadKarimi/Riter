@@ -1,10 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Windows.Controls;
 using System.Windows.Ink;
-using Riter.Core.Extensions;
 using Riter.Core.Interfaces;
 using Riter.Core.UI;
+using Riter.Core.WindowExtensions;
 using Riter.ViewModel;
 
 namespace Riter;
@@ -25,10 +24,12 @@ public partial class MainWindow : Window
     private static PaletteStateOrchestratorViewModel _orchestratorViewModel;
 
     private readonly IStrokeHistoryService _strokeHistoryService;
+    private readonly AppSettings _appSettings;
 
     public MainWindow(
         PaletteStateOrchestratorViewModel orchestratorViewModel,
-        IStrokeHistoryService strokeHistoryService)
+        IStrokeHistoryService strokeHistoryService,
+        AppSettings appSettings)
     {
         InitializeComponent();
         DataContext = orchestratorViewModel;
@@ -36,6 +37,7 @@ public partial class MainWindow : Window
         _strokeHistoryService = strokeHistoryService;
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
         MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
+        _appSettings = appSettings;
 
         this.EnableDragging(MainPalette)
             .SetTopMost(true);
@@ -160,15 +162,10 @@ public partial class MainWindow : Window
 
     private void AdjustWindowSize()
     {
-        var canvasWidth = Layout.ActualWidth;
-        var canvasHeight = Layout.ActualHeight;
-        var paletteWidth = MainPalette.ActualWidth;
-        var paletteHeight = MainPalette.ActualHeight;
-
         if (MainPalette != null)
         {
-            Canvas.SetLeft(MainPalette, (canvasWidth - paletteWidth) / 2);
-            Canvas.SetTop(MainPalette, canvasHeight - paletteHeight - 75);
+            var context = new StartupLocationContext(_appSettings.StartupLocation);
+            context.ExecuteStrategy(Layout, MainPalette, _appSettings);
         }
     }
 }
