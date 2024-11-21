@@ -16,7 +16,8 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         InkEditingModeViewModel inkEditingModeViewModel,
         HighlighterViewModel highlighterViewModel,
         SettingPanelViewModel settingPanelViewModel,
-        ButtonSelectedViewModel buttonSelectedViewModel)
+        ButtonSelectedViewModel buttonSelectedViewModel,
+        StartupLocationViewModel startupLocationViewModel)
     {
         DrawingViewModel = drawingViewModel;
         StrokeVisibilityViewModel = strokeVisibilityViewModel;
@@ -26,6 +27,7 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         HighlighterViewModel = highlighterViewModel;
         SettingPanelViewModel = settingPanelViewModel;
         ButtonSelectedViewModel = buttonSelectedViewModel;
+        StartupLocationViewModel = startupLocationViewModel;
 
         _hotKeyCommandService = new HotKeyCommandService(BuildHotKeyCommandMap());
         BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
@@ -47,6 +49,8 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
     public SettingPanelViewModel SettingPanelViewModel { get; }
 
     public ButtonSelectedViewModel ButtonSelectedViewModel { get; }
+
+    public StartupLocationViewModel StartupLocationViewModel { get; }
 
     public DrawingAttributes InkDrawingAttributes =>
         DrawingAttributesFactory.CreateDrawingAttributes(
