@@ -129,9 +129,9 @@
                         <ControlTemplate TargetType="Button">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <Border x:Name="ButtonBorder"
-                 Width="32" Height="32" CornerRadius="4"
-                 HorizontalAlignment="Center" VerticalAlignment="Center"
-                 Background="{TemplateBinding Background}">
+                                         Width="32" Height="32" CornerRadius="4"
+                                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                                         Background="{TemplateBinding Background}">     
                                     <ContentControl Content="{TemplateBinding Content}" />
                                 </Border>
                             </StackPanel>

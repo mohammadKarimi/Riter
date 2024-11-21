@@ -1,0 +1,273 @@
+﻿<UserControl x:Class="Riter.Core.UI.SubPanels.StartupLocationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:enum="clr-namespace:Riter.Core.Enum"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+           mc:Ignorable="d" 
+           d:DesignHeight="290" d:DesignWidth="550">
+    <Grid Margin="0,2,0,0" Background="White">
+        <Border>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="90">
+                    <Grid Width="550">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" CornerRadius="6" Background="#EEE" Width="110" Height="40">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F1F1F1" />
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding StartupLocationViewModel.StartupLocation}" Value="{x:Static enum:StartupLocation.TopCenter}">
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                        <Border Grid.Column="1" CornerRadius="6" Background="#EEE" Width="110" Height="40">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F1F1F1" />
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding StartupLocationViewModel.StartupLocation}" Value="{x:Static enum:StartupLocation.TopCenter}">
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                        <Border Grid.Column="2" CornerRadius="6" Background="#EEE" Width="110" Height="40">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F1F1F1" />
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding StartupLocationViewModel.StartupLocation}" Value="{x:Static enum:StartupLocation.TopCenter}">
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="90">
+                    <Grid Width="550">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border CornerRadius="6" Background="#EEE" Width="110" Height="40">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F1F1F1" />
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding StartupLocationViewModel.StartupLocation}" Value="{x:Static enum:StartupLocation.TopCenter}">
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                        <Border Grid.Column="1"  CornerRadius="6" Background="#EEE" Width="110" Height="40">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F1F1F1" />
+                                            <Setter Property="Cursor" Value="Hand" />
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding StartupLocationViewModel.StartupLocation}" Value="{x:Static enum:StartupLocation.Center}">
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+
+                            <Button BorderBrush="Transparent" Content="Center"
+Width="100" Height="40" Background="Transparent"
+HorizontalAlignment="Center" VerticalAlignment="Center"
+Command="{Binding StartupLocationViewModel.SetStartupLocationCommand}"
+CommandParameter="{x:Static enum:StartupLocation.Center}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="10">
+                                            <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Border>
+                        <Border Grid.Column="2" CornerRadius="6" Background="#EEE" Width="110" Height="40">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F1F1F1" />
+                                            <Setter Property="BorderBrush" Value="Red" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding StartupLocationViewModel.StartupLocation}" Value="{x:Static enum:StartupLocation.TopCenter}">
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="100">
+                    <Grid Width="550">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="260" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" CornerRadius="6" Background="#EEE" Width="110" Height="40">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F1F1F1" />
+                                            <Setter Property="Cursor" Value="Hand" />
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding StartupLocationViewModel.StartupLocation}" Value="{x:Static enum:StartupLocation.BottomLeft}">
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Button BorderBrush="Transparent" Content="Bottom/Left"
+          Width="100" Height="40" Background="Transparent"
+          HorizontalAlignment="Center" VerticalAlignment="Center"
+          Command="{Binding StartupLocationViewModel.SetStartupLocationCommand}"
+          CommandParameter="{x:Static enum:StartupLocation.BottomLeft}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                      BorderBrush="{TemplateBinding BorderBrush}"
+                      BorderThickness="1"
+                      CornerRadius="10">
+                                            <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Border>
+                        <Border Grid.Column="1" CornerRadius="6" Background="#EEE" Width="110" Height="40">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F1F1F1" />
+                                            <Setter Property="Cursor" Value="Hand" />
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding StartupLocationViewModel.StartupLocation}" Value="{x:Static enum:StartupLocation.BottomCenter}">
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Button BorderBrush="Transparent" Content="Bottom/Center"
+                                     Width="100" Height="40" Background="Transparent"
+                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                     Command="{Binding StartupLocationViewModel.SetStartupLocationCommand}"
+                                     CommandParameter="{x:Static enum:StartupLocation.BottomCenter}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                                 BorderBrush="{TemplateBinding BorderBrush}"
+                                                 BorderThickness="1"
+                                                 CornerRadius="10">
+                                            <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Border>
+                        <Border Grid.Column="2" CornerRadius="6" Background="#EEE" Width="110" Height="40">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#F1F1F1" />
+                                            <Setter Property="Cursor" Value="Hand" />
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </Trigger>
+                                        <DataTrigger Binding="{Binding StartupLocationViewModel.StartupLocation}" Value="{x:Static enum:StartupLocation.BottomRight}">
+                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                            <Setter Property="BorderThickness" Value="1.2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                            <Button BorderBrush="Transparent" Content="Bottom/Right"
+                                    Width="100" Height="40" Background="Transparent"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Command="{Binding StartupLocationViewModel.SetStartupLocationCommand}"
+                                    CommandParameter="{x:Static enum:StartupLocation.BottomRight}">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="1"
+                                                CornerRadius="10">
+                                            <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

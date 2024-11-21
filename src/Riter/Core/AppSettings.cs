@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Riter.Core.Enum;
 
 namespace Riter.Core;
 
@@ -36,6 +37,8 @@ public class AppSettings
     /// </summary>
     [JsonIgnore]
     public const string MyTelegram = "https://t.me/mhakarimi";
+
+    public StartupLocation StartupLocation { get; set; }
 
     public List<HotKeysConfig> HotKeysConfig { get; set; }
 }

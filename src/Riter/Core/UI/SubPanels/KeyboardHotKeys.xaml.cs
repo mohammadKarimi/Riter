@@ -1,8 +1,7 @@
-﻿using System.IO;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text;
 using System.Windows.Controls;
 using Microsoft.Extensions.DependencyInjection;
+using Riter.Core.IO;
 
 namespace Riter.Core.UI.SubPanels;
 
@@ -74,9 +73,8 @@ public partial class KeyboardHotKeys : UserControl
     }
 
     private void UserControl_KeyUp(object sender, KeyEventArgs e)
-    {
-        var json = JsonSerializer.Serialize(new { AppSettings = _settings });
-        var filePath = "appsettings.json";
-        File.WriteAllText(filePath, json);
-    }
+        => Task.Run(async () =>
+            {
+                await FileStorage.SaveConfig(_settings).ConfigureAwait(false);
+            });
 }

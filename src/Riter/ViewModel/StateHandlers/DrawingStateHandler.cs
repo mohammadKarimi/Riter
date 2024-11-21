@@ -1,6 +1,6 @@
 ﻿using Riter.Core.Consts;
 using Riter.Core.Enum;
-using Riter.Core.Extensions;
+using Riter.Core.WindowExtensions;
 
 namespace Riter.ViewModel.StateHandlers;
 

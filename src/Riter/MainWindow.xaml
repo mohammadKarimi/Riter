@@ -60,7 +60,7 @@
                 </Grid>
                 <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
-                        MinWidth="0">
+                        MinWidth="0" Name="ToolboxContainer">
 
                     <local:ToolBox x:Name="ToolBox" DataContext="{Binding}"/>
                     <local:WindowControl x:Name="WindowControl"/>

@@ -1,4 +1,4 @@
-﻿namespace Riter.Core.Extensions;
+﻿namespace Riter.Core.WindowExtensions;
 
 /// <summary>
 /// Sets the window's Topmost property to control whether the window is always on top of other windows.

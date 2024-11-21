@@ -14,7 +14,7 @@
          VerticalAlignment="Center"
          Padding="8,8"
          Background="#FFF"
-         CornerRadius="16"
+         CornerRadius="12"
          BorderThickness="1">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.1" ShadowDepth="1" BlurRadius="16" />
