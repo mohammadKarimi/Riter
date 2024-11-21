@@ -72,7 +72,7 @@ public class DrawingStateHandler(
     {
         _highlighterStateHandler.EnableHighlighter();
         _inkEditingModeStateHandler.Ink();
-        SetupDrawingMode( ButtonNames.HighlighterButton);
+        SetupDrawingMode(ButtonNames.HighlighterButton);
     }
 
     private void SetupDrawingMode(string buttonName)

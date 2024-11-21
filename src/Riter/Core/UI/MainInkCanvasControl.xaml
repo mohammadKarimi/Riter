@@ -15,7 +15,7 @@
                    Background="{Binding InkEditingModeViewModel.Background}"
                    MoveEnabled="False"
                    ResizeEnabled="False"
-                   Cursor="Help"
+                   Cursor="Pen"
                    DefaultDrawingAttributes="{Binding InkDrawingAttributes}">
             <InkCanvas.Style>
                 <Style TargetType="InkCanvas">
