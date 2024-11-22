@@ -1,5 +1,8 @@
-﻿using System.Windows.Ink;
+﻿using System.Windows.Documents;
+using System.Windows.Ink;
+using System.Windows.Input.StylusPlugIns;
 using System.Windows.Media;
+using Riter.Core.Enum;
 
 namespace Riter.Core;
 
@@ -19,7 +22,7 @@ public static class DrawingAttributesFactory
     {
         var drawingAttributes = new DrawingAttributes
         {
-            Color = (Color)ColorConverter.ConvertFromString(color),
+            Color = color == InkColor.RainBow.ToString() ? (Color)ColorConverter.ConvertFromString(AppSettings.InkDefaultColor) : (Color)ColorConverter.ConvertFromString(color),
             Height = isHighlighter ? size * 2.5 : size,
             Width = isHighlighter ? size * 2.5 : size,
             IsHighlighter = isHighlighter,
