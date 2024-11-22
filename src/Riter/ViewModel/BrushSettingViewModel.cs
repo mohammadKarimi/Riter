@@ -18,6 +18,8 @@ public sealed class BrushSettingsViewModel : BaseViewModel
 
     public string InkColor => _brushSettingsHandler.InkColor;
 
+    public bool IsRainbow => _brushSettingsHandler.IsRainbow;
+
     public ICommand SetInkColorWithHotKeyCommand => new RelayCommand<InkColor>(_brushSettingsHandler.SetInkColorWithHotKey);
 
     public ICommand SetInkColorCommand => new RelayCommand<string>(_brushSettingsHandler.SetInkColor);

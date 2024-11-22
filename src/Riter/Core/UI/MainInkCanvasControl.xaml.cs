@@ -3,6 +3,7 @@ using System.Windows.Ink;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Microsoft.Extensions.DependencyInjection;
+using Riter.Core.Consts;
 using Riter.Core.Drawing;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
@@ -14,7 +15,6 @@ public partial class MainInkCanvasControl : UserControl
 {
     private readonly IStrokeHistoryService _strokeHistoryService;
     private readonly IInkEditingModeStateHandler _inkEditingModeStateHandler;
-    private readonly IBrushSettingsStateHandler _brushSettingsStateHandler;
     private readonly Dictionary<DrawingShape, IShapeDrawer> _shapeDrawers;
     private bool _isDrawing = false;
     private Point _startPoint;
@@ -24,7 +24,6 @@ public partial class MainInkCanvasControl : UserControl
     {
         InitializeComponent();
         _strokeHistoryService = App.ServiceProvider.GetService<IStrokeHistoryService>();
-        _brushSettingsStateHandler = App.ServiceProvider.GetService<IBrushSettingsStateHandler>();
         _inkEditingModeStateHandler = App.ServiceProvider.GetService<IInkEditingModeStateHandler>();
         _shapeDrawers = App.ServiceProvider.GetService<IEnumerable<IShapeDrawer>>().ToDictionary(drawer => drawer.SupportedShape);
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvas);
@@ -48,10 +47,11 @@ public partial class MainInkCanvasControl : UserControl
 
     private void Window_KeyUp(object sender, KeyEventArgs e)
     {
+        var vm = (PaletteStateOrchestratorViewModel)DataContext;
         if (IsDrawingShapeKeyEntered(e.Key)
             && _inkEditingModeStateHandler.InkEditingMode is InkCanvasEditingMode.None
-            && ((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.CurrentShape is DrawingShape.Line
-            )
+            && vm.DrawingViewModel.CurrentShape is DrawingShape.Line
+            && vm.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.DrawingButton)
         {
             _inkEditingModeStateHandler.Ink();
             MainInkCanvas.UseCustomCursor = false;
@@ -85,7 +85,11 @@ public partial class MainInkCanvasControl : UserControl
         if (_shapeDrawers.TryGetValue(currentShape, out var drawer))
         {
             var endPoint = e.GetPosition(MainInkCanvas);
-            var stroke = drawer.DrawShape(MainInkCanvas, _startPoint, endPoint, _brushSettingsStateHandler.IsRainbow);
+            var stroke = drawer.DrawShape(
+                MainInkCanvas,
+                _startPoint,
+                endPoint,
+                ((PaletteStateOrchestratorViewModel)DataContext).BrushSettingsViewModel.IsRainbow);
 
             if (_lastStroke != null)
                 MainInkCanvas.Strokes.Remove(_lastStroke);
