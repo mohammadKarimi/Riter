@@ -11,4 +11,5 @@ public enum InkColor
     Pink,
     Gray,
     Black,
+    RainBow,
 }

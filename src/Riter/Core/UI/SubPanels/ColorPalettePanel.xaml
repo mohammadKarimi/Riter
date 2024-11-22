@@ -7,6 +7,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="260" d:DesignWidth="200">
+ 
     <Grid Background="#FFF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
@@ -44,6 +45,20 @@
                         </Border>
                         <Border Background="Black"  Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
                             <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="Black"/>
+                        </Border>
+                        <Border  Margin="8,8,0,0" CornerRadius="16" Height="32" Width="32" Style="{StaticResource ColorPallateStyle}">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="Red" Offset="0.0" />
+                                    <GradientStop Color="Orange" Offset="0.16" />
+                                    <GradientStop Color="Yellow" Offset="0.33" />
+                                    <GradientStop Color="Green" Offset="0.5" />
+                                    <GradientStop Color="Blue" Offset="0.66" />
+                                    <GradientStop Color="Indigo" Offset="0.83" />
+                                    <GradientStop Color="Violet" Offset="1.0" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Button Style="{StaticResource ButtonColorStyle}" Command="{Binding BrushSettingsViewModel.SetInkColorCommand}" CommandParameter="RainBow"/>
                         </Border>
                     </StackPanel>
                 </StackPanel>

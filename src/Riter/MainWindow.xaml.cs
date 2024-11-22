@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Windows.Controls;
 using System.Windows.Ink;
 using Riter.Core.Interfaces;
 using Riter.Core.UI;
@@ -23,20 +24,15 @@ public partial class MainWindow : Window
     private static bool _shiftPressed = false;
     private static PaletteStateOrchestratorViewModel _orchestratorViewModel;
 
-    private readonly IStrokeHistoryService _strokeHistoryService;
     private readonly AppSettings _appSettings;
 
     public MainWindow(
         PaletteStateOrchestratorViewModel orchestratorViewModel,
-        IStrokeHistoryService strokeHistoryService,
         AppSettings appSettings)
     {
         InitializeComponent();
         DataContext = orchestratorViewModel;
         _orchestratorViewModel = orchestratorViewModel;
-        _strokeHistoryService = strokeHistoryService;
-        _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvasControl.MainInkCanvas);
-        MainInkCanvasControl.MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
         _appSettings = appSettings;
 
         this.EnableDragging(MainPalette)
@@ -123,31 +119,6 @@ public partial class MainWindow : Window
         }
 
         return CallNextHookEx(_hookID, nCode, wParam, lParam);
-    }
-
-    /// <summary>
-    /// Handles the StrokesChanged event when the user draws on the InkCanvas.
-    /// This method will be used to track and store stroke changes in a stack for history purposes.
-    /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="e">Contains the stroke collection that has changed.</param>
-    private void StrokesChanged(object sender, StrokeCollectionChangedEventArgs e)
-    {
-        if (_strokeHistoryService.IgnoreStrokesChange)
-        {
-            return;
-        }
-
-        if (e.Added.Count != 0)
-        {
-            Console.WriteLine(e.ToString());
-            _strokeHistoryService.Push(StrokesHistoryNode.CreateAddedType(e.Added));
-        }
-
-        if (e.Removed.Count != 0)
-        {
-            _strokeHistoryService.Push(StrokesHistoryNode.CreateRemovedType(e.Removed));
-        }
     }
 
     /// <summary>

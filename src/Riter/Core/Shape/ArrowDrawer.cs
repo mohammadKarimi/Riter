@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
+using System.Windows.Input;
 using System.Windows.Media;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
@@ -9,7 +10,7 @@ public class ArrowDrawer : IShapeDrawer
 {
     public DrawingShape SupportedShape => DrawingShape.Arrow;
 
-    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint)
+    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
         var lineAttributes = canvas.DefaultDrawingAttributes.Clone();
         lineAttributes.StylusTip = StylusTip.Ellipse;
@@ -20,7 +21,13 @@ public class ArrowDrawer : IShapeDrawer
         points.AddRange(CreateArrowheadPoints(startPoint, endPoint, 15));
         points.AddRange(CreateArrowheadPoints(startPoint, endPoint, -15));
 
-        var stroke = new Stroke(new StylusPointCollection(points)) { DrawingAttributes = lineAttributes };
+        if (!isRainbow)
+            return new Stroke(new StylusPointCollection(points)) { DrawingAttributes = lineAttributes };
+
+        var stroke = new RainbowStroke(new StylusPointCollection(points))
+        {
+            DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
+        };
 
         return stroke;
     }

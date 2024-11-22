@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
+using System.Windows.Media;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
 
@@ -9,13 +10,22 @@ public class LineDrawer : IShapeDrawer
 {
     public DrawingShape SupportedShape => DrawingShape.Line;
 
-    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint)
+    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
-        var stylusPoints = new StylusPointCollection(new[] { new StylusPoint(startPoint.X, startPoint.Y), new StylusPoint(endPoint.X, endPoint.Y) });
-        var stroke = new Stroke(stylusPoints)
+        var stylusPoints = new StylusPointCollection(new[]
         {
-            DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
-        };
-        return stroke;
+            new StylusPoint(startPoint.X, startPoint.Y),
+            new StylusPoint(endPoint.X, endPoint.Y),
+        });
+
+        return !isRainbow
+            ? new Stroke(stylusPoints)
+            {
+                DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
+            }
+            : new RainbowStroke(stylusPoints)
+            {
+                DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
+            };
     }
 }
