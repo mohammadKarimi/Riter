@@ -32,6 +32,12 @@ public partial class KeyboardHotKeys : UserControl
         TransparentBackground.Text = _hotkeys[HotKey.TransparentBackground.ToString()];
         WhiteboardBackground.Text = _hotkeys[HotKey.WhiteboardBackground.ToString()];
         BlackboardBackground.Text = _hotkeys[HotKey.BlackboardBackground.ToString()];
+
+        Database.Text = _hotkeys[HotKey.Database.ToString()];
+        Arrow.Text = _hotkeys[HotKey.Arrow.ToString()];
+        Line.Text = _hotkeys[HotKey.Line.ToString()];
+        Circle.Text = _hotkeys[HotKey.Circle.ToString()];
+        Rectangle.Text = _hotkeys[HotKey.Rectangle.ToString()];
     }
 
     private void UserControl_KeyDown(object sender, KeyEventArgs e)
