@@ -1,4 +1,5 @@
 ﻿using Riter.Core.Enum;
+using EnumInkColor = Riter.Core.Enum.InkColor;
 
 namespace Riter.ViewModel.StateHandlers;
 
@@ -9,6 +10,7 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
     private string _inkColor;
     private string _colorSelected;
     private double _sizeOfBrush;
+    private bool _isRainbow;
 
     public BrushSettingsStateHandler(IButtonSelectedStateHandler buttonSelectedStateHandler, ISettingPanelStateHandler settingPanelStateHandler)
     {
@@ -36,14 +38,22 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
         private set => SetProperty(ref _sizeOfBrush, value, nameof(SizeOfBrush));
     }
 
+    public bool IsRainbow
+    {
+        get => _isRainbow;
+        private set => SetProperty(ref _isRainbow, value, nameof(IsRainbow));
+    }
+
     public void SetInkColor(string color)
     {
+        IsRainbow = color == EnumInkColor.RainBow.ToString();
+
         InkColor = color;
         ColorSelected = color;
         ResetSettings();
     }
 
-    public void SetInkColorWithHotKey(InkColor color) => InkColor = ColorPalette.Colors[color].Hex;
+    public void SetInkColorWithHotKey(EnumInkColor color) => InkColor = ColorPalette.Colors[color].Hex;
 
     public void SetSizeOfBrush(string size)
     {

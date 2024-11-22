@@ -16,6 +16,11 @@ public interface IBrushSettingsStateHandler : INotifyPropertyChanged
     string ColorSelected { get; }
 
     /// <summary>
+    /// Gets a value of Rainbow.
+    /// </summary>
+    bool IsRainbow { get; }
+
+    /// <summary>
     /// Gets a value of Size.
     /// </summary>
     double SizeOfBrush { get; }
