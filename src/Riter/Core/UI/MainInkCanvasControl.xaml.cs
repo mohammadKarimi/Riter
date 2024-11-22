@@ -1,7 +1,5 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
-using System.Windows.Media;
-using System.Windows.Shapes;
 using Microsoft.Extensions.DependencyInjection;
 using Riter.Core.Consts;
 using Riter.Core.Drawing;
@@ -50,7 +48,7 @@ public partial class MainInkCanvasControl : UserControl
         var vm = (PaletteStateOrchestratorViewModel)DataContext;
         if (IsDrawingShapeKeyEntered(e.Key)
             && _inkEditingModeStateHandler.InkEditingMode is InkCanvasEditingMode.None
-            && vm.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.DrawingButton)
+            && (vm.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.DrawingButton || vm.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.HighlighterButton))
         {
             _inkEditingModeStateHandler.Ink();
             MainInkCanvas.UseCustomCursor = false;
@@ -80,7 +78,7 @@ public partial class MainInkCanvasControl : UserControl
 
         var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
         var currentShape = viewModel.DrawingViewModel.CurrentShape;
-        if (viewModel.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.DrawingButton)
+        if (viewModel.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.DrawingButton || viewModel.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.HighlighterButton)
         {
             currentShape = DrawingShape.Line;
         }

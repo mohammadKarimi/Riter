@@ -23,11 +23,11 @@ public static class DrawingAttributesFactory
         var drawingAttributes = new DrawingAttributes
         {
             Color = color == InkColor.RainBow.ToString() ? (Color)ColorConverter.ConvertFromString(AppSettings.InkDefaultColor) : (Color)ColorConverter.ConvertFromString(color),
-            Height = isHighlighter ? size * 2.5 : size,
-            Width = isHighlighter ? size * 2.5 : size,
+            Height = isHighlighter ? size * 5 : size,
+            Width = isHighlighter ? size * 5 : size,
             IsHighlighter = isHighlighter,
             IgnorePressure = true,
-            StylusTip = isHighlighter ? StylusTip.Rectangle : StylusTip.Ellipse,
+            StylusTip = StylusTip.Ellipse,
         };
 
         return drawingAttributes;
