@@ -8,7 +8,7 @@ public class CircleDrawer : IShapeDrawer
 {
     public DrawingShape SupportedShape => DrawingShape.Circle;
 
-    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint)
+    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
         var centerX = (startPoint.X + endPoint.X) / 2;
         var centerY = (startPoint.Y + endPoint.Y) / 2;
@@ -23,10 +23,14 @@ public class CircleDrawer : IShapeDrawer
             points.Add(new StylusPoint(x, y));
         }
 
-        var stroke = new Stroke(points)
-        {
-            DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
-        };
-        return stroke;
+        return !isRainbow
+            ? new Stroke(points)
+            {
+                DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
+            }
+            : new RainbowStroke(points)
+            {
+                DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
+            };
     }
 }

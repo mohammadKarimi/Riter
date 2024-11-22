@@ -8,7 +8,7 @@ public class RectangleDrawer : IShapeDrawer
 {
     public DrawingShape SupportedShape => DrawingShape.Rectangle;
 
-    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint)
+    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
         var topLeft = new Point(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
         var topRight = new Point(Math.Max(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
@@ -20,11 +20,14 @@ public class RectangleDrawer : IShapeDrawer
         var newAttributes = canvas.DefaultDrawingAttributes.Clone();
         newAttributes.StylusTip = StylusTip.Rectangle;
         newAttributes.IgnorePressure = true;
-        var stroke = new Stroke(stylusPoints)
-        {
-            DrawingAttributes = newAttributes,
-        };
-
-        return stroke;
+        return !isRainbow
+            ? new Stroke(stylusPoints)
+            {
+                DrawingAttributes = newAttributes,
+            }
+            : new RainbowStroke(stylusPoints)
+            {
+                DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
+            };
     }
 }

@@ -10,16 +10,8 @@ public class DatabaseDrawer : IShapeDrawer
 {
     public DrawingShape SupportedShape => DrawingShape.Database;
 
-    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint)
+    public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
-        //var filePath = "Resources/Cursor/dbCursor.cur";
-        //if (File.Exists(filePath))
-        //{
-        //    var cursor = new Cursor(filePath);
-        //    canvas.UseCustomCursor = true;
-        //    canvas.Cursor = cursor;
-        //}
-
         var width = Math.Abs(endPoint.X - startPoint.X);
         var height = Math.Abs(endPoint.Y - startPoint.Y);
         var radiusX = width / 2;
@@ -32,11 +24,15 @@ public class DatabaseDrawer : IShapeDrawer
         List<Point> leftSideStylusPoints = [new(centerX - radiusX, topY)];
         var bottomEllipsePoints = GetEllipsePoints(centerX, bottomY, radiusX, false);
         List<Point> combinedPoints = [.. topEllipsePoints, .. bottomEllipsePoints, .. leftSideStylusPoints];
-        var combinedStroke = new Stroke(new StylusPointCollection(combinedPoints))
-        {
-            DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
-        };
-        return combinedStroke;
+        return !isRainbow
+            ? new Stroke(new StylusPointCollection(combinedPoints))
+            {
+                DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
+            }
+            : new RainbowStroke(new StylusPointCollection(combinedPoints))
+            {
+                DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
+            };
     }
 
     private static List<Point> GetEllipsePoints(double centerX, double centerY, double radiusX, bool isTop)
