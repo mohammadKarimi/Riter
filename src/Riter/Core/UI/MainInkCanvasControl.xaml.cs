@@ -50,7 +50,6 @@ public partial class MainInkCanvasControl : UserControl
         var vm = (PaletteStateOrchestratorViewModel)DataContext;
         if (IsDrawingShapeKeyEntered(e.Key)
             && _inkEditingModeStateHandler.InkEditingMode is InkCanvasEditingMode.None
-            && vm.DrawingViewModel.CurrentShape is DrawingShape.Line
             && vm.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.DrawingButton)
         {
             _inkEditingModeStateHandler.Ink();
@@ -81,7 +80,10 @@ public partial class MainInkCanvasControl : UserControl
 
         var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
         var currentShape = viewModel.DrawingViewModel.CurrentShape;
-
+        if (viewModel.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.DrawingButton)
+        {
+            currentShape = DrawingShape.Line;
+        }
         if (_shapeDrawers.TryGetValue(currentShape, out var drawer))
         {
             var endPoint = e.GetPosition(MainInkCanvas);
@@ -89,7 +91,7 @@ public partial class MainInkCanvasControl : UserControl
                 MainInkCanvas,
                 _startPoint,
                 endPoint,
-                ((PaletteStateOrchestratorViewModel)DataContext).BrushSettingsViewModel.IsRainbow);
+                viewModel.BrushSettingsViewModel.IsRainbow);
 
             if (_lastStroke != null)
                 MainInkCanvas.Strokes.Remove(_lastStroke);
