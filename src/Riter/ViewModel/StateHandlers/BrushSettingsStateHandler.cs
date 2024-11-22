@@ -53,7 +53,19 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
         ResetSettings();
     }
 
-    public void SetInkColorWithHotKey(EnumInkColor color) => InkColor = ColorPalette.Colors[color].Hex;
+    public void SetInkColorWithHotKey(EnumInkColor color)
+    {
+        if (color == EnumInkColor.RainBow)
+        {
+            IsRainbow = true;
+            InkColor = ColorSelected = color.ToString();
+        }
+        else
+        {
+            IsRainbow = false;
+            InkColor = ColorPalette.Colors[color].Hex;
+        }
+    }
 
     public void SetSizeOfBrush(string size)
     {

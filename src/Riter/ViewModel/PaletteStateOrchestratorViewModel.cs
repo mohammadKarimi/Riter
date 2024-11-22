@@ -90,6 +90,7 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
             { HotKey.Pink, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Pink) },
             { HotKey.Gray, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Gray) },
             { HotKey.Black, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Black) },
+            { HotKey.Rainbow, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.RainBow) },
             { HotKey.TransparentBackground, () => InkEditingModeViewModel.EnableTransparentCommand.Execute(null) },
             { HotKey.BlackboardBackground, () => InkEditingModeViewModel.EnableBlackboardCommand.Execute(null) },
             { HotKey.WhiteboardBackground, () => InkEditingModeViewModel.EnableWhiteboardCommand.Execute(null) },

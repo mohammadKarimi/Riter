@@ -25,6 +25,7 @@ public enum HotKey
     Pink = 9020,
     Gray = 9022,
     Black = 9023,
+    Rainbow = 9024,
 
     Arrow = 1,
     Circle = 2,
