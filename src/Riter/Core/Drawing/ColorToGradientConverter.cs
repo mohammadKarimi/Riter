@@ -3,13 +3,12 @@ using System.Windows.Data;
 using System.Windows.Media;
 using Riter.Core.Enum;
 
-namespace Riter.Core;
+namespace Riter.Core.Drawing;
 public class ColorToGradientConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
         if (value is string inkColor && inkColor == InkColor.RainBow.ToString())
-        {
             return new LinearGradientBrush
             {
                 GradientStops =
@@ -25,11 +24,8 @@ public class ColorToGradientConverter : IValueConverter
                 StartPoint = new Point(0, 0),
                 EndPoint = new Point(1, 0),
             };
-        }
         else if (value is string colorName && !string.IsNullOrEmpty(colorName))
-        {
             return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorName));
-        }
 
         return Brushes.Transparent;
     }

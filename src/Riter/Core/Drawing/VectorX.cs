@@ -1,4 +1,4 @@
-﻿namespace Riter.Core;
+﻿namespace Riter.Core.Drawing;
 
 public readonly struct VectorX(double x, double y)
 {

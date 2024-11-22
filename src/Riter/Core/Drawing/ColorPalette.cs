@@ -1,6 +1,6 @@
 ﻿using Riter.Core.Enum;
 
-namespace Riter.Core;
+namespace Riter.Core.Drawing;
 
 public static class ColorPalette
 {

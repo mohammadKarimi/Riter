@@ -1,6 +1,7 @@
 ﻿using global::Riter.Core;
 using global::Riter.Core.Enum;
 using Moq;
+using Riter.Core.Drawing;
 using Riter.ViewModel.StateHandlers;
 
 namespace Riter.Tests.ViewModel.StateHandlers;

@@ -2,6 +2,7 @@
 using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
+using Riter.Core.Drawing;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
 

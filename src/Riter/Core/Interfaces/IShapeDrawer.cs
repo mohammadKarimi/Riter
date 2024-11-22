@@ -7,5 +7,5 @@ public interface IShapeDrawer
 {
     DrawingShape SupportedShape { get; }
 
-    Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false);
+    Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow);
 }

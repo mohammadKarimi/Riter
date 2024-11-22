@@ -4,7 +4,7 @@ using System.Windows.Input.StylusPlugIns;
 using System.Windows.Media;
 using Riter.Core.Enum;
 
-namespace Riter.Core;
+namespace Riter.Core.Drawing;
 
 /// <summary>
 /// Factory for creating Drawing Attribute instance.

@@ -3,6 +3,7 @@ using System.Windows.Ink;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using Microsoft.Extensions.DependencyInjection;
+using Riter.Core.Drawing;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
 using Riter.ViewModel;
@@ -49,7 +50,8 @@ public partial class MainInkCanvasControl : UserControl
     {
         if (IsDrawingShapeKeyEntered(e.Key)
             && _inkEditingModeStateHandler.InkEditingMode is InkCanvasEditingMode.None
-            && ((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.CurrentShape is DrawingShape.Line)
+            && ((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.CurrentShape is DrawingShape.Line
+            )
         {
             _inkEditingModeStateHandler.Ink();
             MainInkCanvas.UseCustomCursor = false;

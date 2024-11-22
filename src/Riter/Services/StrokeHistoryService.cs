@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls;
-using Riter.Core;
+using Riter.Core.Drawing;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
 

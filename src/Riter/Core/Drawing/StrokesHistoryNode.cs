@@ -1,7 +1,7 @@
 ﻿using System.Windows.Ink;
 using Riter.Core.Enum;
 
-namespace Riter.Core;
+namespace Riter.Core.Drawing;
 
 /// <summary>
 /// This objects holds the stroke that user is drawind on the canvas.

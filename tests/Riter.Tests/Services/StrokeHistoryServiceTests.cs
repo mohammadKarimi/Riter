@@ -1,6 +1,6 @@
 ﻿using System.Windows.Ink;
 using Moq;
-using Riter.Core;
+using Riter.Core.Drawing;
 using Riter.Core.Enum;
 using Riter.Services;
 

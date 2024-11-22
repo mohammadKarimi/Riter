@@ -1,4 +1,5 @@
 ﻿using System.Windows.Ink;
+using Riter.Core.Drawing;
 using Riter.Core.Enum;
 using Riter.Services;
 
@@ -103,14 +104,11 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
 
     private void OnBrushOrHighlightChanged(string propertyName)
     {
-
         if (propertyName == nameof(BrushSettingsViewModel.SizeOfBrush) ||
             propertyName == nameof(HighlighterViewModel.IsHighlighter) ||
             propertyName == nameof(BrushSettingsViewModel.InkColor))
         {
             OnPropertyChanged(nameof(InkDrawingAttributes));
         }
-
-
     }
 }
