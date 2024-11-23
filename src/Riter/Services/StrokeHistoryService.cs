@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 using Riter.Core.Drawing;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
