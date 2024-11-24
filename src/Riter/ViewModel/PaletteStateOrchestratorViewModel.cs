@@ -18,7 +18,8 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         HighlighterViewModel highlighterViewModel,
         SettingPanelViewModel settingPanelViewModel,
         ButtonSelectedViewModel buttonSelectedViewModel,
-        StartupLocationViewModel startupLocationViewModel)
+        StartupLocationViewModel startupLocationViewModel,
+        HotKeyCommandService hotKeyCommandService)
     {
         DrawingViewModel = drawingViewModel;
         StrokeVisibilityViewModel = strokeVisibilityViewModel;
@@ -30,9 +31,10 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         ButtonSelectedViewModel = buttonSelectedViewModel;
         StartupLocationViewModel = startupLocationViewModel;
 
-        _hotKeyCommandService = new HotKeyCommandService(BuildHotKeyCommandMap());
-        BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
-        HighlighterViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
+        _hotKeyCommandService = hotKeyCommandService;
+        _hotKeyCommandService.InitializeCommands(this.BuildHotKeyCommandMap());
+
+        AttachPropertyChangedHandlers();
     }
 
     public DrawingViewModel DrawingViewModel { get; }
@@ -69,38 +71,11 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         _hotKeyCommandService.ExecuteHotKey(hotKeies);
     }
 
-    private Dictionary<HotKey, Action> BuildHotKeyCommandMap() => new()
-        {
-            { HotKey.Drawing, () => DrawingViewModel.StartDrawingCommand.Execute(null) },
-            { HotKey.Erasing, () => DrawingViewModel.StartErasingCommand.Execute(null) },
-            { HotKey.Trash, () => StrokeHistoryViewModel.ClearCommand.Execute(null) },
-            { HotKey.Highlighter, () => DrawingViewModel.ToggleHighlighterCommand.Execute(null) },
-            { HotKey.Release, () => DrawingViewModel.ReleaseCommand.Execute(null) },
-            { HotKey.HideAll, () => StrokeVisibilityViewModel.HideAllCommand.Execute(null) },
-            { HotKey.Undo, () => StrokeHistoryViewModel.UndoCommand.Execute(null) },
-            { HotKey.Redo, () => StrokeHistoryViewModel.RedoCommand.Execute(null) },
-            { HotKey.SizeOfBrush1X, () => BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X1) },
-            { HotKey.SizeOfBrush2X, () => BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X2) },
-            { HotKey.SizeOfBrush3X, () => BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X3) },
-            { HotKey.Yellow, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Yellow) },
-            { HotKey.Purple, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Purple) },
-            { HotKey.Mint, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Mint) },
-            { HotKey.Coral, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Coral) },
-            { HotKey.Red, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Red) },
-            { HotKey.Cyan, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Cyan) },
-            { HotKey.Pink, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Pink) },
-            { HotKey.Gray, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Gray) },
-            { HotKey.Black, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.Black) },
-            { HotKey.Rainbow, () => BrushSettingsViewModel.SetInkColorWithHotKeyCommand.Execute(InkColor.RainBow) },
-            { HotKey.TransparentBackground, () => InkEditingModeViewModel.EnableTransparentCommand.Execute(null) },
-            { HotKey.BlackboardBackground, () => InkEditingModeViewModel.EnableBlackboardCommand.Execute(null) },
-            { HotKey.WhiteboardBackground, () => InkEditingModeViewModel.EnableWhiteboardCommand.Execute(null) },
-            { HotKey.Arrow, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Arrow) },
-            { HotKey.Rectangle, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Rectangle) },
-            { HotKey.Circle, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Circle) },
-            { HotKey.Database, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Database) },
-            { HotKey.Line, () => DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Line) },
-        };
+    private void AttachPropertyChangedHandlers()
+    {
+        BrushSettingsViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
+        HighlighterViewModel.PropertyChanged += (_, e) => OnBrushOrHighlightChanged(e.PropertyName);
+    }
 
     private void OnBrushOrHighlightChanged(string propertyName)
     {
