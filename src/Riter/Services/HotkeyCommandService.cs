@@ -1,11 +1,15 @@
 ﻿using System.Text;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Riter.Services;
-public class HotKeyCommandService(Dictionary<HotKey, Action> hotKeyCommandMap)
+public class HotKeyCommandService(AppSettings appSettings)
 {
-    private readonly AppSettings _appSettings = App.ServiceProvider.GetService<AppSettings>();
-    private readonly Dictionary<HotKey, Action> _hotKeyCommandMap = hotKeyCommandMap;
+    private readonly AppSettings _appSettings = appSettings;
+    private Dictionary<HotKey, Action> _hotKeyCommandMap;
+
+    public void InitializeCommands(Dictionary<HotKey, Action> commandMap)
+    {
+        _hotKeyCommandMap = commandMap;
+    }
 
     public void ExecuteHotKey(HotKeiesPressed hotKeies)
     {
