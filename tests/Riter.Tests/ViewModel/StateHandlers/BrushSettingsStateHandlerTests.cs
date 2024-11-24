@@ -1,8 +1,8 @@
 ﻿using global::Riter.Core;
-using global::Riter.Core.Drawing;
 using global::Riter.Core.Enum;
-using global::Riter.ViewModel.StateHandlers;
 using Moq;
+using Riter.Core.Drawing;
+using Riter.ViewModel.StateHandlers;
 
 namespace Riter.Tests.ViewModel.StateHandlers;
 
@@ -16,16 +16,57 @@ public class BrushSettingsStateHandlerTests
     {
         _mockButtonSelectedStateHandler = new Mock<IButtonSelectedStateHandler>();
         _mockSettingPanelStateHandler = new Mock<ISettingPanelStateHandler>();
-
         _brushSettingsStateHandler = new BrushSettingsStateHandler(
             _mockButtonSelectedStateHandler.Object,
-            _mockSettingPanelStateHandler.Object);
+            _mockSettingPanelStateHandler.Object
+        );
+    }
+
+    [Fact]
+    public void Should_UpdateInkColorAndColorSelected_When_SetInkColorIsCalled()
+    {
+
+        var newColor = "Red";
+        _brushSettingsStateHandler.SetInkColor(newColor);
+
+        _brushSettingsStateHandler.InkColor.Should().Be(newColor);
+        _brushSettingsStateHandler.ColorSelected.Should().Be(newColor);
+        _mockButtonSelectedStateHandler.Verify(m => m.ResetPreviousButton(), Times.Exactly(2));
+        _mockButtonSelectedStateHandler.Verify(m => m.ResetArrowButtonSelected(), Times.Exactly(2));
+        _mockSettingPanelStateHandler.Verify(m => m.HideAllPanels(), Times.Exactly(2));
+    }
+
+    [Fact]
+    public void Should_UpdateInkColor_When_SetInkColorWithHotKeyIsCalled()
+    {
+        var color = InkColor.Red;
+        _brushSettingsStateHandler.SetInkColorWithHotKey(color);
+        _brushSettingsStateHandler.InkColor.Should().Be(ColorPalette.Colors[color].Hex);
+    }
+
+    [Fact]
+    public void Should_UpdateSizeOfBrush_When_SetSizeOfBrushIsCalled()
+    {
+        var newSize = "5.0";
+        _brushSettingsStateHandler.SetSizeOfBrush(newSize);
+
+        _brushSettingsStateHandler.SizeOfBrush.Should().Be(5.0);
+        _mockButtonSelectedStateHandler.Verify(m => m.ResetPreviousButton(), Times.Exactly(2));
+        _mockButtonSelectedStateHandler.Verify(m => m.ResetArrowButtonSelected(), Times.Exactly(2));
+        _mockSettingPanelStateHandler.Verify(m => m.HideAllPanels(), Times.Exactly(2));
+    }
+
+    [Fact]
+    public void Should_UpdateSizeOfBrush_When_SetSizeOfBrushWithHotKeyIsCalled()
+    {
+        var newSize = BrushSize.X2;
+        _brushSettingsStateHandler.SetSizeOfBrushWithHotKey(newSize);
+        _brushSettingsStateHandler.SizeOfBrush.Should().Be((double)newSize);
     }
 
     [Fact]
     public void Constructor_ShouldInitializeDefaults()
     {
-        // Assert default brush settings
         _brushSettingsStateHandler.InkColor.Should().Be(AppSettings.InkDefaultColor);
         _brushSettingsStateHandler.SizeOfBrush.Should().Be(AppSettings.BrushSize);
         _brushSettingsStateHandler.IsRainbow.Should().BeFalse();
@@ -35,86 +76,70 @@ public class BrushSettingsStateHandlerTests
     [Fact]
     public void SetInkColor_ShouldUpdatePropertiesAndResetSettings()
     {
-        // Act
-        _brushSettingsStateHandler.SetInkColor(EnumInkColor.Red.ToString());
+        
+        _brushSettingsStateHandler.SetInkColor(InkColor.Red.ToString());
 
-        // Assert
-        _brushSettingsStateHandler.InkColor.Should().Be(EnumInkColor.Red.ToString());
-        _brushSettingsStateHandler.ColorSelected.Should().Be(EnumInkColor.Red.ToString());
+        _brushSettingsStateHandler.InkColor.Should().Be(InkColor.Red.ToString());
+        _brushSettingsStateHandler.ColorSelected.Should().Be(InkColor.Red.ToString());
         _brushSettingsStateHandler.IsRainbow.Should().BeFalse();
 
-        _mockButtonSelectedStateHandler.Verify(b => b.ResetPreviousButton(), Times.Once);
-        _mockButtonSelectedStateHandler.Verify(b => b.ResetArrowButtonSelected(), Times.Once);
-        _mockSettingPanelStateHandler.Verify(s => s.HideAllPanels(), Times.Once);
+        _mockButtonSelectedStateHandler.Verify(b => b.ResetPreviousButton(), Times.Exactly(2));
+        _mockButtonSelectedStateHandler.Verify(b => b.ResetArrowButtonSelected(), Times.Exactly(2));
+        _mockSettingPanelStateHandler.Verify(s => s.HideAllPanels(), Times.Exactly(2));
     }
 
     [Fact]
     public void SetInkColor_ShouldSetRainbowModeWhenColorIsRainbow()
     {
-        // Act
-        _brushSettingsStateHandler.SetInkColor(EnumInkColor.RainBow.ToString());
+        
+        _brushSettingsStateHandler.SetInkColor(InkColor.RainBow.ToString());
 
-        // Assert
+        
         _brushSettingsStateHandler.IsRainbow.Should().BeTrue();
-        _brushSettingsStateHandler.InkColor.Should().Be(EnumInkColor.RainBow.ToString());
-        _brushSettingsStateHandler.ColorSelected.Should().Be(EnumInkColor.RainBow.ToString());
+        _brushSettingsStateHandler.InkColor.Should().Be(InkColor.RainBow.ToString());
+        _brushSettingsStateHandler.ColorSelected.Should().Be(InkColor.RainBow.ToString());
     }
 
     [Fact]
     public void SetInkColorWithHotKey_ShouldUpdateInkColorAndRainbowMode()
     {
-        // Act
-        _brushSettingsStateHandler.SetInkColorWithHotKey(EnumInkColor.Blue);
+        _brushSettingsStateHandler.SetInkColorWithHotKey(InkColor.Mint);
 
-        // Assert
         _brushSettingsStateHandler.IsRainbow.Should().BeFalse();
-        _brushSettingsStateHandler.InkColor.Should().Be(ColorPalette.Colors[EnumInkColor.Blue].Hex);
+        _brushSettingsStateHandler.InkColor.Should().Be(ColorPalette.Colors[InkColor.Mint].Hex);
     }
 
     [Fact]
     public void SetInkColorWithHotKey_ShouldEnableRainbowModeWhenRainbowIsSelected()
     {
-        // Act
-        _brushSettingsStateHandler.SetInkColorWithHotKey(EnumInkColor.RainBow);
+        
+        _brushSettingsStateHandler.SetInkColorWithHotKey(InkColor.RainBow);
 
-        // Assert
         _brushSettingsStateHandler.IsRainbow.Should().BeTrue();
-        _brushSettingsStateHandler.InkColor.Should().Be(EnumInkColor.RainBow.ToString());
-        _brushSettingsStateHandler.ColorSelected.Should().Be(EnumInkColor.RainBow.ToString());
+        _brushSettingsStateHandler.InkColor.Should().Be(InkColor.RainBow.ToString());
+        _brushSettingsStateHandler.ColorSelected.Should().Be(InkColor.RainBow.ToString());
     }
 
     [Fact]
     public void SetSizeOfBrush_ShouldParseAndSetBrushSize()
     {
-        // Act
+        
         _brushSettingsStateHandler.SetSizeOfBrush("5.5");
 
-        // Assert
         _brushSettingsStateHandler.SizeOfBrush.Should().Be(5.5);
 
-        _mockButtonSelectedStateHandler.Verify(b => b.ResetPreviousButton(), Times.Once);
-        _mockButtonSelectedStateHandler.Verify(b => b.ResetArrowButtonSelected(), Times.Once);
-        _mockSettingPanelStateHandler.Verify(s => s.HideAllPanels(), Times.Once);
+        _mockButtonSelectedStateHandler.Verify(b => b.ResetPreviousButton(), Times.Exactly(2));
+        _mockButtonSelectedStateHandler.Verify(b => b.ResetArrowButtonSelected(), Times.Exactly(2));
+        _mockSettingPanelStateHandler.Verify(s => s.HideAllPanels(), Times.Exactly(2));
     }
 
-    [Fact]
-    public void SetSizeOfBrushWithHotKey_ShouldSetBrushSizeFromEnum()
-    {
-        // Act
-        _brushSettingsStateHandler.SetSizeOfBrushWithHotKey(BrushSize.Medium);
-
-        // Assert
-        _brushSettingsStateHandler.SizeOfBrush.Should().Be((double)BrushSize.Medium);
-    }
 
     [Fact]
     public void SetInkColor_InvalidColor_ShouldThrowException()
     {
-        // Act
         Action act = () => _brushSettingsStateHandler.SetInkColor("InvalidColor");
-
-        // Assert
-        act.Should().NotThrow(); // Optional: Modify this behavior if exceptions are required.
+        
+        act.Should().NotThrow();
         _brushSettingsStateHandler.InkColor.Should().Be("InvalidColor");
     }
 }
