@@ -1,6 +1,4 @@
-﻿using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input.StylusPlugIns;
+﻿using System.Windows.Ink;
 using System.Windows.Media;
 using Riter.Core.Enum;
 
