@@ -63,6 +63,12 @@ public class DrawingStateHandler(
 
     public void StartErasing()
     {
+        if (_buttonSelectedStateHandler.ButtonSelectedName == ButtonNames.ErasingButton)
+        {
+            StartDrawing();
+            return;
+        }
+
         IsReleased = false;
         _inkEditingModeStateHandler.EraseByStroke();
         _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ErasingButton);

@@ -1,6 +1,7 @@
 ﻿using Moq;
 using Riter.Core.Consts;
 using Riter.Core.Enum;
+using Riter.ViewModel.Handlers;
 using Riter.ViewModel.StateHandlers;
 
 namespace Riter.Tests.ViewModel.StateHandlers;
@@ -67,6 +68,22 @@ public class DrawingStateHandlerTests
         _stateHandler.IsReleased.Should().BeFalse();
         _inkEditingModeStateHandlerMock.Verify(m => m.EraseByStroke(), Times.Once);
         _buttonSelectedStateHandlerMock.Verify(m => m.SetButtonSelectedName(ButtonNames.ErasingButton), Times.Once);
+    }
+
+    [Fact]
+    public void Should_StartDrawing_When_StartErasingIsCalledTwice()
+    {
+        _buttonSelectedStateHandlerMock
+            .Setup(m => m.ButtonSelectedName)
+            .Returns(ButtonNames.ErasingButton);
+
+        _stateHandler.StartErasing();
+
+        _stateHandler.IsReleased.Should().BeFalse();
+        _buttonSelectedStateHandlerMock.Verify(m => m.SetButtonSelectedName(ButtonNames.DrawingButton), Times.Once);
+
+        _inkEditingModeStateHandlerMock.Verify(x => x.Ink(), Times.Exactly(2));
+        _highlighterStateHandlerMock.Verify(m => m.DisableHighlighter(), Times.Once);
     }
 
     [Fact]
