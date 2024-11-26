@@ -13,5 +13,4 @@ public readonly struct VectorX(double x, double y)
 
     public readonly Point ToPoint() => new(X, Y);
 
-    public override readonly string ToString() => string.Format("[{0}, {1}]", X, Y);
 }

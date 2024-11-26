@@ -13,12 +13,14 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
     private double _sizeOfBrush;
     private bool _isRainbow;
 
-    public BrushSettingsStateHandler(IButtonSelectedStateHandler buttonSelectedStateHandler, ISettingPanelStateHandler settingPanelStateHandler)
+    public BrushSettingsStateHandler(
+        IButtonSelectedStateHandler buttonSelectedStateHandler,
+        ISettingPanelStateHandler settingPanelStateHandler)
     {
         _buttonSelectedStateHandler = buttonSelectedStateHandler;
         _settingPanelStateHandler = settingPanelStateHandler;
-        SetInkColor(AppSettings.InkDefaultColor);
-        SizeOfBrush = AppSettings.BrushSize;
+
+        InitializeDefaults();
     }
 
     public string ColorSelected
@@ -47,10 +49,8 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
 
     public void SetInkColor(string color)
     {
-        IsRainbow = color == EnumInkColor.RainBow.ToString();
-
-        InkColor = color;
-        ColorSelected = color;
+        UpdateRainbowMode(color);
+        UpdateInkColor(color);
         ResetSettings();
     }
 
@@ -58,23 +58,60 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
     {
         if (color == EnumInkColor.RainBow)
         {
-            IsRainbow = true;
-            InkColor = ColorSelected = color.ToString();
+            EnableRainbowMode(color.ToString());
         }
         else
         {
-            IsRainbow = false;
-            InkColor = ColorPalette.Colors[color].Hex;
+            DisableRainbowMode(ColorPalette.Colors[color].Hex);
         }
     }
 
     public void SetSizeOfBrush(string size)
     {
-        SizeOfBrush = double.Parse(size);
-        ResetSettings();
+        if (double.TryParse(size, out var parsedSize))
+        {
+            SizeOfBrush = parsedSize;
+            ResetSettings();
+        }
+        else
+        {
+            throw new ArgumentException("Invalid brush size format.", nameof(size));
+        }
     }
 
-    public void SetSizeOfBrushWithHotKey(BrushSize size) => SizeOfBrush = (double)size;
+    public void SetSizeOfBrushWithHotKey(BrushSize size)
+    {
+        SizeOfBrush = (double)size;
+    }
+
+    private void InitializeDefaults()
+    {
+        SetInkColor(AppSettings.InkDefaultColor);
+        SizeOfBrush = AppSettings.BrushSize;
+    }
+
+    private void UpdateRainbowMode(string color)
+    {
+        IsRainbow = color == EnumInkColor.RainBow.ToString();
+    }
+
+    private void UpdateInkColor(string color)
+    {
+        InkColor = color;
+        ColorSelected = color;
+    }
+
+    private void EnableRainbowMode(string color)
+    {
+        IsRainbow = true;
+        InkColor = ColorSelected = color;
+    }
+
+    private void DisableRainbowMode(string colorHex)
+    {
+        IsRainbow = false;
+        InkColor = colorHex;
+    }
 
     private void ResetSettings()
     {

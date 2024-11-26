@@ -69,6 +69,7 @@ public partial class App : Application
         serviceCollection.AddScoped<IShapeDrawer, RectangleDrawer>();
         serviceCollection.AddScoped<IShapeDrawer, DatabaseDrawer>();
 
+        serviceCollection.AddSingleton<HotKeyCommandService>();
         serviceCollection.AddSingleton<ButtonSelectedViewModel>();
         serviceCollection.AddSingleton<SettingPanelViewModel>();
         serviceCollection.AddSingleton<HighlighterViewModel>();
