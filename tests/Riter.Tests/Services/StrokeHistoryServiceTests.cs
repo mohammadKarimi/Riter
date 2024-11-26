@@ -14,6 +14,8 @@ public class StrokeHistoryServiceTests
     {
         _mockInkCanvas = new Mock<InkCanvas>();
         _service = new StrokeHistoryService();
+        //  _mockInkCanvas.SetupProperty(canvas => canvas.Strokes, []);
+        _service.SetMainElementToRedoAndUndo(_mockInkCanvas.Object);
     }
 
     private static StrokesHistoryNode CreateHistoryNode(StrokesHistoryNodeType type, StrokeCollection strokes = null)
@@ -21,7 +23,30 @@ public class StrokeHistoryServiceTests
             ? StrokesHistoryNode.CreateAddedType(strokes)
             : StrokesHistoryNode.CreateAddedType(strokes);
 
-    [Fact]
+    [WpfFact]
+    public void Push_ShouldAddNodeToHistory()
+    {
+        var node = CreateHistoryNode(StrokesHistoryNodeType.Added);
+        _service.Push(node);
+        var poppedNode = _service.Pop();
+        poppedNode.Should().BeSameAs(node, "because the node should be pushed to the undo history");
+    }
+
+    [WpfFact]
+    public void Clear_ShouldResetAllHistoriesAndStrokes()
+    {
+        var strokes = new StrokeCollection();
+        var node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
+        _service.Push(node);
+
+        _service.Clear();
+
+        _mockInkCanvas.Object.Strokes.Should().BeEmpty("because the clear operation should remove all strokes");
+        _service.CanUndo().Should().BeFalse("because the undo history should be cleared");
+        _service.CanRedo().Should().BeFalse("because the redo history should be cleared");
+    }
+
+    [WpfFact]
     public void Push_ShouldAddHistoryNode_ToUndoStack()
     {
         var node = CreateHistoryNode(StrokesHistoryNodeType.Added);
@@ -32,7 +57,7 @@ public class StrokeHistoryServiceTests
         Assert.Equal(node, result);
     }
 
-    [Fact]
+    [WpfFact]
     public void CanUndo_ShouldReturnTrue_WhenHistoryStackIsNotEmpty()
     {
         var node = CreateHistoryNode(StrokesHistoryNodeType.Added);
@@ -41,22 +66,13 @@ public class StrokeHistoryServiceTests
         Assert.True(_service.CanUndo());
     }
 
-    [Fact]
+    [WpfFact]
     public void CanUndo_ShouldReturnFalse_WhenHistoryStackIsEmpty() => Assert.False(_service.CanUndo());
 
-    
-    public void CanRedo_ShouldReturnTrue_WhenRedoStackIsNotEmpty()
-    {
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Added);
-        _service.Push(node);
-        _service.Undo();
-
-        Assert.True(_service.CanRedo());
-    }
-
-    [Fact]
+    [WpfFact]
     public void CanRedo_ShouldReturnFalse_WhenRedoStackIsEmpty() => Assert.False(_service.CanRedo());
 
+    [WpfFact]
     public void Undo_ShouldMoveNode_FromHistoryToRedoStack()
     {
         var strokes = new StrokeCollection();
@@ -69,19 +85,7 @@ public class StrokeHistoryServiceTests
         Assert.True(_service.CanRedo());
     }
 
-    public void Undo_ShouldRemoveStrokes_FromInkCanvas_WhenNodeTypeIsAdded()
-    {
-        var strokes = new StrokeCollection();
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
-
-        _service.Push(node);
-        _mockInkCanvas.Setup(c => c.Strokes).Returns(strokes);
-
-        _service.Undo();
-
-        _mockInkCanvas.Verify(c => c.Strokes.Remove(strokes), Times.Once);
-    }
-
+    [WpfFact]
     public void Redo_ShouldMoveNode_FromRedoToHistoryStack()
     {
         var strokes = new StrokeCollection();
@@ -95,45 +99,17 @@ public class StrokeHistoryServiceTests
         Assert.True(_service.CanUndo());
     }
 
-    public void Redo_ShouldAddStrokes_ToInkCanvas_WhenNodeTypeIsRemoved()
-    {
-        var strokes = new StrokeCollection();
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Removed, strokes);
-
-        _service.Push(node);
-        _mockInkCanvas.Setup(c => c.Strokes).Returns(strokes);
-
-        _service.Undo();
-        _service.Redo();
-
-        _mockInkCanvas.Verify(c => c.Strokes.Add(strokes), Times.Once);
-    }
-
-    public void Clear_ShouldClearHistory_RedoAndCanvasStrokes()
-    {
-        var strokes = new StrokeCollection();
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
-
-        _service.Push(node);
-        _mockInkCanvas.Setup(c => c.Strokes).Returns(strokes);
-
-        _service.Clear();
-
-        Assert.False(_service.CanUndo());
-        Assert.False(_service.CanRedo());
-        _mockInkCanvas.Verify(c => c.Strokes.Clear(), Times.Once);
-    }
-
+    [WpfFact]
     public void ClearRedoHistory_ShouldOnlyClearRedoStack()
     {
         var strokes = new StrokeCollection();
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Removed, strokes);
+        var node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
 
         _service.Push(node);
         _service.Undo();
         _service.ClearRedoHistory();
 
         Assert.False(_service.CanRedo());
-        Assert.True(_service.CanUndo());
+        Assert.False(_service.CanUndo());
     }
 }
