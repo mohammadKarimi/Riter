@@ -11,7 +11,6 @@
              d:DesignHeight="290" d:DesignWidth="550">
     <Grid Margin="0,2,0,0" Background="White">
         <ScrollViewer>
-
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="265"  />
@@ -59,6 +58,46 @@
                         <TextBox Text=""  Padding="3" Width="130" x:Name="HideAll"/>
                     </StackPanel>
 
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Yellow" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Yellow"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Purple" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Purple"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Mint" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Mint"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Coral" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Coral"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Red" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Red"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Cyan" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Cyan"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Pink" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Pink"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Gray" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Gray"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Black" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Black"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Rainbow" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Rainbow"/>
+                    </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Vertical">
 
