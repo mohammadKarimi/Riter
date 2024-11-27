@@ -6,32 +6,32 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
             xmlns:viewmodel="clr-namespace:Riter.ViewModel"
              xmlns:local="clr-namespace:Riter.Core"
-            mc:Ignorable="d" 
+            mc:Ignorable="d"
              KeyDown="Window_KeyDown"
              KeyUp="Window_KeyUp">
-    
-        <Grid>
-            <InkCanvas x:Name="MainInkCanvas"
+
+    <Grid>
+        <InkCanvas x:Name="MainInkCanvas"
                    EditingMode="{Binding InkEditingModeViewModel.InkEditingMode}"
                    Background="{Binding InkEditingModeViewModel.Background}"
                    MoveEnabled="False"
                    ResizeEnabled="False"
                    Cursor="Pen"
                    DefaultDrawingAttributes="{Binding InkDrawingAttributes}">
-                <InkCanvas.Style>
-                    <Style TargetType="InkCanvas">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding StrokeVisibilityViewModel.IsHideAll}" Value="True">
-                                <Setter Property="Opacity" Value="0" />
-                                <Setter Property="EditingMode" Value="None" />
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding StrokeVisibilityViewModel.IsHideAll}" Value="False">
-                                <Setter Property="Opacity" Value="1" />
-                                <Setter Property="EditingMode" Value="Ink" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </InkCanvas.Style>
-            </InkCanvas>
-        </Grid>
+            <InkCanvas.Style>
+                <Style TargetType="InkCanvas">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding StrokeVisibilityViewModel.IsHideAll}" Value="True">
+                            <Setter Property="Opacity" Value="0" />
+                            <Setter Property="EditingMode" Value="None" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding StrokeVisibilityViewModel.IsHideAll}" Value="False">
+                            <Setter Property="Opacity" Value="1" />
+                            <Setter Property="EditingMode" Value="Ink" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </InkCanvas.Style>
+        </InkCanvas>
+    </Grid>
 </UserControl>

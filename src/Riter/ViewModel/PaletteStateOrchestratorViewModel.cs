@@ -1,6 +1,5 @@
 ﻿using System.Windows.Ink;
 using Riter.Core.Drawing;
-using Riter.Core.Enum;
 using Riter.Services;
 
 namespace Riter.ViewModel;
