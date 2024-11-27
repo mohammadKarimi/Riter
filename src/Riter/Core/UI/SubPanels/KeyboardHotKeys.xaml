@@ -11,7 +11,6 @@
              d:DesignHeight="290" d:DesignWidth="550">
     <Grid Margin="0,2,0,0" Background="White">
         <ScrollViewer>
-
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="265"  />

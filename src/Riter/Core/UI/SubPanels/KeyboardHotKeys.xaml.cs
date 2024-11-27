@@ -38,6 +38,17 @@ public partial class KeyboardHotKeys : UserControl
         Line.Text = _hotkeys[HotKey.Line.ToString()];
         Circle.Text = _hotkeys[HotKey.Circle.ToString()];
         Rectangle.Text = _hotkeys[HotKey.Rectangle.ToString()];
+
+        Yellow.Text = _hotkeys[HotKey.Yellow.ToString()];
+        Purple.Text = _hotkeys[HotKey.Purple.ToString()];
+        Mint.Text = _hotkeys[HotKey.Mint.ToString()];
+        Coral.Text = _hotkeys[HotKey.Coral.ToString()];
+        Red.Text = _hotkeys[HotKey.Red.ToString()];
+        Cyan.Text = _hotkeys[HotKey.Cyan.ToString()];
+        Pink.Text = _hotkeys[HotKey.Pink.ToString()];
+        Gray.Text = _hotkeys[HotKey.Gray.ToString()];
+        Black.Text = _hotkeys[HotKey.Black.ToString()];
+        Rainbow.Text = _hotkeys[HotKey.Rainbow.ToString()];
     }
 
     private void UserControl_KeyDown(object sender, KeyEventArgs e)
