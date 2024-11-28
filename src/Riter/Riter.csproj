@@ -7,6 +7,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
         <AssemblyVersion>0.2.5</AssemblyVersion>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup>
         <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
@@ -28,9 +29,9 @@
         </PackageReference>
     </ItemGroup>
     <ItemGroup>
-      <Compile Update="Core\UI\SubPanels\ColorPalettePanel.xaml.cs">
-        <SubType>Code</SubType>
-      </Compile>
+        <Compile Update="Core\UI\SubPanels\ColorPalettePanel.xaml.cs">
+            <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -39,28 +40,28 @@
         </None>
 
         <None Update="Resources\Cursor\arrow-arrow.cur">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="Resources\Cursor\arrow-circle.cur">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="Resources\Cursor\arrow-db.cur">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="Resources\Cursor\arrow-line.cur">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="Resources\Cursor\arrow-move.cur">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="Resources\Cursor\arrow-rectangle.cur">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
 
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Resources\Cursor\" />
+        <Folder Include="Resources\Cursor\" />
     </ItemGroup>
 
 </Project>
