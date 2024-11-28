@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.ComponentModel;
+using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Media;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,12 +31,43 @@ public partial class MainInkCanvasControl : UserControl
         _shapeDrawers = App.ServiceProvider.GetService<IEnumerable<IShapeDrawer>>()
                                             .ToDictionary(drawer => drawer.SupportedShape);
 
+        DataContextChanged += MainInkCanvasControl_DataContextChanged;
         _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvas);
         MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
-
         MainInkCanvas.MouseLeftButtonDown += StartDrawing;
         MainInkCanvas.MouseLeftButtonUp += EndDrawing;
         MainInkCanvas.MouseMove += DrawShape;
+    }
+
+    private void MainInkCanvasControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+    {
+        if (e.NewValue is PaletteStateOrchestratorViewModel viewModel)
+        {
+            viewModel.DrawingViewModel.PropertyChanged += DrawingViewModel_PropertyChanged;
+        }
+    }
+
+    private void DrawingViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
+        if (e.PropertyName != nameof(viewModel.DrawingViewModel.CurrentShape))
+            return;
+
+        MainInkCanvas.UseCustomCursor = true;
+        MainInkCanvas.Cursor = viewModel.DrawingViewModel.CurrentShape switch
+        {
+            DrawingShape.Rectangle => new Cursor(CursorPaths.RectangleCursor),
+            DrawingShape.Database => new Cursor(CursorPaths.DatabaseCursor),
+            DrawingShape.Circle => new Cursor(CursorPaths.CircleCursor),
+            DrawingShape.Arrow => new Cursor(CursorPaths.ArrowCursor),
+            DrawingShape.Line => new Cursor(CursorPaths.LineCursor),
+            _ => Cursors.Arrow
+        };
+
+        if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.Free)
+        {
+            MainInkCanvas.UseCustomCursor = false;
+        }
     }
 
     private static bool IsDrawingShapeKeyEntered(Key key) => key == Key.LeftShift || key == Key.RightShift;
