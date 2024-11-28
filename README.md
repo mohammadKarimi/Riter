@@ -104,6 +104,9 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 - **Ctrl + R** -> Rectangle
 - **Ctrl + C** -> Circle
 - **Ctrl + D** -> Database
+
+### Move Shape
+- **Press ALT** -> with press alt you can move objects.
 ---
 
 ## Getting Started
