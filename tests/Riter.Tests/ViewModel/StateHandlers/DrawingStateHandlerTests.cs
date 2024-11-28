@@ -42,7 +42,7 @@ public class DrawingStateHandlerTests
     {
         _stateHandler.StartDrawing();
 
-        _stateHandler.CurrentShape.Should().Be(DrawingShape.Line);
+        _stateHandler.CurrentShape.Should().Be(DrawingShape.Free);
         _stateHandler.IsReleased.Should().BeFalse();
         _inkEditingModeStateHandlerMock.Verify(m => m.Ink(), Times.Exactly(2));
         _highlighterStateHandlerMock.Verify(m => m.DisableHighlighter(), Times.Once);
@@ -91,7 +91,7 @@ public class DrawingStateHandlerTests
     {
         _stateHandler.StartHighlighterDrawing();
 
-        _stateHandler.CurrentShape.Should().Be(DrawingShape.Line);
+        _stateHandler.CurrentShape.Should().Be(DrawingShape.Free);
         _stateHandler.IsReleased.Should().BeFalse();
         _highlighterStateHandlerMock.Verify(m => m.EnableHighlighter(), Times.Once);
         _inkEditingModeStateHandlerMock.Verify(m => m.Ink(), Times.Exactly(2));
