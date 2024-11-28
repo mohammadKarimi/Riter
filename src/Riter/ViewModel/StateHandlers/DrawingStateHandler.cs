@@ -36,7 +36,7 @@ public class DrawingStateHandler(
     public DrawingShape CurrentShape
     {
         get => _currentShape;
-        private set => SetProperty(ref _currentShape, value, nameof(CurrentShape));
+        private set => AlwaysSetProperty(ref _currentShape, value, nameof(CurrentShape));
     }
 
     public void Release()

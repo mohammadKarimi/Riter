@@ -28,4 +28,12 @@ public abstract class BaseStateHandler : INotifyPropertyChanged
 
         return false;
     }
+
+    protected bool AlwaysSetProperty<T>(ref T field, T newValue, string propertyName, Action onChangedAction = null)
+    {
+        field = newValue;
+        onChangedAction?.Invoke();
+        OnPropertyChanged(propertyName);
+        return true;
+    }
 }
