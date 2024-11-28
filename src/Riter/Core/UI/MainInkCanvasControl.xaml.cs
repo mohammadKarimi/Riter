@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Media;
@@ -43,6 +44,7 @@ public partial class MainInkCanvasControl : UserControl
     {
         if (e.NewValue is PaletteStateOrchestratorViewModel viewModel)
         {
+            viewModel.InkEditingModeViewModel.PropertyChanged += DrawingViewModel_PropertyChanged;
             viewModel.DrawingViewModel.PropertyChanged += DrawingViewModel_PropertyChanged;
         }
     }
@@ -50,21 +52,29 @@ public partial class MainInkCanvasControl : UserControl
     private void DrawingViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
         var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
-        if (e.PropertyName != nameof(viewModel.DrawingViewModel.CurrentShape))
-            return;
+        Debug.WriteLine(e.PropertyName);
 
-        MainInkCanvas.UseCustomCursor = true;
-        MainInkCanvas.Cursor = viewModel.DrawingViewModel.CurrentShape switch
+        if (e.PropertyName == nameof(viewModel.InkEditingModeViewModel.InkEditingMode)
+          && viewModel.InkEditingModeViewModel.InkEditingMode is InkCanvasEditingMode.None)
         {
-            DrawingShape.Rectangle => new Cursor(CursorPaths.RectangleCursor),
-            DrawingShape.Database => new Cursor(CursorPaths.DatabaseCursor),
-            DrawingShape.Circle => new Cursor(CursorPaths.CircleCursor),
-            DrawingShape.Arrow => new Cursor(CursorPaths.ArrowCursor),
-            DrawingShape.Line => new Cursor(CursorPaths.LineCursor),
-            _ => Cursors.Arrow
-        };
+            MainInkCanvas.UseCustomCursor = true;
+        }
 
-        if (viewModel.DrawingViewModel.CurrentShape == DrawingShape.Free)
+        if (e.PropertyName == nameof(viewModel.DrawingViewModel.CurrentShape))
+        {
+            MainInkCanvas.Cursor = viewModel.DrawingViewModel.CurrentShape switch
+            {
+                DrawingShape.Rectangle => new Cursor(CursorPaths.RectangleCursor),
+                DrawingShape.Database => new Cursor(CursorPaths.DatabaseCursor),
+                DrawingShape.Circle => new Cursor(CursorPaths.CircleCursor),
+                DrawingShape.Arrow => new Cursor(CursorPaths.ArrowCursor),
+                DrawingShape.Line => new Cursor(CursorPaths.LineCursor),
+                _ => Cursors.Arrow
+            };
+        }
+
+        if (e.PropertyName == nameof(viewModel.InkEditingModeViewModel.InkEditingMode)
+            && viewModel.InkEditingModeViewModel.InkEditingMode is InkCanvasEditingMode.Ink)
         {
             MainInkCanvas.UseCustomCursor = false;
         }
@@ -119,14 +129,14 @@ public partial class MainInkCanvasControl : UserControl
             _isDragging = true;
             _inkEditingModeStateHandler.None();
             MainInkCanvas.UseCustomCursor = true;
-            MainInkCanvas.Cursor = Cursors.SizeAll;
+            MainInkCanvas.Cursor = new Cursor(CursorPaths.MoveCursor);
         }
 
         if (IsDrawingShapeKeyEntered(e.Key) && _inkEditingModeStateHandler.InkEditingMode is InkCanvasEditingMode.Ink)
         {
             _inkEditingModeStateHandler.None();
             MainInkCanvas.UseCustomCursor = true;
-            MainInkCanvas.Cursor = Cursors.Pen;
+            MainInkCanvas.Cursor = new Cursor(CursorPaths.LineCursor);
         }
     }
 
