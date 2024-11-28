@@ -135,8 +135,8 @@
                                         <DataTrigger Binding="{Binding ButtonSelectedViewModel.ButtonSelectedName}" Value="ShapeDrawButton">
                                             <Setter Property="Tag" Value="Selected"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="FreeDraw">
-                                            <Setter Property="Content" Value="{StaticResource Icon_RoundedRectangle}"/>
+                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Free}">
+                                            <Setter Property="Content" Value="{StaticResource Icon_Line_Toolbox}"/>
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Line}">
                                             <Setter Property="Content" Value="{StaticResource Icon_Line_Toolbox}"/>

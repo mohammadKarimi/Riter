@@ -6,4 +6,5 @@ public enum DrawingShape
     Circle = 2,
     Rectangle = 3,
     Database = 4,
+    Free = 5,
 }

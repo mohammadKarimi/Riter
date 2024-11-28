@@ -15,7 +15,7 @@ public class DrawingStateHandler(
     private readonly IButtonSelectedStateHandler _buttonSelectedStateHandler = buttonSelectedStateHandler;
     private readonly ISettingPanelStateHandler _settingPanelStateHandler = settingPanelStateHandler;
     private bool _isReleased = true;
-    private DrawingShape _currentShape = DrawingShape.Line;
+    private DrawingShape _currentShape = DrawingShape.Free;
 
     public bool IsReleased
     {
@@ -36,7 +36,7 @@ public class DrawingStateHandler(
     public DrawingShape CurrentShape
     {
         get => _currentShape;
-        private set => SetProperty(ref _currentShape, value, nameof(CurrentShape));
+        private set => AlwaysSetProperty(ref _currentShape, value, nameof(CurrentShape));
     }
 
     public void Release()
@@ -54,7 +54,7 @@ public class DrawingStateHandler(
 
     public void StartDrawingShape(DrawingShape shape)
     {
-        CurrentShape = shape;
+        CurrentShape = shape == DrawingShape.Free ? DrawingShape.Line : shape;
 
         _highlighterStateHandler.DisableHighlighter();
         SetupDrawingMode(ButtonNames.ShapeDrawButton);
