@@ -35,33 +35,51 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Update="app.manifest">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
         <None Update="appsettings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
 
-        <None Update="Resources\Cursor\arrow-arrow.cur">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources\Cursor\arrow-circle.cur">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources\Cursor\arrow-db.cur">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources\Cursor\arrow-line.cur">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources\Cursor\arrow-move.cur">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-        <None Update="Resources\Cursor\arrow-rectangle.cur">
+        <None Update="Resources\Cursor\arrow-arrow-l.cur">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
 
-    </ItemGroup>
+        <None Update="Resources\Cursor\arrow-arrow-m.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-circle-l.cur">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-circle-m.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-db-l.cur">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-db-m.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-line-.cur">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-line-m.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-move-.cur">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-move-m.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-rectangle-l.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-rectangle-m.cur">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
 
-    <ItemGroup>
-        <Folder Include="Resources\Cursor\" />
     </ItemGroup>
 
 </Project>
