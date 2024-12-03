@@ -6,7 +6,7 @@
         <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-        <AssemblyVersion>0.2.5</AssemblyVersion>
+        <AssemblyVersion>0.2.6</AssemblyVersion>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup>
@@ -35,9 +35,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Update="app.manifest">
-          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
         <None Update="appsettings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
@@ -64,11 +61,17 @@
         <None Update="Resources\Cursor\arrow-line-.cur">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="Resources\Cursor\arrow-line-l.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
         <None Update="Resources\Cursor\arrow-line-m.cur">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="Resources\Cursor\arrow-move-.cur">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-move-l.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
         <None Update="Resources\Cursor\arrow-move-m.cur">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
