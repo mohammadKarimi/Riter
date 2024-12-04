@@ -79,10 +79,7 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
         }
     }
 
-    public void SetSizeOfBrushWithHotKey(BrushSize size)
-    {
-        SizeOfBrush = (double)size;
-    }
+    public void SetSizeOfBrushWithHotKey(BrushSize size) => SizeOfBrush = (double)size;
 
     private void InitializeDefaults()
     {
@@ -90,10 +87,7 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
         SizeOfBrush = AppSettings.BrushSize;
     }
 
-    private void UpdateRainbowMode(string color)
-    {
-        IsRainbow = color == EnumInkColor.RainBow.ToString();
-    }
+    private void UpdateRainbowMode(string color) => IsRainbow = color == EnumInkColor.RainBow.ToString();
 
     private void UpdateInkColor(string color)
     {

@@ -2,7 +2,7 @@
 using System.Windows.Data;
 
 namespace Riter.Core;
-public class CustomBooleanToVisibilityConverter : IValueConverter
+public class HiddelAllToVisibilityConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         => value is bool boolValue ? boolValue ? Visibility.Collapsed : Visibility.Visible : (object)Visibility.Visible;
