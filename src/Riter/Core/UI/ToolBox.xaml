@@ -9,7 +9,7 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d">
     <UserControl.Resources>
-        <local:HiddelAllToVisibilityConverter x:Key="HiddelAllToVisibilityConverter" />
+        <local:HiddenAllToVisibilityConverter x:Key="HiddenAllToVisibilityConverter" />
     </UserControl.Resources>
     <Grid>
         <Border  
@@ -39,7 +39,7 @@
                         </Button.Style>
                     </Button>
                 </Border>
-                <Border  Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddelAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border  Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button x:Name="DropButton" ToolTip="Change Color" Command="{Binding SettingPanelViewModel.ShowColorPanelCommand}">
                         <Button.Style>
                             <Style TargetType="Button">
@@ -74,7 +74,7 @@
                         </Button.Style>
                     </Button>
                 </Border>
-                <StackPanel Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddelAllToVisibilityConverter}}" Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
+                <StackPanel Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Button x:Name="DrawButton" ToolTip="Ink" Command="{Binding DrawingViewModel.StartDrawingCommand}" >
                             <Button.Style>
@@ -115,7 +115,7 @@
                         </Button>
                     </Border>
                 </StackPanel>
-                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddelAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button ToolTip="Highlighter" Content="{StaticResource Icon_Highlighetr}" Command="{Binding DrawingViewModel.ToggleHighlighterCommand}">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
@@ -129,7 +129,7 @@
                         </Button.Style>
                     </Button>
                 </Border>
-                <StackPanel Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddelAllToVisibilityConverter}}" Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
+                <StackPanel Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0">
                     <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Button ToolTip="Shape"  Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="{Binding DrawingViewModel.CurrentShape}">
                             <Button.Style>
@@ -177,13 +177,13 @@
                         </Button>
                     </Border>
                 </StackPanel>
-                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddelAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button ToolTip="Undo" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Undo}" Command="{Binding StrokeHistoryViewModel.UndoCommand}"/>
                 </Border>
-                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddelAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button ToolTip="Redo" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Redo}" Command="{Binding StrokeHistoryViewModel.RedoCommand}"/>
                 </Border>
-                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddelAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32"
+                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32"
                              Height="32"
                              CornerRadius="4"
                              HorizontalAlignment="Center"
@@ -201,7 +201,7 @@
                         </Button.Style>
                     </Button>
                 </Border>
-                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddelAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <Button ToolTip="Delete All" Style="{StaticResource ToolboxButtonStyle}"  Content="{StaticResource Icon_Delete}" Command="{Binding StrokeHistoryViewModel.ClearCommand}"/>
                 </Border>
                 <Border Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -220,7 +220,7 @@
                         </Button.Style>
                     </Button>
                 </Border>
-                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddelAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button ToolTip="Settings" x:Name="SettingButton" Content="{StaticResource Icon_Setting}" Command="{Binding SettingPanelViewModel.ToggleSettingsPanelCommand}" >
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
