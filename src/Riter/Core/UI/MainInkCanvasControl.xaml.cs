@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Media;
@@ -156,6 +155,9 @@ public partial class MainInkCanvasControl : UserControl
 
     private void StartDrawing(object sender, MouseButtonEventArgs e)
     {
+        if (((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.IsReleased)
+            return;
+
         _startDragPoint = e.GetPosition(MainInkCanvas);
         _selectedStroke = GetStrokeUnderCursor(_startDragPoint);
 
