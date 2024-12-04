@@ -18,8 +18,10 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         SettingPanelViewModel settingPanelViewModel,
         ButtonSelectedViewModel buttonSelectedViewModel,
         StartupLocationViewModel startupLocationViewModel,
-        HotKeyCommandService hotKeyCommandService)
+        HotKeyCommandService hotKeyCommandService,
+        ScreenShotViewModel screenShotViewModel)
     {
+        ScreenShotViewModel = screenShotViewModel;
         DrawingViewModel = drawingViewModel;
         StrokeVisibilityViewModel = strokeVisibilityViewModel;
         StrokeHistoryViewModel = strokeHistoryViewModel;
@@ -53,6 +55,8 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
     public ButtonSelectedViewModel ButtonSelectedViewModel { get; }
 
     public StartupLocationViewModel StartupLocationViewModel { get; }
+
+    public ScreenShotViewModel ScreenShotViewModel { get; }
 
     public DrawingAttributes InkDrawingAttributes =>
         DrawingAttributesFactory.CreateDrawingAttributes(

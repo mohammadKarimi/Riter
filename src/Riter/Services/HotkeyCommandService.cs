@@ -6,10 +6,7 @@ public class HotKeyCommandService(AppSettings appSettings)
     private readonly AppSettings _appSettings = appSettings;
     private Dictionary<HotKey, Action> _hotKeyCommandMap;
 
-    public void InitializeCommands(Dictionary<HotKey, Action> commandMap)
-    {
-        _hotKeyCommandMap = commandMap;
-    }
+    public void InitializeCommands(Dictionary<HotKey, Action> commandMap) => _hotKeyCommandMap = commandMap;
 
     public void ExecuteHotKey(HotKeiesPressed hotKeies)
     {

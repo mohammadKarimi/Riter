@@ -110,6 +110,9 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 
 ### Move Shape
 - **Press ALT** -> with press alt you can move objects.
+
+### Screenshot
+- **Ctrl + Shift + P** -> Take a screen shot and save it is appDirectory/Screenshots/
 ---
 
 ## Getting Started

@@ -47,7 +47,6 @@
                         </Border.Effect>
                         <subpanel:StrokeSizePanel x:Name="StrokeSizePanel"/>
                     </Border>
-
                     <Border Visibility="{Binding SettingPanelViewModel.ColorPanelVisibility}"
                              Padding="8,8" HorizontalAlignment="Left"
                              Margin="8,0,0,8" VerticalAlignment="Bottom"
@@ -63,10 +62,8 @@
                 <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         MinWidth="0" Name="ToolboxContainer">
-
                     <local:ToolBox x:Name="ToolBox" DataContext="{Binding}"/>
                     <local:WindowControl x:Name="WindowControl"/>
-
                 </StackPanel>
             </StackPanel>
         </Canvas>

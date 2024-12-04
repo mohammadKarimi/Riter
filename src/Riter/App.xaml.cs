@@ -7,6 +7,7 @@ using Riter.Core.Shape;
 using Riter.Services;
 using Riter.ViewModel;
 using Riter.ViewModel.Handlers;
+using Riter.ViewModel.StateHandlers.Interfaces;
 
 namespace Riter;
 
@@ -62,6 +63,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<IHighlighterStateHandler, HighlighterStateHandler>();
         serviceCollection.AddSingleton<ISettingPanelStateHandler, SettingsPanelStateHandler>();
         serviceCollection.AddSingleton<IButtonSelectedStateHandler, ButtonSelectedStateHandler>();
+        serviceCollection.AddSingleton<IScreenShotHandler, ScreenShotHandler>();
 
         serviceCollection.AddScoped<IShapeDrawer, LineDrawer>();
         serviceCollection.AddScoped<IShapeDrawer, CircleDrawer>();
@@ -79,6 +81,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<StrokeVisibilityViewModel>();
         serviceCollection.AddSingleton<InkEditingModeViewModel>();
         serviceCollection.AddSingleton<StartupLocationViewModel>();
+        serviceCollection.AddSingleton<ScreenShotViewModel>();
         serviceCollection.AddSingleton<PaletteStateOrchestratorViewModel>();
 
         serviceCollection.AddTransient(typeof(MainWindow));
