@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:localCore="clr-namespace:Riter.Core"
     xmlns:local="clr-namespace:Riter.Core.UI"
     xmlns:subpanel="clr-namespace:Riter.Core.UI.SubPanels"
     x:Class="Riter.MainWindow"
@@ -12,6 +13,7 @@
     WindowState="Maximized"
     AllowsTransparency="True" 
     WindowStyle="None">
+    
     <Window.Style>
         <Style TargetType="Window">
             <Setter Property="Background" Value="{StaticResource NoneTransparent}"/>
