@@ -135,7 +135,12 @@ public partial class MainInkCanvasControl : UserControl
         var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
         var actualKey = ResolveActualKey(e);
 
-        if (IsAltKeyReleased(actualKey) || IsDrawingKeyReleased(e, viewModel))
+        if (IsAltKeyReleased(actualKey))
+        {
+            MainInkCanvas.Cursor = CursorFactory.Create(viewModel.DrawingViewModel.CurrentShape);
+        }
+
+        if ((IsAltKeyReleased(actualKey) && viewModel.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.DrawingButton) || IsDrawingKeyReleased(e, viewModel))
         {
             _inkEditingModeStateHandler.Ink();
             MainInkCanvas.UseCustomCursor = false;
