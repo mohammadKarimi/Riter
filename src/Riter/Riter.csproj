@@ -6,7 +6,7 @@
         <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-        <AssemblyVersion>0.2.6</AssemblyVersion>
+        <AssemblyVersion>0.2.7</AssemblyVersion>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup>
