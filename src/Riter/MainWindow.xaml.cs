@@ -1,9 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Windows.Ink;
-using Riter.Core.Drawing;
-using Riter.Core.Interfaces;
-using Riter.Core.UI;
 using Riter.Core.WindowExtensions;
 using Riter.ViewModel;
 
