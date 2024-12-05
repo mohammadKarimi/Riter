@@ -151,6 +151,12 @@
                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Circle}">
                                             <Setter Property="Content" Value="{StaticResource Icon_Circle_Toolbox}"/>
                                         </DataTrigger>
+                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.FilledCircle}">
+                                            <Setter Property="Content" Value="{StaticResource Icon_FilledCircle_Toolbox}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.FilledRectangle}">
+                                            <Setter Property="Content" Value="{StaticResource Icon_FilledRectangle_Toolbox}"/>
+                                        </DataTrigger>
                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Rectangle}">
                                             <Setter Property="Content" Value="{StaticResource Icon_Rectangle_Toolbox}"/>
                                         </DataTrigger>
