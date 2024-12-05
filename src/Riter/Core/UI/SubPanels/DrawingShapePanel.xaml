@@ -7,8 +7,8 @@
              xmlns:enum="clr-namespace:Riter.Core.Enum"
             d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
             mc:Ignorable="d" 
-            d:DesignHeight="260" d:DesignWidth="256">
-    <Grid Margin="0,0,0,4" >
+            d:DesignHeight="300" d:DesignWidth="200">
+    <Grid Margin="0,0,0,4">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -171,6 +171,58 @@
                 </Button>
             </Grid>
             <Grid Margin="0,6,0,0">
+                <Button Padding="4,4" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="{x:Static enum:DrawingShape.FilledRectangle}" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="FreeDrawingButton" Padding="4,4" CornerRadius="6" Background="{TemplateBinding Background}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.FilledRectangle}">
+                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderThickness" Value="1" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Label Content="Filled Rectangle" FontSize="12"  />
+                        </StackPanel>
+
+                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_FilledRectangle}" HorizontalAlignment="Right" />
+                    </Grid>
+                </Button>
+            </Grid>
+            <Grid Margin="0,6,0,0">
                 <Button Padding="4,4" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="{x:Static enum:DrawingShape.Circle}" >
                     <Button.Style>
                         <Style TargetType="Button">
@@ -219,6 +271,58 @@
                         </StackPanel>
 
                         <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Circle}" HorizontalAlignment="Right" />
+                    </Grid>
+                </Button>
+            </Grid>
+            <Grid Margin="0,6,0,0">
+                <Button Padding="4,4" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="{x:Static enum:DrawingShape.FilledCircle}" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="FreeDrawingButton" Padding="4,4" CornerRadius="6" Background="{TemplateBinding Background}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.FilledCircle}">
+                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderThickness" Value="1.2" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Label Content="Filled Circle" FontSize="12"  />
+                        </StackPanel>
+
+                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_FilledCircle}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>

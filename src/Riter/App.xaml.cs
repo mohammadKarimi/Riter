@@ -70,6 +70,8 @@ public partial class App : Application
         serviceCollection.AddScoped<IShapeDrawer, ArrowDrawer>();
         serviceCollection.AddScoped<IShapeDrawer, RectangleDrawer>();
         serviceCollection.AddScoped<IShapeDrawer, DatabaseDrawer>();
+        serviceCollection.AddScoped<IShapeDrawer, FilledCircleDrawer>();
+        serviceCollection.AddScoped<IShapeDrawer, FilledRectangleDrawer>();
 
         serviceCollection.AddSingleton<HotKeyCommandService>();
         serviceCollection.AddSingleton<ButtonSelectedViewModel>();
