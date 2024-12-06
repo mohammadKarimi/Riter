@@ -58,6 +58,18 @@
         <None Update="Resources\Cursor\arrow-db-m.cur">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="Resources\Cursor\arrow-filled-circle-l.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-filled-circle-m.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-filled-rectangle-l.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="Resources\Cursor\arrow-filled-rectangle-m.cur">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
         <None Update="Resources\Cursor\arrow-line-.cur">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
