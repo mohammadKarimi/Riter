@@ -1,6 +1,5 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
-using System.Windows.Media;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
 
