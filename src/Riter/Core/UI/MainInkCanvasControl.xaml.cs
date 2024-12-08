@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Media;
-using Microsoft.Extensions.DependencyInjection;
 using Riter.Core.Consts;
 using Riter.Core.Drawing;
 using Riter.Core.Enum;
@@ -13,9 +12,9 @@ namespace Riter.Core.UI;
 
 public partial class MainInkCanvasControl : UserControl
 {
-    private readonly IStrokeHistoryService _strokeHistoryService;
-    private readonly IInkEditingModeStateHandler _inkEditingModeStateHandler;
-    private readonly Dictionary<DrawingShape, IShapeDrawer> _shapeDrawers;
+    private IStrokeHistoryService _strokeHistoryService;
+    private IInkEditingModeStateHandler _inkEditingModeStateHandler;
+    private Dictionary<DrawingShape, IShapeDrawer> _shapeDrawers;
     private bool _isDrawing = false;
     private bool _isDragging = false;
     private Point _startPoint;
@@ -26,13 +25,8 @@ public partial class MainInkCanvasControl : UserControl
     public MainInkCanvasControl()
     {
         InitializeComponent();
-        _strokeHistoryService = App.ServiceProvider.GetService<IStrokeHistoryService>();
-        _inkEditingModeStateHandler = App.ServiceProvider.GetService<IInkEditingModeStateHandler>();
-        _shapeDrawers = App.ServiceProvider.GetService<IEnumerable<IShapeDrawer>>()
-                                            .ToDictionary(drawer => drawer.SupportedShape);
 
         DataContextChanged += MainInkCanvasControl_DataContextChanged;
-        _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvas);
         MainInkCanvas.Strokes.StrokesChanged += StrokesChanged;
         MainInkCanvas.MouseLeftButtonDown += StartDrawing;
         MainInkCanvas.MouseLeftButtonUp += EndDrawing;
@@ -87,6 +81,11 @@ public partial class MainInkCanvasControl : UserControl
         {
             viewModel.InkEditingModeViewModel.PropertyChanged += DrawingViewModel_PropertyChanged;
             viewModel.DrawingViewModel.PropertyChanged += DrawingViewModel_PropertyChanged;
+
+            _strokeHistoryService = viewModel.InkCanvasViewModel.StrokeHistoryService;
+            _inkEditingModeStateHandler = viewModel.InkCanvasViewModel.InkEditingModeStateHandler;
+            _shapeDrawers = viewModel.InkCanvasViewModel.ShapeDrawer.ToDictionary(drawer => drawer.SupportedShape);
+            _strokeHistoryService.SetMainElementToRedoAndUndo(MainInkCanvas);
         }
     }
 

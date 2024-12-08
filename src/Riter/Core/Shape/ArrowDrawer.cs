@@ -1,6 +1,5 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Ink;
-using System.Windows.Input;
 using System.Windows.Media;
 using Riter.Core.Drawing;
 using Riter.Core.Enum;
@@ -35,7 +34,7 @@ public class ArrowDrawer : IShapeDrawer
 
     private static List<Point> CreateArrowheadPoints(Point startPoint, Point endPoint, double rotation)
     {
-        var arrowPoints = new List<Point>();
+        List<Point> arrowPoints = [];
 
         VectorX ps = new(startPoint.X, startPoint.Y);
         VectorX pe = new(endPoint.X, endPoint.Y);
