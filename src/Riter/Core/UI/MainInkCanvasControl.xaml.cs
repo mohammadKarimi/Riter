@@ -2,7 +2,6 @@
 using System.Windows.Controls;
 using System.Windows.Ink;
 using System.Windows.Media;
-using Microsoft.Extensions.DependencyInjection;
 using Riter.Core.Consts;
 using Riter.Core.Drawing;
 using Riter.Core.Enum;
