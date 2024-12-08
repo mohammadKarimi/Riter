@@ -84,6 +84,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<InkEditingModeViewModel>();
         serviceCollection.AddSingleton<StartupLocationViewModel>();
         serviceCollection.AddSingleton<ScreenShotViewModel>();
+        serviceCollection.AddSingleton<InkCanvasViewModel>();
         serviceCollection.AddSingleton<PaletteStateOrchestratorViewModel>();
 
         serviceCollection.AddTransient(typeof(MainWindow));
