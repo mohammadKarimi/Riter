@@ -45,6 +45,7 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 ### 🧹 Line Management
 - **Undo/Redo**: Reverse or reapply recent drawing actions.
 - **Clear All**: Quickly remove all strokes from the canvas.
+- **Fading Ink**: With this new Ink you can draw an Ink which removed automatically.
 
 ### 🖥️ Display Modes
 - **Hide All**: Temporarily hide drawings.
