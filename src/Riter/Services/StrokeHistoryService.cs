@@ -1,5 +1,5 @@
-﻿using System.Runtime.CompilerServices;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
+using System.Windows.Threading;
 using Riter.Core.Drawing;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
@@ -11,6 +11,8 @@ public class StrokeHistoryService : IStrokeHistoryService
 {
     private readonly Stack<StrokesHistoryNode> _history = [];
     private readonly Stack<StrokesHistoryNode> _redoHistory = [];
+    private readonly Dictionary<StrokesHistoryNode, DispatcherTimer> _fadeTimers = [];
+
     private bool _ignoreStrokesChange;
 
     /// <summary>
@@ -48,7 +50,11 @@ public class StrokeHistoryService : IStrokeHistoryService
     public StrokesHistoryNode Pop() => _history.Count == 0 ? null : _history.Pop();
 
     /// <inheritdoc/>
-    public void Push(StrokesHistoryNode node) => _history.Push(node);
+    public void Push(StrokesHistoryNode node)
+    {
+
+        _history.Push(node);
+    }
 
     /// <inheritdoc/>
     public void Redo()

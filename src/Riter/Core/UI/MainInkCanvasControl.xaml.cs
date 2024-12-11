@@ -101,9 +101,7 @@ public partial class MainInkCanvasControl : UserControl
 
         if (e.PropertyName == nameof(viewModel.DrawingViewModel.CurrentShape))
         {
-            MainInkCanvas.Cursor = viewModel.DrawingViewModel.CurrentShape == DrawingShape.FadeInk
-                ? Cursors.Cross
-                : CursorFactory.Create(viewModel.DrawingViewModel.CurrentShape);
+            MainInkCanvas.Cursor = CursorFactory.Create(viewModel.DrawingViewModel.CurrentShape);
         }
 
         if (e.PropertyName == nameof(viewModel.InkEditingModeViewModel.InkEditingMode)

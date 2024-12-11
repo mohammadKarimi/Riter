@@ -24,15 +24,19 @@ public class StrokesHistoryNode
     /// </summary>
     public StrokesHistoryNodeType Type { get; private set; }
 
+    public int FadingAt { get; private set; }
+
     /// <summary>
     /// This method is a factory to create a new instance.
     /// </summary>
     /// <param name="strokes">the collection of Strokes.</param>
+    /// <param name="fadingAt">fading ink at second time.</param>
     /// <returns>New Instance of HistoryNode.</returns>
-    public static StrokesHistoryNode CreateAddedType(StrokeCollection strokes) => new()
+    public static StrokesHistoryNode CreateAddedType(StrokeCollection strokes, int fadingAt = 0) => new()
     {
         Strokes = strokes,
         Type = StrokesHistoryNodeType.Added,
+        FadingAt = fadingAt,
     };
 
     /// <summary>
