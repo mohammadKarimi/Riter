@@ -24,15 +24,19 @@ public class StrokesHistoryNode
     /// </summary>
     public StrokesHistoryNodeType Type { get; private set; }
 
+    public bool EnableTimer { get; private set; }
+
     /// <summary>
     /// This method is a factory to create a new instance.
     /// </summary>
     /// <param name="strokes">the collection of Strokes.</param>
+    /// <param name="enableTimer">fading ink at second time.</param>
     /// <returns>New Instance of HistoryNode.</returns>
-    public static StrokesHistoryNode CreateAddedType(StrokeCollection strokes) => new()
+    public static StrokesHistoryNode CreateAddedType(StrokeCollection strokes, bool enableTimer = false) => new()
     {
         Strokes = strokes,
         Type = StrokesHistoryNodeType.Added,
+        EnableTimer = enableTimer,
     };
 
     /// <summary>

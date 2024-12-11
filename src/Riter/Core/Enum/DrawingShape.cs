@@ -9,4 +9,5 @@ public enum DrawingShape
     FilledCircle = 8,
     FilledRectangle = 13,
     Free = 34,
+    FadeInk = 35,
 }
