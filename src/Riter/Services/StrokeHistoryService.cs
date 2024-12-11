@@ -1,5 +1,7 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
+using System.Xml.Linq;
 using Riter.Core.Drawing;
 using Riter.Core.Enum;
 using Riter.Core.Interfaces;
@@ -39,6 +41,12 @@ public class StrokeHistoryService : IStrokeHistoryService
     public void Clear()
     {
         _history.Clear();
+        foreach (var timer in _fadeTimers.Values)
+        {
+            timer.Stop();
+        }
+
+        _fadeTimers.Clear();
         _redoHistory.Clear();
         InkCanvas.Strokes.Clear();
     }
@@ -52,8 +60,14 @@ public class StrokeHistoryService : IStrokeHistoryService
     /// <inheritdoc/>
     public void Push(StrokesHistoryNode node)
     {
-
-        _history.Push(node);
+        if (node.EnableTimer)
+        {
+            StartFadeAnimation(node);
+        }
+        else
+        {
+            _history.Push(node);
+        }
     }
 
     /// <inheritdoc/>
@@ -100,5 +114,41 @@ public class StrokeHistoryService : IStrokeHistoryService
 
         _ignoreStrokesChange = false;
         _redoHistory.Push(lastItem);
+    }
+
+    private void StartFadeAnimation(StrokesHistoryNode node)
+    {
+        foreach (var stroke in node.Strokes)
+        {
+            var drawingAttributes = stroke.DrawingAttributes;
+            var initialColor = drawingAttributes.Color;
+            var duration = TimeSpan.FromMilliseconds(500);
+            var steps = 30;
+            var interval = duration.TotalMilliseconds / steps;
+            var opacityStep = initialColor.A / (float)steps;
+
+            var timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(interval),
+            };
+
+            var currentStep = 0;
+
+            timer.Tick += (s, e) =>
+            {
+                if (currentStep >= steps)
+                {
+                    timer.Stop();
+                    InkCanvas.Strokes.Remove(stroke);
+                    return;
+                }
+
+                currentStep++;
+                var newAlpha = (byte)Math.Max(0, initialColor.A - (opacityStep * currentStep));
+                drawingAttributes.Color = Color.FromArgb(newAlpha, initialColor.R, initialColor.G, initialColor.B);
+            };
+
+            timer.Start();
+        }
     }
 }
