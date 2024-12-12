@@ -107,6 +107,10 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" Margin="8,4">
+                        <TextBlock Text="0.7x Brush Size" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush07X"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="8,4">
                         <TextBlock Text="1x Brush Size" Width="100" Padding="0,4"/>
                         <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush1X"/>
                     </StackPanel>
