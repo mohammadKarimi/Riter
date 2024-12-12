@@ -14,6 +14,7 @@ public static class HotKeyCommandMapper
             { HotKey.HideAll, () => viewModel.StrokeVisibilityViewModel.HideAllCommand.Execute(null) },
             { HotKey.Undo, () => viewModel.StrokeHistoryViewModel.UndoCommand.Execute(null) },
             { HotKey.Redo, () => viewModel.StrokeHistoryViewModel.RedoCommand.Execute(null) },
+            { HotKey.SizeOfBrush07X, () => viewModel.BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X07) },
             { HotKey.SizeOfBrush1X, () => viewModel.BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X1) },
             { HotKey.SizeOfBrush2X, () => viewModel.BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X2) },
             { HotKey.SizeOfBrush3X, () => viewModel.BrushSettingsViewModel.SetSizeOfBrushWithHotKeyCommand.Execute(BrushSize.X3) },

@@ -27,6 +27,7 @@ public partial class KeyboardHotKeys : UserControl
         Release.Text = _hotkeys[HotKey.Release.ToString()];
         HideAll.Text = _hotkeys[HotKey.HideAll.ToString()];
         Trash.Text = _hotkeys[HotKey.Trash.ToString()];
+        SizeOfBrush07X.Text = _hotkeys[HotKey.SizeOfBrush07X.ToString()];
         SizeOfBrush1X.Text = _hotkeys[HotKey.SizeOfBrush1X.ToString()];
         SizeOfBrush2X.Text = _hotkeys[HotKey.SizeOfBrush2X.ToString()];
         SizeOfBrush3X.Text = _hotkeys[HotKey.SizeOfBrush3X.ToString()];
