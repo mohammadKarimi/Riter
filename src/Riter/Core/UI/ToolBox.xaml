@@ -84,7 +84,9 @@
                                         <DataTrigger Binding="{Binding ButtonSelectedViewModel.ButtonSelectedName}" Value="DrawingButton">
                                             <Setter Property="Tag" Value="Selected"/>
                                         </DataTrigger>
-                                      
+                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="3">
+                                            <Setter Property="Content" Value="{StaticResource Icon_SelectedPen07x}"/>
+                                        </DataTrigger>
                                         <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="5">
                                             <Setter Property="Content" Value="{StaticResource Icon_SelectedPen1x}"/>
                                         </DataTrigger>
