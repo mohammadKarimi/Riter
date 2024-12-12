@@ -86,9 +86,10 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 - **Ctrl + W** - Whiteboard
 
 ### Brush Size
-- **Ctrl + 1** - 1x Brush size
-- **Ctrl + 2** - 2x Brush size
-- **Ctrl + 3** - 3x Brush size
+- **Ctrl + 1** - 0.7x Brush size
+- **Ctrl + 2** - 1x Brush size
+- **Ctrl + 3** - 2x Brush size
+- **Ctrl + 4** - 3x Brush size
 
 ### Color Shortcuts
 - **1** - Yellow
