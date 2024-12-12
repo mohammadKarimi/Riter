@@ -12,7 +12,7 @@
         <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="180" >
             <Label Content="Select Your Scale"/>
             <Grid Margin="0,8,0,0">
-                <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="5" >
+                <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="3" >
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="Transparent"/>
@@ -24,7 +24,7 @@
                                             <Border.Style>
                                                 <Style TargetType="Border">
                                                     <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="5">
+                                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="3">
                                                             <Setter Property="Cursor" Value="Hand"/>
                                                             <Setter Property="BorderBrush" Value="#317BF4" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
