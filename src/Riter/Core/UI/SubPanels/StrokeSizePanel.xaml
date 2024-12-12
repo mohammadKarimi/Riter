@@ -56,6 +56,58 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Label Content="0.7x" FontSize="12" />
+                        </StackPanel>
+
+                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen07x}" HorizontalAlignment="Right" />
+                    </Grid>
+                </Button>
+            </Grid>
+            <Grid Margin="0,8,0,0">
+                <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="5" >
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border x:Name="ButtonBorder1X" Padding="6,6" CornerRadius="6" Background="{TemplateBinding Background}">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding BrushSettingsViewModel.SizeOfBrush}" Value="5">
+                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderThickness" Value="1.2" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
+
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Label Content="1x" FontSize="12" />
                         </StackPanel>
 
