@@ -17,6 +17,11 @@
                     <ColumnDefinition Width="275" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Vertical">
+
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,16,0,8">
+                        <TextBlock HorizontalAlignment="Left" Text="Toolbox" Width="100" FontWeight="Bold" Padding="0,4"/>
+                    </StackPanel>
+                    
                     <StackPanel Orientation="Horizontal" Margin="0,4">
                         <TextBlock Text="Drawing" Width="100" Padding="0,4"/>
                         <TextBox Text="" Padding="3" Width="130" x:Name="Drawing"/>
@@ -52,12 +57,20 @@
                         <TextBox Text="Shift + Drawing"  Padding="3" Width="130" Focusable="False" />
                     </StackPanel>
 
-
                     <StackPanel Orientation="Horizontal" Margin="0,4">
                         <TextBlock Text="Hide All" Width="100" Padding="0,4"/>
                         <TextBox Text=""  Padding="3" Width="130" x:Name="HideAll"/>
                     </StackPanel>
-
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0,4">
+                        <TextBlock Text="Trash" Width="100" Padding="0,4"/>
+                        <TextBox Text=""  Padding="3" Width="130" x:Name="Trash"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,16,0,8">
+                        <TextBlock HorizontalAlignment="Left" Text="Colors" Width="100" FontWeight="Bold" Padding="0,4"/>
+                    </StackPanel>
+                    
                     <StackPanel Orientation="Horizontal" Margin="0,4">
                         <TextBlock Text="Yellow" Width="100" Padding="0,4"/>
                         <TextBox Text=""  Padding="3" Width="130" x:Name="Yellow"/>
@@ -101,11 +114,9 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Vertical">
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Trash" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Trash"/>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="8,16,0,8">
+                        <TextBlock HorizontalAlignment="Left" Text="Ink Size" Width="100" FontWeight="Bold" Padding="0,4"/>
                     </StackPanel>
-
                     <StackPanel Orientation="Horizontal" Margin="8,4">
                         <TextBlock Text="0.7x Brush Size" Width="100" Padding="0,4"/>
                         <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush07X"/>
@@ -125,6 +136,9 @@
                         <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush3X"/>
                     </StackPanel>
 
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="8,16,0,8">
+                        <TextBlock HorizontalAlignment="Left" Text="Background" Width="100" FontWeight="Bold" Padding="0,4"/>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,4">
                         <TextBlock Text="Transparent" Width="100" Padding="0,4"/>
                         <TextBox Text=""  Padding="3" Width="130" x:Name="TransparentBackground"/>
@@ -140,6 +154,9 @@
                         <TextBox Text=""  Padding="3" Width="130" x:Name="BlackboardBackground"/>
                     </StackPanel>
 
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="8,16,0,8">
+                        <TextBlock HorizontalAlignment="Left" Text="Shapes" Width="100" FontWeight="Bold" Padding="0,4"/>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="8,4">
                         <TextBlock Text="Line" Width="100" Padding="0,4"/>
                         <TextBox Text="" Padding="3" Width="130" x:Name="Line"/>
