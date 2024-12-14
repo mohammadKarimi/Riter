@@ -153,7 +153,7 @@ CommandParameter="{x:Static enum:StartupLocation.Center}">
                         </Border>
                     </Grid>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Height="100">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="90">
                     <Grid Width="550">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
