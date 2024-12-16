@@ -36,6 +36,7 @@ public static class HotKeyCommandMapper
             { HotKey.Circle, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Circle) },
             { HotKey.Database, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Database) },
             { HotKey.Line, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Line) },
+            { HotKey.FadeInk, () => viewModel.StrokeVisibilityViewModel.EnableFadeInk.Execute(null) },
             { HotKey.ScreenShot, () => viewModel.ScreenShotViewModel.TakeCommand.Execute(null) },
     };
 }
