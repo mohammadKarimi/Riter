@@ -54,9 +54,9 @@
 
                 <!-- First Tab -->
                 <TabItem Header="General">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="2,8">
                         <StackPanel Orientation="Vertical">
-                            <Label Content="Board" Opacity="0.5"/>
+                            <Label Content="Board" FontWeight="Bold"/>
                             <Grid Height="40" Margin="0,4,0,0">
                                 <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
                                     <Border.InputBindings>
