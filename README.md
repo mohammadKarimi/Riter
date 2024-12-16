@@ -72,6 +72,7 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 - **E** - Switch to Erasing mode
 - **H** - Highlighter
 - **R** - Release tool
+- **CTRL + F** - Enable Fade Ink
 - **Shift(On Drawing Mode)** - Draw a line
 
 ### Stroke History
