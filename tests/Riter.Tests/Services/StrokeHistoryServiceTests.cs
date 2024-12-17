@@ -14,14 +14,13 @@ public class StrokeHistoryServiceTests
     {
         _mockInkCanvas = new Mock<InkCanvas>();
         _service = new StrokeHistoryService();
-        //  _mockInkCanvas.SetupProperty(canvas => canvas.Strokes, []);
         _service.SetMainElementToRedoAndUndo(_mockInkCanvas.Object);
     }
 
     private static StrokesHistoryNode CreateHistoryNode(StrokesHistoryNodeType type, StrokeCollection strokes = null)
         => type == StrokesHistoryNodeType.Added
-            ? StrokesHistoryNode.CreateAddedType(strokes)
-            : StrokesHistoryNode.CreateAddedType(strokes);
+            ? StrokesHistoryNode.CreateAddedType(strokes, true, 500)
+            : StrokesHistoryNode.CreateAddedType(strokes, true, 500);
 
     [WpfFact]
     public void Push_ShouldAddNodeToHistory()

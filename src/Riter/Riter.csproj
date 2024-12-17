@@ -6,7 +6,7 @@
         <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-        <AssemblyVersion>0.2.12</AssemblyVersion>
+        <AssemblyVersion>0.2.13</AssemblyVersion>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup>
@@ -31,6 +31,9 @@
     <ItemGroup>
         <Compile Update="Core\UI\SubPanels\ColorPalettePanel.xaml.cs">
             <SubType>Code</SubType>
+        </Compile>
+        <Compile Update="Core\UI\SubPanels\TimerPanel.xaml.cs">
+          <SubType>Code</SubType>
         </Compile>
     </ItemGroup>
 

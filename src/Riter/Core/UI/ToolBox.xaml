@@ -213,8 +213,7 @@
                     <Button ToolTip="Delete All" Style="{StaticResource ToolboxButtonStyle}"  Content="{StaticResource Icon_Delete}" Command="{Binding StrokeHistoryViewModel.ClearCommand}"/>
                 </Border>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,2,0" Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}">
-
-                    <Border  Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border Margin="0,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Button ToolTip="Enable Timer" x:Name="FadeInk" Content="{StaticResource Icon_Timer}" Command="{Binding StrokeVisibilityViewModel.EnableFadeInk}">
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">

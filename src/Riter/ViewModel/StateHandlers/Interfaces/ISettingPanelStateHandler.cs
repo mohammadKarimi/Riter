@@ -13,6 +13,8 @@ public interface ISettingPanelStateHandler : INotifyPropertyChanged
 
     bool ColorPanelVisibility { get; }
 
+    bool TimerPanelVisibility { get; }
+
     void HideAllPanels();
 
     void ToggleShapePanel(string button);

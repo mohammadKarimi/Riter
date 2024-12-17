@@ -17,6 +17,8 @@ public class SettingPanelViewModel : BaseViewModel
 
     public Visibility ShapePanelVisibility => _settingPanelStateHandler.ShapePanelVisibility ? Visibility.Visible : Visibility.Hidden;
 
+    public Visibility TimerPanelVisibility => _settingPanelStateHandler.TimerPanelVisibility ? Visibility.Visible : Visibility.Hidden;
+
     public bool SettingButtonClicked => _settingPanelStateHandler.SettingButtonClicked;
 
     public ICommand ToggleSettingsPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleSettingsPanel);

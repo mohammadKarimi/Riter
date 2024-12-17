@@ -187,7 +187,11 @@ public partial class MainInkCanvasControl : UserControl
         if (_isDrawing && _lastStroke is not null)
         {
             var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
-            _strokeHistoryService.Push(StrokesHistoryNode.CreateAddedType([_lastStroke], viewModel.StrokeVisibilityViewModel.IsEnableFadeInk));
+            _strokeHistoryService.Push(
+                StrokesHistoryNode.CreateAddedType(
+                [_lastStroke],
+                viewModel.StrokeVisibilityViewModel.IsEnableFadeInk,
+                viewModel.StrokeVisibilityViewModel.TimerMiliSecond));
         }
 
         _isDrawing = false;
@@ -297,7 +301,10 @@ public partial class MainInkCanvasControl : UserControl
 
         if (e.Added.Count != 0)
         {
-            _strokeHistoryService.Push(StrokesHistoryNode.CreateAddedType(e.Added, viewModel.StrokeVisibilityViewModel.IsEnableFadeInk));
+            _strokeHistoryService.Push(StrokesHistoryNode.CreateAddedType(
+                e.Added,
+                viewModel.StrokeVisibilityViewModel.IsEnableFadeInk,
+                viewModel.StrokeVisibilityViewModel.TimerMiliSecond));
         }
 
         if (e.Removed.Count != 0 && !viewModel.StrokeVisibilityViewModel.IsEnableFadeInk)
