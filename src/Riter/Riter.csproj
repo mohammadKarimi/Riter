@@ -32,6 +32,9 @@
         <Compile Update="Core\UI\SubPanels\ColorPalettePanel.xaml.cs">
             <SubType>Code</SubType>
         </Compile>
+        <Compile Update="Core\UI\SubPanels\TimerPanel.xaml.cs">
+          <SubType>Code</SubType>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>

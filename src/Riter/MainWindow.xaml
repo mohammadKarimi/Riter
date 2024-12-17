@@ -58,6 +58,17 @@
                         </Border.Effect>
                         <subpanel:ColorPalettePanel x:Name="ColorPalettePanel"/>
                     </Border>
+                    <Border Visibility="{Binding SettingPanelViewModel.TimerPanelVisibility}"
+                            Padding="8,8" HorizontalAlignment="Center"
+                            Margin="175,0,0,8" VerticalAlignment="Bottom"
+                            CornerRadius="12"
+                            Background="#FFF"
+                            BorderBrush="#1E1E1E" BorderThickness="1">    
+                        <Border.Effect>
+                            <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
+                        </Border.Effect>
+                        <subpanel:TimerPanel x:Name="TimerPanel"/>
+                    </Border>
                 </Grid>
                 <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"

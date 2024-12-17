@@ -122,7 +122,7 @@ public class StrokeHistoryService : IStrokeHistoryService
         {
             var drawingAttributes = stroke.DrawingAttributes;
             var initialColor = drawingAttributes.Color;
-            var duration = TimeSpan.FromMilliseconds(500);
+            var duration = TimeSpan.FromMilliseconds(node.TimerMiliSecond);
             var steps = 30;
             var interval = duration.TotalMilliseconds / steps;
             var opacityStep = initialColor.A / (float)steps;
