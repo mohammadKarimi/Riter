@@ -20,6 +20,8 @@ public class ButtonNames
 
     public const string ChangeBrushSettingButton = "ChangeBrushSettingButton";
 
+    public const string ChangeTimerSettingButton = "ChangeTimerSettingButton";
+
     public const string ChangeShapeSettingButton = "ChangeShapeSettingButton";
 
     public const string ShapeDrawButton = "ShapeDrawButton";

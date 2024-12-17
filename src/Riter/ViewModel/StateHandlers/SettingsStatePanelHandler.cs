@@ -121,5 +121,17 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         ColorPanelVisibility = true;
     }
 
-    public void ToggleTimerPanel(string button) => throw new NotImplementedException();
+    public void ToggleTimerPanel(string button)
+    {
+        if (TimerPanelVisibility && _buttonSelectedStateHandler.ArrowButtonSelectedName == button)
+        {
+            _buttonSelectedStateHandler.ResetArrowButtonSelected();
+            HideAllPanels();
+            return;
+        }
+
+        HideAllPanels();
+        _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeTimerSettingButton);
+        TimerPanelVisibility = true;
+    }
 }
