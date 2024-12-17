@@ -17,6 +17,8 @@ public interface ISettingPanelStateHandler : INotifyPropertyChanged
 
     void ToggleShapePanel(string button);
 
+    void ToggleTimerPanel(string button);
+
     void SetSettingPanelVisibile();
 
     void ToggleBrushSettingsPanel(string button);

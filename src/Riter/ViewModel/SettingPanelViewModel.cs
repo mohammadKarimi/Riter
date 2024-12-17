@@ -25,5 +25,7 @@ public class SettingPanelViewModel : BaseViewModel
 
     public ICommand ShowShapePanelCommand => new RelayCommand<string>(_settingPanelStateHandler.ToggleShapePanel);
 
+    public ICommand ShowTimerPanelCommand => new RelayCommand<string>(_settingPanelStateHandler.ToggleTimerPanel);
+
     public ICommand ShowColorPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleColorPanel);
 }

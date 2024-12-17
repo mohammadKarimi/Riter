@@ -10,6 +10,7 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
     private bool _isBrushPanelOpened;
     private bool _isShapePanelOpened;
     private bool _isColorPanelOpened;
+    private bool _isTimerPanelOpened;
 
     public SettingsPanelStateHandler(IButtonSelectedStateHandler buttonSelectedStateHandler)
     {
@@ -40,6 +41,12 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
     {
         get => _isShapePanelOpened;
         protected set => SetProperty(ref _isShapePanelOpened, value, nameof(ShapePanelVisibility));
+    }
+
+    public bool TimerPanelVisibility
+    {
+        get => _isTimerPanelOpened;
+        protected set => SetProperty(ref _isTimerPanelOpened, value, nameof(TimerPanelVisibility));
     }
 
     public bool SettingButtonClicked
@@ -113,4 +120,6 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         HideAllPanels();
         ColorPanelVisibility = true;
     }
+
+    public void ToggleTimerPanel(string button) => throw new NotImplementedException();
 }
