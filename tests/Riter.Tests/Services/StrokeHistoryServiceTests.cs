@@ -19,8 +19,8 @@ public class StrokeHistoryServiceTests
 
     private static StrokesHistoryNode CreateHistoryNode(StrokesHistoryNodeType type, StrokeCollection strokes = null)
         => type == StrokesHistoryNodeType.Added
-            ? StrokesHistoryNode.CreateAddedType(strokes, true, 500)
-            : StrokesHistoryNode.CreateAddedType(strokes, true, 500);
+            ? StrokesHistoryNode.CreateAddedType(strokes, false, 500)
+            : StrokesHistoryNode.CreateAddedType(strokes, false, 500);
 
     [WpfFact]
     public void Push_ShouldAddNodeToHistory()
