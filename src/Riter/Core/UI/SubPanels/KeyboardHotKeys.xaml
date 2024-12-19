@@ -8,186 +8,212 @@
              KeyUp="UserControl_KeyUp"
              d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="290" d:DesignWidth="550">
+             d:DesignHeight="290" d:DesignWidth="560">
     <Grid Background="#FFF">
         <ScrollViewer>
             <Grid Margin="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="265"  />
-                    <ColumnDefinition Width="275" />
+                    <ColumnDefinition Width="285" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Vertical">
 
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,8">
-                        <TextBlock HorizontalAlignment="Left" Text="Toolbox" Width="100" FontWeight="Bold" Padding="0,4"/>
-                    </StackPanel>
-                    
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Drawing" Width="100" Padding="0,4"/>
-                        <TextBox Text="" Padding="3" Width="130" x:Name="Drawing"/>
-                    </StackPanel>
+                    <Border BorderBrush="#9C9B9B" BorderThickness="1" CornerRadius="4" Padding="8" Margin="0,4">
+                        <StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Erasing" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Erasing"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,8">
+                                <TextBlock HorizontalAlignment="Left" Text="Toolbox" Width="100" FontWeight="Bold" Padding="0,4"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Undo" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Undo"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Drawing" Width="100" Padding="0,4"/>
+                                <TextBox Text="" Padding="3" Width="130" x:Name="Drawing"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Redo" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Redo"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Erasing" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Erasing"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Highlighter" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Highlighter"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Undo" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Undo"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Release" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Release"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Redo" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Redo"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Draw Line" Width="100" Padding="0,4"/>
-                        <TextBox Text="Shift + Drawing"  Padding="3" Width="130" Focusable="False" />
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Highlighter" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Highlighter"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Hide All" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="HideAll"/>
-                    </StackPanel>
-                    
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Trash" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Trash"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Release" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Release"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Fade Ink" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="FadeInk"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Draw Line" Width="100" Padding="0,4"/>
+                                <TextBox Text="Shift + Drawing"  Padding="3" Width="130" Focusable="False" />
+                            </StackPanel>
 
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,16,0,8">
-                        <TextBlock HorizontalAlignment="Left" Text="Colors" Width="100" FontWeight="Bold" Padding="0,4"/>
-                    </StackPanel>
-                    
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Yellow" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Yellow"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Purple" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Purple"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Mint" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Mint"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Coral" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Coral"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Red" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Red"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Cyan" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Cyan"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Pink" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Pink"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Gray" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Gray"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Black" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Black"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Rainbow" Width="100" Padding="0,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Rainbow"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Hide All" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="HideAll"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Trash" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Trash"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Fade Ink" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="FadeInk"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                    </Border>
+
+                    <Border BorderBrush="#9C9B9B" BorderThickness="1" CornerRadius="4" Padding="8" Margin="0,4">
+                        <StackPanel>
+
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,4,0,8">
+                                <TextBlock HorizontalAlignment="Left" Text="Colors" Width="100" FontWeight="Bold" Padding="0,4"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Yellow" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Yellow"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Purple" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Purple"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Mint" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Mint"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Coral" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Coral"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Red" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Red"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Cyan" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Cyan"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Pink" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Pink"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Gray" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Gray"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Black" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Black"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="8,4">
+                                <TextBlock Text="Rainbow" Width="100" Padding="0,4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Rainbow"/>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </Border>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Vertical">
+                    <Border BorderBrush="#9C9B9B" BorderThickness="1" CornerRadius="4" Padding="8" Margin="12,4">
+                        <StackPanel>
 
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="8,0,0,8">
-                        <TextBlock HorizontalAlignment="Left" Text="Ink Size" Width="100" FontWeight="Bold" Padding="0,4"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="0.7x Brush Size" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush07X"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="1x Brush Size" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush1X"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,8">
+                                <TextBlock HorizontalAlignment="Left" Text="Ink Size" Width="100" FontWeight="Bold" Padding="0,4"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="0.7x Brush Size" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush07X"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="1x Brush Size" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush1X"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="2x Brush Size" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush2X"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="2x Brush Size" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush2X"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="3x Brush Size" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush3X"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="3x Brush Size" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="SizeOfBrush3X"/>
+                            </StackPanel>
+                        </StackPanel>
 
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="8,16,0,8">
-                        <TextBlock HorizontalAlignment="Left" Text="Background" Width="100" FontWeight="Bold" Padding="0,4"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,4">
-                        <TextBlock Text="Transparent" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="TransparentBackground"/>
-                    </StackPanel>
+                    </Border>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Whiteboard" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="WhiteboardBackground"/>
-                    </StackPanel>
+                    <Border BorderBrush="#9C9B9B" BorderThickness="1" CornerRadius="4" Padding="8" Margin="12,4">
+                        <StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Blackboard" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="BlackboardBackground"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,8">
+                                <TextBlock HorizontalAlignment="Left" Text="Background" Width="100" FontWeight="Bold" Padding="0,4"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,4">
+                                <TextBlock Text="Transparent" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="TransparentBackground"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="8,16,0,8">
-                        <TextBlock HorizontalAlignment="Left" Text="Shapes" Width="100" FontWeight="Bold" Margin="0,4"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Line" Width="100" Margin="8,4"/>
-                        <TextBox Text="" Padding="3" Width="130" x:Name="Line"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="Whiteboard" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="WhiteboardBackground"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Arrow" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Arrow"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="Blackboard" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="BlackboardBackground"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Rectangle" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Rectangle"/>
-                    </StackPanel>
+                    <Border BorderBrush="#9C9B9B" BorderThickness="1" CornerRadius="4" Padding="8" Margin="12,4">
+                        <StackPanel>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,8">
+                                <TextBlock HorizontalAlignment="Left" Text="Shapes" Width="100" FontWeight="Bold" Margin="0,4"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="Line" Width="100" Margin="4"/>
+                                <TextBox Text="" Padding="3" Width="130" x:Name="Line"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Margin="8,4">
-                        <TextBlock Text="Circle" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Circle"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="Arrow" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Arrow"/>
+                            </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,4">
-                        <TextBlock Text="Database" Width="100" Margin="8,4"/>
-                        <TextBox Text=""  Padding="3" Width="130" x:Name="Database"/>
-                    </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="Rectangle" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Rectangle"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="Circle" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Circle"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,4">
+                                <TextBlock Text="Database" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="Database"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
-
             </Grid>
         </ScrollViewer>
     </Grid>
