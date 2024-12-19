@@ -7,11 +7,9 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="260" d:DesignWidth="185">
-
-    <Grid >
+    <Grid Background="#FFF">
         <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="180" >
-            <Label Content="Select Your Scale"/>
-            <Grid Margin="0,8,0,0">
+            <Grid>
                 <Button Padding="6,6" Command="{Binding BrushSettingsViewModel.SetSizeOfBrushCommand}" CommandParameter="3" >
                     <Button.Style>
                         <Style TargetType="Button">
@@ -56,10 +54,11 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="0.7x" FontSize="12" />
+                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Pen07x}" HorizontalAlignment="Right" />
+                            <Label Content="0.7x" FontSize="13" Margin="4,0"/>
                         </StackPanel>
+                        <Label x:Name="Stroke07XHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen07x}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>
@@ -108,10 +107,11 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="1x" FontSize="12" />
+                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Pen1x}" HorizontalAlignment="Right" />
+                            <Label Content="1x" FontSize="13" Margin="4,0" />
                         </StackPanel>
+                        <Label x:Name="Stroke1XHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen1x}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>
@@ -160,10 +160,11 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="2x" FontSize="12"  />
+                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Pen2x}" HorizontalAlignment="Right" />
+                            <Label Content="2x" FontSize="13" Margin="4,0"  />
                         </StackPanel>
+                        <Label x:Name="Stroke2XHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen2x}" HorizontalAlignment="Right" />
                     </Grid>
                 </Button>
             </Grid>
@@ -212,10 +213,10 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="3x" FontSize="12"   />
+                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Pen3x}" HorizontalAlignment="Right" />
+                            <Label Content="3x" FontSize="13" Margin="4,0" />
                         </StackPanel>
-
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Pen3x}" HorizontalAlignment="Right" />
+                        <Label x:Name="Stroke3XHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
                     </Grid>
                 </Button>
             </Grid>
