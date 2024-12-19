@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Riter.Core.UI.SubPanels;
 
@@ -10,5 +11,13 @@ public partial class DrawingShapePanel : UserControl
     public DrawingShapePanel()
     {
         InitializeComponent();
+        var appSetting = App.ServiceProvider.GetService<AppSettings>();
+
+        var hotkeys = appSetting.HotKeysConfig.ToDictionary(x => x.Key, x => x.Value);
+        ArrowHotKey.Content = hotkeys[HotKey.Arrow.ToString()];
+        LineHotKey.Content = hotkeys[HotKey.Line.ToString()];
+        RectangleHotKey.Content = hotkeys[HotKey.Rectangle.ToString()];
+        CircleHotKey.Content = hotkeys[HotKey.Circle.ToString()];
+        DatabaseHotKey.Content = hotkeys[HotKey.Database.ToString()];
     }
 }
