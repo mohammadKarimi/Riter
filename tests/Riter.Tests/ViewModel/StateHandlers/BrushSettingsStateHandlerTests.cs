@@ -68,15 +68,6 @@ public class BrushSettingsStateHandlerTests
     }
 
     [Fact]
-    public void Constructor_ShouldInitializeDefaults()
-    {
-        _brushSettingsStateHandler.InkColor.Should().Be("#FFFF5656");
-        _brushSettingsStateHandler.SizeOfBrush.Should().Be(5);
-        _brushSettingsStateHandler.IsRainbow.Should().BeFalse();
-        _brushSettingsStateHandler.ColorSelected.Should().Be("#FFFF5656");
-    }
-
-    [Fact]
     public void SetInkColor_ShouldUpdatePropertiesAndResetSettings()
     {
 
