@@ -8,6 +8,7 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
 {
     private readonly IButtonSelectedStateHandler _buttonSelectedStateHandler;
     private readonly ISettingPanelStateHandler _settingPanelStateHandler;
+    private readonly AppSettings _appSettings;
     private string _inkColor;
     private string _colorSelected;
     private double _sizeOfBrush;
@@ -15,12 +16,14 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
 
     public BrushSettingsStateHandler(
         IButtonSelectedStateHandler buttonSelectedStateHandler,
-        ISettingPanelStateHandler settingPanelStateHandler)
+        ISettingPanelStateHandler settingPanelStateHandler,
+        AppSettings appSettings)
     {
         _buttonSelectedStateHandler = buttonSelectedStateHandler;
         _settingPanelStateHandler = settingPanelStateHandler;
 
         InitializeDefaults();
+        _appSettings = appSettings;
     }
 
     public string ColorSelected
@@ -83,8 +86,8 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
 
     private void InitializeDefaults()
     {
-        SetInkColor(AppSettings.InkDefaultColor);
-        SizeOfBrush = AppSettings.BrushSize;
+        SetInkColor(_appSettings.InkDefaultColor);
+        SizeOfBrush = _appSettings.BrushSize;
     }
 
     private void UpdateRainbowMode(string color) => IsRainbow = color == EnumInkColor.RainBow.ToString();
