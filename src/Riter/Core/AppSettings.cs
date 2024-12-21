@@ -15,18 +15,6 @@ public class AppSettings
     public const string Section = nameof(AppSettings);
 
     /// <summary>
-    ///  Gets or sets ink Defaulr Color for Drawing.
-    /// </summary>
-    [JsonIgnore]
-    public const string InkDefaultColor = "#FFFF5656";
-
-    /// <summary>
-    /// Gets or sets brush size of Ink.
-    /// </summary>
-    [JsonIgnore]
-    public const double BrushSize = 5;
-
-    /// <summary>
     /// Gets address of Project on Github.
     /// </summary>
     [JsonIgnore]
@@ -37,6 +25,17 @@ public class AppSettings
     /// </summary>
     [JsonIgnore]
     public const string MyTelegram = "https://t.me/mhakarimi";
+
+    /// <summary>
+    ///  Gets or sets ink Defaulr Color for Drawing.
+    /// </summary>
+    public string InkDefaultColor { get; set; }
+
+    /// <summary>
+    /// <summary>
+    /// Gets or sets brush size of Ink.
+    /// </summary>
+    public double BrushSize { get; set; }
 
     public StartupLocation StartupLocation { get; set; }
 
