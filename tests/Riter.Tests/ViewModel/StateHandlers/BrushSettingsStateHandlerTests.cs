@@ -10,15 +10,18 @@ public class BrushSettingsStateHandlerTests
 {
     private readonly Mock<IButtonSelectedStateHandler> _mockButtonSelectedStateHandler;
     private readonly Mock<ISettingPanelStateHandler> _mockSettingPanelStateHandler;
+    private readonly Mock<AppSettings> _appSettingsMock;
     private readonly BrushSettingsStateHandler _brushSettingsStateHandler;
 
     public BrushSettingsStateHandlerTests()
     {
         _mockButtonSelectedStateHandler = new Mock<IButtonSelectedStateHandler>();
         _mockSettingPanelStateHandler = new Mock<ISettingPanelStateHandler>();
+        _appSettingsMock = new Mock<AppSettings>();
         _brushSettingsStateHandler = new BrushSettingsStateHandler(
             _mockButtonSelectedStateHandler.Object,
-            _mockSettingPanelStateHandler.Object
+            _mockSettingPanelStateHandler.Object,
+            _appSettingsMock.Object
         );
     }
 
@@ -67,16 +70,16 @@ public class BrushSettingsStateHandlerTests
     [Fact]
     public void Constructor_ShouldInitializeDefaults()
     {
-        _brushSettingsStateHandler.InkColor.Should().Be(AppSettings.InkDefaultColor);
-        _brushSettingsStateHandler.SizeOfBrush.Should().Be(AppSettings.BrushSize);
+        _brushSettingsStateHandler.InkColor.Should().Be("#FFFF5656");
+        _brushSettingsStateHandler.SizeOfBrush.Should().Be(5);
         _brushSettingsStateHandler.IsRainbow.Should().BeFalse();
-        _brushSettingsStateHandler.ColorSelected.Should().Be(AppSettings.InkDefaultColor);
+        _brushSettingsStateHandler.ColorSelected.Should().Be("#FFFF5656");
     }
 
     [Fact]
     public void SetInkColor_ShouldUpdatePropertiesAndResetSettings()
     {
-        
+
         _brushSettingsStateHandler.SetInkColor(InkColor.Red.ToString());
 
         _brushSettingsStateHandler.InkColor.Should().Be(InkColor.Red.ToString());
@@ -91,10 +94,10 @@ public class BrushSettingsStateHandlerTests
     [Fact]
     public void SetInkColor_ShouldSetRainbowModeWhenColorIsRainbow()
     {
-        
+
         _brushSettingsStateHandler.SetInkColor(InkColor.RainBow.ToString());
 
-        
+
         _brushSettingsStateHandler.IsRainbow.Should().BeTrue();
         _brushSettingsStateHandler.InkColor.Should().Be(InkColor.RainBow.ToString());
         _brushSettingsStateHandler.ColorSelected.Should().Be(InkColor.RainBow.ToString());
@@ -112,7 +115,7 @@ public class BrushSettingsStateHandlerTests
     [Fact]
     public void SetInkColorWithHotKey_ShouldEnableRainbowModeWhenRainbowIsSelected()
     {
-        
+
         _brushSettingsStateHandler.SetInkColorWithHotKey(InkColor.RainBow);
 
         _brushSettingsStateHandler.IsRainbow.Should().BeTrue();
@@ -123,7 +126,7 @@ public class BrushSettingsStateHandlerTests
     [Fact]
     public void SetSizeOfBrush_ShouldParseAndSetBrushSize()
     {
-        
+
         _brushSettingsStateHandler.SetSizeOfBrush("5.5");
 
         _brushSettingsStateHandler.SizeOfBrush.Should().Be(5.5);
@@ -138,7 +141,7 @@ public class BrushSettingsStateHandlerTests
     public void SetInkColor_InvalidColor_ShouldThrowException()
     {
         Action act = () => _brushSettingsStateHandler.SetInkColor("InvalidColor");
-        
+
         act.Should().NotThrow();
         _brushSettingsStateHandler.InkColor.Should().Be("InvalidColor");
     }

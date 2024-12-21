@@ -21,9 +21,9 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
     {
         _buttonSelectedStateHandler = buttonSelectedStateHandler;
         _settingPanelStateHandler = settingPanelStateHandler;
+        _appSettings = appSettings;
 
         InitializeDefaults();
-        _appSettings = appSettings;
     }
 
     public string ColorSelected
