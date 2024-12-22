@@ -59,6 +59,7 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 - **Settings Panel**: Customize colors, brush sizes, application behavior, and more.
 - **Global Hotkeys**: Access tools quickly with keyboard shortcuts, even when the app is out of focus.
 - **Startup Location**: You can set your fav Start up location (center, BottomCenter, BottomLeft, BottomRight).
+- **AppSettings.json**: Now you can change the InkDefaultColor and BrushSize manually.
 - 
 ### 🚀 Performance
 - **Efficient Stroke Handling**: Optimized stroke management ensures smooth performance during extended usage.
