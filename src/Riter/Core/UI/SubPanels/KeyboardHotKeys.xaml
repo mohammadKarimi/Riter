@@ -201,10 +201,18 @@
                                 <TextBlock Text="Rectangle" Width="100" Margin="4"/>
                                 <TextBox Text=""  Padding="3" Width="130" x:Name="Rectangle"/>
                             </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="Filled Rectangle" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="FilledRectangle"/>
+                            </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="0,4">
                                 <TextBlock Text="Circle" Width="100" Margin="4"/>
                                 <TextBox Text=""  Padding="3" Width="130" x:Name="Circle"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,4">
+                                <TextBlock Text="Filled Circle" Width="100" Margin="4"/>
+                                <TextBox Text=""  Padding="3" Width="130" x:Name="FilledCircle"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,4">
