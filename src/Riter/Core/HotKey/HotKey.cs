@@ -36,6 +36,8 @@ public enum HotKey
     Database = 503,
     Line = 504,
     FadeInk = 505,
+    FilledCircle = 506,
+    FilledRectangle = 507,
 
     ScreenShot = 600,
 }

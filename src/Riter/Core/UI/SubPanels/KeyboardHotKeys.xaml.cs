@@ -42,6 +42,8 @@ public partial class KeyboardHotKeys : UserControl
         Line.Text = _hotkeys[HotKey.Line.ToString()];
         Circle.Text = _hotkeys[HotKey.Circle.ToString()];
         Rectangle.Text = _hotkeys[HotKey.Rectangle.ToString()];
+        FilledCircle.Text = _hotkeys[HotKey.FilledCircle.ToString()];
+        FilledRectangle.Text = _hotkeys[HotKey.FilledRectangle.ToString()];
 
         Yellow.Text = _hotkeys[HotKey.Yellow.ToString()];
         Purple.Text = _hotkeys[HotKey.Purple.ToString()];
