@@ -109,6 +109,8 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 - **Ctrl + L** -> Line
 - **Ctrl + A** -> Arrow
 - **Ctrl + R** -> Rectangle
+- - **Ctrl + Shift + R** -> Filled Rectangle
+- **Ctrl + Shift + C** -> Filled Circle
 - **Ctrl + C** -> Circle
 - **Ctrl + D** -> Database
 
