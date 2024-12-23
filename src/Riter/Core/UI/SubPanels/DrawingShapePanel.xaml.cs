@@ -19,5 +19,7 @@ public partial class DrawingShapePanel : UserControl
         RectangleHotKey.Content = hotkeys[HotKey.Rectangle.ToString()];
         CircleHotKey.Content = hotkeys[HotKey.Circle.ToString()];
         DatabaseHotKey.Content = hotkeys[HotKey.Database.ToString()];
+        FilledCircleHotKey.Content = hotkeys[HotKey.FilledCircle.ToString()];
+        FilledRectangleHotKey.Content = hotkeys[HotKey.FilledRectangle.ToString()];
     }
 }

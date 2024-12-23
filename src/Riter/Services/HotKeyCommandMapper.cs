@@ -34,6 +34,8 @@ public static class HotKeyCommandMapper
             { HotKey.Arrow, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Arrow) },
             { HotKey.Rectangle, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Rectangle) },
             { HotKey.Circle, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Circle) },
+            { HotKey.FilledRectangle, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.FilledRectangle) },
+            { HotKey.FilledCircle, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.FilledCircle) },
             { HotKey.Database, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Database) },
             { HotKey.Line, () => viewModel.DrawingViewModel.DrawShapeCommand.Execute(DrawingShape.Line) },
             { HotKey.FadeInk, () => viewModel.StrokeVisibilityViewModel.EnableFadeInk.Execute(null) },
