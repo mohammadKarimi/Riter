@@ -1,7 +1,5 @@
-﻿using System.Diagnostics;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using Riter.Core.Interfaces;
-using Riter.Core.UI;
 
 namespace Riter.Core.WindowExtensions;
 

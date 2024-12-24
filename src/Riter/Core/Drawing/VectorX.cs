@@ -12,5 +12,4 @@ public readonly struct VectorX(double x, double y)
     public static VectorX operator *(VectorX a, double d) => new(a.X * d, a.Y * d);
 
     public readonly Point ToPoint() => new(X, Y);
-
 }

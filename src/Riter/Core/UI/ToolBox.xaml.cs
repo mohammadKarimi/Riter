@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using Riter.Core.Interfaces;
 
 namespace Riter.Core.UI;
 
