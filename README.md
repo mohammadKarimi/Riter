@@ -142,6 +142,9 @@ Follow these steps to set up and use Riter:
    ```
 
 ---
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mohammadKarimi/Riter&type=Date)](https://star-history.com/#mohammadKarimi/Riter&Date)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
