@@ -10,7 +10,7 @@ public class SettingPanelViewModel : BaseViewModel
         _settingPanelStateHandler.PropertyChanged += OnStateChanged;
     }
 
-    public string PinPanel => "ColorPanel"; //_settingPanelStateHandler.PinPanel;
+    public string PinPanel => _settingPanelStateHandler.PinPanel;
 
     public bool SettingButtonClicked => _settingPanelStateHandler.SettingButtonClicked;
 
@@ -34,6 +34,8 @@ public class SettingPanelViewModel : BaseViewModel
 
     public ICommand ShowColorPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleColorPanel);
 
-    private Visibility GetVisibility(bool isVisible)
+    public ICommand SetPinCommand => new RelayCommand<string>(_settingPanelStateHandler.TogglePinPanel);
+
+    private static Visibility GetVisibility(bool isVisible)
         => isVisible ? Visibility.Visible : Visibility.Hidden;
 }

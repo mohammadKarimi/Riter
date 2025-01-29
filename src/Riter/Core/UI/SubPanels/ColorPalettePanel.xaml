@@ -16,7 +16,7 @@
             <Grid>
                 <Label Content="Select Your Color" Foreground="Black"/>
                 <Border HorizontalAlignment="Right" >
-                    <Button ToolTip="Pin" Content="{StaticResource Icon_Pin}">
+                    <Button ToolTip="Pin" Content="{StaticResource Icon_Pin}" Command="{Binding SettingPanelViewModel.SetPinCommand}" CommandParameter="ColorPanel">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                 <Setter Property="Tag" Value="UnSelected"/>
