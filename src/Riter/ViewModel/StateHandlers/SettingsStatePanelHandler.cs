@@ -11,6 +11,7 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
     private bool _isShapePanelOpened;
     private bool _isColorPanelOpened;
     private bool _isTimerPanelOpened;
+    private string _pinPanel;
 
     public SettingsPanelStateHandler(IButtonSelectedStateHandler buttonSelectedStateHandler)
     {
@@ -53,6 +54,12 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
     {
         get => _settingButtonClicked;
         protected set => SetProperty(ref _settingButtonClicked, value, nameof(SettingButtonClicked));
+    }
+
+    public string PinPanel
+    {
+        get => _pinPanel;
+        protected set => SetProperty(ref _pinPanel, value, nameof(PinPanel));
     }
 
     public void HideAllPanels()
@@ -134,5 +141,18 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         HideAllPanels();
         _buttonSelectedStateHandler.SetArrowButtonSelected(ButtonNames.ChangeTimerSettingButton);
         TimerPanelVisibility = true;
+    }
+
+    public void TogglePinPanel(string panelName)
+    {
+        if (PinPanel != panelName)
+        {
+            PinPanel = panelName;
+            HideAllPanels();
+        }
+        else
+        {
+            PinPanel = null;
+        }
     }
 }

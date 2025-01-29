@@ -147,14 +147,6 @@
             </Style>
 
             <Style x:Key="ColorPallateStyle" TargetType="Border">
-                <Setter Property="Effect">
-                    <Setter.Value>
-                        <DropShadowEffect Color="#EEE"
-                                           BlurRadius="8"
-                                           ShadowDepth="1"
-                                           Opacity="0.5"/>
-                    </Setter.Value>
-                </Setter>
                 <Style.Triggers>
                     <Trigger Property="Tag" Value="Selected">
                         <Setter Property="Background" Value="#FFF"/>
