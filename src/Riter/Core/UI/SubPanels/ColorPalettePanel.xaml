@@ -6,14 +6,19 @@
              xmlns:viewmodel="clr-namespace:Riter.ViewModel"
              d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="260" d:DesignWidth="200">
- 
+             d:DesignHeight="260">
+
     <Grid Background="#FFF">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="0,0,0,8">
-            <Label Content="Select Your Color" Foreground="Black"/>
+        <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
+            <Grid>
+                <Label Content="Select Your Color" Foreground="Black"/>
+                <Border HorizontalAlignment="Right" >
+                    <Button ToolTip="Pin" Tag="Selected" Style="{StaticResource ToolboxButtonStyle}" Content="{StaticResource Icon_Pin}"/>
+                </Border>
+            </Grid>
             <StackPanel VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,4,0,0">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" >
                     <StackPanel Orientation="Horizontal">

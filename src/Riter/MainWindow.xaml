@@ -38,7 +38,7 @@
                     </Border>
                     <Border Visibility="{Binding SettingPanelViewModel.BrushPanelVisibility}"
                             Padding="8,8" HorizontalAlignment="Left"
-                            Margin="8,0,0,8" VerticalAlignment="Bottom"
+                            Margin="0,0,0,8" VerticalAlignment="Bottom"
                             CornerRadius="12"
                             Background="#FFF"
                             BorderBrush="#1E1E1E" BorderThickness="1">
@@ -49,7 +49,7 @@
                     </Border>
                     <Border Visibility="{Binding SettingPanelViewModel.ColorPanelVisibility}"
                              Padding="8,8" HorizontalAlignment="Left"
-                             Margin="8,0,0,8" VerticalAlignment="Bottom"
+                             Margin="0,0,0,8" VerticalAlignment="Bottom"
                              CornerRadius="12"
                              Background="#FFF"
                              BorderBrush="#1E1E1E" BorderThickness="1">
