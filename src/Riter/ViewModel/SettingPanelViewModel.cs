@@ -1,4 +1,5 @@
 ﻿namespace Riter.ViewModel;
+
 public class SettingPanelViewModel : BaseViewModel
 {
     private readonly ISettingPanelStateHandler _settingPanelStateHandler;
@@ -9,17 +10,19 @@ public class SettingPanelViewModel : BaseViewModel
         _settingPanelStateHandler.PropertyChanged += OnStateChanged;
     }
 
-    public Visibility SettingPanelVisibility => _settingPanelStateHandler.SettingPanelVisibility ? Visibility.Visible : Visibility.Hidden;
-
-    public Visibility BrushPanelVisibility => _settingPanelStateHandler.BrushPanelVisibility ? Visibility.Visible : Visibility.Hidden;
-
-    public Visibility ColorPanelVisibility => _settingPanelStateHandler.ColorPanelVisibility ? Visibility.Visible : Visibility.Hidden;
-
-    public Visibility ShapePanelVisibility => _settingPanelStateHandler.ShapePanelVisibility ? Visibility.Visible : Visibility.Hidden;
-
-    public Visibility TimerPanelVisibility => _settingPanelStateHandler.TimerPanelVisibility ? Visibility.Visible : Visibility.Hidden;
+    public string PinPanel => _settingPanelStateHandler.PinPanel;
 
     public bool SettingButtonClicked => _settingPanelStateHandler.SettingButtonClicked;
+
+    public Visibility SettingPanelVisibility => GetVisibility(_settingPanelStateHandler.SettingPanelVisibility);
+
+    public Visibility BrushPanelVisibility => GetVisibility(_settingPanelStateHandler.BrushPanelVisibility);
+
+    public Visibility ColorPanelVisibility => GetVisibility(_settingPanelStateHandler.ColorPanelVisibility);
+
+    public Visibility ShapePanelVisibility => GetVisibility(_settingPanelStateHandler.ShapePanelVisibility);
+
+    public Visibility TimerPanelVisibility => GetVisibility(_settingPanelStateHandler.TimerPanelVisibility);
 
     public ICommand ToggleSettingsPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleSettingsPanel);
 
@@ -30,4 +33,6 @@ public class SettingPanelViewModel : BaseViewModel
     public ICommand ShowTimerPanelCommand => new RelayCommand<string>(_settingPanelStateHandler.ToggleTimerPanel);
 
     public ICommand ShowColorPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleColorPanel);
+
+    private static Visibility GetVisibility(bool isVisible) => isVisible ? Visibility.Visible : Visibility.Hidden;
 }
