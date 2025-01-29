@@ -6,6 +6,7 @@
     xmlns:localCore="clr-namespace:Riter.Core"
     xmlns:local="clr-namespace:Riter.Core.UI"
     xmlns:subpanel="clr-namespace:Riter.Core.UI.SubPanels"
+    xmlns:pinableSubPanel="clr-namespace:Riter.Core.UI.SubPanels.Pinable"
     x:Class="Riter.MainWindow"
     mc:Ignorable="d" ResizeMode="NoResize"
     UseLayoutRounding="True" 
@@ -13,7 +14,7 @@
     WindowState="Maximized"
     AllowsTransparency="True" 
     WindowStyle="None">
-    
+
     <Window.Style>
         <Style TargetType="Window">
             <Setter Property="Background" Value="{StaticResource NoneTransparent}"/>
@@ -63,7 +64,7 @@
                             Margin="175,0,0,4" VerticalAlignment="Bottom"
                             CornerRadius="12"
                             Background="#FFF"
-                            BorderBrush="#1E1E1E" BorderThickness="1">    
+                            BorderBrush="#1E1E1E" BorderThickness="1">
                         <Border.Effect>
                             <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
                         </Border.Effect>
@@ -76,6 +77,27 @@
                     <local:ToolBox x:Name="ToolBox" DataContext="{Binding}"/>
                     <local:WindowControl x:Name="WindowControl"/>
                 </StackPanel>
+                <Border
+                      Padding="4" HorizontalAlignment="Left"
+                      Margin="0,4,0,0" VerticalAlignment="Bottom"
+                      CornerRadius="12"
+                      Background="Transparent"
+                      MinWidth="505">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding SettingPanelViewModel.PinPanel}" Value="ColorPanel">
+                                    <Setter Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <Border.Effect>
+                        <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
+                    </Border.Effect>
+                    <pinableSubPanel:ColorPalettePanel x:Name="PinColorPalettePanel"/>
+                </Border>
             </StackPanel>
         </Canvas>
     </Grid>

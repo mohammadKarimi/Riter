@@ -18,7 +18,7 @@ public class SettingPanelViewModel : BaseViewModel
 
     public Visibility BrushPanelVisibility => GetVisibility(_settingPanelStateHandler.BrushPanelVisibility);
 
-    public Visibility ColorPanelVisibility => GetVisibility(_settingPanelStateHandler.ColorPanelVisibility, "Colo4rPanel");
+    public Visibility ColorPanelVisibility => GetVisibility(_settingPanelStateHandler.ColorPanelVisibility);
 
     public Visibility ShapePanelVisibility => GetVisibility(_settingPanelStateHandler.ShapePanelVisibility);
 
@@ -34,6 +34,6 @@ public class SettingPanelViewModel : BaseViewModel
 
     public ICommand ShowColorPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleColorPanel);
 
-    private Visibility GetVisibility(bool isVisible, string pinPanel = "")
-        => (isVisible || (pinPanel == PinPanel)) ? Visibility.Visible : Visibility.Hidden;
+    private Visibility GetVisibility(bool isVisible)
+        => isVisible ? Visibility.Visible : Visibility.Hidden;
 }
