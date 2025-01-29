@@ -30,15 +30,15 @@
             <StackPanel x:Name="MainPalette" Orientation="Vertical" VerticalAlignment="Center">
                 <Grid VerticalAlignment="Bottom">
                     <local:SettingPanel DataContext="{Binding}" x:Name="SettingPanel" />
-                    <Border Padding="8,8" Visibility="{Binding SettingPanelViewModel.ShapePanelVisibility}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="75,0,0,8" Width="250" Height="300" CornerRadius="12" Background="#FFF" BorderBrush="#1E1E1E" BorderThickness="1">
+                    <Border Padding="8,8" Visibility="{Binding SettingPanelViewModel.ShapePanelVisibility}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="75,0,0,4" Width="250" Height="300" CornerRadius="12" Background="#FFF" BorderBrush="#1E1E1E" BorderThickness="1">
                         <Border.Effect>
                             <DropShadowEffect Opacity="0.2" ShadowDepth="3" BlurRadius="10" />
                         </Border.Effect>
-                        <subpanel:DrawingShapePanel x:Name="DrawindShapePanel"/>
+                        <subpanel:DrawingShapePanel x:Name="DrawingShapePanel"/>
                     </Border>
                     <Border Visibility="{Binding SettingPanelViewModel.BrushPanelVisibility}"
                             Padding="8,8" HorizontalAlignment="Left"
-                            Margin="0,0,0,8" VerticalAlignment="Bottom"
+                            Margin="0,0,0,4" VerticalAlignment="Bottom"
                             CornerRadius="12"
                             Background="#FFF"
                             BorderBrush="#1E1E1E" BorderThickness="1">
@@ -49,7 +49,7 @@
                     </Border>
                     <Border Visibility="{Binding SettingPanelViewModel.ColorPanelVisibility}"
                              Padding="8,8" HorizontalAlignment="Left"
-                             Margin="0,0,0,8" VerticalAlignment="Bottom"
+                             Margin="0,0,0,4" VerticalAlignment="Bottom"
                              CornerRadius="12"
                              Background="#FFF"
                              BorderBrush="#1E1E1E" BorderThickness="1">
@@ -60,7 +60,7 @@
                     </Border>
                     <Border Visibility="{Binding SettingPanelViewModel.TimerPanelVisibility}"
                             Padding="8,8" HorizontalAlignment="Center"
-                            Margin="175,0,0,8" VerticalAlignment="Bottom"
+                            Margin="175,0,0,4" VerticalAlignment="Bottom"
                             CornerRadius="12"
                             Background="#FFF"
                             BorderBrush="#1E1E1E" BorderThickness="1">    
