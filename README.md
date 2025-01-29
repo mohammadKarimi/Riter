@@ -38,7 +38,8 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 ### 🎨 Color Management
 - **Color Palette**: Select from a pre-configured set of colors.
 - **Custom Color Selection**: Choose personalized colors for added flexibility.
-
+- **Pin Color Palette**: You can pin the panel and it is always accessible.
+  
 ### 🧹 Line Management
 - **Undo/Redo**: Reverse or reapply recent drawing actions.
 - **Clear All**: Quickly remove all strokes from the canvas.
