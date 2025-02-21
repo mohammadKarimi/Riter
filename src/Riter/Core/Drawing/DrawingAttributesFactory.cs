@@ -20,7 +20,7 @@ public static class DrawingAttributesFactory
     {
         var drawingAttributes = new DrawingAttributes
         {
-            Color = color == InkColor.RainBow.ToString() ? (Color)ColorConverter.ConvertFromString("#FFFF5656") : (Color)ColorConverter.ConvertFromString(color),
+            Color = color == InkColor.RainBow.ToString() ? (Color)ColorConverter.ConvertFromString(GetRandomColor()) : (Color)ColorConverter.ConvertFromString(color),
             Height = isHighlighter ? size * 5 : size,
             Width = isHighlighter ? size * 5 : size,
             IsHighlighter = isHighlighter,
@@ -29,5 +29,18 @@ public static class DrawingAttributesFactory
         };
 
         return drawingAttributes;
+    }
+
+    /// <summary>
+    /// Created to get random color.
+    /// </summary>
+    /// <returns>return a random color from ColorPalette.Colors.</returns>
+    private static string GetRandomColor()
+    {
+        int colorsCount = ColorPalette.Colors.Count;
+        Random random = new();
+        int randomNumber = random.Next(0, colorsCount);
+
+        return ColorPalette.Colors.ElementAt(randomNumber).Value.Hex;
     }
 }
