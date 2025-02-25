@@ -37,6 +37,19 @@ public partial class MainWindow : Window
         Loaded += MainWindow_Loaded;
     }
 
+    protected override void OnClosed(EventArgs e)
+    {
+        base.OnClosed(e);
+        UnhookWindowsHookEx(_hookID);
+    }
+
+    /// <inheritdoc/>
+    protected override void OnSourceInitialized(EventArgs e)
+    {
+        base.OnSourceInitialized(e);
+        _hookID = SetHook(_proc);
+    }
+
     private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
     [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
@@ -51,19 +64,6 @@ public partial class MainWindow : Window
 
     [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
     private static extern IntPtr GetModuleHandle(string lpModuleName);
-
-    protected override void OnClosed(EventArgs e)
-    {
-        base.OnClosed(e);
-        UnhookWindowsHookEx(_hookID);
-    }
-
-    /// <inheritdoc/>
-    protected override void OnSourceInitialized(EventArgs e)
-    {
-        base.OnSourceInitialized(e);
-        _hookID = SetHook(_proc);
-    }
 
     private static IntPtr SetHook(LowLevelKeyboardProc proc)
     {
