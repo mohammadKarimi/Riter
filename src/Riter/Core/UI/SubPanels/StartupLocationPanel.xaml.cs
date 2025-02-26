@@ -7,7 +7,6 @@ namespace Riter.Core.UI.SubPanels;
 /// </summary>
 public partial class StartupLocationPanel : UserControl
 {
-
     public StartupLocationPanel()
     {
         InitializeComponent();

@@ -24,5 +24,4 @@ public interface IInkEditingModeStateHandler : INotifyPropertyChanged
     void Ink();
 
     void None();
-
 }

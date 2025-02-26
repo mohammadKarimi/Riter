@@ -8,6 +8,8 @@
         <UseWPF>true</UseWPF>
         <AssemblyVersion>0.2.15</AssemblyVersion>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <NoWarn>SA1009, SA1313, SA1201, SA0001</NoWarn>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
     <PropertyGroup>
         <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
