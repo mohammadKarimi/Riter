@@ -15,11 +15,11 @@ public class FilledCircleDrawer : IShapeDrawer
         double centerY = (startPoint.Y + endPoint.Y) / 2;
         double radius = Math.Sqrt(Math.Pow(endPoint.X - centerX, 2) + Math.Pow(endPoint.Y - centerY, 2));
 
-        StrokeCollection strokes = new();
+        StrokeCollection strokes = [];
 
         for (double r = radius; r >= 0; r -= 1)
         {
-            StylusPointCollection points = new();
+            StylusPointCollection points = [];
 
             for (int angle = 0; angle <= 360; angle += 5)
             {
@@ -43,7 +43,7 @@ public class FilledCircleDrawer : IShapeDrawer
 
     private static Stroke MergeStrokes(StrokeCollection strokes)
     {
-        StylusPointCollection allPoints = new();
+        StylusPointCollection allPoints = [];
 
         foreach (Stroke stroke in strokes)
         {

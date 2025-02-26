@@ -14,7 +14,7 @@ public class RectangleDrawer : IShapeDrawer
         Point topRight = new(Math.Max(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
         Point bottomLeft = new(Math.Min(startPoint.X, endPoint.X), Math.Max(startPoint.Y, endPoint.Y));
         Point bottomRight = new(Math.Max(startPoint.X, endPoint.X), Math.Max(startPoint.Y, endPoint.Y));
-        List<Point> points = new() { topLeft, topRight, bottomRight, bottomLeft, topLeft };
+        List<Point> points = [topLeft, topRight, bottomRight, bottomLeft, topLeft];
 
         StylusPointCollection stylusPoints = new(points);
         DrawingAttributes newAttributes = canvas.DefaultDrawingAttributes.Clone();

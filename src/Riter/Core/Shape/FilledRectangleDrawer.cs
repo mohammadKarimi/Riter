@@ -14,7 +14,7 @@ public class FilledRectangleDrawer : IShapeDrawer
         Point topLeft = new(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
         Point bottomRight = new(Math.Max(startPoint.X, endPoint.X), Math.Max(startPoint.Y, endPoint.Y));
 
-        StylusPointCollection stylusPoints = new();
+        StylusPointCollection stylusPoints = [];
 
         for (double x = topLeft.X; x <= bottomRight.X; x++)
         {

@@ -16,10 +16,12 @@ public class ArrowDrawer : IShapeDrawer
         lineAttributes.StylusTip = StylusTip.Ellipse;
         lineAttributes.IgnorePressure = true;
 
-        List<Point> points = new() { startPoint, endPoint };
-
-        points.AddRange(CreateArrowheadPoints(startPoint, endPoint, 15));
-        points.AddRange(CreateArrowheadPoints(startPoint, endPoint, -15));
+        List<Point> points =
+        [
+            startPoint, endPoint,
+            .. CreateArrowheadPoints(startPoint, endPoint, 15),
+            .. CreateArrowheadPoints(startPoint, endPoint, -15),
+        ];
 
         if (!isRainbow)
             return new Stroke(new StylusPointCollection(points)) { DrawingAttributes = lineAttributes };
@@ -40,7 +42,7 @@ public class ArrowDrawer : IShapeDrawer
         VectorX pe = new(endPoint.X, endPoint.Y);
         Point arrowPoint = (((ps - pe) * 0.85f) + ps).ToPoint();
 
-        Matrix rotatingMatrix = default(Matrix);
+        Matrix rotatingMatrix = default;
         rotatingMatrix.RotateAt(rotation, endPoint.X, endPoint.Y);
 
         Point rotatedArrowPoint = rotatingMatrix.Transform(arrowPoint);

@@ -14,7 +14,7 @@ public class CircleDrawer : IShapeDrawer
         double centerY = (startPoint.Y + endPoint.Y) / 2;
         double radius = Math.Sqrt(Math.Pow(endPoint.X - centerX, 2) + Math.Pow(endPoint.Y - centerY, 2));
 
-        StylusPointCollection points = new();
+        StylusPointCollection points = [];
         for (int i = 0; i <= 360; i += 5)
         {
             double radians = i * Math.PI / 180;

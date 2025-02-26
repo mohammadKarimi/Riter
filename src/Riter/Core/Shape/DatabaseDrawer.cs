@@ -38,7 +38,7 @@ public class DatabaseDrawer : IShapeDrawer
     private static List<Point> GetEllipsePoints(double centerX, double centerY, double radiusX, bool isTop)
     {
         int segments = 100;
-        List<Point> points = new();
+        List<Point> points = [];
         double angleStep = Math.PI * 2 / segments;
         for (int i = 0; i <= segments; i++)
         {
