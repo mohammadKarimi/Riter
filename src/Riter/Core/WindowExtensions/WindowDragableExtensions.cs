@@ -51,8 +51,8 @@ public static class WindowDraggableExtensions
             return;
         }
 
-        var currentMousePosition = e.GetPosition(window);
-        var offset = currentMousePosition - _lastMousePosition;
+        Point currentMousePosition = e.GetPosition(window);
+        Vector offset = currentMousePosition - _lastMousePosition;
 
         if (element.RenderTransform is TranslateTransform transform)
         {

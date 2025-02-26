@@ -67,17 +67,17 @@ public partial class MainWindow : Window
 
     private static IntPtr SetHook(LowLevelKeyboardProc proc)
     {
-        using var curProcess = Process.GetCurrentProcess();
-        using var curModule = curProcess.MainModule;
+        using Process curProcess = Process.GetCurrentProcess();
+        using ProcessModule curModule = curProcess.MainModule;
         return SetWindowsHookEx(WHKEYBOARDLL, proc, GetModuleHandle(curModule.ModuleName), 0);
     }
 
     private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
     {
-        var isKey = true;
+        bool isKey = true;
         if (nCode >= 0 && (wParam == WMKEYDOWN || wParam == WMKEYUP))
         {
-            var vkCode = Marshal.ReadInt32(lParam);
+            int vkCode = Marshal.ReadInt32(lParam);
 
             if (wParam is WMKEYDOWN)
             {
@@ -131,7 +131,7 @@ public partial class MainWindow : Window
     {
         if (MainPalette != null)
         {
-            var context = new StartupLocationContext(_appSettings.StartupLocation);
+            StartupLocationContext context = new(_appSettings.StartupLocation);
             context.ExecuteStrategy(Layout, MainPalette, _appSettings);
         }
     }

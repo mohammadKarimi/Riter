@@ -26,9 +26,10 @@ public class ColorToGradientConverter : IValueConverter
                 EndPoint = new Point(1, 0),
             };
         }
-        else if (value is string colorName && !string.IsNullOrEmpty(colorName))
+
+        if (value is string colorName && !string.IsNullOrEmpty(colorName))
         {
-            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorName));
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(colorName)!);
         }
 
         return Brushes.Transparent;

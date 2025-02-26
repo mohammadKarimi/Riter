@@ -11,9 +11,9 @@ public partial class DrawingShapePanel : UserControl
     public DrawingShapePanel()
     {
         InitializeComponent();
-        var appSetting = App.ServiceProvider.GetService<AppSettings>();
+        AppSettings appSetting = App.ServiceProvider.GetService<AppSettings>();
 
-        var hotkeys = appSetting.HotKeysConfig.ToDictionary(x => x.Key, x => x.Value);
+        Dictionary<string, string> hotkeys = appSetting.HotKeysConfig.ToDictionary(x => x.Key, x => x.Value);
         ArrowHotKey.Content = hotkeys[HotKey.Arrow.ToString()];
         LineHotKey.Content = hotkeys[HotKey.Line.ToString()];
         RectangleHotKey.Content = hotkeys[HotKey.Rectangle.ToString()];

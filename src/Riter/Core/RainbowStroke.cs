@@ -6,7 +6,7 @@ public class RainbowStroke(StylusPointCollection stylusPoints) : Stroke(stylusPo
 {
     protected override void DrawCore(DrawingContext drawingContext, DrawingAttributes drawingAttributes)
     {
-        var rainbowBrush = new LinearGradientBrush
+        LinearGradientBrush rainbowBrush = new()
         {
             GradientStops =
             [
@@ -20,7 +20,7 @@ public class RainbowStroke(StylusPointCollection stylusPoints) : Stroke(stylusPo
             StartPoint = new Point(0, 0),
             EndPoint = new Point(1, 0),
         };
-        var pathGeometry = GetGeometry(drawingAttributes);
+        Geometry pathGeometry = GetGeometry(drawingAttributes);
         drawingContext.DrawGeometry(rainbowBrush, null, pathGeometry);
     }
 }

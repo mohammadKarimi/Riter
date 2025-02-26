@@ -29,7 +29,7 @@ public class BrushSettingsStateHandlerTests
     public void Should_UpdateInkColorAndColorSelected_When_SetInkColorIsCalled()
     {
 
-        var newColor = "Red";
+        string newColor = "Red";
         _brushSettingsStateHandler.SetInkColor(newColor);
 
         _brushSettingsStateHandler.InkColor.Should().Be(newColor);
@@ -42,7 +42,7 @@ public class BrushSettingsStateHandlerTests
     [Fact]
     public void Should_UpdateInkColor_When_SetInkColorWithHotKeyIsCalled()
     {
-        var color = InkColor.Red;
+        InkColor color = InkColor.Red;
         _brushSettingsStateHandler.SetInkColorWithHotKey(color);
         _brushSettingsStateHandler.InkColor.Should().Be(ColorPalette.Colors[color].Hex);
     }
@@ -50,7 +50,7 @@ public class BrushSettingsStateHandlerTests
     [Fact]
     public void Should_UpdateSizeOfBrush_When_SetSizeOfBrushIsCalled()
     {
-        var newSize = "5.0";
+        string newSize = "5.0";
         _brushSettingsStateHandler.SetSizeOfBrush(newSize);
 
         _brushSettingsStateHandler.SizeOfBrush.Should().Be(5.0);
@@ -62,7 +62,7 @@ public class BrushSettingsStateHandlerTests
     [Fact]
     public void Should_UpdateSizeOfBrush_When_SetSizeOfBrushWithHotKeyIsCalled()
     {
-        var newSize = BrushSize.X2;
+        BrushSize newSize = BrushSize.X2;
         _brushSettingsStateHandler.SetSizeOfBrushWithHotKey(newSize);
         _brushSettingsStateHandler.SizeOfBrush.Should().Be((double)newSize);
     }

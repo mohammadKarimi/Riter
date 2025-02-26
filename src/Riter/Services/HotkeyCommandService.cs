@@ -10,15 +10,15 @@ public class HotKeyCommandService(AppSettings appSettings)
 
     public void ExecuteHotKey(HotKeiesPressed hotKeies)
     {
-        var keiesMap = BuildKeyCombination(hotKeies);
-        var hotkey = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Value == keiesMap);
+        string keiesMap = BuildKeyCombination(hotKeies);
+        HotKeysConfig hotkey = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Value == keiesMap);
 
         if (hotkey is null || !Enum.TryParse(hotkey.Key, out HotKey hotKeyEnum))
         {
             return;
         }
 
-        if (_hotKeyCommandMap.TryGetValue(hotKeyEnum, out var command))
+        if (_hotKeyCommandMap.TryGetValue(hotKeyEnum, out Action command))
         {
             command.Invoke();
         }
@@ -26,7 +26,7 @@ public class HotKeyCommandService(AppSettings appSettings)
 
     private static string BuildKeyCombination(HotKeiesPressed hotKeies)
     {
-        var keiesMap = new StringBuilder();
+        StringBuilder keiesMap = new();
 
         if (hotKeies.CtrlPressed)
         {

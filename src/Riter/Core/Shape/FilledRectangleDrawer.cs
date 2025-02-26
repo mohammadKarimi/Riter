@@ -11,20 +11,20 @@ public class FilledRectangleDrawer : IShapeDrawer
 
     public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
-        var topLeft = new Point(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
-        var bottomRight = new Point(Math.Max(startPoint.X, endPoint.X), Math.Max(startPoint.Y, endPoint.Y));
+        Point topLeft = new(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
+        Point bottomRight = new(Math.Max(startPoint.X, endPoint.X), Math.Max(startPoint.Y, endPoint.Y));
 
-        var stylusPoints = new StylusPointCollection();
+        StylusPointCollection stylusPoints = new();
 
-        for (var x = topLeft.X; x <= bottomRight.X; x++)
+        for (double x = topLeft.X; x <= bottomRight.X; x++)
         {
-            for (var y = topLeft.Y; y <= bottomRight.Y; y++)
+            for (double y = topLeft.Y; y <= bottomRight.Y; y++)
             {
                 stylusPoints.Add(new StylusPoint(x, y));
             }
         }
 
-        var newAttributes = canvas.DefaultDrawingAttributes.Clone();
+        DrawingAttributes newAttributes = canvas.DefaultDrawingAttributes.Clone();
         newAttributes.StylusTip = StylusTip.Rectangle;
         newAttributes.IgnorePressure = true;
 

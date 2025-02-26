@@ -13,7 +13,7 @@ public class ButtonSelectedStateHandlerTests
     [Fact]
     public void Should_UpdateButtonSelectedName_When_SetButtonSelectedNameIsCalled()
     {
-        var newButtonName = "NewButton";
+        string newButtonName = "NewButton";
         _stateHandler.SetButtonSelectedName(newButtonName);
         _stateHandler.ButtonSelectedName.Should().Be(newButtonName);
     }
@@ -21,8 +21,8 @@ public class ButtonSelectedStateHandlerTests
     [Fact]
     public void Should_ResetButtonSelectedNameToPrevious_When_ResetPreviousButtonIsCalled()
     {
-        var initialButtonName = "InitialButton";
-        var newButtonName = "NewButton";
+        string initialButtonName = "InitialButton";
+        string newButtonName = "NewButton";
         _stateHandler.SetButtonSelectedName(initialButtonName);
         _stateHandler.StoreCurrentButton();
         _stateHandler.SetButtonSelectedName(newButtonName);
@@ -34,7 +34,7 @@ public class ButtonSelectedStateHandlerTests
     [Fact]
     public void Should_ClearPreviousButtonSelectedName_When_ResetPreviousButtonIsCalledTwice()
     {
-        var initialButtonName = "InitialButton";
+        string initialButtonName = "InitialButton";
         _stateHandler.SetButtonSelectedName(initialButtonName);
         _stateHandler.StoreCurrentButton();
         _stateHandler.ResetPreviousButton();
@@ -45,7 +45,7 @@ public class ButtonSelectedStateHandlerTests
     [Fact]
     public void Should_StoreCurrentButtonSelectedName_When_StoreCurrentButtonIsCalled()
     {
-        var initialButtonName = "InitialButton";
+        string initialButtonName = "InitialButton";
         _stateHandler.SetButtonSelectedName(initialButtonName);
 
         _stateHandler.StoreCurrentButton();
@@ -57,7 +57,7 @@ public class ButtonSelectedStateHandlerTests
     [Fact]
     public void Should_ResetArrowButtonSelectedName_When_ResetArrowButtonSelectedIsCalled()
     {
-        var arrowButtonName = "ArrowButton";
+        string arrowButtonName = "ArrowButton";
         _stateHandler.SetArrowButtonSelected(arrowButtonName);
 
         _stateHandler.ResetArrowButtonSelected();
@@ -67,7 +67,7 @@ public class ButtonSelectedStateHandlerTests
     [Fact]
     public void Should_UpdateArrowButtonSelectedName_When_SetArrowButtonSelectedIsCalled()
     {
-        var arrowButtonName = "ArrowButton";
+        string arrowButtonName = "ArrowButton";
         _stateHandler.SetArrowButtonSelected(arrowButtonName);
         _stateHandler.ArrowButtonSelectedName.Should().Be(arrowButtonName);
     }

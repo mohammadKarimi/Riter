@@ -10,14 +10,14 @@ public class RectangleDrawer : IShapeDrawer
 
     public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
-        var topLeft = new Point(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
-        var topRight = new Point(Math.Max(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
-        var bottomLeft = new Point(Math.Min(startPoint.X, endPoint.X), Math.Max(startPoint.Y, endPoint.Y));
-        var bottomRight = new Point(Math.Max(startPoint.X, endPoint.X), Math.Max(startPoint.Y, endPoint.Y));
-        var points = new List<Point> { topLeft, topRight, bottomRight, bottomLeft, topLeft };
+        Point topLeft = new(Math.Min(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
+        Point topRight = new(Math.Max(startPoint.X, endPoint.X), Math.Min(startPoint.Y, endPoint.Y));
+        Point bottomLeft = new(Math.Min(startPoint.X, endPoint.X), Math.Max(startPoint.Y, endPoint.Y));
+        Point bottomRight = new(Math.Max(startPoint.X, endPoint.X), Math.Max(startPoint.Y, endPoint.Y));
+        List<Point> points = new() { topLeft, topRight, bottomRight, bottomLeft, topLeft };
 
-        var stylusPoints = new StylusPointCollection(points);
-        var newAttributes = canvas.DefaultDrawingAttributes.Clone();
+        StylusPointCollection stylusPoints = new(points);
+        DrawingAttributes newAttributes = canvas.DefaultDrawingAttributes.Clone();
         newAttributes.StylusTip = StylusTip.Rectangle;
         newAttributes.IgnorePressure = true;
         return !isRainbow

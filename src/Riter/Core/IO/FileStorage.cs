@@ -9,7 +9,7 @@ public class FileStorage
 
     public static async Task SaveConfig(AppSettings settings)
     {
-        var content = JsonSerializer.Serialize(new { AppSettings = settings });
+        string content = JsonSerializer.Serialize(new { AppSettings = settings });
         await File.WriteAllTextAsync(FilePath, content);
     }
 
@@ -17,13 +17,13 @@ public class FileStorage
     {
         try
         {
-            var path = $"{Directory.GetCurrentDirectory()}/Screenshots/";
+            string path = $"{Directory.GetCurrentDirectory()}/Screenshots/";
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
 
-            var filePath = Path.Combine(path, $"Screenshot_{DateTime.Now:yyyyMMddHHmmss}.png");
+            string filePath = Path.Combine(path, $"Screenshot_{DateTime.Now:yyyyMMddHHmmss}.png");
             using FileStream fileStream = new(filePath, FileMode.Create);
             PngBitmapEncoder encoder = new();
             encoder.Frames.Add(BitmapFrame.Create(renderBitmap));

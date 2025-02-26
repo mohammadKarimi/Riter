@@ -11,25 +11,25 @@ public class FilledCircleDrawer : IShapeDrawer
 
     public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow)
     {
-        var centerX = (startPoint.X + endPoint.X) / 2;
-        var centerY = (startPoint.Y + endPoint.Y) / 2;
-        var radius = Math.Sqrt(Math.Pow(endPoint.X - centerX, 2) + Math.Pow(endPoint.Y - centerY, 2));
+        double centerX = (startPoint.X + endPoint.X) / 2;
+        double centerY = (startPoint.Y + endPoint.Y) / 2;
+        double radius = Math.Sqrt(Math.Pow(endPoint.X - centerX, 2) + Math.Pow(endPoint.Y - centerY, 2));
 
-        var strokes = new StrokeCollection();
+        StrokeCollection strokes = new();
 
-        for (var r = radius; r >= 0; r -= 1)
+        for (double r = radius; r >= 0; r -= 1)
         {
-            var points = new StylusPointCollection();
+            StylusPointCollection points = new();
 
-            for (var angle = 0; angle <= 360; angle += 5)
+            for (int angle = 0; angle <= 360; angle += 5)
             {
-                var radians = angle * Math.PI / 180;
-                var x = centerX + (r * Math.Cos(radians));
-                var y = centerY + (r * Math.Sin(radians));
+                double radians = angle * Math.PI / 180;
+                double x = centerX + (r * Math.Cos(radians));
+                double y = centerY + (r * Math.Sin(radians));
                 points.Add(new StylusPoint(x, y));
             }
 
-            var stroke = new Stroke(points)
+            Stroke stroke = new(points)
             {
                 DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
             };
@@ -37,15 +37,15 @@ public class FilledCircleDrawer : IShapeDrawer
             strokes.Add(stroke);
         }
 
-        var filledStroke = MergeStrokes(strokes);
+        Stroke filledStroke = MergeStrokes(strokes);
         return filledStroke;
     }
 
     private static Stroke MergeStrokes(StrokeCollection strokes)
     {
-        var allPoints = new StylusPointCollection();
+        StylusPointCollection allPoints = new();
 
-        foreach (var stroke in strokes)
+        foreach (Stroke stroke in strokes)
         {
             allPoints.Add(stroke.StylusPoints);
         }

@@ -12,17 +12,17 @@ public class DatabaseDrawer : IShapeDrawer
 
     public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
-        var width = Math.Abs(endPoint.X - startPoint.X);
-        var height = Math.Abs(endPoint.Y - startPoint.Y);
-        var radiusX = width / 2;
-        var centerX = (startPoint.X + endPoint.X) / 2;
-        var topY = startPoint.Y;
-        var bottomY = startPoint.Y + height;
+        double width = Math.Abs(endPoint.X - startPoint.X);
+        double height = Math.Abs(endPoint.Y - startPoint.Y);
+        double radiusX = width / 2;
+        double centerX = (startPoint.X + endPoint.X) / 2;
+        double topY = startPoint.Y;
+        double bottomY = startPoint.Y + height;
 
-        var topEllipsePoints = GetEllipsePoints(centerX, topY, radiusX, true);
+        List<Point> topEllipsePoints = GetEllipsePoints(centerX, topY, radiusX, true);
 
         List<Point> leftSideStylusPoints = [new(centerX - radiusX, topY)];
-        var bottomEllipsePoints = GetEllipsePoints(centerX, bottomY, radiusX, false);
+        List<Point> bottomEllipsePoints = GetEllipsePoints(centerX, bottomY, radiusX, false);
         List<Point> combinedPoints = [.. topEllipsePoints, .. bottomEllipsePoints, .. leftSideStylusPoints];
         return !isRainbow
             ? new Stroke(new StylusPointCollection(combinedPoints))
@@ -37,14 +37,14 @@ public class DatabaseDrawer : IShapeDrawer
 
     private static List<Point> GetEllipsePoints(double centerX, double centerY, double radiusX, bool isTop)
     {
-        var segments = 100;
-        List<Point> points = new List<Point>();
-        var angleStep = Math.PI * 2 / segments;
-        for (var i = 0; i <= segments; i++)
+        int segments = 100;
+        List<Point> points = new();
+        double angleStep = Math.PI * 2 / segments;
+        for (int i = 0; i <= segments; i++)
         {
-            var angle = angleStep * i;
-            var x = centerX + (radiusX * Math.Cos(angle));
-            var y = centerY + (radiusX / 2 * Math.Sin(angle));
+            double angle = angleStep * i;
+            double x = centerX + (radiusX * Math.Cos(angle));
+            double y = centerY + (radiusX / 2 * Math.Sin(angle));
             if (!isTop && angle > Math.PI)
             {
                 continue;

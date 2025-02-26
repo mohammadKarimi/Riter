@@ -12,7 +12,7 @@ public class LineDrawer : IShapeDrawer
 
     public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
-        var stylusPoints = new StylusPointCollection(new[]
+        StylusPointCollection stylusPoints = new(new[]
         {
             new StylusPoint(startPoint.X, startPoint.Y),
             new StylusPoint(endPoint.X, endPoint.Y),

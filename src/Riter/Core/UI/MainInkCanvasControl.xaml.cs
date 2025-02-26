@@ -43,9 +43,9 @@ public partial class MainInkCanvasControl : UserControl
     /// <returns>A translation matrix representing the movement.</returns>
     private static Matrix CreateTranslationMatrix(Point startPoint, Point endPoint)
     {
-        var dx = endPoint.X - startPoint.X;
-        var dy = endPoint.Y - startPoint.Y;
-        var translationMatrix = default(Matrix);
+        double dx = endPoint.X - startPoint.X;
+        double dy = endPoint.Y - startPoint.Y;
+        Matrix translationMatrix = default(Matrix);
         translationMatrix.Translate(dx, dy);
         return translationMatrix;
     }
@@ -57,7 +57,7 @@ public partial class MainInkCanvasControl : UserControl
     /// <returns>True if the drawing or highlighter button is selected, otherwise false.</returns>
     private static bool IsDrawingOrHighlighterButtonSelected(PaletteStateOrchestratorViewModel viewModel)
     {
-        var selectedButton = viewModel.ButtonSelectedViewModel.ButtonSelectedName;
+        string selectedButton = viewModel.ButtonSelectedViewModel.ButtonSelectedName;
         return selectedButton == ButtonNames.DrawingButton || selectedButton == ButtonNames.HighlighterButton;
     }
 
@@ -91,7 +91,7 @@ public partial class MainInkCanvasControl : UserControl
 
     private void DrawingViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
     {
-        var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
+        PaletteStateOrchestratorViewModel viewModel = (PaletteStateOrchestratorViewModel)DataContext;
 
         if (e.PropertyName == nameof(viewModel.InkEditingModeViewModel.InkEditingMode)
           && viewModel.InkEditingModeViewModel.InkEditingMode is InkCanvasEditingMode.None)
@@ -131,8 +131,8 @@ public partial class MainInkCanvasControl : UserControl
 
     private void Window_KeyUp(object sender, KeyEventArgs e)
     {
-        var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
-        var actualKey = ResolveActualKey(e);
+        PaletteStateOrchestratorViewModel viewModel = (PaletteStateOrchestratorViewModel)DataContext;
+        Key actualKey = ResolveActualKey(e);
 
         if (IsAltKeyReleased(actualKey))
         {
@@ -186,7 +186,7 @@ public partial class MainInkCanvasControl : UserControl
 
         if (_isDrawing && _lastStroke is not null)
         {
-            var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
+            PaletteStateOrchestratorViewModel viewModel = (PaletteStateOrchestratorViewModel)DataContext;
             _strokeHistoryService.Push(
                 StrokesHistoryNode.CreateAddedType(
                 [_lastStroke],
@@ -201,7 +201,7 @@ public partial class MainInkCanvasControl : UserControl
 
     private Stroke GetStrokeUnderCursor(Point position)
     {
-        foreach (var stroke in MainInkCanvas.Strokes)
+        foreach (Stroke stroke in MainInkCanvas.Strokes)
         {
             if (stroke.HitTest(position, 2.0))
             {
@@ -218,10 +218,10 @@ public partial class MainInkCanvasControl : UserControl
 
         if (!ShouldDraw()) return;
 
-        var (viewModel, currentShape) = GetCurrentShape();
-        if (!_shapeDrawers.TryGetValue(currentShape, out var drawer)) return;
+        (PaletteStateOrchestratorViewModel viewModel, DrawingShape currentShape) = GetCurrentShape();
+        if (!_shapeDrawers.TryGetValue(currentShape, out IShapeDrawer drawer)) return;
 
-        var endPoint = e.GetPosition(MainInkCanvas);
+        Point endPoint = e.GetPosition(MainInkCanvas);
         DrawAndReplaceShape(drawer, viewModel, endPoint);
     }
 
@@ -235,8 +235,8 @@ public partial class MainInkCanvasControl : UserControl
         if (!_isDragging || _selectedStroke == null || e.LeftButton != MouseButtonState.Pressed)
             return false;
 
-        var currentPosition = e.GetPosition(MainInkCanvas);
-        var translationMatrix = CreateTranslationMatrix(_startDragPoint, currentPosition);
+        Point currentPosition = e.GetPosition(MainInkCanvas);
+        Matrix translationMatrix = CreateTranslationMatrix(_startDragPoint, currentPosition);
         _selectedStroke.Transform(translationMatrix, false);
         _startDragPoint = currentPosition;
 
@@ -257,7 +257,7 @@ public partial class MainInkCanvasControl : UserControl
     /// <param name="endPoint">The endpoint of the shape.</param>
     private void DrawAndReplaceShape(IShapeDrawer drawer, PaletteStateOrchestratorViewModel viewModel, Point endPoint)
     {
-        var stroke = drawer.DrawShape(MainInkCanvas, _startPoint, endPoint, viewModel.BrushSettingsViewModel.IsRainbow);
+        Stroke stroke = drawer.DrawShape(MainInkCanvas, _startPoint, endPoint, viewModel.BrushSettingsViewModel.IsRainbow);
 
         if (_lastStroke != null)
             MainInkCanvas.Strokes.Remove(_lastStroke);
@@ -272,8 +272,8 @@ public partial class MainInkCanvasControl : UserControl
     /// <returns>A tuple containing the palette state view model and the current drawing shape.</returns>
     private (PaletteStateOrchestratorViewModel viewModel, DrawingShape currentShape) GetCurrentShape()
     {
-        var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
-        var currentShape = viewModel.DrawingViewModel.CurrentShape;
+        PaletteStateOrchestratorViewModel viewModel = (PaletteStateOrchestratorViewModel)DataContext;
+        DrawingShape currentShape = viewModel.DrawingViewModel.CurrentShape;
 
         if (viewModel.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.DrawingButton ||
             viewModel.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.HighlighterButton)
@@ -297,7 +297,7 @@ public partial class MainInkCanvasControl : UserControl
             return;
         }
 
-        var viewModel = (PaletteStateOrchestratorViewModel)DataContext;
+        PaletteStateOrchestratorViewModel viewModel = (PaletteStateOrchestratorViewModel)DataContext;
 
         if (e.Added.Count != 0)
         {
