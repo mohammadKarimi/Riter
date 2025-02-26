@@ -1,44 +1,39 @@
-﻿using System.Text;
-
-namespace Riter.Services;
+﻿namespace Riter.Services;
 public class HotKeyCommandService(AppSettings appSettings)
 {
-    private readonly AppSettings _appSettings = appSettings;
-    private Dictionary<HotKey, Action> _hotKeyCommandMap;
+    private readonly AppSettings _appSettings = appSettings ?? throw new ArgumentNullException(nameof(appSettings));
+    private readonly Dictionary<HotKey, Action> _hotKeyCommandMap = [];
 
-    public void InitializeCommands(Dictionary<HotKey, Action> commandMap) => _hotKeyCommandMap = commandMap;
+    public void InitializeCommands(Dictionary<HotKey, Action> commandMap)
+    {
+        ArgumentNullException.ThrowIfNull(commandMap);
+        _hotKeyCommandMap.Clear();
+        foreach (KeyValuePair<HotKey, Action> entry in commandMap)
+        {
+            _hotKeyCommandMap[entry.Key] = entry.Value;
+        }
+    }
 
     public void ExecuteHotKey(HotKeiesPressed hotKeies)
     {
-        string keiesMap = BuildKeyCombination(hotKeies);
-        HotKeysConfig hotkey = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Value == keiesMap);
+        string keyCombination = BuildKeyCombination(hotKeies);
+        HotKeysConfig hotkeyConfig = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Value == keyCombination);
 
-        if (hotkey is null || !Enum.TryParse(hotkey.Key, out HotKey hotKeyEnum))
+        if (hotkeyConfig != null && Enum.TryParse(hotkeyConfig.Key, out HotKey hotKeyEnum))
         {
-            return;
-        }
-
-        if (_hotKeyCommandMap.TryGetValue(hotKeyEnum, out Action command))
-        {
-            command.Invoke();
+            if (_hotKeyCommandMap.TryGetValue(hotKeyEnum, out Action command))
+            {
+                command.Invoke();
+            }
         }
     }
 
     private static string BuildKeyCombination(HotKeiesPressed hotKeies)
     {
-        StringBuilder keiesMap = new();
-
-        if (hotKeies.CtrlPressed)
-        {
-            keiesMap.Append("CTRL + ");
-        }
-
-        if (hotKeies.ShiftPressed)
-        {
-            keiesMap.Append("SHIFT + ");
-        }
-
-        keiesMap.Append(hotKeies.Key.ToString().ToUpper());
-        return keiesMap.ToString();
+        List<string> keys = [];
+        if (hotKeies.CtrlPressed) keys.Add("CTRL");
+        if (hotKeies.ShiftPressed) keys.Add("SHIFT");
+        keys.Add(hotKeies.Key.ToString().ToUpper());
+        return string.Join(" + ", keys);
     }
 }
