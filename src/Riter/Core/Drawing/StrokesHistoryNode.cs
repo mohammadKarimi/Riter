@@ -26,12 +26,12 @@ public class StrokesHistoryNode
 
     public int TimerMilliSecond { get; private set; }
 
-    public static StrokesHistoryNode CreateAddedType(StrokeCollection strokes, bool enableTimer, int timerMiliSecond) => new()
+    public static StrokesHistoryNode CreateAddedType(StrokeCollection strokes, bool enableTimer, int timerMilliSecond) => new()
     {
         Strokes = strokes,
         Type = StrokesHistoryNodeType.Added,
         EnableTimer = enableTimer,
-        TimerMilliSecond = timerMiliSecond,
+        TimerMilliSecond = timerMilliSecond,
     };
 
     /// <summary>
