@@ -25,17 +25,17 @@ public class StrokeHistoryServiceTests
     [WpfFact]
     public void Push_ShouldAddNodeToHistory()
     {
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Added);
+        StrokesHistoryNode node = CreateHistoryNode(StrokesHistoryNodeType.Added);
         _service.Push(node);
-        var poppedNode = _service.Pop();
+        StrokesHistoryNode poppedNode = _service.Pop();
         poppedNode.Should().BeSameAs(node, "because the node should be pushed to the undo history");
     }
 
     [WpfFact]
     public void Clear_ShouldResetAllHistoriesAndStrokes()
     {
-        var strokes = new StrokeCollection();
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
+        StrokeCollection strokes = new();
+        StrokesHistoryNode node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
         _service.Push(node);
 
         _service.Clear();
@@ -48,10 +48,10 @@ public class StrokeHistoryServiceTests
     [WpfFact]
     public void Push_ShouldAddHistoryNode_ToUndoStack()
     {
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Added);
+        StrokesHistoryNode node = CreateHistoryNode(StrokesHistoryNodeType.Added);
 
         _service.Push(node);
-        var result = _service.Pop();
+        StrokesHistoryNode result = _service.Pop();
 
         Assert.Equal(node, result);
     }
@@ -59,7 +59,7 @@ public class StrokeHistoryServiceTests
     [WpfFact]
     public void CanUndo_ShouldReturnTrue_WhenHistoryStackIsNotEmpty()
     {
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Added);
+        StrokesHistoryNode node = CreateHistoryNode(StrokesHistoryNodeType.Added);
         _service.Push(node);
 
         Assert.True(_service.CanUndo());
@@ -74,8 +74,8 @@ public class StrokeHistoryServiceTests
     [WpfFact]
     public void Undo_ShouldMoveNode_FromHistoryToRedoStack()
     {
-        var strokes = new StrokeCollection();
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
+        StrokeCollection strokes = new();
+        StrokesHistoryNode node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
 
         _service.Push(node);
         _service.Undo();
@@ -87,8 +87,8 @@ public class StrokeHistoryServiceTests
     [WpfFact]
     public void Redo_ShouldMoveNode_FromRedoToHistoryStack()
     {
-        var strokes = new StrokeCollection();
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Removed, strokes);
+        StrokeCollection strokes = new();
+        StrokesHistoryNode node = CreateHistoryNode(StrokesHistoryNodeType.Removed, strokes);
 
         _service.Push(node);
         _service.Undo();
@@ -101,8 +101,8 @@ public class StrokeHistoryServiceTests
     [WpfFact]
     public void ClearRedoHistory_ShouldOnlyClearRedoStack()
     {
-        var strokes = new StrokeCollection();
-        var node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
+        StrokeCollection strokes = new();
+        StrokesHistoryNode node = CreateHistoryNode(StrokesHistoryNodeType.Added, strokes);
 
         _service.Push(node);
         _service.Undo();

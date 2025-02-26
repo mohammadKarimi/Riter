@@ -4,10 +4,8 @@ using Riter.Core.Enum;
 namespace Riter.Core.Drawing;
 
 /// <summary>
-/// This objects holds the stroke that user is drawind on the canvas.
+/// This objects holds the stroke that user is drawing on the canvas.
 /// </summary>
-/// <param name="strokes">stroke line.</param>
-/// <param name="type">type of drawing added or removed.</param>
 public class StrokesHistoryNode
 {
     private StrokesHistoryNode()
@@ -26,14 +24,14 @@ public class StrokesHistoryNode
 
     public bool EnableTimer { get; private set; }
 
-    public int TimerMiliSecond { get; private set; }
+    public int TimerMilliSecond { get; private set; }
 
     public static StrokesHistoryNode CreateAddedType(StrokeCollection strokes, bool enableTimer, int timerMiliSecond) => new()
     {
         Strokes = strokes,
         Type = StrokesHistoryNodeType.Added,
         EnableTimer = enableTimer,
-        TimerMiliSecond = timerMiliSecond,
+        TimerMilliSecond = timerMiliSecond,
     };
 
     /// <summary>

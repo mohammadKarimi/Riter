@@ -71,7 +71,7 @@ public class BrushSettingsStateHandler : BaseStateHandler, IBrushSettingsStateHa
 
     public void SetSizeOfBrush(string size)
     {
-        if (double.TryParse(size, out var parsedSize))
+        if (double.TryParse(size, out double parsedSize))
         {
             SizeOfBrush = parsedSize;
             ResetSettings();

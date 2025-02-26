@@ -36,20 +36,20 @@ public partial class App : Application
     /// <param name="e">Event arguments for the startup event.</param>
     protected override void OnStartup(StartupEventArgs e)
     {
-        var builder = new ConfigurationBuilder()
+        IConfigurationBuilder builder = new ConfigurationBuilder()
                         .SetBasePath(Directory.GetCurrentDirectory())
                         .AddJsonFile("appsettings.json", false, true);
 
         Configuration = builder.Build();
         AppSettings appSettings = new();
         Configuration.Bind(AppSettings.Section, appSettings);
-        var serviceCollection = new ServiceCollection();
+        ServiceCollection serviceCollection = new();
         serviceCollection.AddSingleton(appSettings);
 
         ConfigureServices(serviceCollection);
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         ServiceProvider = serviceCollection.BuildServiceProvider();
-        var mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
+        MainWindow mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
         mainWindow.Show();
     }
 

@@ -18,9 +18,9 @@ public static class DrawingAttributesFactory
     /// <returns>Canvas Ink Attributes.</returns>
     public static DrawingAttributes CreateDrawingAttributes(string color, double size, bool isHighlighter)
     {
-        var drawingAttributes = new DrawingAttributes
+        DrawingAttributes drawingAttributes = new()
         {
-            Color = color == InkColor.RainBow.ToString() ? (Color)ColorConverter.ConvertFromString(GetRandomColor()) : (Color)ColorConverter.ConvertFromString(color),
+            Color = color == InkColor.RainBow.ToString() ? (Color)ColorConverter.ConvertFromString(GetRandomColor())! : (Color)ColorConverter.ConvertFromString(color)!,
             Height = isHighlighter ? size * 5 : size,
             Width = isHighlighter ? size * 5 : size,
             IsHighlighter = isHighlighter,

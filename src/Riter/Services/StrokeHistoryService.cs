@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Ink;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Xml.Linq;
@@ -41,7 +42,7 @@ public class StrokeHistoryService : IStrokeHistoryService
     public void Clear()
     {
         _history.Clear();
-        foreach (var timer in _fadeTimers.Values)
+        foreach (DispatcherTimer timer in _fadeTimers.Values)
         {
             timer.Stop();
         }
@@ -79,7 +80,7 @@ public class StrokeHistoryService : IStrokeHistoryService
         }
 
         _ignoreStrokesChange = true;
-        var lastItem = _redoHistory.Pop();
+        StrokesHistoryNode lastItem = _redoHistory.Pop();
         if (lastItem.Type == StrokesHistoryNodeType.Removed)
         {
             InkCanvas.Strokes.Remove(lastItem.Strokes);
@@ -102,7 +103,7 @@ public class StrokeHistoryService : IStrokeHistoryService
         }
 
         _ignoreStrokesChange = true;
-        var lastItem = Pop();
+        StrokesHistoryNode lastItem = Pop();
         if (lastItem.Type == StrokesHistoryNodeType.Added)
         {
             InkCanvas.Strokes.Remove(lastItem.Strokes);
@@ -118,21 +119,21 @@ public class StrokeHistoryService : IStrokeHistoryService
 
     private void StartFadeAnimation(StrokesHistoryNode node)
     {
-        foreach (var stroke in node.Strokes)
+        foreach (Stroke stroke in node.Strokes)
         {
-            var drawingAttributes = stroke.DrawingAttributes;
-            var initialColor = drawingAttributes.Color;
-            var duration = TimeSpan.FromMilliseconds(node.TimerMiliSecond);
-            var steps = 30;
-            var interval = duration.TotalMilliseconds / steps;
-            var opacityStep = initialColor.A / (float)steps;
+            DrawingAttributes drawingAttributes = stroke.DrawingAttributes;
+            Color initialColor = drawingAttributes.Color;
+            TimeSpan duration = TimeSpan.FromMilliseconds(node.TimerMilliSecond);
+            int steps = 30;
+            double interval = duration.TotalMilliseconds / steps;
+            float opacityStep = initialColor.A / (float)steps;
 
-            var timer = new DispatcherTimer
+            DispatcherTimer timer = new()
             {
                 Interval = TimeSpan.FromMilliseconds(interval),
             };
 
-            var currentStep = 0;
+            int currentStep = 0;
 
             timer.Tick += (s, e) =>
             {
@@ -144,7 +145,7 @@ public class StrokeHistoryService : IStrokeHistoryService
                 }
 
                 currentStep++;
-                var newAlpha = (byte)Math.Max(0, initialColor.A - (opacityStep * currentStep));
+                byte newAlpha = (byte)Math.Max(0, initialColor.A - (opacityStep * currentStep));
                 drawingAttributes.Color = Color.FromArgb(newAlpha, initialColor.R, initialColor.G, initialColor.B);
             };
 

@@ -12,11 +12,11 @@ public class ArrowDrawer : IShapeDrawer
 
     public Stroke DrawShape(InkCanvas canvas, Point startPoint, Point endPoint, bool isRainbow = false)
     {
-        var lineAttributes = canvas.DefaultDrawingAttributes.Clone();
+        DrawingAttributes lineAttributes = canvas.DefaultDrawingAttributes.Clone();
         lineAttributes.StylusTip = StylusTip.Ellipse;
         lineAttributes.IgnorePressure = true;
 
-        var points = new List<Point> { startPoint, endPoint };
+        List<Point> points = new() { startPoint, endPoint };
 
         points.AddRange(CreateArrowheadPoints(startPoint, endPoint, 15));
         points.AddRange(CreateArrowheadPoints(startPoint, endPoint, -15));
@@ -24,7 +24,7 @@ public class ArrowDrawer : IShapeDrawer
         if (!isRainbow)
             return new Stroke(new StylusPointCollection(points)) { DrawingAttributes = lineAttributes };
 
-        var stroke = new RainbowStroke(new StylusPointCollection(points))
+        RainbowStroke stroke = new(new StylusPointCollection(points))
         {
             DrawingAttributes = canvas.DefaultDrawingAttributes.Clone(),
         };
@@ -38,12 +38,12 @@ public class ArrowDrawer : IShapeDrawer
 
         VectorX ps = new(startPoint.X, startPoint.Y);
         VectorX pe = new(endPoint.X, endPoint.Y);
-        var arrowPoint = (((ps - pe) * 0.85f) + ps).ToPoint();
+        Point arrowPoint = (((ps - pe) * 0.85f) + ps).ToPoint();
 
-        var rotatingMatrix = default(Matrix);
+        Matrix rotatingMatrix = default(Matrix);
         rotatingMatrix.RotateAt(rotation, endPoint.X, endPoint.Y);
 
-        var rotatedArrowPoint = rotatingMatrix.Transform(arrowPoint);
+        Point rotatedArrowPoint = rotatingMatrix.Transform(arrowPoint);
         arrowPoints.Add(endPoint);
         arrowPoints.Add(rotatedArrowPoint);
 

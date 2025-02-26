@@ -7,7 +7,7 @@ public static class CursorFactory
 {
     public static Cursor Create(DrawingShape currentShape)
     {
-        var dpi = GetDpiSuffix();
+        string dpi = GetDpiSuffix();
 
         return currentShape switch
         {
@@ -24,13 +24,13 @@ public static class CursorFactory
 
     public static Cursor CreateMoveCursor()
     {
-        var dpi = GetDpiSuffix();
+        string dpi = GetDpiSuffix();
         return new Cursor(CursorPaths.MoveCursor(dpi));
     }
 
     private static string GetDpiSuffix()
     {
-        var dpiScale = VisualTreeHelper.GetDpi(Application.Current.MainWindow);
+        DpiScale dpiScale = VisualTreeHelper.GetDpi(Application.Current.MainWindow);
         return dpiScale.PixelsPerDip > 1.5 ? "l" : "m";
     }
 }

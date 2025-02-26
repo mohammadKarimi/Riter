@@ -64,7 +64,7 @@ public partial class KeyboardHotKeys : UserControl
             return;
         }
 
-        var keyCombinationBuilder = new StringBuilder();
+        StringBuilder keyCombinationBuilder = new();
 
         if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
         {
@@ -83,11 +83,11 @@ public partial class KeyboardHotKeys : UserControl
 
         keyCombinationBuilder.Append(e.Key.ToString().ToUpper());
 
-        var keyCombination = keyCombinationBuilder.ToString();
+        string keyCombination = keyCombinationBuilder.ToString();
         focusedTextBox.Text = keyCombination;
         e.Handled = true;
 
-        var hotKeyConfig = _settings.HotKeysConfig.Where(x => x.Key == focusedTextBox.Name).FirstOrDefault();
+        HotKeysConfig hotKeyConfig = _settings.HotKeysConfig.Where(x => x.Key == focusedTextBox.Name).FirstOrDefault();
 
         if (hotKeyConfig is not null)
         {
