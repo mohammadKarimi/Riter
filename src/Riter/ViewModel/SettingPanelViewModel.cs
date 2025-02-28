@@ -24,6 +24,8 @@ public class SettingPanelViewModel : BaseViewModel
 
     public Visibility TimerPanelVisibility => GetVisibility(_settingPanelStateHandler.TimerPanelVisibility);
 
+    public Visibility NotificationIndicatorVisibility => GetVisibility(_settingPanelStateHandler.NotificationIndicatorVisibility);
+
     public ICommand ToggleSettingsPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleSettingsPanel);
 
     public ICommand ShowBrushSettingsPanelCommand => new RelayCommand<string>(_settingPanelStateHandler.ToggleBrushSettingsPanel);

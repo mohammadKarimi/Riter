@@ -49,17 +49,23 @@ public partial class App : Application
         ConfigureServices(serviceCollection);
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         ServiceProvider = serviceCollection.BuildServiceProvider();
-
-        Task.Run(async () =>
-        {
-            bool newVersion = await AutomaticUpdateService.HasNewVersionAsync();
-            if (newVersion)
-            {
-                MessageBox.Show("New version available. Please update the application.");
-            }
-        });
-
         MainWindow mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
+
+        if (appSettings.AutoUpdate)
+        {
+            Task.Run(async () =>
+            {
+                bool newVersion = await AutomaticUpdateService.HasNewVersionAsync();
+                if (newVersion)
+                {
+                    mainWindow.Loaded += (s, ev) =>
+                    {
+                        ServiceProvider.GetService<ISettingPanelStateHandler>()?.ShowNotification();
+                    };
+                }
+            });
+        }
+
         mainWindow.Show();
     }
 
