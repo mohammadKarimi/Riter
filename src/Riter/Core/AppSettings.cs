@@ -26,6 +26,8 @@ public class AppSettings
     [JsonIgnore]
     public const string MyTelegram = "https://t.me/mhakarimi";
 
+    public bool AutoUpdate { get; set; }
+
     /// <summary>
     ///  Gets or sets ink Defaulr Color for Drawing.
     /// </summary>
