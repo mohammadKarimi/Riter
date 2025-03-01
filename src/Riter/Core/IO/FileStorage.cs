@@ -1,8 +1,10 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Text.Json;
 using System.Windows.Media.Imaging;
 
 namespace Riter.Core.IO;
+
 public class FileStorage
 {
     private const string FilePath = "appsettings.json";
@@ -29,8 +31,14 @@ public class FileStorage
             encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
             encoder.Save(fileStream);
         }
-        catch
+        catch (Exception ex)
         {
+            if (!EventLog.SourceExists("RiterApp"))
+            {
+                EventLog.CreateEventSource("RiterApp", "Application");
+            }
+
+            EventLog.WriteEntry("RiterApp", ex.ToString(), EventLogEntryType.Error);
         }
     }
 }
