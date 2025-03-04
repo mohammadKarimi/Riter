@@ -50,6 +50,22 @@ public partial class App : Application
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         ServiceProvider = serviceCollection.BuildServiceProvider();
         MainWindow mainWindow = ServiceProvider.GetRequiredService<MainWindow>();
+
+        if (appSettings.AutoUpdate)
+        {
+            Task.Run(async () =>
+            {
+                (bool newVersion, string latestVersion) = await AutomaticUpdateService.HasNewVersionAsync();
+                if (newVersion)
+                {
+                    mainWindow.Loaded += (s, ev) =>
+                    {
+                        ServiceProvider.GetService<ISettingPanelStateHandler>()?.ShowNotification(latestVersion);
+                    };
+                }
+            });
+        }
+
         mainWindow.Show();
     }
 

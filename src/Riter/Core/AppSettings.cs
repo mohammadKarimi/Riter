@@ -26,6 +26,8 @@ public class AppSettings
     [JsonIgnore]
     public const string MyTelegram = "https://t.me/mhakarimi";
 
+    public bool AutoUpdate { get; set; }
+
     /// <summary>
     ///  Gets or sets ink Defaulr Color for Drawing.
     /// </summary>
@@ -40,4 +42,6 @@ public class AppSettings
     public StartupLocation StartupLocation { get; set; }
 
     public List<HotKeysConfig> HotKeysConfig { get; set; }
+
+    public static string GetReleaseUrl(string tag) => $"{GitHubProjectUrl}/releases/tag/{tag}";
 }

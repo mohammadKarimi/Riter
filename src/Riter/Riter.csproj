@@ -102,6 +102,9 @@
         <None Update="Resources\Cursor\arrow-rectangle-m.cur">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="Resources\RiterLogo.png">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
 
     </ItemGroup>
 

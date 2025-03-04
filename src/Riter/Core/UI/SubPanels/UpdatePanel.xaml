@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="Riter.Core.UI.SubPanels.UpdatePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Riter.Core.UI.SubPanels" xmlns:viewmodel="clr-namespace:Riter.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
+             mc:Ignorable="d"
+             Background="White"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <StackPanel Margin="0 12">
+            <Grid Margin="8 12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image x:Name="Logo" Width="46" Height="46" Grid.Column="0" VerticalAlignment="top"/>
+
+                <StackPanel Grid.Column="1" Margin="10,0">
+                    <TextBlock Text="Riter is your mind :)" FontSize="13" FontWeight="Medium"/>
+                    <TextBlock Text="" FontSize="12" x:Name="CurrentVersion" Foreground="Gray" Margin="0 2"/>
+
+                    <StackPanel  VerticalAlignment="Top">
+                        <TextBlock  Text="Build with .Net 8 (C# Lang)" FontSize="11" Margin="0 8 0 0"/>
+                        <TextBlock  Text="Microfost Windows Desktop WPF (64-bit) / Any CPU" FontSize="11" Margin="0 4 0 0"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0 16 0 4" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}">
+                        <TextBlock Text="Update available" FontSize="11" FontWeight="Medium"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}">
+                        <TextBlock Text="{Binding SettingPanelViewModel.LatestVersion}" FontSize="12" Foreground="Blue" Cursor="Hand"/>
+                        <TextBlock Margin="8 0 0 0" VerticalAlignment="Center">
+                    <Hyperlink NavigateUri="{Binding SettingPanelViewModel.LatestVersion}" 
+                              RequestNavigate="Hyperlink_RequestNavigate">
+                        View details
+                    </Hyperlink>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right">
+                    <Button Content="Start Update"
+                            Width="120" Height="30" Margin="0,2" x:Name="UpdateButton"
+                            Background="#F1F1F1" Foreground="Black" BorderBrush="Transparent" 
+                            Click="UpdateButton_Click"
+                            IsEnabled="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}"/>
+                    <ProgressBar x:Name="ProgressBar" Height="4" Minimum="0" Maximum="100" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}" />
+                    <TextBlock x:Name="StatusText" Text="" Margin="0,10,0,0" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+       
+    </StackPanel>
+</UserControl>

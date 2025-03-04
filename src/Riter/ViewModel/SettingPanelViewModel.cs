@@ -14,6 +14,8 @@ public class SettingPanelViewModel : BaseViewModel
 
     public bool SettingButtonClicked => _settingPanelStateHandler.SettingButtonClicked;
 
+    public string LatestVersion => _settingPanelStateHandler.LatestVersion;
+
     public Visibility SettingPanelVisibility => GetVisibility(_settingPanelStateHandler.SettingPanelVisibility);
 
     public Visibility BrushPanelVisibility => GetVisibility(_settingPanelStateHandler.BrushPanelVisibility);
@@ -23,6 +25,8 @@ public class SettingPanelViewModel : BaseViewModel
     public Visibility ShapePanelVisibility => GetVisibility(_settingPanelStateHandler.ShapePanelVisibility);
 
     public Visibility TimerPanelVisibility => GetVisibility(_settingPanelStateHandler.TimerPanelVisibility);
+
+    public Visibility NotificationIndicatorVisibility => GetVisibility(_settingPanelStateHandler.NotificationIndicatorVisibility);
 
     public ICommand ToggleSettingsPanelCommand => new RelayCommand(_settingPanelStateHandler.ToggleSettingsPanel);
 
