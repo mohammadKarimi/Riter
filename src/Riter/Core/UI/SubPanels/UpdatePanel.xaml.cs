@@ -21,7 +21,7 @@ public partial class UpdatePanel : UserControl
         _downloadProgress = new Progress<int>(UpdateDownloadProgress);
     }
 
-    public async Task UpdateAsync(IProgress<int> progress)
+    public async Task UpdateAsync()
     {
         try
         {
