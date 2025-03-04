@@ -7,34 +7,46 @@
              mc:Ignorable="d"
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="8 16" VerticalAlignment="Bottom">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+    <StackPanel>
 
-        <Image Source="/Resources/RiterLogo.png" Width="40" Height="40" Grid.Column="0" VerticalAlignment="top"/>
+        <StackPanel  VerticalAlignment="Top">
+            <TextBlock Text="Riter is not a pen, It's your mind :)" FontSize="13" FontWeight="Medium" Margin="8 8 0 0"/>
+            <TextBlock  Text="Build with .Net 9 (C# 13)" FontSize="11" Margin="16 16 0 0"/>
+            <TextBlock  Text="Any CPU" FontSize="11" Margin="16 8 0 0"/>
+            <TextBlock  Text="Microfost Windows Desktop WPF (64-bit)" FontSize="11" Margin="16 8 0 0"/>
+            <TextBlock  Text="Canvas Design" FontSize="11" Margin="16 8 0 0"/>
+        </StackPanel>
+        <StackPanel Margin="0 12">
+            <Grid Margin="8 16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="1" Margin="10,0">
-            <TextBlock Text="Riter App" FontSize="13" FontWeight="Bold"/>
-            <TextBlock Text="0.2.15" FontSize="12" Foreground="Gray"/>
-            <StackPanel Orientation="Horizontal" Margin="0 16 0 4">
-                <TextBlock Text="Update available" FontSize="12" FontWeight="Medium"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="0.2.16" FontSize="12" Foreground="Blue" Cursor="Hand"/>
-                <TextBlock Margin="8 0 0 0" VerticalAlignment="Center">
+                <Image Source="/Resources/RiterLogo.png" Width="40" Height="40" Grid.Column="0" VerticalAlignment="top"/>
+
+                <StackPanel Grid.Column="1" Margin="10,0">
+                    <TextBlock Text="Riter App" FontSize="12" FontWeight="Medium"/>
+                    <TextBlock Text="0.2.15" FontSize="12" Foreground="Gray"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 16 0 4">
+                        <TextBlock Text="Update available" FontSize="11" FontWeight="Medium"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="0.2.16" FontSize="12" Foreground="Blue" Cursor="Hand"/>
+                        <TextBlock Margin="8 0 0 0" VerticalAlignment="Center">
                     <Hyperlink NavigateUri="https://your-link.com">
                         View details
                     </Hyperlink>
-                </TextBlock>
-            </StackPanel>
-        </StackPanel>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
 
-        <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right">
-            <Button Content="Start Update" Width="90" Height="30" Margin="0,2"
+                <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right">
+                    <Button Content="Start Update" Width="90" Height="30" Margin="0,2"
                         Background="#F1F1F1" Foreground="Black" BorderBrush="Transparent"/>
+                </StackPanel>
+            </Grid>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </UserControl>
