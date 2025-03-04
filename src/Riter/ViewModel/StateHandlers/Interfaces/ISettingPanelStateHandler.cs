@@ -17,6 +17,8 @@ public interface ISettingPanelStateHandler : INotifyPropertyChanged
 
     bool NotificationIndicatorVisibility { get; }
 
+    string LatestVersion { get; }
+
     string PinPanel { get; }
 
     void HideAllPanels();
@@ -35,5 +37,5 @@ public interface ISettingPanelStateHandler : INotifyPropertyChanged
 
     void TogglePinPanel(string panelName);
 
-    void ShowNotification();
+    void ShowNotification(string latestVersion);
 }
