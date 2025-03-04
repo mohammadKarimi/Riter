@@ -8,27 +8,25 @@
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-
-        <!--<StackPanel  VerticalAlignment="Top">
-            <TextBlock Text="Riter is not a pen, It's your mind :)" FontSize="13" FontWeight="Medium" Margin="8 8 0 0"/>
-            <TextBlock  Text="Build with .Net 9 (C# 13)" FontSize="11" Margin="16 16 0 0"/>
-            <TextBlock  Text="Any CPU" FontSize="11" Margin="16 8 0 0"/>
-            <TextBlock  Text="Microfost Windows Desktop WPF (64-bit)" FontSize="11" Margin="16 8 0 0"/>
-            <TextBlock  Text="Canvas Design" FontSize="11" Margin="16 8 0 0"/>
-        </StackPanel>-->
         <StackPanel Margin="0 12">
-            <Grid Margin="8 16">
+            <Grid Margin="8 12">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="pack://application:,,,/Resources/RiterLogo.png" Width="40" Height="40" Grid.Column="0" VerticalAlignment="top"/>
+                <Image x:Name="Logo" Width="46" Height="46" Grid.Column="0" VerticalAlignment="top"/>
 
                 <StackPanel Grid.Column="1" Margin="10,0">
-                    <TextBlock Text="Riter App" FontSize="12" FontWeight="Medium"/>
-                    <TextBlock Text="0.2.15" FontSize="12" Foreground="Gray"/>
+                    <TextBlock Text="Riter is your mind :)" FontSize="13" FontWeight="Medium"/>
+                    <TextBlock Text="" FontSize="12" x:Name="CurrentVersion" Foreground="Gray" Margin="0 2"/>
+
+                    <StackPanel  VerticalAlignment="Top">
+                        <TextBlock  Text="Build with .Net 9 (C# 13)" FontSize="11" Margin="0 8 0 0"/>
+                        <TextBlock  Text="Microfost Windows Desktop WPF (64-bit) / Any CPU" FontSize="11" Margin="0 4 0 0"/>
+                    </StackPanel>
+                    
                     <StackPanel Orientation="Horizontal" Margin="0 16 0 4" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}">
                         <TextBlock Text="Update available" FontSize="11" FontWeight="Medium"/>
                     </StackPanel>
@@ -54,5 +52,6 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
+       
     </StackPanel>
 </UserControl>

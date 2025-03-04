@@ -3,6 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using Riter.Services;
 
 namespace Riter.Core.UI.SubPanels;
@@ -19,6 +20,8 @@ public partial class UpdatePanel : UserControl
     {
         InitializeComponent();
         _downloadProgress = new Progress<int>(UpdateDownloadProgress);
+        CurrentVersion.Text = ApplicationVersionMapper.GetVersion();
+        Logo.Source = new BitmapImage(new Uri($"{AppContext.BaseDirectory}/Resources/RiterLogo.png"));
     }
 
     public async Task UpdateAsync()
@@ -59,7 +62,7 @@ public partial class UpdatePanel : UserControl
             ?? throw new Exception("Unable to determine file size.");
 
         await using Stream contentStream = await response.Content.ReadAsStreamAsync();
-        await using FileStream fileStream = new FileStream(
+        await using FileStream fileStream = new (
             destinationPath,
             FileMode.Create,
             FileAccess.Write,
