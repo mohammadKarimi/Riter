@@ -55,12 +55,12 @@ public partial class App : Application
         {
             Task.Run(async () =>
             {
-                bool newVersion = await AutomaticUpdateService.HasNewVersionAsync();
+                (bool newVersion, string latestVersion) = await AutomaticUpdateService.HasNewVersionAsync();
                 if (newVersion)
                 {
                     mainWindow.Loaded += (s, ev) =>
                     {
-                        ServiceProvider.GetService<ISettingPanelStateHandler>()?.ShowNotification();
+                        ServiceProvider.GetService<ISettingPanelStateHandler>()?.ShowNotification(latestVersion);
                     };
                 }
             });

@@ -12,6 +12,7 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
     private bool _isColorPanelOpened;
     private bool _isTimerPanelOpened;
     private bool _isNotificationIndicatorVisible;
+    private string _latestVersion;
     private string _pinPanel;
 
     public SettingsPanelStateHandler(IButtonSelectedStateHandler buttonSelectedStateHandler)
@@ -67,6 +68,12 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
     {
         get => _isNotificationIndicatorVisible;
         protected set => SetProperty(ref _isNotificationIndicatorVisible, value, nameof(NotificationIndicatorVisibility));
+    }
+
+    public string LatestVersion
+    {
+        get => _latestVersion;
+        protected set => SetProperty(ref _latestVersion, value, nameof(LatestVersion));
     }
 
     public void HideAllPanels()
@@ -163,5 +170,9 @@ public class SettingsPanelStateHandler : BaseStateHandler, ISettingPanelStateHan
         }
     }
 
-    public void ShowNotification() => NotificationIndicatorVisibility = true;
+    public void ShowNotification(string latestVersion)
+    {
+        NotificationIndicatorVisibility = true;
+        LatestVersion = latestVersion;
+    }
 }

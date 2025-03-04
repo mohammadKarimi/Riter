@@ -14,6 +14,8 @@ public class SettingPanelViewModel : BaseViewModel
 
     public bool SettingButtonClicked => _settingPanelStateHandler.SettingButtonClicked;
 
+    public string LatestVersion => _settingPanelStateHandler.LatestVersion;
+
     public Visibility SettingPanelVisibility => GetVisibility(_settingPanelStateHandler.SettingPanelVisibility);
 
     public Visibility BrushPanelVisibility => GetVisibility(_settingPanelStateHandler.BrushPanelVisibility);
