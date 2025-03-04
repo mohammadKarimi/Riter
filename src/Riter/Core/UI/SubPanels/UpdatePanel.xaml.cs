@@ -128,7 +128,7 @@ public partial class UpdatePanel : UserControl
         try
         {
             UpdateButton.IsEnabled = false;
-            await UpdateAsync(_downloadProgress);
+            await UpdateAsync();
             StatusText.Text = "Download Complete!";
         }
         catch
