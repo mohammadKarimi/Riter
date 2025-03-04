@@ -23,7 +23,7 @@
                     <TextBlock Text="" FontSize="12" x:Name="CurrentVersion" Foreground="Gray" Margin="0 2"/>
 
                     <StackPanel  VerticalAlignment="Top">
-                        <TextBlock  Text="Build with .Net 9 (C# 13)" FontSize="11" Margin="0 8 0 0"/>
+                        <TextBlock  Text="Build with .Net 8 (C# Lang)" FontSize="11" Margin="0 8 0 0"/>
                         <TextBlock  Text="Microfost Windows Desktop WPF (64-bit) / Any CPU" FontSize="11" Margin="0 4 0 0"/>
                     </StackPanel>
                     
