@@ -3,19 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Riter.Core.UI.SubPanels"
+             xmlns:local="clr-namespace:Riter.Core.UI.SubPanels" xmlns:viewmodel="clr-namespace:Riter.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d"
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
 
-        <StackPanel  VerticalAlignment="Top">
+        <!--<StackPanel  VerticalAlignment="Top">
             <TextBlock Text="Riter is not a pen, It's your mind :)" FontSize="13" FontWeight="Medium" Margin="8 8 0 0"/>
             <TextBlock  Text="Build with .Net 9 (C# 13)" FontSize="11" Margin="16 16 0 0"/>
             <TextBlock  Text="Any CPU" FontSize="11" Margin="16 8 0 0"/>
             <TextBlock  Text="Microfost Windows Desktop WPF (64-bit)" FontSize="11" Margin="16 8 0 0"/>
             <TextBlock  Text="Canvas Design" FontSize="11" Margin="16 8 0 0"/>
-        </StackPanel>
+        </StackPanel>-->
         <StackPanel Margin="0 12">
             <Grid Margin="8 16">
                 <Grid.ColumnDefinitions>
@@ -24,18 +24,19 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="/Resources/RiterLogo.png" Width="40" Height="40" Grid.Column="0" VerticalAlignment="top"/>
+                <Image Source="pack://application:,,,/Resources/RiterLogo.png" Width="40" Height="40" Grid.Column="0" VerticalAlignment="top"/>
 
                 <StackPanel Grid.Column="1" Margin="10,0">
                     <TextBlock Text="Riter App" FontSize="12" FontWeight="Medium"/>
                     <TextBlock Text="0.2.15" FontSize="12" Foreground="Gray"/>
-                    <StackPanel Orientation="Horizontal" Margin="0 16 0 4">
+                    <StackPanel Orientation="Horizontal" Margin="0 16 0 4" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}">
                         <TextBlock Text="Update available" FontSize="11" FontWeight="Medium"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="0.2.16" FontSize="12" Foreground="Blue" Cursor="Hand"/>
+                    <StackPanel Orientation="Horizontal" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}">
+                        <TextBlock Text="{Binding SettingPanelViewModel.LatestVersion}" FontSize="12" Foreground="Blue" Cursor="Hand"/>
                         <TextBlock Margin="8 0 0 0" VerticalAlignment="Center">
-                    <Hyperlink NavigateUri="https://your-link.com">
+                    <Hyperlink NavigateUri="{Binding SettingPanelViewModel.LatestVersion}" 
+                              RequestNavigate="Hyperlink_RequestNavigate">
                         View details
                     </Hyperlink>
                         </TextBlock>
@@ -43,8 +44,13 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Right">
-                    <Button Content="Start Update" Width="90" Height="30" Margin="0,2"
-                        Background="#F1F1F1" Foreground="Black" BorderBrush="Transparent"/>
+                    <Button Content="Start Update"
+                            Width="120" Height="30" Margin="0,2" x:Name="UpdateButton"
+                            Background="#F1F1F1" Foreground="Black" BorderBrush="Transparent" 
+                            Click="UpdateButton_Click"
+                            IsEnabled="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}"/>
+                    <ProgressBar x:Name="ProgressBar" Height="4" Minimum="0" Maximum="100" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}" />
+                    <TextBlock x:Name="StatusText" Text="" Margin="0,10,0,0" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}"/>
                 </StackPanel>
             </Grid>
         </StackPanel>
