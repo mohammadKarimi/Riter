@@ -24,7 +24,7 @@
 
                     <StackPanel  VerticalAlignment="Top">
                         <TextBlock  Text="Build with .Net 8 (C# Lang)" FontSize="11" Margin="0 8 0 0"/>
-                        <TextBlock  Text="Microfost Windows Desktop WPF (64-bit) / Any CPU" FontSize="11" Margin="0 4 0 0"/>
+                        <TextBlock  Text="Microsoft Windows Desktop WPF (64-bit) / Any CPU" FontSize="11" Margin="0 4 0 0"/>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal" Margin="0 16 0 4" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}">
