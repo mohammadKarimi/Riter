@@ -79,7 +79,20 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
-                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_Transparent}" VerticalAlignment="Center" />
+                                            <ContentControl Width="16" Height="16" VerticalAlignment="Center" >
+                                                <ContentControl.Style>
+                                                    <Style TargetType="ContentControl">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_Transparent_Light}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_Transparent}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ContentControl.Style>
+                                            </ContentControl>
                                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Enable Transparent" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
                                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Grid.Column="1" x:Name="TransparentLable" Content="[ Shift + T ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -108,7 +121,20 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
-                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_WhiteBoard}" VerticalAlignment="Center" />
+                                            <ContentControl Width="16" Height="16" VerticalAlignment="Center" >
+                                                <ContentControl.Style>
+                                                    <Style TargetType="ContentControl">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_WhiteBoard_Light}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_WhiteBoard}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ContentControl.Style>
+                                            </ContentControl>
                                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Enable Whiteboard" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
                                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}"  x:Name="WhiteBoatdLable" Grid.Column="1" Content="[ Shift + W ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -137,7 +163,20 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
-                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_BlackBoard}" VerticalAlignment="Center" />
+                                            <ContentControl Width="16" Height="16"  VerticalAlignment="Center" >
+                                                <ContentControl.Style>
+                                                    <Style TargetType="ContentControl">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_BlackBoard_Light}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_BlackBoard}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ContentControl.Style>
+                                            </ContentControl>
                                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Enable Blackboard" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
                                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}"  x:Name="BlackBoatdLable" Grid.Column="1" Content="[ Shift + B ]" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -169,7 +208,20 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
-                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_ThemeMode}" VerticalAlignment="Center" />
+                                            <ContentControl Width="16" Height="16" VerticalAlignment="Center" >
+                                                <ContentControl.Style>
+                                                    <Style TargetType="ContentControl">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_ThemeMode_Light}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_ThemeMode}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ContentControl.Style>
+                                            </ContentControl>
                                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="{Binding ThemeViewModel.CurrentThemeName}" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
                                     </Grid>
@@ -198,7 +250,20 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
-                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_SourceCode}" VerticalAlignment="Center" />
+                                            <ContentControl Width="16" Height="16" VerticalAlignment="Center" >
+                                                <ContentControl.Style>
+                                                    <Style TargetType="ContentControl">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_SourceCode_Light}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_SourceCode}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ContentControl.Style>
+                                            </ContentControl>
                                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Source Code in Github" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
                                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Grid.Column="1" Content="" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -224,7 +289,20 @@
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
-                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_Telegram}" VerticalAlignment="Center" />
+                                            <ContentControl Width="16" Height="16" VerticalAlignment="Center" >
+                                                <ContentControl.Style>
+                                                    <Style TargetType="ContentControl">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_Telegram_Light}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_Telegram}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ContentControl.Style>
+                                            </ContentControl>
                                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Contact Me" Padding="8,6,22,2" FontSize="12" />
                                         </StackPanel>
                                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Grid.Column="1" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -237,7 +315,20 @@
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_Keyboard}" VerticalAlignment="Center" />
+                            <ContentControl Width="16" Height="16" VerticalAlignment="Center" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Keyboard_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Keyboard}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <TextBlock Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Text="Keyboard Shortcuts" Margin="5,0,0,0"/>
                         </StackPanel>
                     </TabItem.Header>
@@ -246,7 +337,20 @@
                 <TabItem>
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_StartupLocation}" VerticalAlignment="Center" />
+                            <ContentControl Width="16" Height="16" VerticalAlignment="Center" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_StartupLocation_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_StartupLocation}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <TextBlock Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Text="StartUp Location" Margin="5,0,0,0"/>
                         </StackPanel>
                     </TabItem.Header>

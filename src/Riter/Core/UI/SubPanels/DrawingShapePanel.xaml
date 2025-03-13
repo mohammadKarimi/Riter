@@ -55,7 +55,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Line}" HorizontalAlignment="Right" />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Line_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Line}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Line" FontSize="12"/>
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="LineHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
@@ -107,7 +120,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Arrow}" HorizontalAlignment="Right" />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Arrow_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Arrow}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Arrow" FontSize="12"   />
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="ArrowHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
@@ -160,8 +186,21 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Rectangle}" HorizontalAlignment="Right" />
-                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Rectangle" FontSize="12"  />
+                            <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                        <Style TargetType="ContentControl">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                    <Setter Property="Content" Value="{StaticResource Icon_Rectangle_Light}"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                    <Setter Property="Content" Value="{StaticResource Icon_Rectangle}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ContentControl.Style>
+                                </ContentControl>
+                                <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Rectangle" FontSize="12"  />
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="RectangleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
@@ -213,7 +252,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_FilledRectangle}" HorizontalAlignment="Right" />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_FilledRectangle_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_FilledRectangle}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Filled Rectangle" FontSize="12"  />
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="FilledRectangleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
@@ -266,7 +318,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Circle}" HorizontalAlignment="Right" />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Circle_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Circle}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Circle" FontSize="12"  />
                         </StackPanel>
 
@@ -320,7 +385,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_FilledCircle}" HorizontalAlignment="Right" />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_FilledCircle_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_FilledCircle}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Filled Circle" FontSize="12"  />
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="FilledCircleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
@@ -372,7 +450,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Database}" HorizontalAlignment="Right" />
+                            <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Database_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Database}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Database" FontSize="12"  />
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="DatabaseHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />

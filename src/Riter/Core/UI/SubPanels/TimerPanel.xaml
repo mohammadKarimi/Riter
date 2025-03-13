@@ -57,7 +57,20 @@
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="0.5s" FontSize="12" />
                         </StackPanel>
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_05s}" HorizontalAlignment="Right" />
+                        <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                            <Setter Property="Content" Value="{StaticResource Icon_05s_Light}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                            <Setter Property="Content" Value="{StaticResource Icon_05s}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
                     </Grid>
                 </Button>
             </Grid>
@@ -109,7 +122,20 @@
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="1s" FontSize="12" />
                         </StackPanel>
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_1s}" HorizontalAlignment="Right" />
+                        <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                            <Setter Property="Content" Value="{StaticResource Icon_1s_Light}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                            <Setter Property="Content" Value="{StaticResource Icon_1s}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
                     </Grid>
                 </Button>
             </Grid>
@@ -161,7 +187,20 @@
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="2s" FontSize="12"  />
                         </StackPanel>
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_2s}" HorizontalAlignment="Right" />
+                        <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                            <Setter Property="Content" Value="{StaticResource Icon_2s_Light}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                            <Setter Property="Content" Value="{StaticResource Icon_2s}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
                     </Grid>
                 </Button>
             </Grid>
@@ -213,7 +252,20 @@
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="3s" FontSize="12"   />
                         </StackPanel>
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_3s}" HorizontalAlignment="Right" />
+                        <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                            <Setter Property="Content" Value="{StaticResource Icon_3s_Light}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                            <Setter Property="Content" Value="{StaticResource Icon_3s}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
                     </Grid>
                 </Button>
             </Grid>

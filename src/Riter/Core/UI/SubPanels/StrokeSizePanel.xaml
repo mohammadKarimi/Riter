@@ -54,7 +54,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Pen07x}" HorizontalAlignment="Right" />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Pen07x_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Pen07x}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="0.7x" FontSize="13" Margin="4,0"/>
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="Stroke07XHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
@@ -107,7 +120,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Pen1x}" HorizontalAlignment="Right" />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Pen1x_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Pen1x}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="1x" FontSize="13" Margin="4,0" />
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="Stroke1XHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
@@ -160,7 +186,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Pen2x}" HorizontalAlignment="Right" />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Pen2x_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Pen2x}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="2x" FontSize="13" Margin="4,0"  />
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="Stroke2XHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
@@ -213,7 +252,20 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Pen3x}" HorizontalAlignment="Right" />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Pen3x_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Pen3x}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="3x" FontSize="13" Margin="4,0" />
                         </StackPanel>
                         <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="Stroke3XHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
