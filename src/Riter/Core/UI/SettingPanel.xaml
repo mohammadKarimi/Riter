@@ -7,7 +7,7 @@
    xmlns:viewmodel="clr-namespace:Riter.ViewModel"
    d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
    mc:Ignorable="d" 
-             Width="625" Height="355" DataContext="{Binding}" >
+             Width="625" Height="420" DataContext="{Binding}" >
     <Grid Margin="0,0,0,4">
         <Border Padding="8,8" CornerRadius="12" Visibility="{Binding SettingPanelViewModel.SettingPanelVisibility}" Background="#FFF" BorderBrush="#E5E5E5" BorderThickness="1">
             <Border.Effect>
@@ -144,6 +144,41 @@
                                     </Grid>
                                 </Border>
                             </Grid>
+
+
+                            <Label Content="Theme" Opacity="0.5"/>
+                            <Grid Height="40" Margin="0,4,0,0">
+                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0" >
+                                    <Border.InputBindings>
+                                        <MouseBinding Gesture="LeftClick" Command="{Binding ThemeViewModel.ToggleCommand}" />
+                                    </Border.InputBindings>
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="#F1F1F1" />
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
+                                            <ContentControl Width="16" Height="16" Content="{StaticResource Icon_ThemeMode}" VerticalAlignment="Center" />
+                                            <Label Content="{Binding ThemeViewModel.CurrentThemeName}" Padding="8,6,22,2" FontSize="12" />
+                                        </StackPanel>
+                                        <Label Grid.Column="1" FontSize="12" Opacity="0.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+
+                            
                             <Label Content="Contact Us" Opacity="0.5"/>
                             <Grid Height="40" Margin="0,4,0,0">
                                 <Border Padding="6,6" CornerRadius="6" BorderThickness="0" MouseLeftButtonDown="SourceCode_Click">

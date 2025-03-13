@@ -80,6 +80,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<ISettingPanelStateHandler, SettingsPanelStateHandler>();
         serviceCollection.AddSingleton<IButtonSelectedStateHandler, ButtonSelectedStateHandler>();
         serviceCollection.AddSingleton<IScreenShotHandler, ScreenShotHandler>();
+        serviceCollection.AddSingleton<IThemeService, ThemeService>();
 
         serviceCollection.AddScoped<IShapeDrawer, LineDrawer>();
         serviceCollection.AddScoped<IShapeDrawer, CircleDrawer>();
@@ -102,6 +103,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<ScreenShotViewModel>();
         serviceCollection.AddSingleton<InkCanvasViewModel>();
         serviceCollection.AddSingleton<PaletteStateOrchestratorViewModel>();
+        serviceCollection.AddSingleton<ThemeViewModel>();
 
         serviceCollection.AddTransient(typeof(MainWindow));
     }

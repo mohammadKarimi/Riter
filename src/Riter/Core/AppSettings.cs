@@ -26,6 +26,14 @@ public class AppSettings
     [JsonIgnore]
     public const string MyTelegram = "https://t.me/mhakarimi";
 
+    [JsonIgnore]
+    public const string DarkTheme = "#4d4d4d";
+
+    [JsonIgnore]
+    public const string LightTheme = "#FFF";
+
+    public Theme Theme { get; set; }
+
     public bool AutoUpdate { get; set; }
 
     /// <summary>
