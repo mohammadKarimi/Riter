@@ -37,21 +37,25 @@
              StrokeLineJoin="Round"
              Data="M1.70743,1.69767L5.04076,4.30233L8.3741,1.69767"/>
     </Canvas>
+
     <Canvas x:Key="Icon_PenArrow" Width="10" Height="6">
         <Path Stroke="#666666" StrokeThickness="1"
               StrokeLineJoin="Round"
               Data="M1.70743,1.69767L5.04076,4.30233L8.3741,1.69767"/>
     </Canvas>
+   
     <Canvas x:Key="Icon_SquareArrow" Width="10" Height="6">
         <Path Stroke="#666666" StrokeThickness="1"
             StrokeLineJoin="Round"
             Data="M1.70743,1.69767L5.04076,4.30233L8.3741,1.69767"/>
     </Canvas>
+
     <Canvas x:Key="Icon_TimerArrow" Width="10" Height="6">
         <Path Stroke="#666666" StrokeThickness="1"
            StrokeLineJoin="Round"
            Data="M1.70743,1.69767L5.04076,4.30233L8.3741,1.69767"/>
     </Canvas>
+
     <Canvas x:Key="Icon_BrushArrow" Width="10" Height="6">
         <Path Stroke="#666666" StrokeThickness="1"
             StrokeLineJoin="Round"

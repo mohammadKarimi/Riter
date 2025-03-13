@@ -8,7 +8,7 @@
 
             <!-- svg Icons -->
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Icons.xaml"/>
+                <ResourceDictionary Source="Resources/DarkIcons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <Color x:Key="NoneTransparentColor" >#01000000</Color>
