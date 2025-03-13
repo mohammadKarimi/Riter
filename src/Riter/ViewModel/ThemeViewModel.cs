@@ -22,14 +22,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
-    public string CurrentThemeIconsPath
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeIconsPath();
-        }
-    }
-
+    /// <summary>
+    /// Current theme name in string (Dark, Light).
+    /// </summary>
     public string CurrentThemeName
     {
         get
@@ -38,6 +33,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// Current theme hexadecimal color in string.
+    /// </summary>
     public string CurrentThemeHex
     {
         get
@@ -46,6 +44,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// Current theme panels border Color.
+    /// </summary>
     public string CurrentThemeBorderHex
     {
         get
@@ -54,6 +55,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// Current theme color of all texts in project.
+    /// </summary>
     public string CurrentThemeTextsHex
     {
         get
@@ -62,7 +66,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
-    // ToolBox & subPanels
+    /// <summary>
+    /// Current theme color of some icons strokes in toolbox.
+    /// </summary>
     public string CurrentThemeIconsStrokeHex
     {
         get
@@ -71,6 +77,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// Current theme color of all subpanels items in project.
+    /// </summary>
     public string CurrentThemeBlueButtonStrokeHex
     {
         get
@@ -79,6 +88,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// Current theme color of mousehover in toolbox.
+    /// </summary>
     public string CurrentThemeHoverBorderHex
     {
         get
@@ -87,6 +99,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// Current theme color of selected buttons in toolbox.
+    /// </summary>
     public string CurrentThemeSelectedHex
     {
         get
@@ -95,6 +110,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// Current theme color of arrow buttons in toolbox while hovering.
+    /// </summary>
     public string CurrentThemeArrowButtonHoverHex
     {
         get
@@ -103,7 +121,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
-    // WindowControl
+    /// <summary>
+    /// Current theme color of buttons in WindowControl while hovering.
+    /// </summary>
     public string CurrentThemeWindowControlMouseHoverHex
     {
         get
@@ -112,7 +132,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
-    // SettingPanel
+    /// <summary>
+    /// Current theme color of buttons in SettingPanel while hovering.
+    /// </summary>
     public string CurrentThemeSettingMouseOver
     {
         get
@@ -121,6 +143,9 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// Current theme color of buttons in SettingPanel on selected mode.
+    /// </summary>
     public string CurrentThemeSettingSelected
     {
         get
@@ -129,16 +154,21 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
         }
     }
 
+    /// <summary>
+    /// Command of theme button in SettingPanel.
+    /// </summary>
     public ICommand ToggleCommand => new RelayCommand(() =>
     {
         _themeService.ToggleTheme();
         ApplyTheme();
     });
 
-    public void ApplyTheme()
+    /// <summary>
+    /// Created for applying theme.
+    /// </summary>
+    private void ApplyTheme()
     {
         OnStateChanged(this, new PropertyChangedEventArgs(nameof(IsDarkMode)));
-        OnPropertyChanged(nameof(CurrentThemeIconsPath));
         OnPropertyChanged(nameof(CurrentThemeName));
         OnPropertyChanged(nameof(CurrentThemeHex));
         OnPropertyChanged(nameof(CurrentThemeBorderHex));

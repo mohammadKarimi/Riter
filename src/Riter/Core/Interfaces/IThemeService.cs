@@ -10,8 +10,6 @@ public interface IThemeService
     // ToolBox
     public void ToggleTheme();
 
-    public string GetCurrentThemeIconsPath();
-
     public string GetCurrentThemeName();
 
     public string GetCurrentThemeHex();

@@ -13,9 +13,7 @@ public class ThemeService(AppSettings appSettings) : IThemeService
     private readonly AppSettings _appSettings = appSettings ?? throw new ArgumentNullException(nameof(appSettings));
     private Theme _currentTheme = appSettings.Theme;
 
-    public string GetCurrentThemeHex() => _currentTheme == Theme.Light ? AppSettings.LightTheme : AppSettings.DarkTheme;
-
-    public string GetCurrentThemeIconsPath() => _currentTheme == Theme.Light ? "Resources/DarkIcons.xaml" : "Resources/LightIcons.xaml";
+    public string GetCurrentThemeHex() => _currentTheme == Theme.Light ? "#FFF" : "#2c2c2c";
 
     public string GetCurrentThemeBorderHex() => _currentTheme == Theme.Light ? "#1E1E1E" : "#FFF";
 
@@ -31,17 +29,15 @@ public class ThemeService(AppSettings appSettings) : IThemeService
 
     public string GetCurrentThemeArrowButtonHoverHex() => _currentTheme == Theme.Light ? "#E5E5E5" : "#4f4e4e";
 
-    public string GetCurrentThemeName() => _currentTheme.ToString();
-
-    public bool IsDarkMode() => _currentTheme == Theme.Dark ? true : false;
-
-    // WindowContols
     public string GetWindowControlMouseHoverHex() => _currentTheme == Theme.Light ? "#EEE" : "#7d7d7d";
 
-    // SettingPanel
     public string GetSettingButtonMouseOverHex() => _currentTheme == Theme.Light ? "#F1F1F1 " : "#4f4e4e";
 
     public string GetSettingButtonSelectedHex() => _currentTheme == Theme.Light ? "#EEEEEE " : "#7d7d7d";
+
+    public string GetCurrentThemeName() => _currentTheme.ToString();
+
+    public bool IsDarkMode() => _currentTheme == Theme.Dark ? true : false;
 
     public void ToggleTheme()
     {
@@ -54,7 +50,7 @@ public class ThemeService(AppSettings appSettings) : IThemeService
             _currentTheme = Theme.Light;
         }
 
-        appSettings.Theme = _currentTheme;
+        _appSettings.Theme = _currentTheme;
 
         Task.Run(async () =>
         {
