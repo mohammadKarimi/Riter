@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Riter.Core.UI.SubPanels" xmlns:viewmodel="clr-namespace:Riter.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d"
-             Background="White"
+             Background="{Binding ThemeViewModel.CurrentThemeHex}"
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
         <StackPanel Margin="0 12">
@@ -19,12 +19,12 @@
                 <Image x:Name="Logo" Width="46" Height="46" Grid.Column="0" VerticalAlignment="top"/>
 
                 <StackPanel Grid.Column="1" Margin="10,0">
-                    <TextBlock Text="Riter is your mind :)" FontSize="13" FontWeight="Medium"/>
-                    <TextBlock Text="" FontSize="12" x:Name="CurrentVersion" Foreground="Gray" Margin="0 2"/>
+                    <TextBlock Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Text="Riter is your mind :)" FontSize="13" FontWeight="Medium"/>
+                    <TextBlock Text="" FontSize="12" x:Name="CurrentVersion" Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Margin="0 2"/>
 
                     <StackPanel  VerticalAlignment="Top">
-                        <TextBlock  Text="Build with .Net 8 (C# Lang)" FontSize="11" Margin="0 8 0 0"/>
-                        <TextBlock  Text="Microsoft Windows Desktop WPF (64-bit) / Any CPU" FontSize="11" Margin="0 4 0 0"/>
+                        <TextBlock Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Text="Build with .Net 8 (C# Lang)" FontSize="11" Margin="0 8 0 0"/>
+                        <TextBlock Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Text="Microsoft Windows Desktop WPF (64-bit) / Any CPU" FontSize="11" Margin="0 4 0 0"/>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal" Margin="0 16 0 4" Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}">

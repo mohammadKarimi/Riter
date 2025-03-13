@@ -8,13 +8,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="260">
 
-    <Grid Background="#FFF">
+    <Grid Background="{Binding ThemeViewModel.CurrentThemeHex}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left">
             <Grid>
-                <Label Content="Select Your Color" Foreground="Black"/>
+                <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Select Your Color"/>
                 <Border HorizontalAlignment="Right" >
                     <Button ToolTip="Pin" Content="{StaticResource Icon_Pin}" Command="{Binding SettingPanelViewModel.SetPinCommand}" CommandParameter="ColorPanel">
                         <Button.Style>

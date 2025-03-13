@@ -29,6 +29,8 @@ public partial class App : Application
     /// </summary>
     public static IConfiguration Configuration { get; private set; }
 
+    public static ThemeViewModel ThemeViewModel { get; private set; }
+
     /// <summary>
     /// Handles application startup logic, such as configuring services
     /// and loading necessary resources when the application starts.
