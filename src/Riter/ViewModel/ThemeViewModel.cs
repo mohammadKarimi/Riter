@@ -168,18 +168,18 @@ public class ThemeViewModel(IThemeService themeService) : BaseViewModel
     /// </summary>
     private void ApplyTheme()
     {
-        OnStateChanged(this, new PropertyChangedEventArgs(nameof(IsDarkMode)));
-        OnPropertyChanged(nameof(CurrentThemeName));
+        OnPropertyChanged(nameof(IsDarkMode));
         OnPropertyChanged(nameof(CurrentThemeHex));
-        OnPropertyChanged(nameof(CurrentThemeBorderHex));
+        OnPropertyChanged(nameof(CurrentThemeName));
         OnPropertyChanged(nameof(CurrentThemeTextsHex));
-        OnPropertyChanged(nameof(CurrentThemeIconsStrokeHex));
-        OnPropertyChanged(nameof(CurrentThemeBlueButtonStrokeHex));
-        OnPropertyChanged(nameof(CurrentThemeHoverBorderHex));
+        OnPropertyChanged(nameof(CurrentThemeBorderHex));
         OnPropertyChanged(nameof(CurrentThemeSelectedHex));
+        OnPropertyChanged(nameof(CurrentThemeHoverBorderHex));
+        OnPropertyChanged(nameof(CurrentThemeIconsStrokeHex));
+        OnPropertyChanged(nameof(CurrentThemeSettingSelected));
+        OnPropertyChanged(nameof(CurrentThemeSettingMouseOver));
+        OnPropertyChanged(nameof(CurrentThemeBlueButtonStrokeHex));
         OnPropertyChanged(nameof(CurrentThemeArrowButtonHoverHex));
         OnPropertyChanged(nameof(CurrentThemeWindowControlMouseHoverHex));
-        OnPropertyChanged(nameof(CurrentThemeSettingMouseOver));
-        OnPropertyChanged(nameof(CurrentThemeSettingSelected));
     }
 }
