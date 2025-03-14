@@ -7,9 +7,9 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="260" d:DesignWidth="185">
-    <Grid>
-        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="180" >
-            <Label Content="Select Your Timer"/>
+    <Grid Background="{Binding ThemeViewModel.CurrentThemeHex}">
+        <StackPanel  Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Left" MinWidth="180" >
+            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Select Your Timer"/>
             <Grid Margin="0,8,0,0">
                 <Button Padding="6,6" Command="{Binding StrokeVisibilityViewModel.SetTimerCommand}" CommandParameter="500" >
                     <Button.Style>
@@ -25,7 +25,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding StrokeVisibilityViewModel.TimerMiliSecond}" Value="500">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -39,7 +39,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -54,10 +54,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="0.5s" FontSize="12" />
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="0.5s" FontSize="12" />
                         </StackPanel>
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_05s}" HorizontalAlignment="Right" />
+                        <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                            <Setter Property="Content" Value="{StaticResource Icon_05s_Light}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                            <Setter Property="Content" Value="{StaticResource Icon_05s}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
                     </Grid>
                 </Button>
             </Grid>
@@ -76,7 +89,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding StrokeVisibilityViewModel.TimerMiliSecond}" Value="1000">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -90,7 +103,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -106,10 +119,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="1s" FontSize="12" />
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="1s" FontSize="12" />
                         </StackPanel>
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_1s}" HorizontalAlignment="Right" />
+                        <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                            <Setter Property="Content" Value="{StaticResource Icon_1s_Light}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                            <Setter Property="Content" Value="{StaticResource Icon_1s}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
                     </Grid>
                 </Button>
             </Grid>
@@ -128,7 +154,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding StrokeVisibilityViewModel.TimerMiliSecond}" Value="2000">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -142,7 +168,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -158,10 +184,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="2s" FontSize="12"  />
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="2s" FontSize="12"  />
                         </StackPanel>
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_2s}" HorizontalAlignment="Right" />
+                        <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                            <Setter Property="Content" Value="{StaticResource Icon_2s_Light}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                            <Setter Property="Content" Value="{StaticResource Icon_2s}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
                     </Grid>
                 </Button>
             </Grid>
@@ -180,7 +219,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding StrokeVisibilityViewModel.TimerMiliSecond}" Value="3000">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -194,7 +233,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -210,10 +249,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Label Content="3s" FontSize="12"   />
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="3s" FontSize="12"   />
                         </StackPanel>
 
-                        <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_3s}" HorizontalAlignment="Right" />
+                        <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                            <Setter Property="Content" Value="{StaticResource Icon_3s_Light}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                            <Setter Property="Content" Value="{StaticResource Icon_3s}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
                     </Grid>
                 </Button>
             </Grid>

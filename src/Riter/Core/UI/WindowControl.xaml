@@ -2,7 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid Margin="4,0,0,0">
-        <Border CornerRadius="12" Background="#FFF" BorderBrush="#1E1E1E" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1" Height="49">
+        <Border CornerRadius="12" Background="{Binding ThemeViewModel.CurrentThemeHex}" BorderBrush="{Binding ThemeViewModel.CurrentThemeBorderHex}" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1" Height="49">
             <Border.Effect>
                 <DropShadowEffect Opacity="0.1" ShadowDepth="1" BlurRadius="16"/>
             </Border.Effect>
@@ -15,7 +15,7 @@
                             <Setter Property="Background" Value="Transparent" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#EEE"/>
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeWindowControlMouseHoverHex}"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
@@ -25,9 +25,41 @@
                             <Style TargetType="ContentControl">
                                 <Setter Property="Content" Value="{StaticResource Icon_Move}" />
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True">
+                                    <!--<DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True">
                                         <Setter Property="Content" Value="{StaticResource Icon_MoveGrabbing}" />
-                                    </DataTrigger>
+                                    </DataTrigger>-->
+
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True"></Condition>
+                                            <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True"></Condition>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Content" Value="{StaticResource Icon_MoveGrabbing_Light}"></Setter>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False"></Condition>
+                                            <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True"></Condition>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Content" Value="{StaticResource Icon_MoveGrabbing}"></Setter>
+                                    </MultiDataTrigger>
+
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True"></Condition>
+                                            <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="False"></Condition>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Content" Value="{StaticResource Icon_Move_Light}"></Setter>
+                                    </MultiDataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False"></Condition>
+                                            <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="False"></Condition>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Content" Value="{StaticResource Icon_Move}"></Setter>
+                                    </MultiDataTrigger>
+
+                                    
                                 </Style.Triggers>
                             </Style>
                         </ContentControl.Style>
@@ -35,10 +67,36 @@
                 </Border>
 
                 <Border Margin="4,0,4,0" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button ToolTip="Minimize" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Minimize}" Click="MinimizeButton_Click"/>
+                    <Button ToolTip="Minimize" Click="MinimizeButton_Click">
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                        <Setter Property="Content" Value="{StaticResource Icon_Minimize_Light}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                        <Setter Property="Content" Value="{StaticResource Icon_Minimize}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </Border>
                 <Border Margin="0,0,8,0" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button ToolTip="Close" Style="{StaticResource IconButtonStyle}" Content="{StaticResource Icon_Close}" Click="ExitButton_Click" />
+                    <Button ToolTip="Close" Click="ExitButton_Click" >
+                        <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource IconButtonStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                        <Setter Property="Content" Value="{StaticResource Icon_Close_Light}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                        <Setter Property="Content" Value="{StaticResource Icon_Close}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                 </Border>
             </StackPanel>
         </Border>
