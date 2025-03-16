@@ -1,158 +1,72 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Riter.Core.Enum;
+﻿using Riter.Core.Consts;
 using Riter.Core.Interfaces;
-using Riter.Services;
 
 namespace Riter.ViewModel;
 public class ThemeViewModel(IThemeService themeService) : BaseViewModel
 {
     private readonly IThemeService _themeService = themeService;
 
-    public bool IsDarkMode
-    {
-        get
-        {
-            return _themeService.IsDarkMode();
-        }
-    }
+    public bool IsDarkMode => _themeService.IsDarkMode();
 
     /// <summary>
     /// Current theme name in string (Dark, Light).
     /// </summary>
-    public string CurrentThemeName
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeName();
-        }
-    }
+    public string CurrentThemeName => _themeService.GetCurrentThemeName();
 
     /// <summary>
     /// Current theme hexadecimal color in string.
     /// </summary>
-    public string CurrentThemeHex
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeHex();
-        }
-    }
+    public string CurrentThemeHex => _themeService.GetThemeColor(ThemeColorKeys.CurrentTheme);
 
     /// <summary>
     /// Current theme panels border Color.
     /// </summary>
-    public string CurrentThemeBorderHex
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeBorderHex();
-        }
-    }
+    public string CurrentThemeBorderHex => _themeService.GetThemeColor(ThemeColorKeys.Border);
 
     /// <summary>
     /// Current theme color of all texts in project.
     /// </summary>
-    public string CurrentThemeTextsHex
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeTextsHex();
-        }
-    }
+    public string CurrentThemeTextsHex => _themeService.GetThemeColor(ThemeColorKeys.Text);
 
     /// <summary>
     /// Current theme color of some icons strokes in toolbox.
     /// </summary>
-    public string CurrentThemeIconsStrokeHex
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeIconsStrokeHex();
-        }
-    }
+    public string CurrentThemeIconsStrokeHex => _themeService.GetThemeColor(ThemeColorKeys.IconsStroke);
 
     /// <summary>
     /// Current theme color of all subpanels items in project.
     /// </summary>
-    public string CurrentThemeBlueButtonStrokeHex
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeBlueButtonStrokeHex();
-        }
-    }
+    public string CurrentThemeBlueButtonStrokeHex => _themeService.GetThemeColor(ThemeColorKeys.BlueButtonStroke);
 
     /// <summary>
     /// Current theme color of mousehover in toolbox.
     /// </summary>
-    public string CurrentThemeHoverBorderHex
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeHoverBorderHex();
-        }
-    }
+    public string CurrentThemeHoverBorderHex => _themeService.GetThemeColor(ThemeColorKeys.HoverBorder);
 
     /// <summary>
     /// Current theme color of selected buttons in toolbox.
     /// </summary>
-    public string CurrentThemeSelectedHex
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeSelectedHex();
-        }
-    }
+    public string CurrentThemeSelectedHex => _themeService.GetThemeColor(ThemeColorKeys.CurrentThemeSelected);
 
     /// <summary>
     /// Current theme color of arrow buttons in toolbox while hovering.
     /// </summary>
-    public string CurrentThemeArrowButtonHoverHex
-    {
-        get
-        {
-            return _themeService.GetCurrentThemeArrowButtonHoverHex();
-        }
-    }
+    public string CurrentThemeArrowButtonHoverHex => _themeService.GetThemeColor(ThemeColorKeys.ArrowButtonHover);
 
     /// <summary>
     /// Current theme color of buttons in WindowControl while hovering.
     /// </summary>
-    public string CurrentThemeWindowControlMouseHoverHex
-    {
-        get
-        {
-            return _themeService.GetWindowControlMouseHoverHex();
-        }
-    }
+    public string CurrentThemeWindowControlMouseHoverHex => _themeService.GetThemeColor(ThemeColorKeys.WindowControlMouseHover);
 
     /// <summary>
     /// Current theme color of buttons in SettingPanel while hovering.
     /// </summary>
-    public string CurrentThemeSettingMouseOver
-    {
-        get
-        {
-            return _themeService.GetSettingButtonMouseOverHex();
-        }
-    }
+    public string CurrentThemeSettingMouseOver => _themeService.GetThemeColor(ThemeColorKeys.SettingButtonMouseOver);
 
     /// <summary>
     /// Current theme color of buttons in SettingPanel on selected mode.
     /// </summary>
-    public string CurrentThemeSettingSelected
-    {
-        get
-        {
-            return _themeService.GetSettingButtonSelectedHex();
-        }
-    }
+    public string CurrentThemeSettingSelected => _themeService.GetThemeColor(ThemeColorKeys.SettingButtonSelected);
 
     /// <summary>
     /// Command of theme button in SettingPanel.
