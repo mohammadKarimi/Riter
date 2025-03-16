@@ -16,13 +16,20 @@
             <Grid>
                 <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Select Your Color"/>
                 <Border HorizontalAlignment="Right" >
-                    <Button ToolTip="Pin" Content="{StaticResource Icon_Pin}" Command="{Binding SettingPanelViewModel.SetPinCommand}" CommandParameter="ColorPanel">
+                    <Button ToolTip="Pin" Command="{Binding SettingPanelViewModel.SetPinCommand}" CommandParameter="ColorPanel">
                         <Button.Style>
                             <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
                                 <Setter Property="Tag" Value="UnSelected"/>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding SettingPanelViewModel.PinPanel}" Value="ColorPanel">
                                         <Setter Property="Tag" Value="Selected"/>
+                                    </DataTrigger>
+
+                                    <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                        <Setter Property="Content" Value="{StaticResource Icon_Pin_Light}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                        <Setter Property="Content" Value="{StaticResource Icon_Pin}"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>

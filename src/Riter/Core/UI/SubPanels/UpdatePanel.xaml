@@ -16,7 +16,11 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Image x:Name="Logo" Width="46" Height="46" Grid.Column="0" VerticalAlignment="top"/>
+                <Image x:Name="Logo" Width="46" Height="46" Grid.Column="0" VerticalAlignment="top">
+                    <Image.Effect>
+                        <DropShadowEffect Color="White" ShadowDepth="0" BlurRadius="10" Opacity="0.5"/>
+                    </Image.Effect>
+                </Image>
 
                 <StackPanel Grid.Column="1" Margin="10,0">
                     <TextBlock Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Text="Riter is your mind :)" FontSize="13" FontWeight="Medium"/>
