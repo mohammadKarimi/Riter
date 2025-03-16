@@ -44,7 +44,7 @@ public class ThemeService(AppSettings appSettings) : IThemeService
 
     public string GetThemeColor(string key) => ThemeColors[_currentTheme][key];
 
-    public string GetCurrentThemeName() => _currentTheme.ToString();
+    public string GetCurrentThemeName() => _currentTheme == Theme.Light ? $"Turn to {Theme.Dark}" : $"Turn to {Theme.Light}";
 
     public bool IsDarkMode() => _currentTheme == Theme.Dark;
 
