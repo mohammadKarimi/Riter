@@ -261,8 +261,6 @@
                                             <Setter Property="Content" Value="{StaticResource Icon_Line_Toolbox}"></Setter>
                                         </MultiDataTrigger>
 
-
-                                        
                                         <!--<DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Arrow}">
                                             <Setter Property="Content" Value="{StaticResource Icon_Arrow_Toolbox}"/>
                                         </DataTrigger>-->
@@ -542,7 +540,7 @@
                                     <MultiDataTrigger>
                                         <MultiDataTrigger.Conditions>
                                             <Condition Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False"></Condition>
-                                            <Condition Binding="{Binding StrokeVisibilityViewModel.IsHideAll}" Value="True"></Condition>
+                                            <Condition Binding="{Binding StrokeVisibilityViewModel.IsHideAll}" Value="False"></Condition>
                                         </MultiDataTrigger.Conditions>
                                         <Setter Property="Content" Value="{StaticResource Icon_EyeOpen}"></Setter>
                                     </MultiDataTrigger>
@@ -553,23 +551,6 @@
                         </Button.Style>
                     </Button>
                 </Border>
-                <!--<Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" Margin="2,0,2,0" Width="32" Height="32" CornerRadius="4" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button ToolTip="Settings" x:Name="SettingButton" Content="{StaticResource Icon_Setting}" Command="{Binding SettingPanelViewModel.ToggleSettingsPanelCommand}" >
-                        <Button.Style>
-                            <Style TargetType="Button" BasedOn="{StaticResource ToolboxButtonStyle}">
-                                <Setter Property="Tag" Value="UnSelected"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding SettingPanelViewModel.SettingButtonClicked}" Value="True">
-                                        <Setter Property="Tag" Value="Selected"/>
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding SettingPanelViewModel.SettingButtonClicked}" Value="False">
-                                        <Setter Property="Tag" Value="UnSelected"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                </Border>-->
                 <Border Visibility="{Binding StrokeVisibilityViewModel.IsHideAll, Converter={StaticResource HiddenAllToVisibilityConverter}}" 
         Margin="2,0,2,0" 
         Width="32" 
@@ -612,10 +593,9 @@
                              Margin="0, 2, 2, 2"
                              x:Name="NotificationIndicator"
                              Visibility="{Binding SettingPanelViewModel.NotificationIndicatorVisibility}"
-                        /> 
+                        />
                     </Grid>
                 </Border>
-
             </StackPanel>
         </Border>
     </Grid>
