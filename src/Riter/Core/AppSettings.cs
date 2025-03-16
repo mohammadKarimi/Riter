@@ -26,7 +26,7 @@ public class AppSettings
     [JsonIgnore]
     public const string MyTelegram = "https://t.me/mhakarimi";
 
-    public Theme Theme { get; set; }
+    public Theme Theme { get; set; } = Theme.Light;
 
     public bool AutoUpdate { get; set; }
 
