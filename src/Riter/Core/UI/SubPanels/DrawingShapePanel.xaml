@@ -8,7 +8,7 @@
             d:DataContext="{d:DesignInstance Type=viewmodel:PaletteStateOrchestratorViewModel}"
             mc:Ignorable="d" 
             d:DesignHeight="300" d:DesignWidth="280">
-    <Grid Margin="0,0,0,0" Background="#FFF" >
+    <Grid Margin="0,0,0,0" Background="{Binding ThemeViewModel.CurrentThemeHex}" >
         <StackPanel  Orientation="Vertical" HorizontalAlignment="Left" Width="230">
             <Grid Margin="0,4,0,0">
                 <Button Padding="4,4" Command="{Binding DrawingViewModel.DrawShapeCommand}" CommandParameter="{x:Static enum:DrawingShape.Line}" >
@@ -25,7 +25,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Line}">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -39,7 +39,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -55,10 +55,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Line}" HorizontalAlignment="Right" />
-                            <Label Content="Line" FontSize="12"/>
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Line_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Line}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Line" FontSize="12"/>
                         </StackPanel>
-                        <Label x:Name="LineHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="LineHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
                     </Grid>
                 </Button>
             </Grid>
@@ -77,7 +90,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Arrow}">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -91,7 +104,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -107,10 +120,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Arrow}" HorizontalAlignment="Right" />
-                            <Label Content="Arrow" FontSize="12"   />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Arrow_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Arrow}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Arrow" FontSize="12"   />
                         </StackPanel>
-                        <Label x:Name="ArrowHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="ArrowHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
                     </Grid>
                 </Button>
@@ -130,7 +156,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Rectangle}">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -144,7 +170,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -160,10 +186,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Rectangle}" HorizontalAlignment="Right" />
-                            <Label Content="Rectangle" FontSize="12"  />
+                            <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                        <Style TargetType="ContentControl">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                    <Setter Property="Content" Value="{StaticResource Icon_Rectangle_Light}"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                    <Setter Property="Content" Value="{StaticResource Icon_Rectangle}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ContentControl.Style>
+                                </ContentControl>
+                                <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Rectangle" FontSize="12"  />
                         </StackPanel>
-                        <Label x:Name="RectangleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="RectangleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
                     </Grid>
                 </Button>
@@ -183,7 +222,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.FilledRectangle}">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -197,7 +236,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -213,10 +252,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_FilledRectangle}" HorizontalAlignment="Right" />
-                            <Label Content="Filled Rectangle" FontSize="12"  />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_FilledRectangle_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_FilledRectangle}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Filled Rectangle" FontSize="12"  />
                         </StackPanel>
-                        <Label x:Name="FilledRectangleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="FilledRectangleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
                     </Grid>
                 </Button>
@@ -236,7 +288,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Circle}">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -250,7 +302,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -266,11 +318,24 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_Circle}" HorizontalAlignment="Right" />
-                            <Label Content="Circle" FontSize="12"  />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Circle_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Circle}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Circle" FontSize="12"  />
                         </StackPanel>
 
-                        <Label x:Name="CircleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="CircleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
                     </Grid>
                 </Button>
@@ -290,7 +355,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.FilledCircle}">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -304,7 +369,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -320,10 +385,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Width="24" Height="24" Content="{StaticResource Icon_FilledCircle}" HorizontalAlignment="Right" />
-                            <Label Content="Filled Circle" FontSize="12"  />
+                            <ContentControl Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_FilledCircle_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_FilledCircle}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Filled Circle" FontSize="12"  />
                         </StackPanel>
-                        <Label x:Name="FilledCircleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="FilledCircleHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
                     </Grid>
                 </Button>
             </Grid>
@@ -342,7 +420,7 @@
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding DrawingViewModel.CurrentShape}" Value="{x:Static enum:DrawingShape.Database}">
                                                             <Setter Property="Cursor" Value="Hand"/>
-                                                            <Setter Property="BorderBrush" Value="#317BF4" />
+                                                            <Setter Property="BorderBrush" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                                             <Setter Property="BorderThickness" Value="1.2" />
                                                         </DataTrigger>
                                                     </Style.Triggers>
@@ -356,7 +434,7 @@
                             </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#317BF4" />
+                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeBlueButtonStrokeHex}" />
                                     <Setter Property="Cursor" Value="Hand" />
                                 </Trigger>
 
@@ -372,10 +450,23 @@
                         </Grid.ColumnDefinitions>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <ContentControl Grid.Column="1" Width="24" Height="24" Content="{StaticResource Icon_Database}" HorizontalAlignment="Right" />
-                            <Label Content="Database" FontSize="12"  />
+                            <ContentControl Grid.Column="1" Width="24" Height="24" HorizontalAlignment="Right" >
+                                <ContentControl.Style>
+                                    <Style TargetType="ContentControl">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Database_Light}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                <Setter Property="Content" Value="{StaticResource Icon_Database}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ContentControl.Style>
+                            </ContentControl>
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Database" FontSize="12"  />
                         </StackPanel>
-                        <Label x:Name="DatabaseHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" x:Name="DatabaseHotKey" Content="" FontSize="10" Opacity="0.5" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
                     </Grid>
                 </Button>
             </Grid>

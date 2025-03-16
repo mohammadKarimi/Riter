@@ -11,8 +11,20 @@ public class FileStorage
 
     public static async Task SaveConfig(AppSettings settings)
     {
-        string content = JsonSerializer.Serialize(new { AppSettings = settings });
-        await File.WriteAllTextAsync(FilePath, content);
+        try
+        {
+            string content = JsonSerializer.Serialize(new { AppSettings = settings });
+            await File.WriteAllTextAsync(FilePath, content);
+        }
+        catch (Exception ex)
+        {
+            if (!EventLog.SourceExists("RiterApp"))
+            {
+                EventLog.CreateEventSource("RiterApp", "Application");
+            }
+
+            EventLog.WriteEntry("RiterApp", ex.ToString(), EventLogEntryType.Error);
+        }
     }
 
     public static void SaveScreenshot(RenderTargetBitmap renderBitmap)
