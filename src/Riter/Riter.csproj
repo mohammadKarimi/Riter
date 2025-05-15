@@ -6,7 +6,7 @@
         <Nullable>disable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <UseWPF>true</UseWPF>
-        <AssemblyVersion>0.2.17</AssemblyVersion>
+        <AssemblyVersion>0.2.18</AssemblyVersion>
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
         <NoWarn>SA1009, SA1313, SA1201, SA0001, SA1623</NoWarn>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
