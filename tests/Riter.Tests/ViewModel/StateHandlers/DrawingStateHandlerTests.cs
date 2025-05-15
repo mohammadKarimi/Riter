@@ -1,10 +1,11 @@
 ﻿using Moq;
 using Riter.Core.Consts;
 using Riter.Core.Enum;
-using Riter.ViewModel.Handlers;
 using Riter.ViewModel.StateHandlers;
+using Xunit;
 
 namespace Riter.Tests.ViewModel.StateHandlers;
+
 public class DrawingStateHandlerTests
 {
     private readonly Mock<IInkEditingModeStateHandler> _inkEditingModeStateHandlerMock;

@@ -1,4 +1,5 @@
 ﻿using Riter.ViewModel.StateHandlers;
+using Xunit;
 
 namespace Riter.Tests.ViewModel.StateHandlers;
 public class StrokeVisibilityStateHandlerTests

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
-using Riter.Core;
+﻿using Riter.Core;
 using Riter.Services;
+using Xunit;
 
 namespace Riter.Tests.Services;
 public class HotKeyCommandServiceTests

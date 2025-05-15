@@ -1,4 +1,5 @@
 ﻿using Riter.ViewModel.Handlers;
+using Xunit;
 
 namespace Riter.Tests.ViewModel.StateHandlers;
 public class HighlighterStateHandlerTests

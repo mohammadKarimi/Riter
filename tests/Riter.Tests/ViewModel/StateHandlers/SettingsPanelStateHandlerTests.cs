@@ -2,6 +2,7 @@
 using Riter.Core.Consts;
 using Riter.ViewModel.Handlers;
 using Riter.ViewModel.StateHandlers;
+using Xunit;
 
 namespace Riter.Tests.ViewModel.StateHandlers;
 public class SettingsPanelStateHandlerTests

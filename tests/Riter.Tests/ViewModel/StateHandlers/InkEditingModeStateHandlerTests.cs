@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 using global::Riter.ViewModel.StateHandlers;
+using Xunit;
 
 namespace Riter.Tests.ViewModel.StateHandlers;
 
