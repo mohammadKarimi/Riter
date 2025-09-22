@@ -62,7 +62,7 @@ public partial class UpdatePanel : UserControl
             ?? throw new Exception("Unable to determine file size.");
 
         await using Stream contentStream = await response.Content.ReadAsStreamAsync();
-        await using FileStream fileStream = new (
+        await using FileStream fileStream = new(
             destinationPath,
             FileMode.Create,
             FileAccess.Write,

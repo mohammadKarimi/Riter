@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Windows;
 using Riter.Core.WindowExtensions;
 using Riter.ViewModel;
 
@@ -48,6 +49,9 @@ public partial class MainWindow : Window
     {
         base.OnSourceInitialized(e);
         _hookID = SetHook(_proc);
+
+        // Set the window to cover the entire virtual desktop area
+        SetWindowToVirtualDesktop();
     }
 
     private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
@@ -120,11 +124,36 @@ public partial class MainWindow : Window
     /// <summary>
     /// Load the window in bottom center of screen.
     /// </summary>
+    /// <param name="sender">The sender of the event.</param>
     /// <param name="e">Contains the data of routed event.</param>
     private void MainWindow_Loaded(object sender, RoutedEventArgs e)
     {
+        SetWindowToVirtualDesktop();
         AdjustWindowSize();
-        Microsoft.Win32.SystemEvents.DisplaySettingsChanged += (_, _) => AdjustWindowSize();
+        Microsoft.Win32.SystemEvents.DisplaySettingsChanged += (_, _) =>
+        {
+            SetWindowToVirtualDesktop();
+            AdjustWindowSize();
+        };
+    }
+
+    /// <summary>
+    /// Sets the window to cover the entire virtual desktop area across all monitors.
+    /// </summary>
+    private void SetWindowToVirtualDesktop()
+    {
+        // Set window position and size to cover the entire virtual desktop
+        this.Left = SystemParameters.VirtualScreenLeft;
+        this.Top = SystemParameters.VirtualScreenTop;
+        this.Width = SystemParameters.VirtualScreenWidth;
+        this.Height = SystemParameters.VirtualScreenHeight;
+
+        // Ensure the layout grid fills the entire window
+        if (Layout != null)
+        {
+            Layout.Width = this.Width;
+            Layout.Height = this.Height;
+        }
     }
 
     private void AdjustWindowSize()

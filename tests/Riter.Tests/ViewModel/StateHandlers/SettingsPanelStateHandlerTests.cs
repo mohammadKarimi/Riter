@@ -19,7 +19,7 @@ public class SettingsPanelStateHandlerTests
     [Fact]
     public void Should_HideAllPanels_When_HideAllPanelsIsCalled()
     {
-        
+
         _handler.HideAllPanels();
 
         _handler.SettingPanelVisibility.Should().BeFalse();
@@ -34,7 +34,7 @@ public class SettingsPanelStateHandlerTests
     [Fact]
     public void Should_SetSettingPanelVisibilityToTrue_When_SetSettingPanelVisibleIsCalled()
     {
-        
+
         _handler.SetSettingPanelVisibile();
         _handler.SettingPanelVisibility.Should().BeTrue();
     }
@@ -58,7 +58,7 @@ public class SettingsPanelStateHandlerTests
     public void Should_HideAllPanelsAndResetArrowButton_When_ToggleBrushSettingsPanelIsCalledWithSameButton()
     {
         _mockButtonSelectedStateHandler.SetupGet(m => m.ArrowButtonSelectedName).Returns("BrushButton");
-        
+
         _handler.ToggleBrushSettingsPanel("BrushButton");
 
         _handler.BrushPanelVisibility.Should().BeTrue();
@@ -73,7 +73,7 @@ public class SettingsPanelStateHandlerTests
     public void Should_ShowBrushPanel_When_ToggleBrushSettingsPanelIsCalledWithDifferentButton()
     {
         _handler.ToggleBrushSettingsPanel("NewBrushButton");
-        
+
         _handler.BrushPanelVisibility.Should().BeTrue();
         _mockButtonSelectedStateHandler.Verify(m => m.SetArrowButtonSelected(ButtonNames.ChangeBrushSettingButton), Times.Once);
     }
