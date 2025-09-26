@@ -11,7 +11,7 @@
     mc:Ignorable="d" ResizeMode="NoResize"
     UseLayoutRounding="True" 
     WindowStartupLocation="Manual"
-    WindowState="Maximized"
+    WindowState="Normal"
     AllowsTransparency="True" 
     WindowStyle="None">
 

@@ -21,7 +21,7 @@ public class StrokeVisibilityStateHandlerTests
     public void Should_Toggle_IsHideAll_When_HideAll_Is_Called()
     {
         _handler.HideAll();
-        _handler.IsHideAll.Should().BeTrue(); 
+        _handler.IsHideAll.Should().BeTrue();
 
         _handler.HideAll();
         _handler.IsHideAll.Should().BeFalse();
