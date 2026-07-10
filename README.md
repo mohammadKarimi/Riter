@@ -22,10 +22,15 @@ Riter is a modern, versatile screen drawing application built with WPF (Windows 
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 ![dotnet-version]
+    <img src="https://img.shields.io/github/downloads/mohammadKarimi/Riter/total.svg" alt="GitHub All Releases">
+
+
+
 
 ![Template](https://github.com/user-attachments/assets/db84390d-fdbe-4568-9be4-71ec9c5c4ee9)
 
 ![image](https://github.com/user-attachments/assets/c6821e69-bd49-4cd9-b3fd-6969166f6262)
+
 
 ---
 
@@ -170,3 +175,4 @@ Feel free to contribute, report issues, or fork the repository to add your own f
 [license-shield]: https://img.shields.io/github/license/mohammadKarimi/Riter.svg?style=for-the-badge
 [license-url]: https://github.com/mohammadKarimi/Riter/blob/main/LICENSE.txt
 [dotnet-version]: https://img.shields.io/badge/dotnet%20version-net8.0-blue
+
