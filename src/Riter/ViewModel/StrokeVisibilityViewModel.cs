@@ -45,13 +45,19 @@ public sealed class StrokeVisibilityViewModel : BaseViewModel
 
     public ICommand SetTimerCommand => new RelayCommand<string>(SetTimer);
 
-    public ICommand HideAllCommand => new RelayCommand(_strokeVisibilityHandler.HideAll);
+    public ICommand HideAllCommand => new RelayCommand(HideAll);
 
     private void EnableOrDisableFadeInk() => IsEnableFadeInk = !IsEnableFadeInk;
 
     private void SetTimer(string milisecond)
     {
         TimerMiliSecond = int.Parse(milisecond);
+        _settingPanelStateHandler.HideAllPanels();
+    }
+
+    private void HideAll()
+    {
+        _strokeVisibilityHandler.HideAll();
         _settingPanelStateHandler.HideAllPanels();
     }
 }
