@@ -228,7 +228,48 @@
                                 </Border>
                             </Grid>
 
-
+                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Keyboard Listener (restart required)" Opacity="0.5"/>
+                            <Grid Height="40" Margin="0,4,0,0">
+                                <Border Padding="6,6" CornerRadius="6" BorderThickness="0">
+                                    <Border.InputBindings>
+                                        <MouseBinding Gesture="LeftClick" Command="{Binding HotKeyListenerViewModel.ToggleCommand}" />
+                                    </Border.InputBindings>
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{Binding ThemeViewModel.CurrentThemeSettingMouseOver}" />
+                                                    <Setter Property="Cursor" Value="Hand" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,0,0,0">
+                                            <ContentControl Width="16" Height="16" VerticalAlignment="Center" >
+                                                <ContentControl.Style>
+                                                    <Style TargetType="ContentControl">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="True">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_Keyboard_Light}"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding ThemeViewModel.IsDarkMode}" Value="False">
+                                                                <Setter Property="Content" Value="{StaticResource Icon_Keyboard}"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ContentControl.Style>
+                                            </ContentControl>
+                                            <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="{Binding HotKeyListenerViewModel.CurrentListenerName}" Padding="8,6,22,2" FontSize="12" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
 
                             <Label Foreground="{Binding ThemeViewModel.CurrentThemeTextsHex}" Content="Contact Us" Opacity="0.5"/>
                             <Grid Height="40" Margin="0,4,0,0">
