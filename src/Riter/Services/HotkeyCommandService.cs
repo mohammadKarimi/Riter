@@ -14,6 +14,13 @@ public class HotKeyCommandService(AppSettings appSettings)
         }
     }
 
+    public bool IsHotKeyPressed(HotKeiesPressed hotKeies, HotKey hotKey)
+    {
+        string keyCombination = BuildKeyCombination(hotKeies);
+        HotKeysConfig hotkeyConfig = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Key == hotKey.ToString());
+        return hotkeyConfig is not null && hotkeyConfig.Value == keyCombination;
+    }
+
     public void ExecuteHotKey(HotKeiesPressed hotKeies)
     {
         string keyCombination = BuildKeyCombination(hotKeies);

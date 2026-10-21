@@ -32,6 +32,16 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
     /// </summary>
     void StartErasing();
 
+    /// <summary>
+    /// Starts erasing only the part of a stroke under the eraser.
+    /// </summary>
+    void StartErasingByPoint();
+
+    /// <summary>
+    /// Toggles between release mode and drawing mode.
+    /// </summary>
+    void ToggleDrawingMode();
+
     void StartHighlighterDrawing();
 
     void StartDrawingShape(DrawingShape shape);

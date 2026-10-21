@@ -19,7 +19,11 @@ public sealed class DrawingViewModel : BaseViewModel
 
     public ICommand StartErasingCommand => new RelayCommand(_drawingHandler.StartErasing);
 
+    public ICommand StartErasingByPointCommand => new RelayCommand(_drawingHandler.StartErasingByPoint);
+
     public ICommand ReleaseCommand => new RelayCommand(_drawingHandler.Release);
+
+    public ICommand ToggleDrawingModeCommand => new RelayCommand(_drawingHandler.ToggleDrawingMode);
 
     public ICommand ToggleHighlighterCommand => new RelayCommand(_drawingHandler.StartHighlighterDrawing);
 

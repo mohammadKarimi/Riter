@@ -10,7 +10,8 @@ public class HotKeyCommandServiceTests
         HotKeysConfig =
             [
                 new HotKeysConfig { Key = "Arrow", Value = "CTRL + A" },
-                new HotKeysConfig { Key = "Line", Value = "CTRL + L" }
+                new HotKeysConfig { Key = "Line", Value = "CTRL + L" },
+                new HotKeysConfig { Key = "Release", Value = "R" }
             ]
     };
 
@@ -47,5 +48,25 @@ public class HotKeyCommandServiceTests
         _service.ExecuteHotKey(hotKeyPressed);
 
         wasCalled.Should().BeFalse();
+    }
+
+    [Fact]
+    public void IsHotKeyPressed_ShouldReturnTrue_WhenKeyMatchesConfiguredReleaseHotKey()
+    {
+        HotKeiesPressed hotKeyPressed = new() { Key = "R" };
+
+        bool result = _service.IsHotKeyPressed(hotKeyPressed, HotKey.Release);
+
+        result.Should().BeTrue();
+    }
+
+    [Fact]
+    public void IsHotKeyPressed_ShouldReturnFalse_WhenKeyDoesNotMatchConfiguredReleaseHotKey()
+    {
+        HotKeiesPressed hotKeyPressed = new() { Key = "D" };
+
+        bool result = _service.IsHotKeyPressed(hotKeyPressed, HotKey.Release);
+
+        result.Should().BeFalse();
     }
 }

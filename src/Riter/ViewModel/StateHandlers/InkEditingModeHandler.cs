@@ -27,6 +27,8 @@ public class InkEditingModeStateHandler : BaseStateHandler, IInkEditingModeState
 
     public void EraseByStroke() => InkEditingMode = InkCanvasEditingMode.EraseByStroke;
 
+    public void EraseByPoint() => InkEditingMode = InkCanvasEditingMode.EraseByPoint;
+
     public void Ink() => InkEditingMode = InkCanvasEditingMode.Ink;
 
     public void None() => InkEditingMode = InkCanvasEditingMode.None;

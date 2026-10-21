@@ -10,7 +10,7 @@ public static class HotKeyCommandMapper
             { HotKey.Erasing, () => viewModel.DrawingViewModel.StartErasingCommand.Execute(null) },
             { HotKey.Trash, () => viewModel.StrokeHistoryViewModel.ClearCommand.Execute(null) },
             { HotKey.Highlighter, () => viewModel.DrawingViewModel.ToggleHighlighterCommand.Execute(null) },
-            { HotKey.Release, () => viewModel.DrawingViewModel.ReleaseCommand.Execute(null) },
+            { HotKey.Release, () => viewModel.DrawingViewModel.ToggleDrawingModeCommand.Execute(null) },
             { HotKey.HideAll, () => viewModel.StrokeVisibilityViewModel.HideAllCommand.Execute(null) },
             { HotKey.Undo, () => viewModel.StrokeHistoryViewModel.UndoCommand.Execute(null) },
             { HotKey.Redo, () => viewModel.StrokeHistoryViewModel.RedoCommand.Execute(null) },

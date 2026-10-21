@@ -48,6 +48,13 @@ public class InkEditingModeStateHandlerTests
     }
 
     [Fact]
+    public void Should_SetInkEditingModeToEraseByPoint_When_EraseByPointIsCalled()
+    {
+        _stateHandler.EraseByPoint();
+        _stateHandler.InkEditingMode.Should().Be(InkCanvasEditingMode.EraseByPoint);
+    }
+
+    [Fact]
     public void Should_SetBackgroundToBlackboard_When_EnableBlackboardIsCalled()
     {
         _stateHandler.EnableBlackboard();
