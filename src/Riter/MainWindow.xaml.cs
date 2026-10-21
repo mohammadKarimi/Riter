@@ -1,7 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
+using Riter.Core.Enum;
 using Riter.Core.WindowExtensions;
+using Riter.Services;
 using Riter.ViewModel;
 
 namespace Riter;
@@ -41,17 +43,40 @@ public partial class MainWindow : Window
     protected override void OnClosed(EventArgs e)
     {
         base.OnClosed(e);
-        UnhookWindowsHookEx(_hookID);
+
+        if (_hookID != IntPtr.Zero)
+        {
+            UnhookWindowsHookEx(_hookID);
+        }
     }
 
     /// <inheritdoc/>
     protected override void OnSourceInitialized(EventArgs e)
     {
         base.OnSourceInitialized(e);
-        _hookID = SetHook(_proc);
+
+        if (_appSettings.HotKeyListenerMode == HotKeyListenerMode.LowLevelKeyboardHook)
+        {
+            _hookID = SetHook(_proc);
+        }
+        else
+        {
+            ConfigureDefaultListenerHotKeys();
+        }
 
         // Set the window to cover the entire virtual desktop area
         SetWindowToVirtualDesktop();
+    }
+
+    private void ConfigureDefaultListenerHotKeys()
+    {
+        foreach (HotKeysConfig config in _appSettings.HotKeysConfig)
+        {
+            if (HotKeyGestureParser.TryParse(config.Value, out Key key, out ModifierKeys modifiers))
+            {
+                InputBindings.Add(new KeyBinding(_orchestratorViewModel.CreateHotKeyCommand(config.Value), key, modifiers));
+            }
+        }
     }
 
     private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
