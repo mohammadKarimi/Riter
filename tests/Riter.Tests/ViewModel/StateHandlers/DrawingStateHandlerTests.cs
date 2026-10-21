@@ -88,6 +88,29 @@ public class DrawingStateHandlerTests
     }
 
     [Fact]
+    public void Should_StartDrawing_When_ToggleDrawingModeIsCalledWhileReleased()
+    {
+        _stateHandler.ToggleDrawingMode();
+
+        _stateHandler.IsReleased.Should().BeFalse();
+        _buttonSelectedStateHandlerMock.Verify(m => m.SetButtonSelectedName(ButtonNames.DrawingButton), Times.Once);
+        _highlighterStateHandlerMock.Verify(m => m.DisableHighlighter(), Times.Once);
+        _inkEditingModeStateHandlerMock.Verify(m => m.Ink(), Times.Exactly(2));
+    }
+
+    [Fact]
+    public void Should_Release_When_ToggleDrawingModeIsCalledWhileDrawing()
+    {
+        _stateHandler.StartDrawing();
+
+        _stateHandler.ToggleDrawingMode();
+
+        _stateHandler.IsReleased.Should().BeTrue();
+        _buttonSelectedStateHandlerMock.Verify(m => m.SetButtonSelectedName(ButtonNames.ReleaseButton), Times.Once);
+        _inkEditingModeStateHandlerMock.Verify(m => m.None(), Times.Once);
+    }
+
+    [Fact]
     public void Should_StartHighlighterDrawing_WhenStartHighlighterDrawingIsCalled()
     {
         _stateHandler.StartHighlighterDrawing();

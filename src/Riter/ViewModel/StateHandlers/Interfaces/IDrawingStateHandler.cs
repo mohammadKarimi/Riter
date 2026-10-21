@@ -32,6 +32,11 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
     /// </summary>
     void StartErasing();
 
+    /// <summary>
+    /// Toggles between release mode and drawing mode.
+    /// </summary>
+    void ToggleDrawingMode();
+
     void StartHighlighterDrawing();
 
     void StartDrawingShape(DrawingShape shape);

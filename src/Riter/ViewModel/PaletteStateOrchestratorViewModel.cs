@@ -74,7 +74,13 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
 
     public void HandleHotkey(HotKeiesPressed hotKeies)
     {
-        if (DrawingViewModel.IsReleased || SettingPanelViewModel.SettingPanelVisibility == Visibility.Visible)
+        if (SettingPanelViewModel.SettingPanelVisibility == Visibility.Visible)
+        {
+            return;
+        }
+
+        bool isReleaseHotKey = _hotKeyCommandService.IsHotKeyPressed(hotKeies, HotKey.Release);
+        if (DrawingViewModel.IsReleased && !isReleaseHotKey)
         {
             return;
         }

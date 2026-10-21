@@ -74,6 +74,18 @@ public class DrawingStateHandler(
         _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ErasingButton);
     }
 
+    public void ToggleDrawingMode()
+    {
+        if (IsReleased)
+        {
+            StartDrawing();
+        }
+        else
+        {
+            Release();
+        }
+    }
+
     public void StartHighlighterDrawing()
     {
         _highlighterStateHandler.EnableHighlighter();
