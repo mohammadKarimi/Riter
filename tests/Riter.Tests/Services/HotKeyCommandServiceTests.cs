@@ -48,4 +48,28 @@ public class HotKeyCommandServiceTests
 
         wasCalled.Should().BeFalse();
     }
+
+    [Fact]
+    public void ExecuteHotKey_WithString_ShouldInvokeCorrectCommand()
+    {
+        bool wasCalled = false;
+        _commands[HotKey.Arrow] = () => wasCalled = true;
+        _service.InitializeCommands(_commands);
+
+        _service.ExecuteHotKey("CTRL + A");
+
+        wasCalled.Should().BeTrue();
+    }
+
+    [Fact]
+    public void ExecuteHotKey_WithString_ShouldNotInvokeCommand_WhenHotKeyNotConfigured()
+    {
+        bool wasCalled = false;
+        _commands[HotKey.Arrow] = () => wasCalled = true;
+        _service.InitializeCommands(_commands);
+
+        _service.ExecuteHotKey("CTRL + X");
+
+        wasCalled.Should().BeFalse();
+    }
 }
