@@ -43,6 +43,8 @@ public class AppSettings
 
     public StartupLocation StartupLocation { get; set; }
 
+    public HotKeyListenerMode HotKeyListenerMode { get; set; } = HotKeyListenerMode.LowLevelKeyboardHook;
+
     public List<HotKeysConfig> HotKeysConfig { get; set; }
 
     public static string GetReleaseUrl(string tag) => $"{GitHubProjectUrl}/releases/tag/{tag}";
