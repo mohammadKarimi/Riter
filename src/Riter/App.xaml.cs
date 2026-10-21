@@ -100,6 +100,7 @@ public partial class App : Application
         serviceCollection.AddSingleton<StrokeVisibilityViewModel>();
         serviceCollection.AddSingleton<InkEditingModeViewModel>();
         serviceCollection.AddSingleton<StartupLocationViewModel>();
+        serviceCollection.AddSingleton<HotKeyListenerViewModel>();
         serviceCollection.AddSingleton<ScreenShotViewModel>();
         serviceCollection.AddSingleton<InkCanvasViewModel>();
         serviceCollection.AddSingleton<PaletteStateOrchestratorViewModel>();
