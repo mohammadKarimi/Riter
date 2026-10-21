@@ -33,5 +33,6 @@
                 </Style>
             </InkCanvas.Style>
         </InkCanvas>
+        <Canvas x:Name="TextOverlay" />
     </Grid>
 </UserControl>

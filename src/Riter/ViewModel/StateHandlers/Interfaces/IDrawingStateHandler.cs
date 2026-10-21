@@ -35,4 +35,6 @@ public interface IDrawingStateHandler : INotifyPropertyChanged
     void StartHighlighterDrawing();
 
     void StartDrawingShape(DrawingShape shape);
+
+    void StartTextDrawing();
 }

@@ -21,6 +21,8 @@ public partial class MainInkCanvasControl : UserControl
     private Stroke _lastStroke;
     private Stroke _selectedStroke;
     private Point _startDragPoint;
+    private TextBox _textBox;
+    private bool _textModeActive;
 
     public MainInkCanvasControl()
     {
@@ -75,12 +77,30 @@ public partial class MainInkCanvasControl : UserControl
     /// <returns>True if an Alt key was released, otherwise false.</returns>
     private static bool IsAltKeyReleased(Key key) => key == Key.LeftAlt || key == Key.RightAlt;
 
+    /// <summary>
+    /// Creates a brush from the given hex color, falling back to black for non-hex values such as rainbow mode.
+    /// </summary>
+    /// <param name="hex">The hex color string.</param>
+    /// <returns>The created brush.</returns>
+    private static Brush CreateTextBrush(string hex)
+    {
+        try
+        {
+            return new SolidColorBrush((Color)ColorConverter.ConvertFromString(hex));
+        }
+        catch (FormatException)
+        {
+            return Brushes.Black;
+        }
+    }
+
     private void MainInkCanvasControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
         if (e.NewValue is PaletteStateOrchestratorViewModel viewModel)
         {
             viewModel.InkEditingModeViewModel.PropertyChanged += DrawingViewModel_PropertyChanged;
             viewModel.DrawingViewModel.PropertyChanged += DrawingViewModel_PropertyChanged;
+            viewModel.ButtonSelectedViewModel.PropertyChanged += ButtonSelectedViewModel_PropertyChanged;
 
             _strokeHistoryService = viewModel.InkCanvasViewModel.StrokeHistoryService;
             _inkEditingModeStateHandler = viewModel.InkCanvasViewModel.InkEditingModeStateHandler;
@@ -108,6 +128,27 @@ public partial class MainInkCanvasControl : UserControl
             && viewModel.InkEditingModeViewModel.InkEditingMode is InkCanvasEditingMode.Ink)
         {
             MainInkCanvas.UseCustomCursor = false;
+        }
+    }
+
+    private void ButtonSelectedViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+    {
+        PaletteStateOrchestratorViewModel viewModel = (PaletteStateOrchestratorViewModel)DataContext;
+
+        if (e.PropertyName != nameof(viewModel.ButtonSelectedViewModel.ButtonSelectedName))
+            return;
+
+        if (viewModel.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.TextButton)
+        {
+            _textModeActive = true;
+            MainInkCanvas.UseCustomCursor = true;
+            MainInkCanvas.Cursor = Cursors.IBeam;
+        }
+        else if (_textModeActive)
+        {
+            _textModeActive = false;
+            MainInkCanvas.UseCustomCursor = false;
+            MainInkCanvas.Cursor = Cursors.Arrow;
         }
     }
 
@@ -159,8 +200,16 @@ public partial class MainInkCanvasControl : UserControl
 
     private void StartDrawing(object sender, MouseButtonEventArgs e)
     {
-        if (((PaletteStateOrchestratorViewModel)DataContext).DrawingViewModel.IsReleased)
+        PaletteStateOrchestratorViewModel viewModel = (PaletteStateOrchestratorViewModel)DataContext;
+
+        if (viewModel.DrawingViewModel.IsReleased)
             return;
+
+        if (viewModel.ButtonSelectedViewModel.ButtonSelectedName == ButtonNames.TextButton)
+        {
+            BeginTextInput(e.GetPosition(MainInkCanvas));
+            return;
+        }
 
         _startDragPoint = e.GetPosition(MainInkCanvas);
         _selectedStroke = GetStrokeUnderCursor(_startDragPoint);
@@ -197,6 +246,94 @@ public partial class MainInkCanvasControl : UserControl
         _isDrawing = false;
         _isDragging = false;
         _strokeHistoryService.IgnoreStrokesChange = false;
+    }
+
+    private void BeginTextInput(Point position)
+    {
+        CommitTextInput();
+
+        PaletteStateOrchestratorViewModel viewModel = (PaletteStateOrchestratorViewModel)DataContext;
+        TextBox textBox = new()
+        {
+            Width = 200,
+            TextWrapping = TextWrapping.Wrap,
+            AcceptsReturn = false,
+            FontSize = Math.Max(14, viewModel.BrushSettingsViewModel.SizeOfBrush * 2),
+            Foreground = CreateTextBrush(viewModel.BrushSettingsViewModel.InkColor),
+        };
+
+        Canvas.SetLeft(textBox, position.X);
+        Canvas.SetTop(textBox, position.Y);
+
+        textBox.KeyDown += TextBox_KeyDown;
+        textBox.LostFocus += TextBox_LostFocus;
+
+        _textBox = textBox;
+        TextOverlay.Children.Add(textBox);
+        textBox.Focus();
+    }
+
+    private void CommitTextInput()
+    {
+        if (_textBox is null)
+            return;
+
+        TextBox textBox = _textBox;
+        _textBox = null;
+
+        textBox.KeyDown -= TextBox_KeyDown;
+        textBox.LostFocus -= TextBox_LostFocus;
+
+        if (!string.IsNullOrEmpty(textBox.Text))
+        {
+            TextBlock textBlock = new()
+            {
+                Text = textBox.Text,
+                FontSize = textBox.FontSize,
+                Foreground = textBox.Foreground,
+            };
+
+            InkCanvas.SetLeft(textBlock, Canvas.GetLeft(textBox));
+            InkCanvas.SetTop(textBlock, Canvas.GetTop(textBox));
+            MainInkCanvas.Children.Add(textBlock);
+        }
+
+        TextOverlay.Children.Remove(textBox);
+    }
+
+    private void CancelTextInput()
+    {
+        if (_textBox is null)
+            return;
+
+        TextBox textBox = _textBox;
+        _textBox = null;
+
+        textBox.KeyDown -= TextBox_KeyDown;
+        textBox.LostFocus -= TextBox_LostFocus;
+        TextOverlay.Children.Remove(textBox);
+    }
+
+    private void TextBox_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            CommitTextInput();
+            e.Handled = true;
+        }
+        else if (e.Key == Key.Escape)
+        {
+            CancelTextInput();
+            e.Handled = true;
+        }
+    }
+
+    private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+    {
+        if (ReferenceEquals(sender, _textBox))
+        {
+            CommitTextInput();
+        }
     }
 
     private Stroke GetStrokeUnderCursor(Point position)

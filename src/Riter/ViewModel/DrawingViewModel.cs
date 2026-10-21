@@ -23,5 +23,7 @@ public sealed class DrawingViewModel : BaseViewModel
 
     public ICommand ToggleHighlighterCommand => new RelayCommand(_drawingHandler.StartHighlighterDrawing);
 
+    public ICommand StartTextCommand => new RelayCommand(_drawingHandler.StartTextDrawing);
+
     public DrawingShape CurrentShape => _drawingHandler.CurrentShape;
 }
