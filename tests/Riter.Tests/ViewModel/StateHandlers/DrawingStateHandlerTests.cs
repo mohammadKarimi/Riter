@@ -62,6 +62,17 @@ public class DrawingStateHandlerTests
     }
 
     [Fact]
+    public void Should_SetTextButtonSelected_When_StartTextDrawingIsCalled()
+    {
+        _stateHandler.StartTextDrawing();
+
+        _stateHandler.IsReleased.Should().BeFalse();
+        _highlighterStateHandlerMock.Verify(m => m.DisableHighlighter(), Times.Once);
+        _buttonSelectedStateHandlerMock.Verify(m => m.SetButtonSelectedName(ButtonNames.TextButton), Times.Once);
+        _inkEditingModeStateHandlerMock.Verify(m => m.None(), Times.Once);
+    }
+
+    [Fact]
     public void Should_StartErasing_When_StartErasingIsCalled()
     {
         _stateHandler.StartErasing();

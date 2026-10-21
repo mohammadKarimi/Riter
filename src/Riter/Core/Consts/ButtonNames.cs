@@ -25,4 +25,6 @@ public class ButtonNames
     public const string ChangeShapeSettingButton = "ChangeShapeSettingButton";
 
     public const string ShapeDrawButton = "ShapeDrawButton";
+
+    public const string TextButton = "TextButton";
 }

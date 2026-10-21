@@ -61,6 +61,13 @@ public class DrawingStateHandler(
         _inkEditingModeStateHandler.None();
     }
 
+    public void StartTextDrawing()
+    {
+        _highlighterStateHandler.DisableHighlighter();
+        SetupDrawingMode(ButtonNames.TextButton);
+        _inkEditingModeStateHandler.None();
+    }
+
     public void StartErasing()
     {
         if (_buttonSelectedStateHandler.ButtonSelectedName == ButtonNames.ErasingButton)
