@@ -21,7 +21,8 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         HotKeyCommandService hotKeyCommandService,
         ScreenShotViewModel screenShotViewModel,
         InkCanvasViewModel inkCanvasViewModel,
-        ThemeViewModel themeViewModel)
+        ThemeViewModel themeViewModel,
+        HotKeyListenerViewModel hotKeyListenerViewModel)
     {
         ScreenShotViewModel = screenShotViewModel;
         DrawingViewModel = drawingViewModel;
@@ -35,6 +36,7 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
         StartupLocationViewModel = startupLocationViewModel;
         InkCanvasViewModel = inkCanvasViewModel;
         ThemeViewModel = themeViewModel;
+        HotKeyListenerViewModel = hotKeyListenerViewModel;
 
         _hotKeyCommandService = hotKeyCommandService;
         _hotKeyCommandService.InitializeCommands(this.BuildHotKeyCommandMap());
@@ -66,6 +68,8 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
 
     public ThemeViewModel ThemeViewModel { get; }
 
+    public HotKeyListenerViewModel HotKeyListenerViewModel { get; }
+
     public DrawingAttributes InkDrawingAttributes =>
         DrawingAttributesFactory.CreateDrawingAttributes(
             BrushSettingsViewModel.InkColor,
@@ -81,6 +85,8 @@ public class PaletteStateOrchestratorViewModel : BaseViewModel
 
         _hotKeyCommandService.ExecuteHotKey(hotKeies);
     }
+
+    public ICommand CreateHotKeyCommand(string keyCombination) => new RelayCommand(() => _hotKeyCommandService.ExecuteHotKey(keyCombination), () => SettingPanelViewModel.SettingPanelVisibility != Visibility.Visible);
 
     private void AttachPropertyChangedHandlers()
     {

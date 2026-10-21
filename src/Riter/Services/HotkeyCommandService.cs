@@ -16,7 +16,11 @@ public class HotKeyCommandService(AppSettings appSettings)
 
     public void ExecuteHotKey(HotKeiesPressed hotKeies)
     {
-        string keyCombination = BuildKeyCombination(hotKeies);
+        ExecuteHotKey(BuildKeyCombination(hotKeies));
+    }
+
+    public void ExecuteHotKey(string keyCombination)
+    {
         HotKeysConfig hotkeyConfig = _appSettings.HotKeysConfig.FirstOrDefault(x => x.Value == keyCombination);
 
         if (hotkeyConfig != null && Enum.TryParse(hotkeyConfig.Key, out HotKey hotKeyEnum))
