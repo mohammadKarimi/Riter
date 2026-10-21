@@ -21,6 +21,8 @@ public interface IInkEditingModeStateHandler : INotifyPropertyChanged
 
     void EraseByStroke();
 
+    void EraseByPoint();
+
     void Ink();
 
     void None();

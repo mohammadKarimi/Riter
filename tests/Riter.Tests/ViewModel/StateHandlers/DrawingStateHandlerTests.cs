@@ -111,6 +111,32 @@ public class DrawingStateHandlerTests
     }
 
     [Fact]
+    public void Should_StartErasingByPoint_When_StartErasingByPointIsCalled()
+    {
+        _stateHandler.StartErasingByPoint();
+
+        _stateHandler.IsReleased.Should().BeFalse();
+        _inkEditingModeStateHandlerMock.Verify(m => m.EraseByPoint(), Times.Once);
+        _buttonSelectedStateHandlerMock.Verify(m => m.SetButtonSelectedName(ButtonNames.ErasingByPointButton), Times.Once);
+    }
+
+    [Fact]
+    public void Should_StartDrawing_When_StartErasingByPointIsCalledTwice()
+    {
+        _buttonSelectedStateHandlerMock
+            .Setup(m => m.ButtonSelectedName)
+            .Returns(ButtonNames.ErasingByPointButton);
+
+        _stateHandler.StartErasingByPoint();
+
+        _stateHandler.IsReleased.Should().BeFalse();
+        _buttonSelectedStateHandlerMock.Verify(m => m.SetButtonSelectedName(ButtonNames.DrawingButton), Times.Once);
+
+        _inkEditingModeStateHandlerMock.Verify(x => x.Ink(), Times.Exactly(2));
+        _highlighterStateHandlerMock.Verify(m => m.DisableHighlighter(), Times.Once);
+    }
+
+    [Fact]
     public void Should_StartHighlighterDrawing_WhenStartHighlighterDrawingIsCalled()
     {
         _stateHandler.StartHighlighterDrawing();

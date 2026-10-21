@@ -74,6 +74,19 @@ public class DrawingStateHandler(
         _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ErasingButton);
     }
 
+    public void StartErasingByPoint()
+    {
+        if (_buttonSelectedStateHandler.ButtonSelectedName == ButtonNames.ErasingByPointButton)
+        {
+            StartDrawing();
+            return;
+        }
+
+        IsReleased = false;
+        _inkEditingModeStateHandler.EraseByPoint();
+        _buttonSelectedStateHandler.SetButtonSelectedName(ButtonNames.ErasingByPointButton);
+    }
+
     public void ToggleDrawingMode()
     {
         if (IsReleased)
