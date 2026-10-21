@@ -50,6 +50,7 @@ public class StrokeHistoryService : IStrokeHistoryService
         _fadeTimers.Clear();
         _redoHistory.Clear();
         InkCanvas.Strokes.Clear();
+        InkCanvas.Children.Clear();
     }
 
     /// <inheritdoc/>
